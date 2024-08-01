@@ -187,6 +187,10 @@ export function ExpenseForm({
     return field?.value
   }
   const defaultSplittingOptions = getDefaultSplittingOptions(group)
+
+  const getRecurringField = (field?: { value: string }) => {
+    return field?.value
+  }
   const form = useForm<ExpenseFormValues>({
     resolver: zodResolver(expenseFormSchema),
     defaultValues: expense
@@ -205,6 +209,7 @@ export function ExpenseForm({
           isReimbursement: expense.isReimbursement,
           documents: expense.documents,
           notes: expense.notes ?? '',
+          recurringDays: String(expense.recurringDays),
           location: expense.location,
         }
       : searchParams.get('reimbursement')
@@ -229,7 +234,9 @@ export function ExpenseForm({
           saveDefaultSplittingOptions: false,
           documents: [],
           notes: '',
+          recurringDays: "0",
           location: getLocationFromSearchParams(searchParams),
+
         }
       : {
           title: searchParams.get('title') ?? '',
@@ -257,8 +264,10 @@ export function ExpenseForm({
               ]
             : [],
           notes: '',
+          recurringDays: "0",
           location: getLocationFromSearchParams(searchParams),
         },
+        
   })
   const [isCategoryLoading, setCategoryLoading] = useState(false)
   const activeUserId = useActiveUser(group.id)
@@ -271,6 +280,7 @@ export function ExpenseForm({
   const [isIncome, setIsIncome] = useState(Number(form.getValues().amount) < 0)
   const sExpense = isIncome ? 'income' : 'expense'
   const sPaid = isIncome ? 'received' : 'paid'
+  const recurringDays = [{ "key": "Never","value": "0"}, { "key":"Weekly", "value": "7"}, {"key": "Every 14 days", "value": "14"}, {"key": "Every 30 days", "value": "30"}, {"key": "Every 60 days", "value": "60"}]
 
   return (
     <Form {...form}>
@@ -450,6 +460,34 @@ export function ExpenseForm({
                   <FormControl>
                     <Textarea className="text-base" {...field} />
                   </FormControl>
+                  </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="recurringDays"
+              render={({ field }) => (
+                <FormItem className="sm:order-5">
+                  <FormLabel>Recurring Days</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={getRecurringField(field)}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Never" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {recurringDays.map(({ key, value }) => (
+                        <SelectItem key={key} value={value}>
+                          {key}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormDescription>
+                    Repeat:  {'<'}Never|Every Day|Every...{'>'}
+                  </FormDescription>
+                  <FormMessage />
                 </FormItem>
               )}
             />

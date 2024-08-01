@@ -57,6 +57,7 @@ model Expense {
   documents       ExpenseDocument[]
   comments        ExpenseComment[]
   notes           String?
+  recurringDays   Int               @default(0)
   location        Point?
 }
 
@@ -119,4 +120,14 @@ enum ActivityType {
   CREATE_EXPENSE
   UPDATE_EXPENSE
   DELETE_EXPENSE
+}
+
+model RecurringTransactions {
+  groupId         String
+  expenseId       String
+  createNextAt    Int
+  lockId          String?  @unique
+
+  @@id([groupId, expenseId])
+  @@index([groupId, expenseId, createNextAt(sort: Desc)])
 }
