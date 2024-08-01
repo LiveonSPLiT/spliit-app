@@ -126,7 +126,7 @@ export default function RootLayout({
                 </Link>
               </div>
               <div className="flex flex-col space-y a--no-underline-text-white">
-                <span>Made in Pune, Mh in</span>
+                <span>Made with ❤️ in India</span>
                 <span>
                   Built by{' '}Ashutosh Gupta
                   {' '}
