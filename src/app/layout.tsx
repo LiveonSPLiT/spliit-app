@@ -88,7 +88,7 @@ export default function RootLayout({
                   className="m-1 h-auto w-auto"
                   width={(35 * 522) / 180}
                   height={35}
-                  alt="Spliit"
+                  alt="Split"
                 />
               </h1>
             </Link>
@@ -121,7 +121,7 @@ export default function RootLayout({
                     className="m-1 h-auto w-auto"
                     width={(35 * 522) / 180}
                     height={35}
-                    alt="Spliit"
+                    alt="Split"
                   />
                 </Link>
               </div>
