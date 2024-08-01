@@ -14,15 +14,15 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
   title: {
-    default: 'Spliit · Share Expenses with Friends & Family',
-    template: '%s · Spliit',
+    default: 'Split · Share Expenses with Friends & Family',
+    template: '%s · Split',
   },
   description:
-    'Spliit is a minimalist web application to share expenses with friends and family. No ads, no account, no problem.',
+    'Split is a minimalist web application to share expenses with friends and family. No ads, no problem.',
   openGraph: {
-    title: 'Spliit · Share Expenses with Friends & Family',
+    title: 'Split · Share Expenses with Friends & Family',
     description:
-      'Spliit is a minimalist web application to share expenses with friends and family. No ads, no account, no problem.',
+      'Split is a minimalist web application to share expenses with friends and family. No ads, no problem.',
     images: `/banner.png`,
     type: 'website',
     url: '/',
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     creator: '@scastiel',
     site: '@scastiel',
     images: `/banner.png`,
-    title: 'Spliit · Share Expenses with Friends & Family',
+    title: 'Split · Share Expenses with Friends & Family',
     description:
-      'Spliit is a minimalist web application to share expenses with friends and family. No ads, no account, no problem.',
+      'Split is a minimalist web application to share expenses with friends and family. No ads, no problem.',
   },
   appleWebApp: {
     capable: true,
-    title: 'Spliit',
+    title: 'Split',
   },
-  applicationName: 'Spliit',
+  applicationName: 'Split',
   icons: [
     {
       url: '/android-chrome-192x192.png',
@@ -126,19 +126,17 @@ export default function RootLayout({
                 </Link>
               </div>
               <div className="flex flex-col space-y a--no-underline-text-white">
-                <span>Made in Montréal, Québec 🇨🇦</span>
+                <span>Made in Pune, Mh in</span>
                 <span>
-                  Built by{' '}
-                  <a href="https://scastiel.dev" target="_blank" rel="noopener">
-                    Sebastien Castiel
-                  </a>{' '}
+                  Built by{' '}Ashutosh Gupta
+                  {' '}
                   and{' '}
                   <a
-                    href="https://github.com/spliit-app/spliit/graphs/contributors"
+                    href="https://roopanjalee.in/"
                     target="_blank"
                     rel="noopener"
                   >
-                    contributors
+                    Roopanjalee
                   </a>
                 </span>
               </div>
