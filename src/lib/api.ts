@@ -80,6 +80,11 @@ export async function createExpense(
         },
       },
       notes: expenseFormValues.notes,
+      location: {
+        ...(expenseFormValues.location && {
+          create: { ...expenseFormValues.location },
+        }),
+      },
     },
   })
 }
@@ -209,6 +214,15 @@ export async function updateExpense(
           })),
       },
       notes: expenseFormValues.notes,
+      location: {
+        delete: !!existingExpense.location && !expenseFormValues.location,
+        ...(expenseFormValues.location && {
+          upsert: {
+            create: { ...expenseFormValues.location },
+            update: { ...expenseFormValues.location },
+          },
+        }),
+      },
     },
   })
 }
@@ -349,7 +363,13 @@ export async function getGroupExpenseCount(groupId: string) {
 export async function getExpense(groupId: string, expenseId: string) {
   return prisma.expense.findUnique({
     where: { id: expenseId },
-    include: { paidBy: true, paidFor: true, category: true, documents: true },
+    include: {
+      paidBy: true,
+      paidFor: true,
+      category: true,
+      documents: true,
+      location: true,
+    },
   })
 }
 
