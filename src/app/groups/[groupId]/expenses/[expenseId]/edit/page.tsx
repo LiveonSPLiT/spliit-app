@@ -7,6 +7,7 @@ import {
   getCategories,
   getComments,
   getExpense,
+  getExpenseActivity,
   updateComment,
   updateExpense,
 } from '@/lib/api'
@@ -46,6 +47,8 @@ export default async function EditExpensePage({
     redirect(`/groups/${groupId}`)
   }
 
+  const activities = await getExpenseActivity(expenseId)
+
   async function addCommentAction(values: unknown, participantId: string) {
     'use server'
     const commentFormValues = commentFormSchema.parse(values)
@@ -72,6 +75,7 @@ export default async function EditExpensePage({
         group={group}
         expense={expense}
         categories={categories}
+        activities={activities}
         onSubmit={updateExpenseAction}
         onDelete={deleteExpenseAction}
         runtimeFeatureFlags={await getRuntimeFeatureFlags()}
