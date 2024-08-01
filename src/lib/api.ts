@@ -50,7 +50,7 @@ Discussion: https://github.com/spliit-app/spliit/pull/114/files#r1559974206
 */
 
 export async function acquireLockRecurringTransaction(groupId:string, expenseId:string, lockId: string): Promise<RecurringTransactions[]> {
-  const prisma = await getPrisma()
+  
   let retryCnt = 5
   let getRecTxn:RecurringTransactions[] = []
   while(--retryCnt) {
@@ -96,7 +96,7 @@ export async function acquireLockRecurringTransaction(groupId:string, expenseId:
 }
 
 export async function releaseLockRecurringTransaction(groupId:string, expenseId:string, lockId: string): Promise<void>{
-  const prisma = await getPrisma()
+  
   await prisma.recurringTransactions.updateMany({
     where: {
       groupId,
@@ -116,7 +116,7 @@ export async function createOrUpdateRecurringTransaction(
   expenseRef: string|null = null
 ): Promise<RecurringTransactions | undefined> {
   let expenseDate = expenseFormValues.expenseDate
-  const prisma = await getPrisma()
+  
   if (!+expenseFormValues.recurringDays) {
     await prisma.recurringTransactions.deleteMany({
       where: {
