@@ -16,7 +16,6 @@ export default function HomePage() {
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             Welcome to <strong>Split</strong> App! <br />
-            Customize this page by editing <em>src/app/page.tsx</em>.
           </p>
           <div className="flex gap-2">
             <Button asChild>
