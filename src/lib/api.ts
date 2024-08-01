@@ -548,7 +548,6 @@ export async function getGroupExpenses(
         isReimbursement: relatedExpenses[i].isReimbursement,
         documents: relatedExpenses[i].documents,
         recurringDays: String(relatedExpenses[i].recurringDays),
-        notes: relatedExpenses[i].notes,
         location: {
           ...(relatedExpenses[i].location && {
             create: { ...relatedExpenses[i].location },
