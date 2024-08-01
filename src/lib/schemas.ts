@@ -7,6 +7,7 @@ export const groupFormSchema = z
       .string()
       .min(2, 'Enter at least two characters.')
       .max(50, 'Enter at most 50 characters.'),
+    information: z.string().optional(),
     currency: z
       .string()
       .min(1, 'Enter at least one character.')
@@ -162,6 +163,12 @@ export const expenseFormSchema = z
   })
 
 export type ExpenseFormValues = z.infer<typeof expenseFormSchema>
+
+export const commentFormSchema = z.object({
+  comment: z.string(),
+})
+
+export type CommentFormValues = z.infer<typeof commentFormSchema>
 
 export type SplittingOptions = {
   // Used for saving default splitting options in localStorage
