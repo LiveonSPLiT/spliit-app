@@ -525,7 +525,8 @@ export async function getGroupExpenses(
         paidFor: { include: { participant: true } },
         paidBy: true,
         category: true,
-        documents: true
+        documents: true,
+        location: true,
       },
     })
     for (let i=0; i<relatedExpenses.length; ++i) {
@@ -546,13 +547,10 @@ export async function getGroupExpenses(
           shares: paidFor.shares,
         })),
         isReimbursement: relatedExpenses[i].isReimbursement,
+        saveDefaultSplittingOptions: false,
         documents: relatedExpenses[i].documents,
         recurringDays: String(relatedExpenses[i].recurringDays),
-        location: {
-          ...(relatedExpenses[i].location && {
-            create: { ...relatedExpenses[i].location },
-          }),
-        },
+        location: relatedExpenses[i].location,
       }, groupId, relatedExpenses[i].id);
     }
     allPendingRecurringTxns = await prisma.recurringTransactions.findMany({
