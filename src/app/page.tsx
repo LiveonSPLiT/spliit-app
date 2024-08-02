@@ -15,7 +15,8 @@ export default function HomePage() {
             & <strong>Family</strong>
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            Welcome to <strong>Split</strong> App! <br />
+            Welcome to <strong>SPLiT</strong> App! <br />
+            <span style={{ display: 'block', textAlign: 'center' }}>Friends · Groups</span>
           </p>
           <div className="flex gap-2">
             <Button asChild>
