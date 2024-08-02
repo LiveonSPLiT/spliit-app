@@ -66,8 +66,8 @@ export function GroupForm({
       : {
           name: '',
           information: '',
-          currency: '',
-          participants: [{ name: 'John' }, { name: 'Jane' }, { name: 'Jack' }],
+          currency: '₹',
+          participants: [{ name: 'Little' }, { name: 'Sibu' }, { name: 'Ninni' }],
         },
   })
   const { fields, append, remove } = useFieldArray({
@@ -147,7 +147,7 @@ export function GroupForm({
                   <FormControl>
                     <Input
                       className="text-base"
-                      placeholder="$, €, £…"
+                      placeholder="₹, $, £…"
                       max={5}
                       {...field}
                     />
