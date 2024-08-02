@@ -14,33 +14,33 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
   title: {
-    default: 'Split · Share Expenses with Friends & Family',
-    template: '%s · Split',
+    default: 'SPLiT · Share Expenses with Friends & Family',
+    template: '%s · SPLiT',
   },
   description:
-    'Split is a minimalist web application to share expenses with friends and family. No ads, no problem.',
+    'SPLiT is a minimalist web application to share expenses with friends and family. No ads, no problem.',
   openGraph: {
-    title: 'Split · Share Expenses with Friends & Family',
+    title: 'SPLiT · Share Expenses with Friends & Family',
     description:
-      'Split is a minimalist web application to share expenses with friends and family. No ads, no problem.',
+      'SPLiT is a minimalist web application to share expenses with friends and family. No ads, no problem.',
     images: `/banner.png`,
     type: 'website',
     url: '/',
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@scastiel',
-    site: '@scastiel',
+    creator: '@sir_argupta',
+    site: '@sir_argupta',
     images: `/banner.png`,
-    title: 'Split · Share Expenses with Friends & Family',
+    title: 'SPLiT · Share Expenses with Friends & Family',
     description:
-      'Split is a minimalist web application to share expenses with friends and family. No ads, no problem.',
+      'SPLiT is a minimalist web application to share expenses with friends and family. No ads, no problem.',
   },
   appleWebApp: {
     capable: true,
-    title: 'Split',
+    title: 'SPLiT',
   },
-  applicationName: 'Split',
+  applicationName: 'SPLiT',
   icons: [
     {
       url: '/android-chrome-192x192.png',
@@ -100,7 +100,7 @@ export default function RootLayout({
                   className="m-1 h-auto w-auto"
                   width={(35 * 522) / 180}
                   height={35}
-                  alt="Split"
+                  alt="SPLiT"
                 />
               </h1>
             </Link>
@@ -133,7 +133,7 @@ export default function RootLayout({
                     className="m-1 h-auto w-auto"
                     width={(35 * 522) / 180}
                     height={35}
-                    alt="Split"
+                    alt="SPLiT"
                   />
                 </Link>
               </div>
