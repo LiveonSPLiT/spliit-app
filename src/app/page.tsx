@@ -33,9 +33,9 @@ export default function HomePage() {
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             Welcome to <strong>SPLiT</strong> App! <br />
             <span style={{ display: 'block', textAlign: 'center' }}>
-              Friends · Groups
-            </span> <br />
-            No ads. No account. Forever Free.
+              Friends · Groups <br />
+              No ads. No subscription. Forever Free.
+            </span>
           </p>
           <div className="flex gap-2">
             <Button asChild>
