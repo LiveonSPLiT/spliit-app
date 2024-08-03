@@ -69,7 +69,6 @@ export default async function EditExpensePage({
     redirect(`/groups/${group!.id}/expenses/${expense!.id}/edit`)
   }
 
-
   return (
     <Suspense>
       <ExpenseForm

@@ -53,7 +53,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Save } from 'lucide-react'
 import Link from 'next/link'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { match } from 'ts-pattern'
 import { DeletePopup } from './delete-popup'
@@ -234,9 +234,8 @@ export function ExpenseForm({
           saveDefaultSplittingOptions: false,
           documents: [],
           notes: '',
-          recurringDays: "0",
+          recurringDays: '0',
           location: getLocationFromSearchParams(searchParams),
-
         }
       : {
           title: searchParams.get('title') ?? '',
@@ -264,10 +263,9 @@ export function ExpenseForm({
               ]
             : [],
           notes: '',
-          recurringDays: "0",
+          recurringDays: '0',
           location: getLocationFromSearchParams(searchParams),
         },
-        
   })
   const [isCategoryLoading, setCategoryLoading] = useState(false)
   const activeUserId = useActiveUser(group.id)
@@ -278,9 +276,83 @@ export function ExpenseForm({
   }
 
   const [isIncome, setIsIncome] = useState(Number(form.getValues().amount) < 0)
+  const [manuallyEditedParticipants, setManuallyEditedParticipants] = useState<
+    Set<string>
+  >(new Set())
   const sExpense = isIncome ? 'income' : 'expense'
   const sPaid = isIncome ? 'received' : 'paid'
-  const recurringDays = [{ "key": "Never","value": "0"}, { "key":"Weekly", "value": "7"}, {"key": "Every 14 days", "value": "14"}, {"key": "Every 30 days", "value": "30"}, {"key": "Every 60 days", "value": "60"}]
+  const recurringDays = [
+    { key: 'Never', value: '0' },
+    { key: 'Weekly', value: '7' },
+    { key: 'Every 14 days', value: '14' },
+    { key: 'Every 30 days', value: '30' },
+    { key: 'Every 60 days', value: '60' },
+  ]
+
+  useEffect(() => {
+    setManuallyEditedParticipants(new Set())
+    const newPaidFor = defaultSplittingOptions.paidFor.map((participant) => ({
+      ...participant,
+      shares: String(participant.shares) as unknown as number,
+    }))
+    form.setValue('paidFor', newPaidFor, { shouldValidate: true })
+  }, [form.watch('splitMode'), form.watch('amount')])
+
+  useEffect(() => {
+    const totalAmount = Number(form.getValues().amount) || 0
+    const paidFor = form.getValues().paidFor
+    const splitMode = form.getValues().splitMode
+
+    let newPaidFor = [...paidFor]
+
+    if (
+      splitMode === 'EVENLY' ||
+      splitMode === 'BY_SHARES' ||
+      splitMode === 'BY_PERCENTAGE'
+    ) {
+      return
+    } else {
+      // Only auto-balance for split mode 'Unevenly - By amount'
+      const editedParticipants = Array.from(manuallyEditedParticipants)
+      let remainingAmount = totalAmount
+      let remainingParticipants = newPaidFor.length - editedParticipants.length
+
+      newPaidFor = newPaidFor.map((participant) => {
+        if (editedParticipants.includes(participant.participant)) {
+          const participantShare = Number(participant.shares) || 0
+          if (splitMode === 'BY_AMOUNT') {
+            remainingAmount -= participantShare
+          }
+          return participant
+        }
+        return participant
+      })
+
+      if (remainingParticipants > 0) {
+        let amountPerRemaining = 0
+        if (splitMode === 'BY_AMOUNT') {
+          amountPerRemaining = remainingAmount / remainingParticipants
+        }
+
+        newPaidFor = newPaidFor.map((participant) => {
+          if (!editedParticipants.includes(participant.participant)) {
+            return {
+              ...participant,
+              shares: String(
+                Number(amountPerRemaining.toFixed(2)),
+              ) as unknown as number,
+            }
+          }
+          return participant
+        })
+      }
+      form.setValue('paidFor', newPaidFor, { shouldValidate: true })
+    }
+  }, [
+    manuallyEditedParticipants,
+    form.watch('amount'),
+    form.watch('splitMode'),
+  ])
 
   return (
     <Form {...form}>
@@ -460,7 +532,7 @@ export function ExpenseForm({
                   <FormControl>
                     <Textarea className="text-base" {...field} />
                   </FormControl>
-                  </FormItem>
+                </FormItem>
               )}
             />
             <FormField
@@ -485,7 +557,7 @@ export function ExpenseForm({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Repeat:  {'<'}Never|Every Day|Every...{'>'}
+                    Repeat: {'<'}Never|Every Day|Every...{'>'}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -632,7 +704,7 @@ export function ExpenseForm({
                                                   participant === id,
                                               )?.shares
                                             }
-                                            onChange={(event) =>
+                                            onChange={(event) => {
                                               field.onChange(
                                                 field.value.map((p) =>
                                                   p.participant === id
@@ -646,7 +718,10 @@ export function ExpenseForm({
                                                     : p,
                                                 ),
                                               )
-                                            }
+                                              setManuallyEditedParticipants(
+                                                (prev) => new Set(prev).add(id),
+                                              )
+                                            }}
                                             inputMode={
                                               form.getValues().splitMode ===
                                               'BY_AMOUNT'

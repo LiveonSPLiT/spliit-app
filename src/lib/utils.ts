@@ -49,7 +49,17 @@ export function formatFileSize(size: number) {
   return `${formatNumber(size)} B`
 }
 
-export function getEpochTimeInSeconds(date: Date|null) {
+export function getEpochTimeInSeconds(date: Date | null) {
   const reqDate = date ? new Date(date) : new Date()
-  return Math.floor(reqDate.getTime()/1000)
+  return Math.floor(reqDate.getTime() / 1000)
+}
+
+export function normalizeString(input: string): string {
+  // Replaces special characters
+  // Input: áäåèéę
+  // Output: aaaeee
+  return input
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
 }

@@ -140,9 +140,7 @@ export default function RootLayout({
               <div className="flex flex-col space-y a--no-underline-text-white">
                 <span>Made with ❤️ in India</span>
                 <span>
-                  Built by{' '}Ashutosh Gupta
-                  {' '}
-                  and{' '}
+                  Built by Ashutosh Gupta and{' '}
                   <a
                     href="https://roopanjalee.in/"
                     target="_blank"
