@@ -82,7 +82,6 @@ export function getPublicBalances(reimbursements: Reimbursement[]): Balances {
   return balances
 }
 
-
 /**
  * A comparator that is stable across reimbursements.
  * This ensures that a participant executing a suggested reimbursement
@@ -98,7 +97,6 @@ function compareBalancesForReimbursements(b1: any, b2: any): number {
   // if signs match, sort based on userid
   return b1.participantId < b2.participantId ? -1 : 1
 }
-
 
 export function getSuggestedReimbursements(
   balances: Balances,

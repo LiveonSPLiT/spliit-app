@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button'
-import { Github } from 'lucide-react'
 import Link from 'next/link'
 
 // FIX for https://github.com/vercel/next.js/issues/58615
@@ -16,7 +15,9 @@ export default function HomePage() {
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             Welcome to <strong>SPLiT</strong> App! <br />
-            <span style={{ display: 'block', textAlign: 'center' }}>Friends · Groups</span>
+            <span style={{ display: 'block', textAlign: 'center' }}>
+              Friends · Groups
+            </span>
           </p>
           <div className="flex gap-2">
             <Button asChild>

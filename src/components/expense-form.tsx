@@ -234,9 +234,8 @@ export function ExpenseForm({
           saveDefaultSplittingOptions: false,
           documents: [],
           notes: '',
-          recurringDays: "0",
+          recurringDays: '0',
           location: getLocationFromSearchParams(searchParams),
-
         }
       : {
           title: searchParams.get('title') ?? '',
@@ -264,10 +263,9 @@ export function ExpenseForm({
               ]
             : [],
           notes: '',
-          recurringDays: "0",
+          recurringDays: '0',
           location: getLocationFromSearchParams(searchParams),
         },
-        
   })
   const [isCategoryLoading, setCategoryLoading] = useState(false)
   const activeUserId = useActiveUser(group.id)
@@ -283,8 +281,13 @@ export function ExpenseForm({
   >(new Set())
   const sExpense = isIncome ? 'income' : 'expense'
   const sPaid = isIncome ? 'received' : 'paid'
-  const recurringDays = [{ "key": "Never","value": "0"}, { "key":"Weekly", "value": "7"}, {"key": "Every 14 days", "value": "14"}, {"key": "Every 30 days", "value": "30"}, {"key": "Every 60 days", "value": "60"}]
-
+  const recurringDays = [
+    { key: 'Never', value: '0' },
+    { key: 'Weekly', value: '7' },
+    { key: 'Every 14 days', value: '14' },
+    { key: 'Every 30 days', value: '30' },
+    { key: 'Every 60 days', value: '60' },
+  ]
 
   useEffect(() => {
     setManuallyEditedParticipants(new Set())
@@ -350,7 +353,6 @@ export function ExpenseForm({
     form.watch('amount'),
     form.watch('splitMode'),
   ])
-
 
   return (
     <Form {...form}>
@@ -530,7 +532,7 @@ export function ExpenseForm({
                   <FormControl>
                     <Textarea className="text-base" {...field} />
                   </FormControl>
-                  </FormItem>
+                </FormItem>
               )}
             />
             <FormField
@@ -555,7 +557,7 @@ export function ExpenseForm({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Repeat:  {'<'}Never|Every Day|Every...{'>'}
+                    Repeat: {'<'}Never|Every Day|Every...{'>'}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

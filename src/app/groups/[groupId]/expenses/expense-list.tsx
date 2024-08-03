@@ -4,8 +4,8 @@ import { getGroupExpensesAction } from '@/app/groups/[groupId]/expenses/expense-
 import { Button } from '@/components/ui/button'
 import { SearchBar } from '@/components/ui/search-bar'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Participant } from '@prisma/client'
 import { normalizeString } from '@/lib/utils'
+import { Participant } from '@prisma/client'
 import dayjs, { type Dayjs } from 'dayjs'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
@@ -135,7 +135,9 @@ export function ExpenseList({
 
   return expenses.length > 0 ? (
     <>
-      <SearchBar onValueChange={(value) => setSearchText(normalizeString(value))} />
+      <SearchBar
+        onValueChange={(value) => setSearchText(normalizeString(value))}
+      />
       {Object.values(EXPENSE_GROUPS).map((expenseGroup: string) => {
         let groupExpenses = groupedExpensesByDate[expenseGroup]
         if (!groupExpenses) return null

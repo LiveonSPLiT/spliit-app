@@ -67,7 +67,11 @@ export function GroupForm({
           name: '',
           information: '',
           currency: '₹',
-          participants: [{ name: 'Little' }, { name: 'Sibu' }, { name: 'Ninni' }],
+          participants: [
+            { name: 'Little' },
+            { name: 'Sibu' },
+            { name: 'Ninni' },
+          ],
         },
   })
   const { fields, append, remove } = useFieldArray({
