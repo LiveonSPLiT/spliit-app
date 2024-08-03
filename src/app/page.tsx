@@ -34,7 +34,6 @@ export default function HomePage() {
             Welcome to <strong>SPLiT</strong> App! <br />
             <span style={{ display: 'block', textAlign: 'center' }}>
               Friends · Groups <br />
-              No ads. No subscription. Forever Free.
             </span>
           </p>
           <div className="flex gap-2">
