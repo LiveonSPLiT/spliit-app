@@ -281,11 +281,11 @@ export function ExpenseForm({
   const sExpense = isIncome ? 'Income' : 'Expense'
   const sPaid = isIncome ? 'received' : 'paid'
   const recurringDays = [
-    { key: 'Never', value: '0' },
-    { key: 'Weekly', value: '7' },
-    { key: 'Every 14 days', value: '14' },
-    { key: 'Every 30 days', value: '30' },
-    { key: 'Every 60 days', value: '60' },
+    { key: t("recurringDaysField.fields.Never"), value: '0' },
+    { key: t("recurringDaysField.fields.Weekly"), value: '7' },
+    { key: t("recurringDaysField.fields.Every14days"), value: '14' },
+    { key: t("recurringDaysField.fields.Every30days"), value: '30' },
+    { key: t("recurringDaysField.fields.Every60days"), value: '60' },
   ]
 
   useEffect(() => {
@@ -471,6 +471,7 @@ export function ExpenseForm({
                       className="date-base"
                       type="date"
                       defaultValue={formatDate(field.value)}
+                      style={{width: 'auto'}}
                       onChange={(event) => {
                         return field.onChange(new Date(event.target.value))
                       }}
@@ -608,7 +609,7 @@ export function ExpenseForm({
               name="recurringDays"
               render={({ field }) => (
                 <FormItem className="sm:order-5">
-                  <FormLabel>Recurring Days</FormLabel>
+                  <FormLabel>{t('recurringDaysField.label')}</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={getRecurringField(field)}
@@ -625,7 +626,7 @@ export function ExpenseForm({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Repeat: {'<'}Never|Every Day|Every...{'>'}
+                  {t('recurringDaysField.description')}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -910,9 +911,9 @@ export function ExpenseForm({
         <Card className="mt-4">
           <CardHeader>
             <CardTitle className="flex justify-between">
-              <span>Location</span>
+              <span>{t('locationField.label')}</span>
             </CardTitle>
-            <CardDescription>Where was the {sExpense} made?</CardDescription>
+            <CardDescription>{t('locationField.description')}</CardDescription>
           </CardHeader>
           <CardContent>
             <FormField

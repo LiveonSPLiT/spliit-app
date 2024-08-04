@@ -4,6 +4,7 @@ import { LocateFixed, MapPinOff } from 'lucide-react'
 import { AsyncButton } from './async-button'
 import { Map } from './map'
 import { Button } from './ui/button'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   location: ExpenseFormValues['location']
@@ -12,6 +13,7 @@ type Props = {
 
 export function ExpenseLocationInput({ location, updateLocation }: Props) {
   const { toast } = useToast()
+  const t = useTranslations('ExpenseForm')
 
   async function getCoordinates(): Promise<GeolocationPosition> {
     return new Promise(function (resolve, reject) {
@@ -26,9 +28,8 @@ export function ExpenseLocationInput({ location, updateLocation }: Props) {
     } catch (error) {
       console.error(error)
       toast({
-        title: 'Error while determining location',
-        description:
-          'Something wrong happened when determining your current location. Please approve potential authorisation dialogues or try again later.',
+        title: t('locationField.toast.title'),
+        description: t('locationField.toast.description'),
         variant: 'destructive',
       })
     }
@@ -49,7 +50,7 @@ export function ExpenseLocationInput({ location, updateLocation }: Props) {
           action={setCoordinates}
         >
           <LocateFixed className="w-4 h-4 mr-2" />
-          Locate me
+          {t('locationField.buttonLabel')}
         </AsyncButton>
         {location && (
           <Button
@@ -59,7 +60,7 @@ export function ExpenseLocationInput({ location, updateLocation }: Props) {
             onClick={unsetCoordinates}
           >
             <MapPinOff className="w-4 h-4 mr-2" />
-            Remove location
+            {t('locationField.removeButtonLabel')}
           </Button>
         )}
       </div>

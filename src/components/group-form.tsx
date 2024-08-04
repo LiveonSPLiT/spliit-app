@@ -122,7 +122,7 @@ export function GroupForm({
           <CardHeader>
             <CardTitle>{t('title')}</CardTitle>
           </CardHeader>
-          <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <CardContent className="grid grid-cols-2 sm:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="name"
