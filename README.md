@@ -2,6 +2,9 @@
 
 SPLiT is a free and open source alternative to Splitwise.
 
+[![Build](https://vercel.com/button)](https://vercel.com/ashutosh-guptas-projects-a814932f/spliit-app)
+
+
 ## Features
 
 - [x] Create a group and share it with friends
