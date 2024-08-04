@@ -135,9 +135,9 @@ function Content({ children }: { children: React.ReactNode }) {
             <span>
               {t.rich('Footer.builtBy', {
                 author: (txt) => (
-                  
+                  <a href="https://www.linkedin.com/in/sir-argupta/" target="_blank" rel="noopener">
                     {txt}
-                  
+                  </a>
                 ),
                 source: (txt) => (
                   <a
