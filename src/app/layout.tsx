@@ -55,18 +55,6 @@ export const metadata: Metadata = {
       sizes: '512x512',
       type: 'image/png',
     },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      url: '/favicon-32x32.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '16x16',
-      url: '/favicon-16x16.png',
-    },
   ],
 }
 
