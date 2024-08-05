@@ -5,6 +5,7 @@ import {
 import { getActivities, getExpense, getGroup } from '@/lib/api'
 import { Activity } from '@prisma/client'
 import { ExpenseActivityItem } from './expense-activity-item'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   group: NonNullable<Awaited<ReturnType<typeof getGroup>>>
@@ -14,6 +15,7 @@ type Props = {
 
 export function ExpenseActivityList({ group, expense, activities }: Props) {
   const groupedActivitiesByDate = getGroupedActivitiesByDate(activities)
+  const t = useTranslations('ExpenseForm')
 
   return activities.length > 0 ? (
     <>
@@ -54,7 +56,7 @@ export function ExpenseActivityList({ group, expense, activities }: Props) {
     </>
   ) : (
     <p className="px-6 text-sm py-6">
-      There is not yet any activity for this expense.
+      {t('expenseHistoryField.expenseNoActivity')}
     </p>
   )
 }

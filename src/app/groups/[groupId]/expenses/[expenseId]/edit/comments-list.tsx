@@ -5,6 +5,7 @@ import { CommentFormValues } from '@/lib/schemas'
 import { useState } from 'react'
 import { CommentForm } from './comment-form'
 import { CommentItem } from './comment-item'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   group: NonNullable<Awaited<ReturnType<typeof getGroup>>>
@@ -25,12 +26,13 @@ export function CommentsList({
 }: Props) {
   const [selectedComment, setSelectedComment] =
     useState<NonNullable<Awaited<ReturnType<typeof getComment>>>>()
+    const t = useTranslations('ExpenseForm')
 
   return (
     <>
       <Card>
         <CardHeader>
-          <CardTitle>Comments</CardTitle>
+          <CardTitle>{t('expenseCommentField.label')}</CardTitle>
         </CardHeader>
         <CardContent>
           {comments.length > 0 ? (
@@ -55,7 +57,7 @@ export function CommentsList({
             )
           ) : (
             <p className="px-6 text-sm py-6">
-              This expense does not contain any comments yet.{' '}
+              {t('expenseCommentField.noCommentText')}{' '}
             </p>
           )}
         </CardContent>

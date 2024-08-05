@@ -978,10 +978,10 @@ export function ExpenseForm({
         <Card className="mb-4">
           <CardHeader>
             <CardTitle className="flex justify-between">
-              Expense History
+              {t('expenseHistoryField.label')}
             </CardTitle>
             <CardDescription>
-              Previous Activity for this expense.
+              {t('expenseHistoryField.description')}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col space-y-4">
