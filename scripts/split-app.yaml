@@ -27,9 +27,9 @@ spec:
           imagePullPolicy: Always
           env:
           - name: POSTGRES_PRISMA_URL
-            value: "postgresql://splitapp:jXU5v0RudIAvctBXytbl1Q@split-app-db-cluster-prod-2302.j77.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
+            value: "postgres://default:8qes9XwgGxVL@ep-super-wave-a1pmqnde-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
           - name: POSTGRES_URL_NON_POOLING
-            value: "postgresql://splitapp:jXU5v0RudIAvctBXytbl1Q@split-app-db-cluster-prod-2302.j77.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
+            value: "postgres://default:8qes9XwgGxVL@ep-super-wave-a1pmqnde-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
 ---
 apiVersion: v1
 kind: Service
