@@ -25,6 +25,11 @@ spec:
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
+          env:
+          - name: POSTGRES_PRISMA_URL
+            value: "postgresql://splitapp:jXU5v0RudIAvctBXytbl1Q@split-app-db-cluster-prod-2302.j77.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
+          - name: POSTGRES_URL_NON_POOLING
+            value: "postgresql://splitapp:jXU5v0RudIAvctBXytbl1Q@split-app-db-cluster-prod-2302.j77.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
 ---
 apiVersion: v1
 kind: Service
