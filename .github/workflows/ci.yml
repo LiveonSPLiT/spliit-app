@@ -35,14 +35,14 @@ jobs:
       # - name: Check Prettier formatting
       #   run: npm run check-formatting
       
-      - name: Build & push Docker image
-        uses: mr-smithers-excellent/docker-build-push@v6
-        with:
-          tags: arm64-k1A2
-          image: sirargupta/split-app
-          registry: docker.io
-          dockerfile: Dockerfile
-          multiPlatform: true
-          platform: linux/arm64
-          username: sirargupta
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # - name: Build & push Docker image
+      #   uses: mr-smithers-excellent/docker-build-push@v6
+      #   with:
+      #     tags: arm64-k1A3
+      #     image: sirargupta/split-app
+      #     registry: docker.io
+      #     dockerfile: Dockerfile
+      #     multiPlatform: true
+      #     platform: linux/arm64
+      #     username: sirargupta
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
