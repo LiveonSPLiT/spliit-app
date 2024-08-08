@@ -1,6 +1,9 @@
-[<img alt="SPLiT" height="60" src="https://github.com/sir-argupta/spliit-app/blob/main/public/logo-with-text.png?raw=true" />](http://split.roopanjalee.in/)
+[<img alt="SPLiT" height="60" src="https://github.com/sir-argupta/spliit-app/blob/main/public/logo-with-text.png?raw=true" />](https://liveonsplit.com/)
 
 SPLiT is a free and open source alternative to Splitwise.
+
+[![Build](https://vercel.com/button)](https://vercel.com/ashutosh-guptas-projects-a814932f/spliit-app)
+
 
 ## Features
 

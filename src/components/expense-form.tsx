@@ -51,6 +51,7 @@ import {
 import { cn } from '@/lib/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Save } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -79,9 +80,6 @@ const enforceCurrencyPattern = (value: string) =>
     .replace(/_/, '-') // change back _ to minus
     .replace(/#/, '.') // change back # to dot
     .replace(/[^-\d.]/g, '') // remove all non-numeric characters
-
-const capitalize = (value: string) =>
-  value.charAt(0).toUpperCase() + value.slice(1)
 
 const getDefaultSplittingOptions = (group: Props['group']) => {
   const defaultValue = {
@@ -175,6 +173,7 @@ export function ExpenseForm({
   onDelete,
   runtimeFeatureFlags,
 }: Props) {
+  const t = useTranslations('ExpenseForm')
   const isCreate = expense === undefined
   const searchParams = useSearchParams()
   const getSelectedPayer = (field?: { value: string }) => {
@@ -279,15 +278,80 @@ export function ExpenseForm({
   const [manuallyEditedParticipants, setManuallyEditedParticipants] = useState<
     Set<string>
   >(new Set())
-  const sExpense = isIncome ? 'income' : 'expense'
+  const sExpense = isIncome ? 'Income' : 'Expense'
   const sPaid = isIncome ? 'received' : 'paid'
   const recurringDays = [
-    { key: 'Never', value: '0' },
-    { key: 'Weekly', value: '7' },
-    { key: 'Every 14 days', value: '14' },
-    { key: 'Every 30 days', value: '30' },
-    { key: 'Every 60 days', value: '60' },
+    { key: t("recurringDaysField.fields.Never"), value: '0' },
+    { key: t("recurringDaysField.fields.Weekly"), value: '7' },
+    { key: t("recurringDaysField.fields.Every14days"), value: '14' },
+    { key: t("recurringDaysField.fields.Every30days"), value: '30' },
+    { key: t("recurringDaysField.fields.Every60days"), value: '60' },
   ]
+
+  useEffect(() => {
+    setManuallyEditedParticipants(new Set())
+    const newPaidFor = defaultSplittingOptions.paidFor.map((participant) => ({
+      ...participant,
+      shares: String(participant.shares) as unknown as number,
+    }))
+    form.setValue('paidFor', newPaidFor, { shouldValidate: true })
+  }, [form.watch('splitMode'), form.watch('amount')])
+
+  useEffect(() => {
+    const totalAmount = Number(form.getValues().amount) || 0
+    const paidFor = form.getValues().paidFor
+    const splitMode = form.getValues().splitMode
+
+    let newPaidFor = [...paidFor]
+
+    if (
+      splitMode === 'EVENLY' ||
+      splitMode === 'BY_SHARES' ||
+      splitMode === 'BY_PERCENTAGE'
+    ) {
+      return
+    } else {
+      // Only auto-balance for split mode 'Unevenly - By amount'
+      const editedParticipants = Array.from(manuallyEditedParticipants)
+      let remainingAmount = totalAmount
+      let remainingParticipants = newPaidFor.length - editedParticipants.length
+
+      newPaidFor = newPaidFor.map((participant) => {
+        if (editedParticipants.includes(participant.participant)) {
+          const participantShare = Number(participant.shares) || 0
+          if (splitMode === 'BY_AMOUNT') {
+            remainingAmount -= participantShare
+          }
+          return participant
+        }
+        return participant
+      })
+
+      if (remainingParticipants > 0) {
+        let amountPerRemaining = 0
+        if (splitMode === 'BY_AMOUNT') {
+          amountPerRemaining = remainingAmount / remainingParticipants
+        }
+
+        newPaidFor = newPaidFor.map((participant) => {
+          if (!editedParticipants.includes(participant.participant)) {
+            return {
+              ...participant,
+              shares: String(
+                Number(amountPerRemaining.toFixed(2)),
+              ) as unknown as number,
+            }
+          }
+          return participant
+        })
+      }
+      form.setValue('paidFor', newPaidFor, { shouldValidate: true })
+    }
+  }, [
+    manuallyEditedParticipants,
+    form.watch('amount'),
+    form.watch('splitMode'),
+  ])
 
   useEffect(() => {
     setManuallyEditedParticipants(new Set())
@@ -359,7 +423,9 @@ export function ExpenseForm({
       <form onSubmit={form.handleSubmit(submit)}>
         <Card>
           <CardHeader>
-            <CardTitle>{(isCreate ? 'Create ' : 'Edit ') + sExpense}</CardTitle>
+            <CardTitle>
+              {t(`${sExpense}.${isCreate ? 'create' : 'edit'}`)}
+            </CardTitle>
           </CardHeader>
           <CardContent className="grid sm:grid-cols-2 gap-6">
             <FormField
@@ -367,10 +433,10 @@ export function ExpenseForm({
               name="title"
               render={({ field }) => (
                 <FormItem className="">
-                  <FormLabel>{capitalize(sExpense)} title</FormLabel>
+                  <FormLabel>{t(`${sExpense}.TitleField.label`)}</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Monday evening restaurant"
+                      placeholder={t(`${sExpense}.TitleField.placeholder`)}
                       className="text-base"
                       {...field}
                       onBlur={async () => {
@@ -387,7 +453,7 @@ export function ExpenseForm({
                     />
                   </FormControl>
                   <FormDescription>
-                    Enter a description for the {sExpense}.
+                    {t(`${sExpense}.TitleField.description`)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -399,19 +465,20 @@ export function ExpenseForm({
               name="expenseDate"
               render={({ field }) => (
                 <FormItem className="sm:order-1">
-                  <FormLabel>{capitalize(sExpense)} date</FormLabel>
+                  <FormLabel>{t(`${sExpense}.DateField.label`)}</FormLabel>
                   <FormControl>
                     <Input
                       className="date-base"
                       type="date"
                       defaultValue={formatDate(field.value)}
+                      style={{width: 'auto'}}
                       onChange={(event) => {
                         return field.onChange(new Date(event.target.value))
                       }}
                     />
                   </FormControl>
                   <FormDescription>
-                    Enter the date the {sExpense} was {sPaid}.
+                    {t(`${sExpense}.DateField.description`)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -423,7 +490,7 @@ export function ExpenseForm({
               name="amount"
               render={({ field: { onChange, ...field } }) => (
                 <FormItem className="sm:order-3">
-                  <FormLabel>Amount</FormLabel>
+                  <FormLabel>{t('amountField.label')}</FormLabel>
                   <div className="flex items-baseline gap-2">
                     <span>{group.currency}</span>
                     <FormControl>
@@ -463,7 +530,9 @@ export function ExpenseForm({
                             />
                           </FormControl>
                           <div>
-                            <FormLabel>This is a reimbursement</FormLabel>
+                            <FormLabel>
+                              {t('isReimbursementField.label')}
+                            </FormLabel>
                           </div>
                         </FormItem>
                       )}
@@ -478,7 +547,7 @@ export function ExpenseForm({
               name="category"
               render={({ field }) => (
                 <FormItem className="order-3 sm:order-2">
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>{t('categoryField.label')}</FormLabel>
                   <CategorySelector
                     categories={categories}
                     defaultValue={
@@ -488,7 +557,7 @@ export function ExpenseForm({
                     isLoading={isCategoryLoading}
                   />
                   <FormDescription>
-                    Select the {sExpense} category.
+                    {t(`${sExpense}.categoryFieldDescription`)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -500,7 +569,7 @@ export function ExpenseForm({
               name="paidBy"
               render={({ field }) => (
                 <FormItem className="sm:order-5">
-                  <FormLabel>{capitalize(sPaid)} by</FormLabel>
+                  <FormLabel>{t(`${sExpense}.paidByField.label`)}</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={getSelectedPayer(field)}
@@ -517,7 +586,7 @@ export function ExpenseForm({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Select the participant who {sPaid} the {sExpense}.
+                    {t(`${sExpense}.paidByField.description`)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -528,7 +597,7 @@ export function ExpenseForm({
               name="notes"
               render={({ field }) => (
                 <FormItem className="sm:order-6">
-                  <FormLabel>Notes</FormLabel>
+                  <FormLabel>{t('notesField.label')}</FormLabel>
                   <FormControl>
                     <Textarea className="text-base" {...field} />
                   </FormControl>
@@ -540,7 +609,7 @@ export function ExpenseForm({
               name="recurringDays"
               render={({ field }) => (
                 <FormItem className="sm:order-5">
-                  <FormLabel>Recurring Days</FormLabel>
+                  <FormLabel>{t('recurringDaysField.label')}</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={getRecurringField(field)}
@@ -557,7 +626,7 @@ export function ExpenseForm({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Repeat: {'<'}Never|Every Day|Every...{'>'}
+                  {t('recurringDaysField.description')}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -569,7 +638,7 @@ export function ExpenseForm({
         <Card className="mt-4">
           <CardHeader>
             <CardTitle className="flex justify-between">
-              <span>{capitalize(sPaid)} for</span>
+              <span>{t(`${sExpense}.paidFor.title`)}</span>
               <Button
                 variant="link"
                 type="button"
@@ -595,14 +664,14 @@ export function ExpenseForm({
               >
                 {form.getValues().paidFor.length ===
                 group.participants.length ? (
-                  <>Select none</>
+                  <>{t('selectNone')}</>
                 ) : (
-                  <>Select all</>
+                  <>{t('selectAll')}</>
                 )}
               </Button>
             </CardTitle>
             <CardDescription>
-              Select who the {sExpense} was {sPaid} for.
+              {t(`${sExpense}.paidFor.description`)}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -667,7 +736,9 @@ export function ExpenseForm({
                                       })}
                                     >
                                       {match(form.getValues().splitMode)
-                                        .with('BY_SHARES', () => <>share(s)</>)
+                                        .with('BY_SHARES', () => (
+                                          <>{t('shares')}</>
+                                        ))
                                         .with('BY_PERCENTAGE', () => <>%</>)
                                         .with('BY_AMOUNT', () => (
                                           <>{group.currency}</>
@@ -765,7 +836,7 @@ export function ExpenseForm({
             >
               <CollapsibleTrigger asChild>
                 <Button variant="link" className="-mx-4">
-                  Advanced splitting options…
+                  {t('advancedOptions')}
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>
@@ -775,7 +846,7 @@ export function ExpenseForm({
                     name="splitMode"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Split mode</FormLabel>
+                        <FormLabel>{t('SplitModeField.label')}</FormLabel>
                         <FormControl>
                           <Select
                             onValueChange={(value) => {
@@ -791,21 +862,23 @@ export function ExpenseForm({
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="EVENLY">Evenly</SelectItem>
+                              <SelectItem value="EVENLY">
+                                {t('SplitModeField.evenly')}
+                              </SelectItem>
                               <SelectItem value="BY_SHARES">
-                                Unevenly – By shares
+                                {t('SplitModeField.byShares')}
                               </SelectItem>
                               <SelectItem value="BY_PERCENTAGE">
-                                Unevenly – By percentage
+                                {t('SplitModeField.byPercentage')}
                               </SelectItem>
                               <SelectItem value="BY_AMOUNT">
-                                Unevenly – By amount
+                                {t('SplitModeField.byAmount')}
                               </SelectItem>
                             </SelectContent>
                           </Select>
                         </FormControl>
                         <FormDescription>
-                          Select how to split the {sExpense}.
+                          {t(`${sExpense}.splitModeDescription`)}
                         </FormDescription>
                       </FormItem>
                     )}
@@ -823,7 +896,7 @@ export function ExpenseForm({
                         </FormControl>
                         <div>
                           <FormLabel>
-                            Save as default splitting options
+                            {t('SplitModeField.saveAsDefault')}
                           </FormLabel>
                         </div>
                       </FormItem>
@@ -838,9 +911,9 @@ export function ExpenseForm({
         <Card className="mt-4">
           <CardHeader>
             <CardTitle className="flex justify-between">
-              <span>Location</span>
+              <span>{t('locationField.label')}</span>
             </CardTitle>
-            <CardDescription>Where was the {sExpense} made?</CardDescription>
+            <CardDescription>{t('locationField.description')}</CardDescription>
           </CardHeader>
           <CardContent>
             <FormField
@@ -864,10 +937,10 @@ export function ExpenseForm({
           <Card className="mt-4">
             <CardHeader>
               <CardTitle className="flex justify-between">
-                <span>Attach documents</span>
+                <span>{t('attachDocuments')}</span>
               </CardTitle>
               <CardDescription>
-                See and attach receipts to the {sExpense}.
+                {t(`${sExpense}.attachDescription`)}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -886,11 +959,9 @@ export function ExpenseForm({
         )}
 
         <div className="flex mt-4 gap-2">
-          <SubmitButton
-            loadingContent={isCreate ? <>Creating…</> : <>Saving…</>}
-          >
+          <SubmitButton loadingContent={t(isCreate ? 'creating' : 'saving')}>
             <Save className="w-4 h-4 mr-2" />
-            {isCreate ? <>Create</> : <>Save</>}
+            {t(isCreate ? 'create' : 'save')}
           </SubmitButton>
           {!isCreate && onDelete && (
             <DeletePopup
@@ -898,7 +969,7 @@ export function ExpenseForm({
             ></DeletePopup>
           )}
           <Button variant="ghost" asChild>
-            <Link href={`/groups/${group.id}`}>Cancel</Link>
+            <Link href={`/groups/${group.id}`}>{t('cancel')}</Link>
           </Button>
         </div>
       </form>
@@ -907,10 +978,10 @@ export function ExpenseForm({
         <Card className="mb-4">
           <CardHeader>
             <CardTitle className="flex justify-between">
-              Expense History
+              {t('expenseHistoryField.label')}
             </CardTitle>
             <CardDescription>
-              Previous Activity for this expense.
+              {t('expenseHistoryField.description')}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col space-y-4">

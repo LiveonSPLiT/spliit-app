@@ -10,6 +10,7 @@ import { CommentFormValues, commentFormSchema } from '@/lib/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Save } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import { useTranslations } from 'next-intl'
 
 export type Props = {
   group: NonNullable<Awaited<ReturnType<typeof getGroup>>>
@@ -28,6 +29,7 @@ export function CommentForm({
 }: Props) {
   const isCreate = comment === undefined
   const activeUserId = useActiveUser(group.id)
+  const t = useTranslations('ExpenseForm')
 
   const form = useForm<CommentFormValues>({
     resolver: zodResolver(commentFormSchema),
@@ -54,7 +56,7 @@ export function CommentForm({
       <form onSubmit={form.handleSubmit(submit)}>
         <Card>
           <CardHeader>
-            <CardTitle>{comment ? 'Edit Comment' : 'Add Comment'}</CardTitle>
+            <CardTitle>{comment ? t('expenseCommentField.commentForm.editComment') : t('expenseCommentField.commentForm.addComment')}</CardTitle>
           </CardHeader>
           <CardContent className="grid sm:grid-cols-1 gap-6">
             <FormField
@@ -67,7 +69,7 @@ export function CommentForm({
                       <Textarea
                         className="text-base"
                         {...field}
-                        placeholder="Enter your comment"
+                        placeholder={t('expenseCommentField.commentForm.formPlaceholder')}
                       />
                     </FormControl>
                   </FormItem>
@@ -76,13 +78,13 @@ export function CommentForm({
             />
             <div className="sm:order-2">
               <SubmitButton
-                loadingContent={isCreate ? <>Adding</> : <>Saving…</>}
+                loadingContent={isCreate ? <>{t('expenseCommentField.commentForm.loadingContent.adding')}</> : <>{t('expenseCommentField.commentForm.loadingContent.saving')}</>}
               >
                 <Save className="w-4 h-4 mr-2" />
-                {isCreate ? <>Add Comment</> : <>Save Comment</>}
+                {isCreate ? <>{t('expenseCommentField.commentForm.addCommentButton')}</> : <>{t('expenseCommentField.commentForm.saveCommentButton')}</>}
               </SubmitButton>
               <Button type="button" variant="ghost" onClick={onCancel}>
-                Cancel
+                {t('cancel')}
               </Button>
             </div>
           </CardContent>
