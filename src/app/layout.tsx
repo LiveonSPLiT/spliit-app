@@ -129,7 +129,7 @@ function Content({ children }: { children: React.ReactNode }) {
                 ),
                 source: (txt) => (
                   <a
-                    href="https://roopanjalee.in/"
+                    href="https://www.linkedin.com/in/rakshitmakadia/"
                     target="_blank"
                     rel="noopener"
                   >
