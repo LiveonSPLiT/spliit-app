@@ -33,7 +33,7 @@ jobs:
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          tags: arm64-k1A6
+          tags: arm64-k1A7
           image: sirargupta/split-app
           registry: docker.io
           dockerfile: Dockerfile
