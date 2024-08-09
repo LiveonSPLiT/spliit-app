@@ -147,11 +147,11 @@ export default function HomePage() {
               <Answer id="data" question={<>How is my data stored?</>}>
                 All the data you enter on SPLiT (groups, expenses…) is stored
                 in a PostgreSQL database hosted by{' '}
-                <a target="_blank" href="https://vercel.com">
-                  Vercel
+                <a target="_blank" href="https://aws.amazon.com/">
+                  AWS
                 </a>{' '}
-                (same as the web application itself). For now, the data is not
-                encrypted, but we’re trying to find the best way to add
+                (same as the web application itself). For now, the data is only
+                encrypted in rest not in transit, but we’re trying to find the best way to add
                 encryption without impacting the user experience too much.
               </Answer>
             </Accordion>

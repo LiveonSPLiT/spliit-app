@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Toaster } from '@/components/ui/toaster'
+import { NewsButton } from '@/components/news-button'
 import { env } from '@/lib/env'
 import type { Metadata, Viewport } from 'next'
 import { NextIntlClientProvider, useTranslations } from 'next-intl'
@@ -92,6 +93,9 @@ function Content({ children }: { children: React.ReactNode }) {
               >
                 <Link href="/groups">{t('Header.groups')}</Link>
               </Button>
+            </li>
+            <li>
+              <NewsButton />
             </li>
             <li>
               <LocaleSwitcher />
