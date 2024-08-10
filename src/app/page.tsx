@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
+import { FeedbackModal } from '@/components/feedback-button/feedback-button'
+import { env } from '@/lib/env'
 import { ReactNode } from 'react'
 import {
   BarChartHorizontalBig,
@@ -153,6 +155,51 @@ export default function HomePage() {
                 (same as the web application itself). For now, the data is only
                 encrypted in rest not in transit, but we’re trying to find the best way to add
                 encryption without impacting the user experience too much.
+              </Answer>
+              <Answer
+                id="feedback"
+                question={
+                  <>
+                    What is the best way to give feedback or suggest a feature?
+                  </>
+                }
+              >
+                You can give us feedback by using{' '}
+                <FeedbackModal donationUrl={env.STRIPE_DONATION_LINK}>
+                  <Button variant="link" className="text-base -mx-4 -my-4">
+                    our feedback form
+                  </Button>
+                </FeedbackModal>
+                . We’ll receive it by email and will keep you update, if you
+                want to provide your email. This way, all our contributors 
+                will see it and will be able to give their insight.
+              </Answer>
+              <Answer
+                id="contribute"
+                question={<>I use SPLiT and like it. How can I contribute?</>}
+              >
+                <p>You can contribute to SPLiT by several ways.</p>
+                <ul>
+                  <li>
+                    You can share it with your community on social media to let
+                    them know about us,
+                  </li>
+                  <li>
+                    You can{' '}
+                    <FeedbackModal
+                      donationUrl={env.STRIPE_DONATION_LINK}
+                      defaultTab="support"
+                    >
+                      <Button
+                        variant="link"
+                        className="text-base text-pink-600 -mx-4 -my-4"
+                      >
+                        support our hosting costs
+                      </Button>
+                    </FeedbackModal>{' '}
+                    by sponsoring us or donating a small amount,
+                  </li>
+                </ul>
               </Answer>
             </Accordion>
           </div>
