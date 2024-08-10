@@ -11,6 +11,7 @@ COPY ./package.json \
 COPY ./scripts ./scripts
 COPY ./prisma ./prisma
 COPY ./messages ./messages
+COPY ./public ./public
 
 RUN apk add --no-cache openssl && \
     npm ci --ignore-scripts && \
@@ -18,6 +19,7 @@ RUN apk add --no-cache openssl && \
 
 COPY ./src ./src
 COPY ./messages ./messages
+COPY ./public ./public
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
