@@ -47,6 +47,9 @@ export const metadata: Metadata = {
     title: 'SPLiT',
   },
   applicationName: 'SPLiT',
+  formatDetection: {
+    telephone: false,
+  },
   icons: [
     {
       url: '/android-chrome-192x192.png',

@@ -2,14 +2,15 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Split',
-    short_name: 'Split',
+    name: 'SPLiT',
+    short_name: 'SPLiT',
     description:
       'A minimalist web application to share expenses with friends and family. No ads, no problem.',
     start_url: '/groups',
     display: 'standalone',
     background_color: '#fff',
     theme_color: '#047857',
+    orientation: "portrait",
     icons: [
       {
         src: '/android-chrome-192x192.png',
