@@ -10,7 +10,6 @@ COPY ./package.json \
      ./postcss.config.js ./
 COPY ./scripts ./scripts
 COPY ./prisma ./prisma
-COPY ./messages ./messages
 COPY ./public ./public
 
 RUN apk add --no-cache openssl && \
