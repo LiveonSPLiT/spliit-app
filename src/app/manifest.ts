@@ -23,6 +23,11 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/png',
       },
       {
+        src: '/ic_launcher.png',
+        sizes: '144x144',
+        type: 'image/png'
+      },
+      {
         src: '/logo-512x512-maskable.png',
         sizes: '512x512',
         type: 'image/png',
