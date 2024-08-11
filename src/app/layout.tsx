@@ -1,17 +1,17 @@
 import { ApplePwaSplash } from '@/app/apple-pwa-splash'
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
 import { LocaleSwitcher } from '@/components/locale-switcher'
+import { NewsButton } from '@/components/news-button'
 import { ProgressBar } from '@/components/progress-bar'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Toaster } from '@/components/ui/toaster'
-import { NewsButton } from '@/components/news-button'
 import { env } from '@/lib/env'
+import { HeartFilledIcon } from '@radix-ui/react-icons'
 import type { Metadata, Viewport } from 'next'
 import { NextIntlClientProvider, useTranslations } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
-import { HeartFilledIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
@@ -47,6 +47,9 @@ export const metadata: Metadata = {
     title: 'SPLiT',
   },
   applicationName: 'SPLiT',
+  formatDetection: {
+    telephone: false,
+  },
   icons: [
     {
       url: '/android-chrome-192x192.png',
@@ -129,7 +132,11 @@ function Content({ children }: { children: React.ReactNode }) {
             <span>
               {t.rich('Footer.builtBy', {
                 author: (txt) => (
-                  <a href="https://www.linkedin.com/in/sir-argupta/" target="_blank" rel="noopener">
+                  <a
+                    href="https://www.linkedin.com/in/sir-argupta/"
+                    target="_blank"
+                    rel="noopener"
+                  >
                     {txt}
                   </a>
                 ),
@@ -151,7 +158,7 @@ function Content({ children }: { children: React.ReactNode }) {
               >
                 <Button variant="link" className="text-pink-600 -mx-4">
                   <HeartFilledIcon className="w-4 h-4 mr-2" />
-                  Support us
+                  {t('Footer.supportUs')}
                 </Button>
               </FeedbackModal>
             </span>

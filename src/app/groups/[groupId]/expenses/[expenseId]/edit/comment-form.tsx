@@ -9,8 +9,8 @@ import { useActiveUser } from '@/lib/hooks'
 import { CommentFormValues, commentFormSchema } from '@/lib/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Save } from 'lucide-react'
-import { useForm } from 'react-hook-form'
 import { useTranslations } from 'next-intl'
+import { useForm } from 'react-hook-form'
 
 export type Props = {
   group: NonNullable<Awaited<ReturnType<typeof getGroup>>>
@@ -56,7 +56,11 @@ export function CommentForm({
       <form onSubmit={form.handleSubmit(submit)}>
         <Card>
           <CardHeader>
-            <CardTitle>{comment ? t('expenseCommentField.commentForm.editComment') : t('expenseCommentField.commentForm.addComment')}</CardTitle>
+            <CardTitle>
+              {comment
+                ? t('expenseCommentField.commentForm.editComment')
+                : t('expenseCommentField.commentForm.addComment')}
+            </CardTitle>
           </CardHeader>
           <CardContent className="grid sm:grid-cols-1 gap-6">
             <FormField
@@ -69,7 +73,9 @@ export function CommentForm({
                       <Textarea
                         className="text-base"
                         {...field}
-                        placeholder={t('expenseCommentField.commentForm.formPlaceholder')}
+                        placeholder={t(
+                          'expenseCommentField.commentForm.formPlaceholder',
+                        )}
                       />
                     </FormControl>
                   </FormItem>
@@ -78,10 +84,28 @@ export function CommentForm({
             />
             <div className="sm:order-2">
               <SubmitButton
-                loadingContent={isCreate ? <>{t('expenseCommentField.commentForm.loadingContent.adding')}</> : <>{t('expenseCommentField.commentForm.loadingContent.saving')}</>}
+                loadingContent={
+                  isCreate ? (
+                    <>
+                      {t(
+                        'expenseCommentField.commentForm.loadingContent.adding',
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {t(
+                        'expenseCommentField.commentForm.loadingContent.saving',
+                      )}
+                    </>
+                  )
+                }
               >
                 <Save className="w-4 h-4 mr-2" />
-                {isCreate ? <>{t('expenseCommentField.commentForm.addCommentButton')}</> : <>{t('expenseCommentField.commentForm.saveCommentButton')}</>}
+                {isCreate ? (
+                  <>{t('expenseCommentField.commentForm.addCommentButton')}</>
+                ) : (
+                  <>{t('expenseCommentField.commentForm.saveCommentButton')}</>
+                )}
               </SubmitButton>
               <Button type="button" variant="ghost" onClick={onCancel}>
                 {t('cancel')}
