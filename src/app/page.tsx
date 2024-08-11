@@ -43,7 +43,7 @@ export default function HomePage() {
               <Link href="/groups">Go to groups</Link>
             </Button>
             {/* <Button asChild variant="secondary">
-              <Link href="https://github.com/spliit-app/spliit">
+              <Link href="https://github.com/sir-argupta/spliit-app">
                 <Github className="w-4 h-4 mr-2" />
                 GitHub
               </Link>

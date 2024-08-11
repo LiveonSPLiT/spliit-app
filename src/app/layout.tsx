@@ -158,7 +158,7 @@ function Content({ children }: { children: React.ReactNode }) {
               >
                 <Button variant="link" className="text-pink-600 -mx-4">
                   <HeartFilledIcon className="w-4 h-4 mr-2" />
-                  Support us
+                  {t('Footer.supportUs')}
                 </Button>
               </FeedbackModal>
             </span>
