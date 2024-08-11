@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: sirargupta/split-app:arm64-k1A9
+          image: sirargupta/split-app:arm64-k1A9-1
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
