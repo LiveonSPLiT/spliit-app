@@ -1,0 +1,22 @@
+version: 2.1
+jobs:
+  build:
+    resource_class: arm.medium
+    machine:
+      image: ubuntu-2004:current
+    environment:
+      DOCKER_BUILDKIT: 1
+    steps:
+      - checkout
+          
+      - run:
+          name: Build Docker image
+          command: |
+            TAG=arm64-k1A9-1
+            docker build -t sirargupta/split-app:$TAG .
+      - run:
+          name: Push application Docker image
+          command: |
+            TAG=arm64-k1A9-1
+            echo $DOCKERHUB_PASSWORD | docker login -u sirargupta --password-stdin
+            docker push sirargupta/split-app:$TAG
