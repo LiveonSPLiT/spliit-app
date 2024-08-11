@@ -233,9 +233,9 @@ function DonationForm({ donationUrl }: { donationUrl: string }) {
       </div>
       <div className="prose prose-sm dark:prose-invert">
         <p>
-          SPLiT is offered for free, but costs money and energy. If you like
-          the app, you can choose to support it by sponsoring with a one-time 
-          small donation.
+          SPLiT is offered for free, but costs money and energy. If you like the
+          app, you can choose to support it by sponsoring with a one-time small
+          donation.
         </p>
         <p>By supporting SPLiT:</p>
         <ul>

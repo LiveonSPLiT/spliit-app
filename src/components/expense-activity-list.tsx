@@ -4,8 +4,8 @@ import {
 } from '@/app/groups/[groupId]/activity/activity-list'
 import { getActivities, getExpense, getGroup } from '@/lib/api'
 import { Activity } from '@prisma/client'
-import { ExpenseActivityItem } from './expense-activity-item'
 import { useTranslations } from 'next-intl'
+import { ExpenseActivityItem } from './expense-activity-item'
 
 type Props = {
   group: NonNullable<Awaited<ReturnType<typeof getGroup>>>

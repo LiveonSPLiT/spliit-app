@@ -21,7 +21,6 @@ import {
 } from '@/components/ui/popover'
 import { useLocalStorageState, useMediaQuery } from '@/lib/hooks'
 import {
-  ExternalLink,
   Linkedin,
   LucideIcon,
   Newspaper,
@@ -29,10 +28,8 @@ import {
   Sparkles,
   Speaker,
   Twitter,
-  Wand,
 } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 type News = {
@@ -57,44 +54,44 @@ const news: News[] = [
         </p>
         <p>Could this happen with SPLiT? 🤔</p>
         <p>
-          For some applications, free is
-          just not enough. We need open source alternatives.
+          For some applications, free is just not enough. We need open source
+          alternatives.
         </p>
       </>
     ),
   },
-//   {
-//     id: 'scan-receipts',
-//     title: <>Scan receipts to create expenses</>,
-//     summary: <>Create expenses faster by taking a photo of a receipt!</>,
-//     icon: Wand,
-//     content: (
-//       <>
-//         <p>
-//           Now, instead of entering all your expense information manually, you
-//           can save time by taking a photo of a receipt. SPLiT will use AI to
-//           extract information from it and fill the expense.
-//         </p>
-//         <p>
-//           <Image
-//             src={require('../../public/receipt-scanning-screenshot.png')}
-//             alt="Receipt scanning feature screenshot"
-//           />
-//         </p>
-//         <p>
-//           <Button asChild>
-//             <Link
-//               href="/blog/announcing-receipt-scanning-using-ai"
-//               target="_blank"
-//               className="no-underline"
-//             >
-//               Read announcement
-//             </Link>
-//           </Button>
-//         </p>
-//       </>
-//     ),
-//   },
+  //   {
+  //     id: 'scan-receipts',
+  //     title: <>Scan receipts to create expenses</>,
+  //     summary: <>Create expenses faster by taking a photo of a receipt!</>,
+  //     icon: Wand,
+  //     content: (
+  //       <>
+  //         <p>
+  //           Now, instead of entering all your expense information manually, you
+  //           can save time by taking a photo of a receipt. SPLiT will use AI to
+  //           extract information from it and fill the expense.
+  //         </p>
+  //         <p>
+  //           <Image
+  //             src={require('../../public/receipt-scanning-screenshot.png')}
+  //             alt="Receipt scanning feature screenshot"
+  //           />
+  //         </p>
+  //         <p>
+  //           <Button asChild>
+  //             <Link
+  //               href="/blog/announcing-receipt-scanning-using-ai"
+  //               target="_blank"
+  //               className="no-underline"
+  //             >
+  //               Read announcement
+  //             </Link>
+  //           </Button>
+  //         </p>
+  //       </>
+  //     ),
+  //   },
   {
     id: 'receipts',
     title: <>Attach receipts to expenses</>,
@@ -177,7 +174,6 @@ export function NewsButton() {
       setPing(news.some((news) => !alreadySeen?.includes(news.id)))
     }
   }, [alreadySeenLoaded, alreadySeen])
-
 
   return (
     <>

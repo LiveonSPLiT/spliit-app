@@ -281,11 +281,11 @@ export function ExpenseForm({
   const sExpense = isIncome ? 'Income' : 'Expense'
   const sPaid = isIncome ? 'received' : 'paid'
   const recurringDays = [
-    { key: t("recurringDaysField.fields.Never"), value: '0' },
-    { key: t("recurringDaysField.fields.Weekly"), value: '7' },
-    { key: t("recurringDaysField.fields.Every14days"), value: '14' },
-    { key: t("recurringDaysField.fields.Every30days"), value: '30' },
-    { key: t("recurringDaysField.fields.Every60days"), value: '60' },
+    { key: t('recurringDaysField.fields.Never'), value: '0' },
+    { key: t('recurringDaysField.fields.Weekly'), value: '7' },
+    { key: t('recurringDaysField.fields.Every14days'), value: '14' },
+    { key: t('recurringDaysField.fields.Every30days'), value: '30' },
+    { key: t('recurringDaysField.fields.Every60days'), value: '60' },
   ]
 
   useEffect(() => {
@@ -471,7 +471,7 @@ export function ExpenseForm({
                       className="date-base"
                       type="date"
                       defaultValue={formatDate(field.value)}
-                      style={{width: 'auto'}}
+                      style={{ width: 'auto' }}
                       onChange={(event) => {
                         return field.onChange(new Date(event.target.value))
                       }}
@@ -626,7 +626,7 @@ export function ExpenseForm({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                  {t('recurringDaysField.description')}
+                    {t('recurringDaysField.description')}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

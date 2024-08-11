@@ -10,7 +10,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: 'standalone',
     background_color: '#fff',
     theme_color: '#047857',
-    orientation: "portrait",
+    orientation: 'portrait',
     icons: [
       {
         src: '/android-chrome-192x192.png',
@@ -25,7 +25,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         src: '/ic_launcher.png',
         sizes: '144x144',
-        type: 'image/png'
+        type: 'image/png',
       },
       {
         src: '/logo-512x512-maskable.png',

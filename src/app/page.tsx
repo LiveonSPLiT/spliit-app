@@ -1,9 +1,13 @@
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { Badge } from '@/components/ui/badge'
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { env } from '@/lib/env'
-import { ReactNode } from 'react'
 import {
   BarChartHorizontalBig,
   CircleDollarSign,
@@ -12,16 +16,12 @@ import {
   FolderTree,
   List,
   LucideIcon,
+  Repeat2,
   ShieldX,
   Users,
-  Repeat2,
 } from 'lucide-react'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
+import Link from 'next/link'
+import { ReactNode } from 'react'
 
 export default function HomePage() {
   return (
@@ -147,14 +147,15 @@ export default function HomePage() {
                 on some of them.
               </Answer>
               <Answer id="data" question={<>How is my data stored?</>}>
-                All the data you enter on SPLiT (groups, expenses…) is stored
-                in a PostgreSQL database hosted by{' '}
+                All the data you enter on SPLiT (groups, expenses…) is stored in
+                a PostgreSQL database hosted by{' '}
                 <a target="_blank" href="https://aws.amazon.com/">
                   AWS
                 </a>{' '}
                 (same as the web application itself). For now, the data is only
-                encrypted in rest not in transit, but we’re trying to find the best way to add
-                encryption without impacting the user experience too much.
+                encrypted in rest not in transit, but we’re trying to find the
+                best way to add encryption without impacting the user experience
+                too much.
               </Answer>
               <Answer
                 id="feedback"
@@ -171,8 +172,8 @@ export default function HomePage() {
                   </Button>
                 </FeedbackModal>
                 . We’ll receive it by email and will keep you update, if you
-                want to provide your email. This way, all our contributors 
-                will see it and will be able to give their insight.
+                want to provide your email. This way, all our contributors will
+                see it and will be able to give their insight.
               </Answer>
               <Answer
                 id="contribute"

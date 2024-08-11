@@ -2,10 +2,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getComment, getComments, getExpense, getGroup } from '@/lib/api'
 import { CommentFormValues } from '@/lib/schemas'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { CommentForm } from './comment-form'
 import { CommentItem } from './comment-item'
-import { useTranslations } from 'next-intl'
 
 type Props = {
   group: NonNullable<Awaited<ReturnType<typeof getGroup>>>
@@ -26,7 +26,7 @@ export function CommentsList({
 }: Props) {
   const [selectedComment, setSelectedComment] =
     useState<NonNullable<Awaited<ReturnType<typeof getComment>>>>()
-    const t = useTranslations('ExpenseForm')
+  const t = useTranslations('ExpenseForm')
 
   return (
     <>
