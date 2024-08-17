@@ -3,8 +3,9 @@
 import { useSession } from "next-auth/react";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { GoogleSignInButton } from "@/components/auth-buttons";
+import { SignInButton } from "@/components/auth-buttons";
 import { useState, useEffect } from 'react';
+import Image from "next/image";
 
 export function HomeButton() {
     const { data: session, status } = useSession();
@@ -35,8 +36,11 @@ export function HomeButton() {
     }
   
     return (
-      <GoogleSignInButton 
+      <SignInButton 
       loadingContent="Continue with Google"
-      disabled={!isPageLoaded} />
+      disabled={!isPageLoaded} loginType="google">
+        <Image src="/google.png" alt="Google Logo" width={20} height={20} />
+        <span className="ml-4">Continue with Google</span>
+      </SignInButton>
     );
 }

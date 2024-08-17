@@ -4,18 +4,23 @@ import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Loader2, LogOut } from 'lucide-react'
 import { ReactNode } from 'react'
+import { useSearchParams } from "next/navigation";
 
-type Props = {
+
+type SignInProps = {
   loadingContent: ReactNode
   disabled?: boolean;
+  loginType: string
 } & ButtonProps
 
 
-export function GoogleSignInButton({ loadingContent, disabled, ...props }: Props) {
+export function SignInButton({ children, loadingContent, disabled, loginType, ...props }: SignInProps) {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/groups";
   
   const handleClick = () => {
     if (!disabled) {
-      signIn("google");
+      signIn(loginType, { callbackUrl });
     }
   };
 
@@ -31,16 +36,13 @@ export function GoogleSignInButton({ loadingContent, disabled, ...props }: Props
           <Loader2 className="w-4 h-4 mr-2 animate-spin" /> {loadingContent}
         </>
       ) : (
-        <>
-          <Image src="/google.png" alt="Google Logo" width={20} height={20} />
-          <span className="ml-4">Continue with Google</span>
-        </>
+          children
       )}
     </Button>
   );
 }
 
-export function CredentialsSignInButton() {
+export function AppleSignInButton() {
   const handleClick = () => {
     signIn();
   };

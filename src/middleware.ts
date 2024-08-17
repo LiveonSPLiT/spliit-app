@@ -13,8 +13,11 @@ export default async function middleware(request: NextRequest) {
 
   
   if (!session && isProtected) {
-    const absoluteURL = new URL("/", request.nextUrl.origin);
-    return NextResponse.redirect(absoluteURL.toString());
+    // Store the current URL in a query parameter to redirect back after login
+    const redirectUrl = new URL("/", request.nextUrl.origin);
+    redirectUrl.searchParams.set("callbackUrl", request.nextUrl.toString());
+    return NextResponse.redirect(redirectUrl.toString());
+
   }
 
   return NextResponse.next();
