@@ -20,8 +20,8 @@ import {
   ShieldX,
   Users,
 } from 'lucide-react'
-import Link from 'next/link'
 import { ReactNode } from 'react'
+import { HomeButton } from '@/components/home-button'
 
 export default function HomePage() {
   return (
@@ -39,15 +39,7 @@ export default function HomePage() {
             </span>
           </p>
           <div className="flex gap-2">
-            <Button asChild>
-              <Link href="/groups">Go to groups</Link>
-            </Button>
-            {/* <Button asChild variant="secondary">
-              <Link href="https://github.com/sir-argupta/spliit-app">
-                <Github className="w-4 h-4 mr-2" />
-                GitHub
-              </Link>
-            </Button> */}
+              <HomeButton/>
           </div>
         </div>
       </section>

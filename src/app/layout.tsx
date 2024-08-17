@@ -16,6 +16,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import './globals.css'
+import { NextAuthProvider } from "./providers";
+import { LogOutButton } from "@/components/auth-buttons"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
@@ -90,14 +92,7 @@ function Content({ children }: { children: React.ReactNode }) {
         <div role="navigation" aria-label="Menu" className="flex">
           <ul className="flex items-center text-sm">
             <li>
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild
-                className="-my-3 text-primary"
-              >
-                <Link href="/groups">{t('Header.groups')}</Link>
-              </Button>
+              <LogOutButton />
             </li>
             <li>
               <NewsButton />
@@ -181,6 +176,7 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <ApplePwaSplash icon="/logo-with-text.png" color="#027756" />
       <body className="pt-16 min-h-[100dvh] flex flex-col items-stretch bg-slate-50 bg-opacity-30 dark:bg-background">
+      <NextAuthProvider>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -194,6 +190,7 @@ export default async function RootLayout({
             <Content>{children}</Content>
           </ThemeProvider>
         </NextIntlClientProvider>
+        </NextAuthProvider>
       </body>
     </html>
   )

@@ -9,6 +9,9 @@ const envSchema = z
   .object({
     POSTGRES_URL_NON_POOLING: z.string().url(),
     POSTGRES_PRISMA_URL: z.string().url(),
+    GOOGLE_CLIENT_ID: z.string().optional(),
+    GOOGLE_CLIENT_SECRET: z.string().optional(),
+    AUTH_SECRET: z.string().optional(),
     FEEDBACK_EMAIL_FROM: z.string().email().optional(),
     FEEDBACK_EMAIL_TO: z.string().email().optional(),
     RESEND_API_KEY: z.string().optional(),
