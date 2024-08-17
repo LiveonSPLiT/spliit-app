@@ -38,9 +38,7 @@ export default function HomePage() {
               Friends · Groups <br />
             </span>
           </p>
-          <div className="flex gap-2">
-              <HomeButton/>
-          </div>
+            <HomeButton/>
         </div>
       </section>
       <section className="bg-slate-50 dark:bg-card py-16 md:py-24 lg:py-32">

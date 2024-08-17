@@ -7,43 +7,63 @@ import { SignInButton } from "@/components/auth-buttons";
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import { useTranslations } from 'next-intl'
+import { Loader2 } from 'lucide-react'
 
 export function HomeButton() {
-    const { data: session, status } = useSession();
-    const [isPageLoaded, setIsPageLoaded] = useState(false);
-  
-    useEffect(() => {
+  const { data: session, status } = useSession();
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+
+  useEffect(() => {
       const handlePageLoad = () => {
-        setIsPageLoaded(true);
+          setIsPageLoaded(true);
       };
-  
+
       if (document.readyState === "complete") {
-        handlePageLoad();
+          handlePageLoad();
       } else {
-        window.addEventListener("load", handlePageLoad);
+          window.addEventListener("load", handlePageLoad);
       }
-  
+
       return () => {
-        window.removeEventListener("load", handlePageLoad);
+          window.removeEventListener("load", handlePageLoad);
       };
-    }, []);
-  
-    if (status === "authenticated") {
+  }, []);
+
+  if (!isPageLoaded || status === "loading") {
+      return (<div className="flex gap-2"><Loader2 className="w-6 h-6 mr-2 animate-spin" /></div>); // Show spinner while page or session is loading
+  }
+
+  if (status === "authenticated") {
       return (
-        <Button asChild>
-          <Link href="/groups">Go to groups</Link>
-        </Button>
+        <div className="flex gap-2">
+          <Button asChild>
+              <Link href="/groups">Go to groups</Link>
+          </Button>
+          </div>
       );
-    }
-  
-    return (
-      <SignInButton 
-      loadingContent="Continue with Google"
-      disabled={!isPageLoaded} loginType="google">
-        <Image src="/google.png" alt="Google Logo" width={20} height={20} />
-        <span className="ml-4">Continue with Google</span>
+  }
+
+  return (
+    <div className="flex gap-2">
+      {/* <SignInButton
+          loadingContent="Apple"
+          disabled={!isPageLoaded}
+          loginType="google"
+      >
+          <Image src="/apple.png" alt="Apple Logo" width={20} height={20} />
+          <span className="ml-4">Apple</span>
+      </SignInButton> */}
+      <SignInButton
+          loadingContent="Google"
+          disabled={!isPageLoaded}
+          loginType="google"
+          variant="secondary"
+      >
+          <Image src="/google.png" alt="Google Logo" width={20} height={20} />
+          <span className="ml-4">Google</span>
       </SignInButton>
-    );
+      </div>
+  );
 }
 
 export function NavGroupButton() {

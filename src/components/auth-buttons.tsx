@@ -42,20 +42,6 @@ export function SignInButton({ children, loadingContent, disabled, loginType, ..
   );
 }
 
-export function AppleSignInButton() {
-  const handleClick = () => {
-    signIn();
-  };
-
-  return (
-    <Button
-      onClick={handleClick}>
-      <Image src="/apple.png" alt="Apple Logo" width={20} height={20} />
-      <span className="ml-4">Continue with Apple</span>
-    </Button>
-  );
-}
-
 export function LogOutButton() {
   const { status } = useSession();
   const handleClick = () => {

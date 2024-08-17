@@ -62,7 +62,7 @@ model Group {
   id           String        @id
   name         String
   information  String?       @db.Text
-  currency     String        @default("$")
+  currency     String        @default("₹")
   participants Participant[]
   expenses     Expense[]
   activities   Activity[]
