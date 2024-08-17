@@ -17,7 +17,8 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import './globals.css'
 import { NextAuthProvider } from "./providers";
-import { LogOutButton } from "@/components/auth-buttons"
+import { LogOutButton } from '@/components/auth-buttons'
+import { NavGroupButton } from '@/components/home-button'
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
@@ -92,7 +93,7 @@ function Content({ children }: { children: React.ReactNode }) {
         <div role="navigation" aria-label="Menu" className="flex">
           <ul className="flex items-center text-sm">
             <li>
-              <LogOutButton />
+              <NavGroupButton />
             </li>
             <li>
               <NewsButton />
@@ -102,6 +103,9 @@ function Content({ children }: { children: React.ReactNode }) {
             </li>
             <li>
               <ThemeToggle />
+            </li>
+            <li>
+              <LogOutButton />
             </li>
           </ul>
         </div>

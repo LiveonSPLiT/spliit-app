@@ -59,7 +59,7 @@ export function AppleSignInButton() {
 export function LogOutButton() {
   const { status } = useSession();
   const handleClick = () => {
-    signOut();
+    signOut({ callbackUrl: '/' }); // Redirects to the homepage after logging out
   };
 
   if (status !== "authenticated") {
