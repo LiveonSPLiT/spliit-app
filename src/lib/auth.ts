@@ -38,6 +38,6 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth ({
       return true;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET as string
+  secret: process.env.AUTH_SECRET as string
 })
 
