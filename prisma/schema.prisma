@@ -20,20 +20,12 @@ model User {
   archivedGroups ArchivedGroup[]
 }
 
-model UserGroupRelationship {
-  id            String          @id @default(uuid())
-  groupName     String
-  recentUsers   RecentGroup[]
-  starredUsers  StarredGroup[]
-  archivedUsers ArchivedGroup[]
-}
-
 model RecentGroup {
-  id      String                @id @default(uuid())
-  userId  String
-  user    User                  @relation(fields: [userId], references: [id])
-  groupId String
-  group   UserGroupRelationship @relation(fields: [groupId], references: [id])
+  id        String   @id @default(uuid())
+  groupId   String
+  name      String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, groupId])
 }
@@ -43,7 +35,6 @@ model StarredGroup {
   userId  String
   user    User                  @relation(fields: [userId], references: [id])
   groupId String
-  group   UserGroupRelationship @relation(fields: [groupId], references: [id])
 
   @@unique([userId, groupId])
 }
@@ -53,7 +44,6 @@ model ArchivedGroup {
   userId  String
   user    User                  @relation(fields: [userId], references: [id])
   groupId String
-  group   UserGroupRelationship @relation(fields: [groupId], references: [id])
 
   @@unique([userId, groupId])
 }
