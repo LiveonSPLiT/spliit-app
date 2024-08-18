@@ -163,6 +163,19 @@ function Content({ children }: { children: React.ReactNode }) {
             </span>
           </div>
         </div>
+        <div>
+          <ul className="flex space-x-2 [&_a]:no-underline mt-2">
+            <Button size="sm" variant="secondary" asChild>
+              <a href="/legal/privacy-policy">Privacy Policy</a>
+            </Button>
+            <Button size="sm" variant="secondary" asChild>
+              <a href="/legal/disclaimer">Disclaimer</a>
+            </Button>
+            <Button size="sm" variant="secondary" asChild>
+              <a href="/legal/terms-and-conditions">Terms</a>
+            </Button>
+          </ul>
+        </div>
       </footer>
       <Toaster />
     </>
