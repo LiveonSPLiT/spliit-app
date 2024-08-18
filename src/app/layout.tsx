@@ -151,6 +151,37 @@ function Content({ children }: { children: React.ReactNode }) {
               })}
             </span>
             <span>
+              <ul className="[&_a]:no-underline [&_a]:px-1 flex -ml-1">
+                <li>
+                  <Button variant="link" size="sm" asChild>
+                    <Link
+                      target="_blank"
+                      href="https://linkedin.com/company/liveonsplit"
+                    >
+                      LinkedIn
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button variant="link" size="sm" asChild>
+                    <Link target="_blank" href="https://www.facebook.com/liveonsplit">
+                      Facebook
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button variant="link" size="sm" asChild>
+                    <Link
+                      target="_blank"
+                      href="https://www.instagram.com/liveonsplit/"
+                    >
+                      Instagram
+                    </Link>
+                  </Button>
+                </li>
+              </ul>
+            </span>
+            <span>
               <FeedbackModal
                 donationUrl={env.STRIPE_DONATION_LINK}
                 defaultTab="support"
