@@ -25,159 +25,189 @@ export function clearLocalStorageData(){
 
 export function getRecentGroups() {
 
-  // Fetching recent groups
-fetch('/api/groups?type=recent')
-  .then((response) => response.json())
-  .then((recentGroups) => console.log('Fetched recent groups:', recentGroups))
-  .catch((error) => console.error('Error fetching recent groups:', error));
-
-
   const groupsInStorageJson = localStorage.getItem(STORAGE_KEY)
   const groupsInStorageRaw = groupsInStorageJson
     ? JSON.parse(groupsInStorageJson)
     : []
   const parseResult = recentGroupsSchema.safeParse(groupsInStorageRaw)
-  return parseResult.success ? parseResult.data : []
+  if (groupsInStorageJson){
+    return parseResult.success ? parseResult.data : []
+  }
+
+ // Fetching recent groups
+ let recentGroupsDb = fetch('/api/groups?type=recent')
+  .then((response) => response.json())
+  .then((recentGroups) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(recentGroups));
+    return recentGroups
+  })
+  .catch((error) => console.error('Error fetching recent groups:', error));
+
+ const parseResultDB = recentGroupsSchema.safeParse(recentGroupsDb)
+ return parseResultDB.success ? parseResultDB.data : []
 }
 
 export function saveRecentGroup(group: RecentGroup) {
-
-  // Saving a recent group
-fetch('/api/groups', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ type: 'saveRecent', group: { id: group.id, name: group.name } }),
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error('Error saving group:', error));
 
   const recentGroups = getRecentGroups()
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify([group, ...recentGroups.filter((rg) => rg.id !== group.id)]),
   )
+
+  // Saving a recent group
+  fetch('/api/groups', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'saveRecent', group: { id: group.id, name: group.name } }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error saving group:', error));
+
+  
 }
 
 export function deleteRecentGroup(group: RecentGroup) {
-
-  // Deleting a recent group
-fetch(`/api/groups?type=deleteRecent&groupId=${group.id}`, {
-  method: 'DELETE',
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error('Error deleting group:', error));
 
   const recentGroups = getRecentGroups()
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(recentGroups.filter((rg) => rg.id !== group.id)),
   )
+
+  // Deleting a recent group
+  fetch(`/api/groups?type=deleteRecent&groupId=${group.id}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error deleting group:', error));
+
 }
 
 export function getStarredGroups() {
-
-  // Fetching starred groups
-fetch('/api/groups?type=starred')
-.then((response) => response.json())
-.then((starredGroups) => console.log('Fetched starred groups:', starredGroups))
-.catch((error) => console.error('Error fetching starred groups:', error));
 
   const starredGroupsJson = localStorage.getItem(STARRED_GROUPS_STORAGE_KEY)
   const starredGroupsRaw = starredGroupsJson
     ? JSON.parse(starredGroupsJson)
     : []
   const parseResult = starredGroupsSchema.safeParse(starredGroupsRaw)
-  return parseResult.success ? parseResult.data : []
+  if (starredGroupsJson){
+    return parseResult.success ? parseResult.data : []
+  }
+
+  // Fetching starred groups
+  let starredGroupsRawDB = fetch('/api/groups?type=starred')
+  .then((response) => response.json())
+  .then((starredGroups) => {
+    localStorage.setItem(STARRED_GROUPS_STORAGE_KEY, JSON.stringify(starredGroups));
+    return starredGroups
+  })
+  .catch((error) => console.error('Error fetching starred groups:', error));
+
+  const parseResultDB = starredGroupsSchema.safeParse(starredGroupsRawDB)
+  return parseResultDB.success ? parseResultDB.data : []
+  
 }
 
 export function starGroup(groupId: string) {
-
-  // Starring a group
-fetch('/api/groups', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ type: 'star', groupId: groupId }),
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error('Error starring group:', error));
 
   const starredGroups = getStarredGroups()
   localStorage.setItem(
     STARRED_GROUPS_STORAGE_KEY,
     JSON.stringify([...starredGroups, groupId]),
   )
+
+  // Starring a group
+  fetch('/api/groups', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'star', groupId: groupId }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error starring group:', error));
+
 }
 
 export function unstarGroup(groupId: string) {
-
-  // Unstarring a group
-fetch(`/api/groups?type=unstar&groupId=${groupId}`, {
-  method: 'DELETE',
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error('Error unstarring group:', error));
-
-
 
   const starredGroups = getStarredGroups()
   localStorage.setItem(
     STARRED_GROUPS_STORAGE_KEY,
     JSON.stringify(starredGroups.filter((g) => g !== groupId)),
   )
+
+  // Unstarring a group
+  fetch(`/api/groups?type=unstar&groupId=${groupId}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error unstarring group:', error));
+
 }
 
 export function getArchivedGroups() {
-
-  // Fetching archived groups
-fetch('/api/groups?type=archived')
-.then((response) => response.json())
-.then((archivedGroups) => console.log('Fetched archived groups:', archivedGroups))
-.catch((error) => console.error('Error fetching archived groups:', error));
 
   const archivedGroupsJson = localStorage.getItem(ARCHIVED_GROUPS_STORAGE_KEY)
   const archivedGroupsRaw = archivedGroupsJson
     ? JSON.parse(archivedGroupsJson)
     : []
   const parseResult = archivedGroupsSchema.safeParse(archivedGroupsRaw)
-  return parseResult.success ? parseResult.data : []
+  if (archivedGroupsJson){
+    return parseResult.success ? parseResult.data : []
+  }
+
+  // Fetching archived groups
+  let archivedGroupsRawDB = fetch('/api/groups?type=archived')
+  .then((response) => response.json())
+  .then((archivedGroups) => {
+    localStorage.setItem(ARCHIVED_GROUPS_STORAGE_KEY, JSON.stringify(archivedGroups));
+    return archivedGroups
+  })
+  .catch((error) => console.error('Error fetching archived groups:', error));
+
+  const parseResultDB = archivedGroupsSchema.safeParse(archivedGroupsRawDB)
+  return parseResultDB.success ? parseResultDB.data : []
+  
 }
 
 export function archiveGroup(groupId: string) {
-
-  // Archiving a group
-fetch('/api/groups', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ type: 'archive', groupId: groupId }),
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error('Error archiving group:', error));
 
   const archivedGroups = getArchivedGroups()
   localStorage.setItem(
     ARCHIVED_GROUPS_STORAGE_KEY,
     JSON.stringify([...archivedGroups, groupId]),
   )
+
+  // Archiving a group
+  fetch('/api/groups', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'archive', groupId: groupId }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error archiving group:', error));
+
 }
 
 export function unarchiveGroup(groupId: string) {
-
-  // Unarchiving a group
-fetch(`/api/groups?type=unarchive&groupId=${groupId}`, {
-  method: 'DELETE',
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error('Error unarchiving group:', error));
 
   const archivedGroups = getArchivedGroups()
   localStorage.setItem(
     ARCHIVED_GROUPS_STORAGE_KEY,
     JSON.stringify(archivedGroups.filter((g) => g !== groupId)),
   )
+
+  // Unarchiving a group
+  fetch(`/api/groups?type=unarchive&groupId=${groupId}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error unarchiving group:', error));
+
 }
