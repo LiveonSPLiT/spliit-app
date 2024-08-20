@@ -29,7 +29,7 @@ async function getUserIdByEmail(): Promise<string | null> {
     return user ? user.id : null
 }
 
-  export async function getRecentGroups(): Promise<RecentGroups> {
+  export async function getRecentGroupsDB(): Promise<RecentGroups> {
     const userId = await getUserIdByEmail() as string
     const recentGroups = await prisma.recentGroup.findMany({
       where: { userId },
@@ -38,7 +38,7 @@ async function getUserIdByEmail(): Promise<string | null> {
     return recentGroups.map(({ groupId, name }) => ({ id: groupId, name }))
   }
   
-  export async function saveRecentGroup(group: RecentGroup) {
+  export async function saveRecentGroupDB(group: RecentGroup) {
     const userId = await getUserIdByEmail() as string
     await prisma.recentGroup.upsert({
       where: { userId_groupId: { groupId: group.id, userId } },
@@ -47,14 +47,14 @@ async function getUserIdByEmail(): Promise<string | null> {
     })
   }
   
-  export async function deleteRecentGroup(groupId: string) {
+  export async function deleteRecentGroupDB(groupId: string) {
     const userId = await getUserIdByEmail() as string
     await prisma.recentGroup.deleteMany({
       where: { groupId, userId },
     })
   }
   
-  export async function getStarredGroups(): Promise<z.infer<typeof starredGroupsSchema>> {
+  export async function getStarredGroupsDB(): Promise<z.infer<typeof starredGroupsSchema>> {
     const userId = await getUserIdByEmail() as string
     const starredGroups = await prisma.starredGroup.findMany({
       where: { userId },
@@ -62,21 +62,21 @@ async function getUserIdByEmail(): Promise<string | null> {
     return starredGroups.map(({ groupId }) => groupId)
   }
   
-  export async function starGroup(groupId: string) {
+  export async function starGroupDB(groupId: string) {
     const userId = await getUserIdByEmail() as string
     await prisma.starredGroup.create({
       data: { groupId, userId },
     })
   }
   
-  export async function unstarGroup(groupId: string) {
+  export async function unstarGroupDB(groupId: string) {
     const userId = await getUserIdByEmail() as string
     await prisma.starredGroup.deleteMany({
       where: { groupId, userId },
     })
   }
   
-  export async function getArchivedGroups(): Promise<z.infer<typeof archivedGroupsSchema>> {
+  export async function getArchivedGroupsDB(): Promise<z.infer<typeof archivedGroupsSchema>> {
     const userId = await getUserIdByEmail() as string
     const archivedGroups = await prisma.archivedGroup.findMany({
       where: { userId },
@@ -84,14 +84,14 @@ async function getUserIdByEmail(): Promise<string | null> {
     return archivedGroups.map(({ groupId }) => groupId)
   }
   
-  export async function archiveGroup(groupId: string) {
+  export async function archiveGroupDB(groupId: string) {
     const userId = await getUserIdByEmail() as string
     await prisma.archivedGroup.create({
       data: { groupId, userId },
     })
   }
   
-  export async function unarchiveGroup(groupId: string) {
+  export async function unarchiveGroupDB(groupId: string) {
     const userId = await getUserIdByEmail() as string
     await prisma.archivedGroup.deleteMany({
       where: { groupId, userId },

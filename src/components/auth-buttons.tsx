@@ -5,6 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Loader2, LogOut } from 'lucide-react'
 import { ReactNode } from 'react'
 import { useSearchParams } from "next/navigation";
+import { clearLocalStorageData } from '@/app/groups/recent-groups-helpers'
 
 
 type SignInProps = {
