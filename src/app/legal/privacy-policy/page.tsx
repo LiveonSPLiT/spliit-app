@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
 
         <div>
       <p><strong>Effective Date:</strong> 06 Aug, 2024</p>
-      <div className="border-t py-6 flex" />
+      <div className="border-t py-1 flex" />
       
       <h2>1. Introduction</h2>
       <p>This Privacy Policy outlines how we collect, use, and protect the personal information of users of our bill-splitting SPLiT app (&quot;the App&quot;). The App is a non-profit project created by individuals and is not associated with any commercial entity.</p>

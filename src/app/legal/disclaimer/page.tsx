@@ -10,7 +10,7 @@ export default function Disclaimer() {
 
         <div>
       <p><strong>Effective Date:</strong> 06 Aug, 2024</p>
-      <div className="border-t py-6 flex" />
+      <div className="border-t py-1 flex" />
       
       <h2>1. No Liability</h2>
       <p>The App is provided &quot;as is&quot; without any warranties, either express or implied. We do not guarantee the accuracy, completeness, or reliability of the App. By using the App, you agree that we are not responsible or liable for any damages or losses resulting from your use of the App, including but not limited to financial losses, data breaches, or unauthorized access.</p>

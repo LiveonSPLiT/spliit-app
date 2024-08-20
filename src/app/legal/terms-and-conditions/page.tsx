@@ -12,7 +12,7 @@ export default function TermsAndConditions() {
 
         <div>
       <p><strong>Effective Date:</strong> 06 Aug, 2024</p>
-      <div className="border-t py-6 flex" />
+      <div className="border-t py-1 flex" />
       
       <h2>1. Introduction</h2>
       <p>These Terms & Conditions (&quot;Terms&quot;) govern your use of our bill-splitting SPLiT app (&quot;the App&quot;). By accessing or using the App, you agree to be bound by these Terms.</p>
