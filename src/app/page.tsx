@@ -98,7 +98,7 @@ export default function HomePage() {
             <Feature
               Icon={ShieldX}
               name="No ads"
-              description="No account. No limitation. No problem."
+              description="No hassle. No limitation. No problem."
             />
           </div>
         </div>
@@ -131,10 +131,10 @@ export default function HomePage() {
                   </>
                 }
               >
-                SPLiT is more minimalist than Splitwise or Tricount, and you
-                don’t need to create any user account to use it, nor will you
-                see any ads. It offers similar features, but we’re still working
-                on some of them.
+                SPLiT is a simpler alternative to apps like Splitwise or Tricount. You 
+                won’t need to create a user account or deal with ads. It offers similar 
+                features, with more on the way, and signing up with Google is quick 
+                and easy—just two clicks!
               </Answer>
               <Answer id="data" question={<>How is my data stored?</>}>
                 All the data you enter on SPLiT (groups, expenses…) is stored in
