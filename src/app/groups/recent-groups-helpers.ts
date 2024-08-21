@@ -90,7 +90,7 @@ export function deleteRecentGroup(group: RecentGroup) {
 
 }
 
-export function getStarredGroups() {
+export async function getStarredGroups() {
 
   const starredGroupsJson = localStorage.getItem(STARRED_GROUPS_STORAGE_KEY)
   const starredGroupsRaw = starredGroupsJson
@@ -102,22 +102,27 @@ export function getStarredGroups() {
   }
 
   // Fetching starred groups
-  let starredGroupsRawDB = fetch('/api/groups?type=starred')
-  .then((response) => response.json())
-  .then((starredGroups) => {
-    localStorage.setItem(STARRED_GROUPS_STORAGE_KEY, JSON.stringify(starredGroups));
-    return starredGroups
-  })
-  .catch((error) => console.error('Error fetching starred groups:', error));
+  let response  = await fetch('/api/groups?type=starred')
+  let starredGroups = await response.json();
+  localStorage.setItem(STARRED_GROUPS_STORAGE_KEY, JSON.stringify(starredGroups))
 
-  const parseResultDB = starredGroupsSchema.safeParse(starredGroupsRawDB)
+  const parseResultDB = starredGroupsSchema.safeParse(starredGroups)
   return parseResultDB.success ? parseResultDB.data : []
   
 }
 
+export function getStarredGroupsLocalStorage(){
+  const starredGroupsJson = localStorage.getItem(STARRED_GROUPS_STORAGE_KEY)
+  const starredGroupsRaw = starredGroupsJson
+    ? JSON.parse(starredGroupsJson)
+    : []
+  const parseResult = starredGroupsSchema.safeParse(starredGroupsRaw)
+  return parseResult.success ? parseResult.data : []
+}
+
 export function starGroup(groupId: string) {
 
-  const starredGroups = getStarredGroups()
+  const starredGroups = getStarredGroupsLocalStorage()
   localStorage.setItem(
     STARRED_GROUPS_STORAGE_KEY,
     JSON.stringify([...starredGroups, groupId]),
@@ -137,7 +142,7 @@ export function starGroup(groupId: string) {
 
 export function unstarGroup(groupId: string) {
 
-  const starredGroups = getStarredGroups()
+  const starredGroups = getStarredGroupsLocalStorage()
   localStorage.setItem(
     STARRED_GROUPS_STORAGE_KEY,
     JSON.stringify(starredGroups.filter((g) => g !== groupId)),
@@ -153,7 +158,7 @@ export function unstarGroup(groupId: string) {
 
 }
 
-export function getArchivedGroups() {
+export async function getArchivedGroups() {
 
   const archivedGroupsJson = localStorage.getItem(ARCHIVED_GROUPS_STORAGE_KEY)
   const archivedGroupsRaw = archivedGroupsJson
@@ -165,22 +170,28 @@ export function getArchivedGroups() {
   }
 
   // Fetching archived groups
-  let archivedGroupsRawDB = fetch('/api/groups?type=archived')
-  .then((response) => response.json())
-  .then((archivedGroups) => {
-    localStorage.setItem(ARCHIVED_GROUPS_STORAGE_KEY, JSON.stringify(archivedGroups));
-    return archivedGroups
-  })
-  .catch((error) => console.error('Error fetching archived groups:', error));
+  let response = await fetch('/api/groups?type=archived')
+  let archivedGroups = await response.json();
+  localStorage.setItem(ARCHIVED_GROUPS_STORAGE_KEY, JSON.stringify(archivedGroups))
+  
 
-  const parseResultDB = archivedGroupsSchema.safeParse(archivedGroupsRawDB)
+  const parseResultDB = archivedGroupsSchema.safeParse(archivedGroups)
   return parseResultDB.success ? parseResultDB.data : []
   
 }
 
+export function getArchivedGroupsLocalStorage(){
+  const archivedGroupsJson = localStorage.getItem(ARCHIVED_GROUPS_STORAGE_KEY)
+  const archivedGroupsRaw = archivedGroupsJson
+    ? JSON.parse(archivedGroupsJson)
+    : []
+  const parseResult = archivedGroupsSchema.safeParse(archivedGroupsRaw)
+  return parseResult.success ? parseResult.data : []
+}
+
 export function archiveGroup(groupId: string) {
 
-  const archivedGroups = getArchivedGroups()
+  const archivedGroups = getArchivedGroupsLocalStorage()
   localStorage.setItem(
     ARCHIVED_GROUPS_STORAGE_KEY,
     JSON.stringify([...archivedGroups, groupId]),
@@ -200,7 +211,7 @@ export function archiveGroup(groupId: string) {
 
 export function unarchiveGroup(groupId: string) {
 
-  const archivedGroups = getArchivedGroups()
+  const archivedGroups = getArchivedGroupsLocalStorage()
   localStorage.setItem(
     ARCHIVED_GROUPS_STORAGE_KEY,
     JSON.stringify(archivedGroups.filter((g) => g !== groupId)),

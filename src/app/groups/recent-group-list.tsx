@@ -59,8 +59,8 @@ export function RecentGroupList() {
 
   async function loadGroups() {
     const groupsInStorage = await getRecentGroups()
-    const starredGroups = getStarredGroups()
-    const archivedGroups = getArchivedGroups()
+    const starredGroups = await getStarredGroups()
+    const archivedGroups = await getArchivedGroups()
     setState({
       status: 'partial',
       groups: groupsInStorage,
