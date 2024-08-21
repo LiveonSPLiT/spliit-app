@@ -46,6 +46,7 @@ export function SignInButton({ children, loadingContent, disabled, loginType, ..
 export function LogOutButton() {
   const { status } = useSession();
   const handleClick = () => {
+    clearLocalStorageData()
     signOut({ callbackUrl: '/' }); // Redirects to the homepage after logging out
   };
 

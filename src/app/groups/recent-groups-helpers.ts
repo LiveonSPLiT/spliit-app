@@ -23,7 +23,7 @@ export function clearLocalStorageData(){
   localStorage.removeItem(ARCHIVED_GROUPS_STORAGE_KEY)
 }
 
-export function getRecentGroups() {
+export async function getRecentGroups() {
 
   const groupsInStorageJson = localStorage.getItem(STORAGE_KEY)
   const groupsInStorageRaw = groupsInStorageJson
@@ -34,22 +34,26 @@ export function getRecentGroups() {
     return parseResult.success ? parseResult.data : []
   }
 
- // Fetching recent groups
- let recentGroupsDb = fetch('/api/groups?type=recent')
-  .then((response) => response.json())
-  .then((recentGroups) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(recentGroups));
-    return recentGroups
-  })
-  .catch((error) => console.error('Error fetching recent groups:', error));
+  let response = await fetch('/api/groups?type=recent');
+  let recentGroups = await response.json();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(recentGroups));
 
- const parseResultDB = recentGroupsSchema.safeParse(recentGroupsDb)
+ const parseResultDB = recentGroupsSchema.safeParse(recentGroups)
  return parseResultDB.success ? parseResultDB.data : []
+}
+
+function getRecentGroupsLocalStorage(){
+  const groupsInStorageJson = localStorage.getItem(STORAGE_KEY)
+  const groupsInStorageRaw = groupsInStorageJson
+    ? JSON.parse(groupsInStorageJson)
+    : []
+  const parseResult = recentGroupsSchema.safeParse(groupsInStorageRaw)
+  return parseResult.success ? parseResult.data : []
 }
 
 export function saveRecentGroup(group: RecentGroup) {
 
-  const recentGroups = getRecentGroups()
+  const recentGroups = getRecentGroupsLocalStorage()
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify([group, ...recentGroups.filter((rg) => rg.id !== group.id)]),
@@ -62,7 +66,7 @@ export function saveRecentGroup(group: RecentGroup) {
     body: JSON.stringify({ type: 'saveRecent', group: { id: group.id, name: group.name } }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {return data})
     .catch((error) => console.error('Error saving group:', error));
 
   
@@ -70,7 +74,7 @@ export function saveRecentGroup(group: RecentGroup) {
 
 export function deleteRecentGroup(group: RecentGroup) {
 
-  const recentGroups = getRecentGroups()
+  const recentGroups = getRecentGroupsLocalStorage()
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(recentGroups.filter((rg) => rg.id !== group.id)),
@@ -81,7 +85,7 @@ export function deleteRecentGroup(group: RecentGroup) {
     method: 'DELETE',
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {return data})
     .catch((error) => console.error('Error deleting group:', error));
 
 }
@@ -126,7 +130,7 @@ export function starGroup(groupId: string) {
     body: JSON.stringify({ type: 'star', groupId: groupId }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {return data})
     .catch((error) => console.error('Error starring group:', error));
 
 }
@@ -144,7 +148,7 @@ export function unstarGroup(groupId: string) {
     method: 'DELETE',
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {return data})
     .catch((error) => console.error('Error unstarring group:', error));
 
 }
@@ -189,7 +193,7 @@ export function archiveGroup(groupId: string) {
     body: JSON.stringify({ type: 'archive', groupId: groupId }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {return data})
     .catch((error) => console.error('Error archiving group:', error));
 
 }
@@ -207,7 +211,7 @@ export function unarchiveGroup(groupId: string) {
     method: 'DELETE',
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {return data})
     .catch((error) => console.error('Error unarchiving group:', error));
 
 }
