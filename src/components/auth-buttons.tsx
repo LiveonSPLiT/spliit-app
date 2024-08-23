@@ -5,7 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Loader2, LogOut } from 'lucide-react'
 import { ReactNode } from 'react'
 import { useSearchParams } from "next/navigation";
-import { clearLocalStorageData } from '@/app/groups/recent-groups-helpers'
+import { clearLocalStorageData, migrateLocalStorageData } from '@/app/groups/recent-groups-helpers'
 
 
 type SignInProps = {
@@ -21,6 +21,7 @@ export function SignInButton({ children, loadingContent, disabled, loginType, ..
   
   const handleClick = () => {
     if (!disabled) {
+      migrateLocalStorageData()
       signIn(loginType, { callbackUrl });
     }
   };

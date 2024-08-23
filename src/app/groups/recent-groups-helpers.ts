@@ -16,6 +16,9 @@ export type RecentGroup = RecentGroups[number]
 const STORAGE_KEY = 'recentGroups'
 const STARRED_GROUPS_STORAGE_KEY = 'starredGroups'
 const ARCHIVED_GROUPS_STORAGE_KEY = 'archivedGroups'
+const MIGRATE_STORAGE_KEY = 'migrateRecentGroups'
+const MIGRATE_STARRED_GROUPS_STORAGE_KEY = 'migrateStarredGroups'
+const MIGRATE_ARCHIVED_GROUPS_STORAGE_KEY = 'migrateArchivedGroups'
 
 export function clearLocalStorageData(){
   localStorage.removeItem(STORAGE_KEY)
@@ -23,7 +26,28 @@ export function clearLocalStorageData(){
   localStorage.removeItem(ARCHIVED_GROUPS_STORAGE_KEY)
 }
 
+export function migrateLocalStorageData(){
+  if (localStorage.getItem(STORAGE_KEY)) 
+    localStorage.setItem(MIGRATE_STORAGE_KEY, JSON.stringify(getRecentGroupsLocalStorage()));
+  
+  if (localStorage.getItem(STARRED_GROUPS_STORAGE_KEY)) 
+    localStorage.setItem(MIGRATE_STARRED_GROUPS_STORAGE_KEY, JSON.stringify(getStarredGroupsLocalStorage()));
+  
+  if (localStorage.getItem(ARCHIVED_GROUPS_STORAGE_KEY)) 
+    localStorage.setItem(MIGRATE_ARCHIVED_GROUPS_STORAGE_KEY, JSON.stringify(getArchivedGroupsLocalStorage()));
+  clearLocalStorageData()
+}
+
 export async function getRecentGroups() {
+
+  const groupsInMigratedJson = localStorage.getItem(MIGRATE_STORAGE_KEY)
+  if (groupsInMigratedJson){
+    const recentGroups = JSON.parse(groupsInMigratedJson) as RecentGroup[];
+    recentGroups.forEach((group) => {
+      saveRecentGroup(group);
+    });
+    localStorage.removeItem(MIGRATE_STORAGE_KEY)
+  }
 
   const groupsInStorageJson = localStorage.getItem(STORAGE_KEY)
   const groupsInStorageRaw = groupsInStorageJson
@@ -42,7 +66,7 @@ export async function getRecentGroups() {
  return parseResultDB.success ? parseResultDB.data : []
 }
 
-function getRecentGroupsLocalStorage(){
+export function getRecentGroupsLocalStorage(){
   const groupsInStorageJson = localStorage.getItem(STORAGE_KEY)
   const groupsInStorageRaw = groupsInStorageJson
     ? JSON.parse(groupsInStorageJson)
@@ -91,6 +115,15 @@ export function deleteRecentGroup(group: RecentGroup) {
 }
 
 export async function getStarredGroups() {
+
+  const groupsInMigratedJson = localStorage.getItem(MIGRATE_STARRED_GROUPS_STORAGE_KEY)
+  if (groupsInMigratedJson){
+    const starredGroups = JSON.parse(groupsInMigratedJson) as string[];
+    starredGroups.forEach((groupId) => {
+      starGroup(groupId);
+    });
+    localStorage.removeItem(MIGRATE_STARRED_GROUPS_STORAGE_KEY)
+  }
 
   const starredGroupsJson = localStorage.getItem(STARRED_GROUPS_STORAGE_KEY)
   const starredGroupsRaw = starredGroupsJson
@@ -159,6 +192,15 @@ export function unstarGroup(groupId: string) {
 }
 
 export async function getArchivedGroups() {
+
+  const groupsInMigratedJson = localStorage.getItem(MIGRATE_ARCHIVED_GROUPS_STORAGE_KEY)
+  if (groupsInMigratedJson){
+    const archivedGroups = JSON.parse(groupsInMigratedJson) as string[];
+    archivedGroups.forEach((groupId) => {
+      archiveGroup(groupId);
+    });
+    localStorage.removeItem(MIGRATE_ARCHIVED_GROUPS_STORAGE_KEY)
+  }
 
   const archivedGroupsJson = localStorage.getItem(ARCHIVED_GROUPS_STORAGE_KEY)
   const archivedGroupsRaw = archivedGroupsJson
