@@ -31,7 +31,7 @@ export function EmailTemplate ({ emailPreview,
   return (
     <Html>
       <Head />
-      <Preview>SPLit Email Notification: {emailPreview}</Preview>
+      <Preview>Email Notification {emailPreview}</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={coverSection}>
@@ -44,7 +44,7 @@ export function EmailTemplate ({ emailPreview,
             <Section style={upperSection}>
               <Heading style={h1}>{emailTitle}</Heading>
               <Text style={mainText}>
-                {emailMessage}
+                <>{emailMessage}</>
               </Text>
               { (isButtonVisible) ?
                 <Section style={verificationSection}>

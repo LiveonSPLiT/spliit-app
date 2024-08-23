@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from 'next-auth/providers/google'
 import { env } from '@/lib/env'
 import { prisma } from '@/lib/prisma'
-
+import { sendEmailLogin } from '@/lib/sendEmails'
 
 export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth ({
   providers: [
@@ -30,6 +30,7 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth ({
                 },
               })
           }
+          sendEmailLogin( name, email )
           return true
         } catch (error) {
           console.error('Error during sign-in:', error);
