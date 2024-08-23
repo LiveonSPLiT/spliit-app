@@ -1,9 +1,8 @@
-import { redirect } from "next/navigation";
-import React from "react";
+import { redirect } from 'next/navigation'
 
 const Legal = async () => {
-    redirect("/");
-    return null;
-};
+  redirect('/')
+  return null
+}
 
-export default Legal;
+export default Legal

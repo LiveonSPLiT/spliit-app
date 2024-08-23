@@ -1,4 +1,5 @@
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
+import { HomeButton } from '@/components/home-button'
 import {
   Accordion,
   AccordionContent,
@@ -21,7 +22,6 @@ import {
   Users,
 } from 'lucide-react'
 import { ReactNode } from 'react'
-import { HomeButton } from '@/components/home-button'
 
 export default function HomePage() {
   return (
@@ -38,7 +38,7 @@ export default function HomePage() {
               Friends · Groups <br />
             </span>
           </p>
-            <HomeButton/>
+          <HomeButton />
         </div>
       </section>
       <section className="bg-slate-50 dark:bg-card py-16 md:py-24 lg:py-32">
@@ -131,10 +131,10 @@ export default function HomePage() {
                   </>
                 }
               >
-                SPLiT is a simpler alternative to apps like Splitwise or Tricount. You 
-                won’t need to create a user account or deal with ads. It offers similar 
-                features, with more on the way, and signing up with Google is quick 
-                and easy—just two clicks!
+                SPLiT is a simpler alternative to apps like Splitwise or
+                Tricount. You won’t need to create a user account or deal with
+                ads. It offers similar features, with more on the way, and
+                signing up with Google is quick and easy—just two clicks!
               </Answer>
               <Answer id="data" question={<>How is my data stored?</>}>
                 All the data you enter on SPLiT (groups, expenses…) is stored in

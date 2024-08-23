@@ -1,5 +1,7 @@
 import { ApplePwaSplash } from '@/app/apple-pwa-splash'
+import { LogOutButton } from '@/components/auth-buttons'
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
+import { NavGroupButton } from '@/components/home-button'
 import { LocaleSwitcher } from '@/components/locale-switcher'
 import { NewsButton } from '@/components/news-button'
 import { ProgressBar } from '@/components/progress-bar'
@@ -16,9 +18,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import './globals.css'
-import { NextAuthProvider } from "./providers";
-import { LogOutButton } from '@/components/auth-buttons'
-import { NavGroupButton } from '@/components/home-button'
+import { NextAuthProvider } from './providers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
@@ -164,7 +164,10 @@ function Content({ children }: { children: React.ReactNode }) {
                 </li>
                 <li>
                   <Button variant="link" size="sm" asChild>
-                    <Link target="_blank" href="https://www.facebook.com/liveonsplit">
+                    <Link
+                      target="_blank"
+                      href="https://www.facebook.com/liveonsplit"
+                    >
                       Facebook
                     </Link>
                   </Button>
@@ -224,20 +227,20 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <ApplePwaSplash icon="/logo-with-text.png" color="#027756" />
       <body className="pt-16 min-h-[100dvh] flex flex-col items-stretch bg-slate-50 bg-opacity-30 dark:bg-background">
-      <NextAuthProvider>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Suspense>
-              <ProgressBar />
-            </Suspense>
-            <Content>{children}</Content>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <NextAuthProvider>
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Suspense>
+                <ProgressBar />
+              </Suspense>
+              <Content>{children}</Content>
+            </ThemeProvider>
+          </NextIntlClientProvider>
         </NextAuthProvider>
       </body>
     </html>
