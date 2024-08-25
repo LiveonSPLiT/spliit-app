@@ -4,8 +4,8 @@ import {
   RecentGroup,
   archiveGroup,
   deleteRecentGroup,
-  getArchivedGroups,
-  getStarredGroups,
+  getArchivedGroupsLocalStorage,
+  getStarredGroupsLocalStorage,
   saveRecentGroup,
   starGroup,
   unarchiveGroup,
@@ -52,8 +52,8 @@ export function RecentGroupListCard({
   const refreshGroupsFromStorage = () =>
     setState({
       ...state,
-      starredGroups: getStarredGroups(),
-      archivedGroups: getArchivedGroups(),
+      starredGroups: getStarredGroupsLocalStorage(),
+      archivedGroups: getArchivedGroupsLocalStorage(),
     })
 
   const isStarred = state.starredGroups.includes(group.id)

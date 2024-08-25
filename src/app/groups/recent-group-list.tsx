@@ -57,10 +57,10 @@ export function RecentGroupList() {
   const t = useTranslations('Groups')
   const [state, setState] = useState<RecentGroupsState>({ status: 'pending' })
 
-  function loadGroups() {
-    const groupsInStorage = getRecentGroups()
-    const starredGroups = getStarredGroups()
-    const archivedGroups = getArchivedGroups()
+  async function loadGroups() {
+    const groupsInStorage = await getRecentGroups()
+    const starredGroups = await getStarredGroups()
+    const archivedGroups = await getArchivedGroups()
     setState({
       status: 'partial',
       groups: groupsInStorage,

@@ -1,5 +1,7 @@
 import { ApplePwaSplash } from '@/app/apple-pwa-splash'
+import { LogOutButton } from '@/components/auth-buttons'
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
+import { NavGroupButton } from '@/components/home-button'
 import { LocaleSwitcher } from '@/components/locale-switcher'
 import { NewsButton } from '@/components/news-button'
 import { ProgressBar } from '@/components/progress-bar'
@@ -16,6 +18,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import './globals.css'
+import { NextAuthProvider } from './providers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
@@ -90,14 +93,7 @@ function Content({ children }: { children: React.ReactNode }) {
         <div role="navigation" aria-label="Menu" className="flex">
           <ul className="flex items-center text-sm">
             <li>
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild
-                className="-my-3 text-primary"
-              >
-                <Link href="/groups">{t('Header.groups')}</Link>
-              </Button>
+              <NavGroupButton />
             </li>
             <li>
               <NewsButton />
@@ -107,6 +103,9 @@ function Content({ children }: { children: React.ReactNode }) {
             </li>
             <li>
               <ThemeToggle />
+            </li>
+            <li>
+              <LogOutButton />
             </li>
           </ul>
         </div>
@@ -152,6 +151,40 @@ function Content({ children }: { children: React.ReactNode }) {
               })}
             </span>
             <span>
+              <ul className="[&_a]:no-underline [&_a]:px-1 flex -ml-1">
+                <li>
+                  <Button variant="link" size="sm" asChild>
+                    <Link
+                      target="_blank"
+                      href="https://linkedin.com/company/liveonsplit"
+                    >
+                      LinkedIn
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button variant="link" size="sm" asChild>
+                    <Link
+                      target="_blank"
+                      href="https://www.facebook.com/liveonsplit"
+                    >
+                      Facebook
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button variant="link" size="sm" asChild>
+                    <Link
+                      target="_blank"
+                      href="https://www.instagram.com/liveonsplit/"
+                    >
+                      Instagram
+                    </Link>
+                  </Button>
+                </li>
+              </ul>
+            </span>
+            <span>
               <FeedbackModal
                 donationUrl={env.STRIPE_DONATION_LINK}
                 defaultTab="support"
@@ -163,6 +196,19 @@ function Content({ children }: { children: React.ReactNode }) {
               </FeedbackModal>
             </span>
           </div>
+        </div>
+        <div>
+          <ul className="flex space-x-2 [&_a]:no-underline mt-2">
+            <Button size="sm" variant="secondary" asChild>
+              <a href="/legal/privacy-policy">Privacy Policy</a>
+            </Button>
+            <Button size="sm" variant="secondary" asChild>
+              <a href="/legal/disclaimer">Disclaimer</a>
+            </Button>
+            <Button size="sm" variant="secondary" asChild>
+              <a href="/legal/terms-and-conditions">Terms</a>
+            </Button>
+          </ul>
         </div>
       </footer>
       <Toaster />
@@ -181,19 +227,21 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <ApplePwaSplash icon="/logo-with-text.png" color="#027756" />
       <body className="pt-16 min-h-[100dvh] flex flex-col items-stretch bg-slate-50 bg-opacity-30 dark:bg-background">
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Suspense>
-              <ProgressBar />
-            </Suspense>
-            <Content>{children}</Content>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <NextAuthProvider>
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Suspense>
+                <ProgressBar />
+              </Suspense>
+              <Content>{children}</Content>
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </NextAuthProvider>
       </body>
     </html>
   )

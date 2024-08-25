@@ -11,11 +11,48 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+model User {
+  id             String          @id @default(uuid())
+  name           String
+  email          String          @unique
+  recentGroups   RecentGroup[]
+  starredGroups  StarredGroup[]
+  archivedGroups ArchivedGroup[]
+}
+
+model RecentGroup {
+  id        String   @id @default(uuid())
+  groupId   String
+  name      String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, groupId])
+}
+
+model StarredGroup {
+  id      String                @id @default(uuid())
+  userId  String
+  user    User                  @relation(fields: [userId], references: [id])
+  groupId String
+
+  @@unique([userId, groupId])
+}
+
+model ArchivedGroup {
+  id      String                @id @default(uuid())
+  userId  String
+  user    User                  @relation(fields: [userId], references: [id])
+  groupId String
+
+  @@unique([userId, groupId])
+}
+
 model Group {
   id           String        @id
   name         String
   information  String?       @db.Text
-  currency     String        @default("$")
+  currency     String        @default("₹")
   participants Participant[]
   expenses     Expense[]
   activities   Activity[]
@@ -123,10 +160,10 @@ enum ActivityType {
 }
 
 model RecurringTransactions {
-  groupId         String
-  expenseId       String
-  createNextAt    Int
-  lockId          String?  @unique
+  groupId      String
+  expenseId    String
+  createNextAt Int
+  lockId       String? @unique
 
   @@id([groupId, expenseId])
   @@index([groupId, expenseId, createNextAt(sort: Desc)])

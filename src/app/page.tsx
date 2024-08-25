@@ -1,4 +1,5 @@
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
+import { HomeButton } from '@/components/home-button'
 import {
   Accordion,
   AccordionContent,
@@ -20,7 +21,6 @@ import {
   ShieldX,
   Users,
 } from 'lucide-react'
-import Link from 'next/link'
 import { ReactNode } from 'react'
 
 export default function HomePage() {
@@ -38,17 +38,7 @@ export default function HomePage() {
               Friends · Groups <br />
             </span>
           </p>
-          <div className="flex gap-2">
-            <Button asChild>
-              <Link href="/groups">Go to groups</Link>
-            </Button>
-            {/* <Button asChild variant="secondary">
-              <Link href="https://github.com/sir-argupta/spliit-app">
-                <Github className="w-4 h-4 mr-2" />
-                GitHub
-              </Link>
-            </Button> */}
-          </div>
+          <HomeButton />
         </div>
       </section>
       <section className="bg-slate-50 dark:bg-card py-16 md:py-24 lg:py-32">
@@ -108,7 +98,7 @@ export default function HomePage() {
             <Feature
               Icon={ShieldX}
               name="No ads"
-              description="No account. No limitation. No problem."
+              description="No hassle. No limitation. No problem."
             />
           </div>
         </div>
@@ -141,10 +131,10 @@ export default function HomePage() {
                   </>
                 }
               >
-                SPLiT is more minimalist than Splitwise or Tricount, and you
-                don’t need to create any user account to use it, nor will you
-                see any ads. It offers similar features, but we’re still working
-                on some of them.
+                SPLiT is a simpler alternative to apps like Splitwise or
+                Tricount. You won’t need to create a user account or deal with
+                ads. It offers similar features, with more on the way, and
+                signing up with Google is quick and easy—just two clicks!
               </Answer>
               <Answer id="data" question={<>How is my data stored?</>}>
                 All the data you enter on SPLiT (groups, expenses…) is stored in
