@@ -65,7 +65,7 @@ spec:
             value: "aashutosh.g27@gmail.com"
           - name: STRIPE_DONATION_LINK
             value: "https://donateviaupi.com/aashutosh.g27-1@okhdfcbank?pn=Ashutosh%20Gupta&amount_list=100,500,2000,1000"
-          - name: NEXTAUTH_URL
+          - name: AUTH_URL
             value: "https://liveonsplit.com/"
           - name: GOOGLE_CLIENT_ID
             valueFrom:
