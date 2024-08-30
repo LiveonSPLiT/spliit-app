@@ -1,5 +1,6 @@
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
 import { HomeButton } from '@/components/home-button'
+import { StatsDisplay } from '@/components/stats-display'
 import {
   Accordion,
   AccordionContent,
@@ -39,6 +40,9 @@ export default function HomePage() {
             </span>
           </p>
           <HomeButton />
+          <p className="mt-2 max-w-[42rem] leading-normal text-muted-foreground text-xl sm:text-2xl sm:leading-8">
+            <StatsDisplay />
+          </p>
         </div>
       </section>
       <section className="bg-slate-50 dark:bg-card py-16 md:py-24 lg:py-32">

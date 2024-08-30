@@ -21,10 +21,10 @@ SPLiT is a free and open source alternative to Splitwise.
 - [x] Upload and attach images to expenses 
 - [x] Create expense by scanning a receipt 
 - [x] Ability to create recurring expenses 
+- [x] Able to create accounts & friends
 
 ### Possible incoming features
 
-- [ ] Able to create accounts & friends
 - [ ] Import expenses from Splitwise 
 
 ## Stack
@@ -33,8 +33,9 @@ SPLiT is a free and open source alternative to Splitwise.
 - [TailwindCSS](https://tailwindcss.com/) for the styling
 - [shadcn/UI](https://ui.shadcn.com/) for the UI components
 - [Prisma](https://prisma.io) to access the database
-- [Vercel](https://vercel.com/) for hosting (application and database)
-
+- [Vercel](https://vercel.com/) for development hosting (application and database)
+- [AWS](https://aws.com/) for production hosting (application and database)
+- [Circleci](https://circleci.com/) for production CI/CD
 
 ## Run locally
 

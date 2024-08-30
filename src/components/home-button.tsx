@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { NewsButton } from '@/components/news-button'
 
 export function HomeButton() {
   const { data: session, status } = useSession()
@@ -83,4 +84,14 @@ export function NavGroupButton() {
       <Link href="/groups">{t('Header.groups')}</Link>
     </Button>
   )
+}
+
+export function NavNewsButton() {
+  const { status } = useSession()
+
+  if (status !== 'authenticated') {
+    return <NewsButton /> 
+  }
+
+  return null // Hide news button if the user is authenticated
 }
