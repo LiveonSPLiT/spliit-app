@@ -1,6 +1,7 @@
 'use client'
 
 import { SignInButton } from '@/components/auth-buttons'
+import { NewsButton } from '@/components/news-button'
 import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
@@ -8,7 +9,6 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { NewsButton } from '@/components/news-button'
 
 export function HomeButton() {
   const { data: session, status } = useSession()
@@ -90,7 +90,7 @@ export function NavNewsButton() {
   const { status } = useSession()
 
   if (status !== 'authenticated') {
-    return <NewsButton /> 
+    return <NewsButton />
   }
 
   return null // Hide news button if the user is authenticated
