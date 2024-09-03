@@ -1,9 +1,8 @@
 import { ApplePwaSplash } from '@/app/apple-pwa-splash'
 import { LogOutButton } from '@/components/auth-buttons'
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
-import { NavGroupButton } from '@/components/home-button'
+import { NavGroupButton, NavNewsButton } from '@/components/home-button'
 import { LocaleSwitcher } from '@/components/locale-switcher'
-import { NewsButton } from '@/components/news-button'
 import { ProgressBar } from '@/components/progress-bar'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeToggle } from '@/components/theme-toggle'
@@ -96,7 +95,7 @@ function Content({ children }: { children: React.ReactNode }) {
               <NavGroupButton />
             </li>
             <li>
-              <NewsButton />
+              <NavNewsButton />
             </li>
             <li>
               <LocaleSwitcher />

@@ -42,7 +42,10 @@ export function EmailTemplate({
         <Container style={container}>
           <Section style={coverSection}>
             <Section style={imageSection}>
-              <Img src="https://liveonsplit.com/_next/image?url=%2Flogo-with-text.png&w=128&q=75" alt="SPLiT's Logo" />
+              <Img
+                src="https://liveonsplit.com/_next/image?url=%2Flogo-with-text.png&w=128&q=75"
+                alt="SPLiT's Logo"
+              />
             </Section>
             <Section style={upperSection}>
               <Heading style={h1}>{emailTitle}</Heading>

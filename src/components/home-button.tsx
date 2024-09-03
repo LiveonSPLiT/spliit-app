@@ -1,6 +1,7 @@
 'use client'
 
 import { SignInButton } from '@/components/auth-buttons'
+import { NewsButton } from '@/components/news-button'
 import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
@@ -83,4 +84,14 @@ export function NavGroupButton() {
       <Link href="/groups">{t('Header.groups')}</Link>
     </Button>
   )
+}
+
+export function NavNewsButton() {
+  const { status } = useSession()
+
+  if (status !== 'authenticated') {
+    return <NewsButton />
+  }
+
+  return null // Hide news button if the user is authenticated
 }
