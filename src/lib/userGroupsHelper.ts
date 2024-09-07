@@ -137,3 +137,11 @@ export async function getEmailsByGroupId(
     name: group.user.name,
   }))
 }
+
+
+export async function getGroup(groupId: string) {
+  return prisma.group.findUnique({
+    where: { id: groupId },
+    include: { participants: true },
+  })
+}

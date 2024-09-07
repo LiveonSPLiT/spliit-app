@@ -174,7 +174,6 @@ const validityText = {
 }
 
 const verificationSection = {
-  display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 }

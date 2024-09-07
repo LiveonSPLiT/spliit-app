@@ -12,6 +12,7 @@ const envSchema = z
     GOOGLE_CLIENT_ID: z.string().optional(),
     GOOGLE_CLIENT_SECRET: z.string().optional(),
     AUTH_SECRET: z.string().optional(),
+    NODEMAILER_URL: z.string().url(),
     FEEDBACK_EMAIL_FROM: z.string().email().optional(),
     FEEDBACK_EMAIL_TO: z.string().email().optional(),
     RESEND_API_KEY: z.string().optional(),
