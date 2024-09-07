@@ -78,7 +78,7 @@ export async function sendActivityEmails(
       emailTitle = "New Expense Created";
       emailButtonHeaderText = "View Expense on SPLiT";
       emailButtonLabel = "See Expense Details";
-      emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}`;
+      emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`;
       emailButtonFooterText = "Keep track of your group expenses.";
   } else if (activityType === ActivityType.UPDATE_EXPENSE) {
     subject = `${participantName} updated the expense: ${expenseName}`;
@@ -86,7 +86,7 @@ export async function sendActivityEmails(
       emailTitle = "Expense Updated";
       emailButtonHeaderText = "View Updated Expense on SPLiT";
       emailButtonLabel = "Check Changes";
-      emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}`;
+      emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`;
       emailButtonFooterText = "Keep your group finances organized.";
   } else if (activityType === ActivityType.DELETE_EXPENSE) {
     subject = `${participantName} deleted the expense: ${expenseName}`;
