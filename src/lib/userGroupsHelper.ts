@@ -138,7 +138,6 @@ export async function getEmailsByGroupId(
   }))
 }
 
-
 export async function getGroup(groupId: string) {
   return prisma.group.findUnique({
     where: { id: groupId },

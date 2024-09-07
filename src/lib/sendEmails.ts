@@ -1,9 +1,9 @@
 'use server'
 import { env } from '@/lib/env'
 import { getEmailsByGroupId, getGroup } from '@/lib/userGroupsHelper'
+import { ActivityType } from '@prisma/client'
 import { headers } from 'next/headers'
 import parser from 'ua-parser-js'
-import { ActivityType } from '@prisma/client'
 
 function getClientDeviceInfo() {
   const headerList = headers()
@@ -27,17 +27,18 @@ export async function sendActivityEmails(
   participantId?: string,
   expenseId?: string,
   expenseName?: string,
-){
+) {
   const users = await getEmailsByGroupId(groupId)
   const group = await getGroup(groupId)
   const groupName = group?.name
   const participant =
-                participantId !== null && group !== null
-                  ? group.participants.find(
-                      (p) => p.id === participantId,
-                    )
-                  : undefined
-  const participantName = participant?.name || activityType === 'CREATE_GROUP' ? group?.participants[0].name : 'Unknown'
+    participantId !== null && group !== null
+      ? group.participants.find((p) => p.id === participantId)
+      : undefined
+  const participantName =
+    participant?.name || activityType === 'CREATE_GROUP'
+      ? group?.participants[0].name
+      : 'Unknown'
   const publicUrl = env.NEXT_PUBLIC_BASE_URL || 'https://liveonsplit.com'
 
   if (users.length === 0) {
@@ -46,58 +47,56 @@ export async function sendActivityEmails(
   }
 
   // Initialize variables for subject and email message
-  let subject = '';
-  let message = '';
-  let emailButtonHeaderText = '';
-  let emailButtonLabel = '';
-  let emailButtonLink = '';
-  let emailTitle = '';
-  let emailButtonFooterText = '';
-
+  let subject = ''
+  let message = ''
+  let emailButtonHeaderText = ''
+  let emailButtonLabel = ''
+  let emailButtonLink = ''
+  let emailTitle = ''
+  let emailButtonFooterText = ''
 
   // Set subject and message based on the activity type
   if (activityType === ActivityType.UPDATE_GROUP) {
-    subject = `${participantName} updated the group: ${groupName}`;
-      message = `${participantName} has made changes to the group "${groupName}". Visit the group for more details.`;
-      emailTitle = "Group Update Notification";
-      emailButtonHeaderText = "View Group on SPLiT";
-      emailButtonLabel = "Go to Group";
-      emailButtonLink = `${publicUrl}/groups/${groupId}`;
-      emailButtonFooterText = "Thank you for being part of the group.";
-  }  else if (activityType === "CREATE_GROUP") {
-    subject = `${participantName} created a new group: ${groupName}`;
-      message = `${participantName} has created a new group "${groupName}". Click the button below to join or view the group.`;
-      emailTitle = "New Group Created";
-      emailButtonHeaderText = "Join Group on SPLiT";
-      emailButtonLabel = "Go to Group";
-      emailButtonLink = `${publicUrl}/groups/${groupId}`;
-      emailButtonFooterText = "Be part of the new group.";
-  }  else if (activityType === ActivityType.CREATE_EXPENSE) {
-    subject = `${participantName} created a new expense: ${expenseName}`;
-      message = `${participantName} has added a new expense "${expenseName}" in the group "${groupName}". Click the button below to view the expense details.`;
-      emailTitle = "New Expense Created";
-      emailButtonHeaderText = "View Expense on SPLiT";
-      emailButtonLabel = "See Expense Details";
-      emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`;
-      emailButtonFooterText = "Keep track of your group expenses.";
+    subject = `${participantName} updated the group: ${groupName}`
+    message = `${participantName} has made changes to the group "${groupName}". Visit the group for more details.`
+    emailTitle = 'Group Update Notification'
+    emailButtonHeaderText = 'View Group on SPLiT'
+    emailButtonLabel = 'Go to Group'
+    emailButtonLink = `${publicUrl}/groups/${groupId}`
+    emailButtonFooterText = 'Thank you for being part of the group.'
+  } else if (activityType === 'CREATE_GROUP') {
+    subject = `${participantName} created a new group: ${groupName}`
+    message = `${participantName} has created a new group "${groupName}". Click the button below to join or view the group.`
+    emailTitle = 'New Group Created'
+    emailButtonHeaderText = 'Join Group on SPLiT'
+    emailButtonLabel = 'Go to Group'
+    emailButtonLink = `${publicUrl}/groups/${groupId}`
+    emailButtonFooterText = 'Be part of the new group.'
+  } else if (activityType === ActivityType.CREATE_EXPENSE) {
+    subject = `${participantName} created a new expense: ${expenseName}`
+    message = `${participantName} has added a new expense "${expenseName}" in the group "${groupName}". Click the button below to view the expense details.`
+    emailTitle = 'New Expense Created'
+    emailButtonHeaderText = 'View Expense on SPLiT'
+    emailButtonLabel = 'See Expense Details'
+    emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`
+    emailButtonFooterText = 'Keep track of your group expenses.'
   } else if (activityType === ActivityType.UPDATE_EXPENSE) {
-    subject = `${participantName} updated the expense: ${expenseName}`;
-      message = `${participantName} has made changes to the expense "${expenseName}" in the group "${groupName}". Click the button below to see the updates.`;
-      emailTitle = "Expense Updated";
-      emailButtonHeaderText = "View Updated Expense on SPLiT";
-      emailButtonLabel = "Check Changes";
-      emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`;
-      emailButtonFooterText = "Keep your group finances organized.";
+    subject = `${participantName} updated the expense: ${expenseName}`
+    message = `${participantName} has made changes to the expense "${expenseName}" in the group "${groupName}". Click the button below to see the updates.`
+    emailTitle = 'Expense Updated'
+    emailButtonHeaderText = 'View Updated Expense on SPLiT'
+    emailButtonLabel = 'Check Changes'
+    emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`
+    emailButtonFooterText = 'Keep your group finances organized.'
   } else if (activityType === ActivityType.DELETE_EXPENSE) {
-    subject = `${participantName} deleted the expense: ${expenseName}`;
-      message = `${participantName} has deleted the expense "${expenseName}" from the group "${groupName}".`;
-      emailTitle = "Expense Deleted";
-      emailButtonHeaderText = "View Group on SPLiT";
-      emailButtonLabel = "Go to Group";
-      emailButtonLink = `${publicUrl}/groups/${groupId}`;
-      emailButtonFooterText = "Stay updated with group activities.";
+    subject = `${participantName} deleted the expense: ${expenseName}`
+    message = `${participantName} has deleted the expense "${expenseName}" from the group "${groupName}".`
+    emailTitle = 'Expense Deleted'
+    emailButtonHeaderText = 'View Group on SPLiT'
+    emailButtonLabel = 'Go to Group'
+    emailButtonLink = `${publicUrl}/groups/${groupId}`
+    emailButtonFooterText = 'Stay updated with group activities.'
   }
-
 
   for (const { email, name } of users) {
     let response = await fetch(`${env.NODEMAILER_URL}`, {

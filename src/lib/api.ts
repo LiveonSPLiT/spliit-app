@@ -7,8 +7,8 @@ import {
   RecurringTransactions,
 } from '@prisma/client'
 import { nanoid } from 'nanoid'
-import { getEpochTimeInSeconds } from './utils'
 import { sendActivityEmails } from './sendEmails'
+import { getEpochTimeInSeconds } from './utils'
 
 const secondsInADay = 86400
 function sleep(duration: number) {
@@ -663,7 +663,13 @@ export async function logActivity(
   activityType: ActivityType,
   extra?: { participantId?: string; expenseId?: string; data?: string },
 ) {
-  sendActivityEmails(groupId, activityType, extra?.participantId, extra?.expenseId, extra?.data)
+  sendActivityEmails(
+    groupId,
+    activityType,
+    extra?.participantId,
+    extra?.expenseId,
+    extra?.data,
+  )
   return prisma.activity.create({
     data: {
       id: randomId(),
