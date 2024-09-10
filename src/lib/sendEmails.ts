@@ -35,10 +35,7 @@ export async function sendActivityEmails(
     participantId !== null && group !== null
       ? group.participants.find((p) => p.id === participantId)
       : undefined
-  const participantName =
-    participant?.name || activityType === 'CREATE_GROUP'
-      ? group?.participants[0].name
-      : 'Unknown'
+  const participantName = participant?.name || 'Unknown'
   const publicUrl = env.NEXT_PUBLIC_BASE_URL || 'https://liveonsplit.com'
 
   if (users.length === 0) {
