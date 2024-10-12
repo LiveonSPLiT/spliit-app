@@ -1,6 +1,6 @@
 {
     "Homepage": {
-      "title": "<strong>मित्र आणि कुटुंब</strong> सह <strong>खर्च शेअर करा</strong>",
+      "title": "<strong>मित्र आणि कुटुंब</strong> सह <strong>खर्च </strong> शेअर करा",
       "description": "तुमच्या नवीन <strong>SPLiT</strong> उदाहरणात स्वागत आहे!",
       "button": {
         "groups": "समूहांमध्ये जा",
@@ -338,9 +338,16 @@
       "title": "सेटिंग्ज"
     },
     "Locale": {
-      "en-US": "इंग्रजी",
-      "hi-IN": "हिंदी"
-    },
+    "en-US": "English",
+    "hi-IN": "हिन्दी",
+    "bn-BD": "বাংলা",
+    "mr-IN": "मराठी",
+    "te-IN": "తెలుగు",
+    "ta-IN": "தமிழ்",
+    "gu-IN": "ગુજરાતી",
+    "kn-IN": "ಕನ್ನಡ",
+    "pa-IN": "ਪੰਜਾਬੀ"
+  },
     "Share": {
       "title": "शेअर करा",
       "description": "इतर सदस्यांना गट पहायला आणि खर्च जोडायला, त्यांच्यासोबत गटाचा URL शेअर करा.",
