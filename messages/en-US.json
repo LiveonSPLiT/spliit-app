@@ -1,4 +1,13 @@
 {
+  "Homepage": {
+    "title": "Share <strong>Expenses</strong> with <strong>Friends & Family</strong>",
+    "description": "Welcome to your new <strong>SPLiT</strong> instance !",
+    "button": {
+      "groups": "Go to groups",
+      "google": "Google",
+      "apple": "Apple"
+    }
+  },
   "Header": {
     "groups": "Groups"
   },
@@ -330,7 +339,14 @@
   },
   "Locale": {
     "en-US": "English",
-    "hi-IN": "Hindi"
+    "hi-IN": "हिन्दी",
+    "bn-BD": "বাংলা",
+    "mr-IN": "मराठी",
+    "te-IN": "తెలుగు",
+    "ta-IN": "தமிழ்",
+    "gu-IN": "ગુજરાતી",
+    "kn-IN": "ಕನ್ನಡ",
+    "pa-IN": "ਪੰਜਾਬੀ"
   },
   "Share": {
     "title": "Share",
