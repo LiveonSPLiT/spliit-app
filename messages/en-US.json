@@ -1,11 +1,17 @@
 {
   "Homepage": {
     "title": "Share <strong>Expenses</strong> with <strong>Friends & Family</strong>",
-    "description": "Welcome to your new <strong>SPLiT</strong> instance !",
+    "description": "Simple, ad-free, and <strong>always free</strong> —just two clicks!",
     "button": {
       "groups": "Go to groups",
+      "logout": "Logout",
       "google": "Google",
       "apple": "Apple"
+    },
+    "stateCounter": {
+      "already": "Already",
+      "groups": "groups and",
+      "expenses": "expenses created."
     }
   },
   "Header": {

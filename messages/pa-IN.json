@@ -1,12 +1,18 @@
 {
     "Homepage": {
       "title": "ਸ਼ੇਅਰ ਕਰੋ <strong>ਖਰਚੇ</strong> ਨਾਲ <strong>ਦੋਸਤ ਅਤੇ ਪਰਿਵਾਰ</strong>",
-      "description": "ਤੁਹਾਡੇ ਨਵੇਂ ਵਿੱਚ ਸੁਆਗਤ ਹੈ <strong>ਵੰਡ</strong> ਉਦਾਹਰਣ!",
+      "description": "ਸਧਾਰਨ, ਵਿਗਿਆਪਨ-ਮੁਕਤ, ਅਤੇ <strong>ਹਮੇਸ਼ਾਂ ਮੁਫ਼ਤ</strong> —ਸਿਰਫ਼ ਦੋ ਕਲਿੱਕ!",
       "button": {
         "groups": "ਗਰੁੱਪਾਂ ਵਿੱਚ ਜਾਓ",
+        "logout": "ਲਾੱਗ ਆਉਟ",
         "google": "ਗੂਗਲ",
         "apple": "ਐਪਲ"
-      }
+      },
+      "stateCounter": {
+    "already": "ਪਹਿਲਾਂ ਹੀ",
+    "groups": "ਸਮੂਹ ਅਤੇ",
+    "expenses": "ਖਰਚੇ ਬਣਾਏ ਗਏ।"
+  }
     },
     "Header": {
       "groups": "ਸਮੂਹ"

@@ -37,10 +37,9 @@ export default function HomePage() {
             })}
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            Welcome to <strong>SPLiT</strong> App! <br />
-            <span style={{ display: 'block', textAlign: 'center' }}>
-              Friends · Groups <br />
-            </span>
+          {t.rich('Homepage.description', {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
           <HomeButton />
           <p className="mt-2 max-w-[42rem] leading-normal text-muted-foreground text-xl sm:text-2xl sm:leading-8">

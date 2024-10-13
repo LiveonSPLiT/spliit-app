@@ -1,12 +1,18 @@
 {
     "Homepage": {
       "title": "<strong>మిత్రులు మరియు కుటుంబం</strong> తో <strong>ఖర్చులను పంచుకోండి</strong>",
-      "description": "మీ కొత్త <strong>SPLiT</strong> ఇన్స్టెన్స్ కు స్వాగతం!",
+      "description": "సులభం, ప్రకటనల లేని, మరియు <strong>ఎల్లప్పుడూ ఉచితం</strong> —కేవలం రెండు క్లిక్స్!",
       "button": {
         "groups": "సమూహాలకు వెళ్ళండి",
+        "logout": "లాగ్ అవుట్",
         "google": "గూగుల్",
         "apple": "ఆపిల్"
-      }
+      },
+      "stateCounter": {
+    "already": "ఇప్పటికే",
+    "groups": "సమూహాలు మరియు",
+    "expenses": "ఖర్చులు సృష్టించబడ్డాయి."
+  }
     },
     "Header": {
       "groups": "సమూహాలు"

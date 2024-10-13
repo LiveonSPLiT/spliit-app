@@ -1,12 +1,18 @@
 {
     "Homepage": {
       "title": "શેર કરો <strong>ખર્ચ</strong> સાથે <strong>મિત્રો અને પરિવાર</strong>",
-      "description": "તમારા નવામાં સ્વાગત છે <strong>સ્પ્લિટ</strong> દાખલો",
+      "description": "સાદુ, જાહેરાત-મુક્ત, અને <strong>સદાય મફત</strong> —માત્ર બે ક્લિક્સ!",
       "button": {
         "groups": "જૂથો પર જાઓ",
+        "logout": "લોગઆઉટ",
         "google": "Google",
         "apple": "એપલ"
-      }
+      },
+      "stateCounter": {
+    "already": "પહેલેથી જ",
+    "groups": "સમૂહો અને",
+    "expenses": "ખર્ચો બનાવાયા છે."
+  }
     },
     "Header": {
       "groups": "જૂથો"

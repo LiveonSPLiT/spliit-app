@@ -1,12 +1,18 @@
 {
   "Homepage": {
     "title": "मित्रों और परिवार के साथ <strong>खर्च साझा करें</strong>",
-    "description": "आपके नए <strong>SPLiT</strong> उदाहरण में आपका स्वागत है!",
+    "description": "सरल, बिना विज्ञापन के, और <strong>हमेशा मुफ्त</strong> —बस दो क्लिक!",
     "button": {
       "groups": "समूहों पर जाएं",
+      "logout": "लॉगआउट",
       "google": "गूगल",
       "apple": "एप्पल"
-    }
+    },
+    "stateCounter": {
+    "already": "पहले से",
+    "groups": "समूह और",
+    "expenses": "खर्च बनाए गए।"
+  }
   },  
   "Header": {
       "groups": "समूह"

@@ -1,12 +1,18 @@
 {
     "Homepage": {
       "title": "<strong>বন্ধু ও পরিবার</strong> এর সাথে <strong>ব্যয় ভাগ করুন</strong>",
-      "description": "আপনার নতুন <strong>SPLiT</strong> ইনস্ট্যান্সে স্বাগতম!",
+      "description": "সহজ, বিজ্ঞাপন-মুক্ত, এবং <strong>সর্বদা বিনামূল্যে</strong> —মাত্র দুটি ক্লিক!",
       "button": {
         "groups": "গ্রুপে যান",
+        "logout": "লগআউট",
         "google": "গুগল",
         "apple": "অ্যাপল"
-      }
+      },
+      "stateCounter": {
+    "already": "ইতিমধ্যে",
+    "groups": "দল এবং",
+    "expenses": "ব্যয় তৈরি হয়েছে।"
+  }
     },
     "Header": {
       "groups": "গ্রুপ"
