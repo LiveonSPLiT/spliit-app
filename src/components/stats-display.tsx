@@ -1,22 +1,24 @@
 'use client'
 
 import { Stats, getStatsAction } from '@/lib/stats-display-actions'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 export function StatsDisplay() {
   const stats = useStats()
+  const t = useTranslations('Homepage.stateCounter')
 
   return (
     <>
-      Already{' '}
+      {t('already')}{' '}
       <strong>
         {stats ? <AnimatedCounter count={stats?.groupsCount + 230} /> : '…'}
       </strong>{' '}
-      groups and <br className="sm:hidden" />
+      {t('groups')} <br className="sm:hidden" />
       <strong>
         {stats ? <AnimatedCounter count={stats?.expensesCount + 3120} /> : '…'}
       </strong>{' '}
-      expenses created.
+      {t('expenses')}
     </>
   )
 }

@@ -1,4 +1,19 @@
 {
+  "Homepage": {
+    "title": "Share <strong>Expenses</strong> with <strong>Friends & Family</strong>",
+    "description": "Simple, ad-free, and <strong>always free</strong> —just two clicks!",
+    "button": {
+      "groups": "Go to groups",
+      "logout": "Logout",
+      "google": "Google",
+      "apple": "Apple"
+    },
+    "stateCounter": {
+      "already": "Already",
+      "groups": "groups and",
+      "expenses": "expenses created."
+    }
+  },
   "Header": {
     "groups": "Groups"
   },
@@ -175,7 +190,7 @@
     "recurringDaysField": {
       "label": "Recurring Days",
       "description": "Choose how often this expense should be repeated.",
-      "fields":{
+      "fields": {
         "Never": "Never",
         "Weekly": "Weekly",
         "Every14days": "Every 14 days",
@@ -330,7 +345,14 @@
   },
   "Locale": {
     "en-US": "English",
-    "hi-IN": "Hindi"
+    "hi-IN": "हिन्दी",
+    "bn-BD": "বাংলা",
+    "mr-IN": "मराठी",
+    "te-IN": "తెలుగు",
+    "ta-IN": "தமிழ்",
+    "gu-IN": "ગુજરાતી",
+    "kn-IN": "ಕನ್ನಡ",
+    "pa-IN": "ਪੰਜਾਬੀ"
   },
   "Share": {
     "title": "Share",
