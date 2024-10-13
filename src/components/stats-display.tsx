@@ -1,8 +1,8 @@
 'use client'
 
 import { Stats, getStatsAction } from '@/lib/stats-display-actions'
-import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
 
 export function StatsDisplay() {
   const stats = useStats()

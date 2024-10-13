@@ -22,8 +22,8 @@ import {
   ShieldX,
   Users,
 } from 'lucide-react'
-import { ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
+import { ReactNode } from 'react'
 
 export default function HomePage() {
   const t = useTranslations()
@@ -32,12 +32,12 @@ export default function HomePage() {
       <section className="py-16 md:py-24 lg:py-32">
         <div className="container flex max-w-screen-md flex-col items-center gap-4 text-center">
           <h1 className="!leading-none font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl landing-header py-2 text-balance">
-          {t.rich('Homepage.title', {
+            {t.rich('Homepage.title', {
               strong: (chunks) => <strong>{chunks}</strong>,
             })}
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          {t.rich('Homepage.description', {
+            {t.rich('Homepage.description', {
               strong: (chunks) => <strong>{chunks}</strong>,
             })}
           </p>

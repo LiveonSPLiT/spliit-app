@@ -21,11 +21,11 @@ import {
 } from '@/components/ui/popover'
 import { useLocalStorageState, useMediaQuery } from '@/lib/hooks'
 import {
-  Linkedin,
   Globe,
-  Mail,
+  Linkedin,
   LogIn,
   LucideIcon,
+  Mail,
   Newspaper,
   Receipt,
   Sparkles,
@@ -47,43 +47,37 @@ const news: News[] = [
   {
     id: 'two-click-signin',
     title: <>SPLiT now supports two-click sign-in!</>,
-    summary: (
-      <>
-        Seamless sign-in experience across devices.
-      </>
-    ),
+    summary: <>Seamless sign-in experience across devices.</>,
     icon: LogIn,
     content: (
       <>
         <p>
-          SPLiT now offers two-click sign-in, making it easier than ever to access 
-          your account and sync data across all your devices.
+          SPLiT now offers two-click sign-in, making it easier than ever to
+          access your account and sync data across all your devices.
         </p>
         <p>
-          With this new feature, you can ensure that your group activities, expenses, 
-          and settings are always up to date, no matter where you sign in from.
+          With this new feature, you can ensure that your group activities,
+          expenses, and settings are always up to date, no matter where you sign
+          in from.
         </p>
       </>
     ),
-  },  
+  },
   {
     id: 'email-alerts',
     title: <>SPLiT now supports email alerts!</>,
-    summary: (
-      <>
-        Stay informed with real-time updates.
-      </>
-    ),
+    summary: <>Stay informed with real-time updates.</>,
     icon: Mail,
     content: (
       <>
         <p>
-          SPLiT now allows you to receive email alerts, keeping you updated about
-          your group activities and expenses as they happen.
+          SPLiT now allows you to receive email alerts, keeping you updated
+          about your group activities and expenses as they happen.
         </p>
         <p>
-          Never miss important updates—whether it is a new expense, a payment, or
-          group changes, you will always be in the loop with SPLiT email alerts.
+          Never miss important updates—whether it is a new expense, a payment,
+          or group changes, you will always be in the loop with SPLiT email
+          alerts.
         </p>
       </>
     ),
@@ -91,11 +85,7 @@ const news: News[] = [
   {
     id: 'languages',
     title: <>SPLiT is now available in other Indian languages!</>,
-    summary: (
-      <>
-        Hindi, Bengali, Gujarati, and more.!
-      </>
-    ),
+    summary: <>Hindi, Bengali, Gujarati, and more.!</>,
     icon: Globe,
     content: (
       <>
