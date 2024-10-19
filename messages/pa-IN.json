@@ -232,27 +232,25 @@
       "description": "ਇਸ ਖਰਚੇ ਲਈ ਪਿਛਲੀ ਗਤੀਵਿਧੀ।",
       "expenseNoActivity": "ਇਸ ਖਰਚੇ ਲਈ ਅਜੇ ਤੱਕ ਕੋਈ ਸਰਗਰਮੀ ਨਹੀਂ ਹੈ।"
     },
-    "expenseCommentField": {
-      "label": "ਟਿੱਪਣੀਆਂ",
-      "noCommentText": "ਇਸ ਖਰਚੇ ਵਿੱਚ ਅਜੇ ਕੋਈ ਟਿੱਪਣੀ ਨਹੀਂ ਹੈ।",
-      "by": "ਦੁਆਰਾ",
-      "commentForm": {
-        "editComment": "ਟਿੱਪਣੀ ਦਾ ਸੰਪਾਦਨ ਕਰੋ",
-        "addComment": "ਟਿੱਪਣੀ ਸ਼ਾਮਲ ਕਰੋ",
-        "formPlaceholder": "ਆਪਣੀ ਟਿੱਪਣੀ ਦਰਜ ਕਰੋ",
-        "loadingContent": {
-          "adding": "ਜੋੜ ਰਿਹਾ ਹੈ",
-          "saving": "ਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
-        },
-        "addCommentButton": "ਟਿੱਪਣੀ ਸ਼ਾਮਲ ਕਰੋ",
-        "saveCommentButton": "ਟਿੱਪਣੀ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰੋ"
-      }
-    },
     "attachDocuments": "ਦਸਤਾਵੇਜ਼ ਨੱਥੀ ਕਰੋ",
     "create": "ਬਣਾਓ",
     "creating": "ਬਣਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...",
     "save": "ਸੇਵ ਕਰੋ",
     "saving": "ਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+    "cancel": "ਰੱਦ ਕਰੋ"
+  },
+  "ExpenseComments": {
+    "title": "ਟਿੱਪਣੀਆਂ",
+    "noComments": "ਇਸ ਖਰਚ ਵਿੱਚ ਅਜੇ ਤੱਕ ਕੋਈ ਟਿੱਪਣੀ ਨਹੀਂ ਹੈ।",
+    "by": "ਦੁਆਰਾ",
+    "noActiveParticipant": "ਟਿੱਪਣੀਆਂ ਜੋੜਣ ਅਤੇ ਸੋਧਣ ਲਈ ਸਖਤ ਹਿੱਸੇਦਾਰ ਚੁਣੋ",
+    "addComment": "ਟਿੱਪਣੀ ਜੋੜੋ",
+    "editComment": "ਟਿੱਪਣੀ ਸੋਧੋ",
+    "commentPlaceholder": "ਆਪਣੀ ਟਿੱਪਣੀ ਦਰਜ ਕਰੋ",
+    "addCaption": "ਟਿੱਪਣੀ ਜੋੜੋ",
+    "addingCaption": "ਜੋੜਿਆ ਜਾ ਰਿਹਾ ਹੈ",
+    "saveCaption": "ਟਿੱਪਣੀ ਸੇਵ ਕਰੋ",
+    "savingCaption": "ਸੇਵ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ",
     "cancel": "ਰੱਦ ਕਰੋ"
   },
   "ExpenseDocumentsInput": {

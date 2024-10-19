@@ -232,22 +232,6 @@
       "description": "इस खर्च के लिए पिछली गतिविधि।",
       "expenseNoActivity": "इस खर्च के लिए अभी तक कोई गतिविधि नहीं है।"
     },
-    "expenseCommentField": {
-      "label": "टिप्पणियाँ",
-      "noCommentText": "इस खर्च में अभी तक कोई टिप्पणी नहीं है।",
-      "by": "द्वारा",
-      "commentForm": {
-        "editComment": "टिप्पणी संपादित करें",
-        "addComment": "टिप्पणी जोड़ें",
-        "formPlaceholder": "अपनी टिप्पणी दर्ज करें",
-        "loadingContent": {
-          "adding": "जोड़ना",
-          "saving": "सहेजना…"
-        },
-        "addCommentButton": "टिप्पणी जोड़ें",
-        "saveCommentButton": "टिप्पणी सहेजें"
-      }
-    },
     "attachDocuments": "दस्तावेज़ संलग्न करें",
     "create": "बनाएं",
     "creating": "बनाया जा रहा है…",

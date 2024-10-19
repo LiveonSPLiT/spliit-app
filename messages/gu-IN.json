@@ -232,27 +232,25 @@
       "description": "આ ખર્ચ માટે અગાઉની પ્રવૃત્તિ.",
       "expenseNoActivity": "આ ખર્ચ માટે હજુ સુધી કોઈ પ્રવૃત્તિ થઈ નથી."
     },
-    "expenseCommentField": {
-      "label": "ટિપ્પણીઓ",
-      "noCommentText": "આ ખર્ચમાં હજુ સુધી કોઈ ટિપ્પણીઓ નથી.",
-      "by": "દ્વારા",
-      "commentForm": {
-        "editComment": "ટિપ્પણી સંપાદિત કરો",
-        "addComment": "ટિપ્પણી ઉમેરો",
-        "formPlaceholder": "તમારી ટિપ્પણી દાખલ કરો",
-        "loadingContent": {
-          "adding": "ઉમેરી રહ્યા છે",
-          "saving": "સાચવી રહ્યું છે..."
-        },
-        "addCommentButton": "ટિપ્પણી ઉમેરો",
-        "saveCommentButton": "ટિપ્પણી સાચવો"
-      }
-    },
     "attachDocuments": "દસ્તાવેજો જોડો",
     "create": "બનાવો",
     "creating": "બનાવી રહ્યું છે...",
     "save": "સાચવો",
     "saving": "સાચવી રહ્યું છે...",
+    "cancel": "રદ કરો"
+  },
+  "ExpenseComments": {
+    "title": "ટિપ્પણીઓ",
+    "noComments": "આ ખર્ચમાં હજુ સુધી કોઈ ટિપ્પણીઓ નથી.",
+    "by": "દ્વારા",
+    "noActiveParticipant": "ટિપ્પણીઓ ઉમેરવા અને ફેરફાર કરવા માટે એક સક્રિય ભાગીદાર પસંદ કરો",
+    "addComment": "ટિપ્પણી ઉમેરો",
+    "editComment": "ટિપ્પણી સંપાદિત કરો",
+    "commentPlaceholder": "તમારી ટિપ્પણી દાખલ કરો",
+    "addCaption": "ટિપ્પણી ઉમેરો",
+    "addingCaption": "ઉમેરાઈ રહ્યું છે",
+    "saveCaption": "ટિપ્પણી સાચવો",
+    "savingCaption": "સાચવી રહ્યું છે",
     "cancel": "રદ કરો"
   },
   "ExpenseDocumentsInput": {

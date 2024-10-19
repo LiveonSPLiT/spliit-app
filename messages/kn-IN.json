@@ -232,27 +232,25 @@
       "description": "ಈ ವೆಚ್ಚಕ್ಕಾಗಿ ಹಿಂದಿನ ಚಟುವಟಿಕೆ.",
       "expenseNoActivity": "ಈ ವೆಚ್ಚಕ್ಕೆ ಇನ್ನೂ ಯಾವುದೇ ಚಟುವಟಿಕೆ ಇಲ್ಲ."
     },
-    "expenseCommentField": {
-      "label": "ಕಾಮೆಂಟ್‌ಗಳು",
-      "noCommentText": "ಈ ವೆಚ್ಚವು ಇನ್ನೂ ಯಾವುದೇ ಕಾಮೆಂಟ್‌ಗಳನ್ನು ಹೊಂದಿಲ್ಲ.",
-      "by": "ಮೂಲಕ",
-      "commentForm": {
-        "editComment": "ಕಾಮೆಂಟ್ ಸಂಪಾದಿಸಿ",
-        "addComment": "ಕಾಮೆಂಟ್ ಸೇರಿಸಿ",
-        "formPlaceholder": "ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಅನ್ನು ನಮೂದಿಸಿ",
-        "loadingContent": {
-          "adding": "ಸೇರಿಸಲಾಗುತ್ತಿದೆ",
-          "saving": "ಉಳಿಸಲಾಗುತ್ತಿದೆ..."
-        },
-        "addCommentButton": "ಕಾಮೆಂಟ್ ಸೇರಿಸಿ",
-        "saveCommentButton": "ಕಾಮೆಂಟ್ ಉಳಿಸಿ"
-      }
-    },
     "attachDocuments": "ದಾಖಲೆಗಳನ್ನು ಲಗತ್ತಿಸಿ",
     "create": "ರಚಿಸಿ",
     "creating": "ರಚಿಸಲಾಗುತ್ತಿದೆ...",
     "save": "ಉಳಿಸಿ",
     "saving": "ಉಳಿಸಲಾಗುತ್ತಿದೆ...",
+    "cancel": "ರದ್ದುಮಾಡಿ"
+  },
+  "ExpenseComments": {
+    "title": "ಕಾಮೆಂಟ್‌ಗಳು",
+    "noComments": "ಈ ವೆಚ್ಚದಲ್ಲಿ ಇನ್ನೂ ಯಾವುದೇ ಕಾಮೆಂಟ್‌ಗಳು ಇಲ್ಲ.",
+    "by": "ಮೂಲಕ",
+    "noActiveParticipant": "ಕಾಮೆಂಟ್‌ಗಳನ್ನು ಸೇರಿಸಲು ಮತ್ತು ಸಂಪಾದಿಸಲು ಸಕ್ರಿಯ ಭಾಗವಹಿಸುವವರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ",
+    "addComment": "ಕಾಮೆಂಟ್ ಸೇರಿಸಿ",
+    "editComment": "ಕಾಮೆಂಟ್ ಸಂಪಾದಿಸಿ",
+    "commentPlaceholder": "ನಿಮ್ಮ ಕಾಮೆಂಟ್ ನಮೂದಿಸಿ",
+    "addCaption": "ಕಾಮೆಂಟ್ ಸೇರಿಸಿ",
+    "addingCaption": "ಸೇರಿಸಲಾಗುತ್ತಿದೆ",
+    "saveCaption": "ಕಾಮೆಂಟ್‌ ಉಳಿಸಿ",
+    "savingCaption": "ಉಳಿಸಲಾಗುತ್ತಿದೆ",
     "cancel": "ರದ್ದುಮಾಡಿ"
   },
   "ExpenseDocumentsInput": {

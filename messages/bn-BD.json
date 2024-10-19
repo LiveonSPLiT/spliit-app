@@ -232,27 +232,25 @@
       "description": "এই ব্যয়ের জন্য পূর্ববর্তী কার্যকলাপ।",
       "expenseNoActivity": "এই ব্যয়ের জন্য এখনও কোন কার্যকলাপ নেই।"
     },
-    "expenseCommentField": {
-      "label": "মন্তব্য",
-      "noCommentText": "এই ব্যয়ে এখনও কোন মন্তব্য নেই।",
-      "by": "দ্বারা",
-      "commentForm": {
-        "editComment": "মন্তব্য সম্পাদনা করুন",
-        "addComment": "মন্তব্য যোগ করুন",
-        "formPlaceholder": "আপনার মন্তব্য লিখুন",
-        "loadingContent": {
-          "adding": "যোগ করা হচ্ছে",
-          "saving": "সংরক্ষণ করা হচ্ছে…"
-        },
-        "addCommentButton": "মন্তব্য যোগ করুন",
-        "saveCommentButton": "মন্তব্য সংরক্ষণ করুন"
-      }
-    },
     "attachDocuments": "নথি সংযুক্ত করুন",
     "create": "তৈরি করুন",
     "creating": "তৈরি করা হচ্ছে…",
     "save": "সংরক্ষণ",
     "saving": "সংরক্ষণ করা হচ্ছে…",
+    "cancel": "বাতিল করুন"
+  },
+  "ExpenseComments": {
+    "title": "মন্তব্য",
+    "noComments": "এই ব্যয়ে এখনো কোনো মন্তব্য নেই।",
+    "by": "দ্বারা",
+    "noActiveParticipant": "মন্তব্য যোগ ও সম্পাদনার জন্য একটি সক্রিয় অংশগ্রহণকারী নির্বাচন করুন",
+    "addComment": "মন্তব্য যোগ করুন",
+    "editComment": "মন্তব্য সম্পাদনা করুন",
+    "commentPlaceholder": "আপনার মন্তব্য লিখুন",
+    "addCaption": "মন্তব্য যোগ করুন",
+    "addingCaption": "যোগ করা হচ্ছে",
+    "saveCaption": "মন্তব্য সংরক্ষণ করুন",
+    "savingCaption": "সংরক্ষণ করা হচ্ছে",
     "cancel": "বাতিল করুন"
   },
   "ExpenseDocumentsInput": {

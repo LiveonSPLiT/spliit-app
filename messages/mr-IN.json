@@ -232,27 +232,25 @@
       "description": "या खर्चासाठी पूर्वीची क्रिया.",
       "expenseNoActivity": "या खर्चासाठी अजून कोणतीही क्रिया नाही."
     },
-    "expenseCommentField": {
-      "label": "टिप्पण्या",
-      "noCommentText": "या खर्चात अजून कोणत्याही टिप्पण्या नाहीत.",
-      "by": "द्वारे",
-      "commentForm": {
-        "editComment": "टिप्पणी संपादित करा",
-        "addComment": "टिप्पणी जोडा",
-        "formPlaceholder": "तुमची टिप्पणी प्रविष्ट करा",
-        "loadingContent": {
-          "adding": "जोडत आहे",
-          "saving": "जतन करत आहे…"
-        },
-        "addCommentButton": "टिप्पणी जोडा",
-        "saveCommentButton": "टिप्पणी जतन करा"
-      }
-    },
     "attachDocuments": "कागदपत्रे जोडा",
     "create": "तयार करा",
     "creating": "तयार करत आहे…",
     "save": "जतन करा",
     "saving": "जतन करत आहे…",
+    "cancel": "रद्द करा"
+  },
+  "ExpenseComments": {
+    "title": "टिप्पण्या",
+    "noComments": "या खर्चामध्ये अद्याप कोणतीही टिप्पणी नाही.",
+    "by": "द्वारे",
+    "noActiveParticipant": "टिप्पण्या जोडण्यासाठी आणि संपादित करण्यासाठी एक सक्रिय सहभागी निवडा",
+    "addComment": "टिप्पणी जोडा",
+    "editComment": "टिप्पणी संपादित करा",
+    "commentPlaceholder": "आपली टिप्पणी प्रविष्ट करा",
+    "addCaption": "टिप्पणी जोडा",
+    "addingCaption": "जोडत आहे",
+    "saveCaption": "टिप्पणी साठवा",
+    "savingCaption": "साठवत आहे",
     "cancel": "रद्द करा"
   },
   "ExpenseDocumentsInput": {
