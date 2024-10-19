@@ -34,7 +34,9 @@ export function CommentItem({ comment, group, onDelete, onClick }: Props) {
       </div>
       {comment.participantId == activeUserId ? (
         <Button
-          variant="ghost"
+          variant="default"
+          size="icon"
+          style={{marginLeft: '5px'}}
           onClick={() => {
             onClick(comment)
           }}
@@ -44,7 +46,7 @@ export function CommentItem({ comment, group, onDelete, onClick }: Props) {
       ) : (
         <></>
       )}
-      <Button variant="ghost" onClick={() => onDelete(comment.id)}>
+      <Button variant="destructive" style={{marginLeft: '5px'}} size="icon" onClick={() => onDelete(comment.id)}>
         <Trash2 className="w-4 h-4" />
       </Button>
     </div>

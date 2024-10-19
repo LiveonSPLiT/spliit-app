@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getComment, getComments, getExpense, getGroup } from '@/lib/api'
 import { CommentFormValues } from '@/lib/schemas'
-import { PenBoxIcon } from 'lucide-react'
+import { MessageSquarePlus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { CommentModal } from './comment-form'
@@ -34,10 +34,11 @@ export function CommentsList({
   return (
     <>
       <Card>
-        <CardHeader className="grid grid-cols-2">
-          <CardTitle className="col-span-1">{t('title')}</CardTitle>
+        <CardHeader className="flex flex-col space-y-1.5 p-6">
+        <div className="flex items-center justify-between">
+          <CardTitle>{t('title')}</CardTitle>
           <Button
-            className="col-span-1 align-right"
+            className="ml-auto"
             type="button"
             variant="ghost"
             onClick={() => {
@@ -45,8 +46,9 @@ export function CommentsList({
               setCommentModalOpen(true)
             }}
           >
-            <PenBoxIcon></PenBoxIcon>
+            <MessageSquarePlus></MessageSquarePlus>
           </Button>
+          </div>
         </CardHeader>
         <CardContent>
           {comments.length > 0 ? (
