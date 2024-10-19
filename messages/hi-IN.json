@@ -255,6 +255,20 @@
     "saving": "सहेजा जा रहा है…",
     "cancel": "रद्द करें"
   },
+  "ExpenseComments": {
+    "title": "टिप्पणियाँ",
+    "noComments": "इस खर्चे में अभी तक कोई टिप्पणी नहीं है।",
+    "by": "द्वारा",
+    "noActiveParticipant": "टिप्पणी जोड़ने और संपादित करने के लिए सक्रिय प्रतिभागी का चयन करें।",
+    "addComment": "टिप्पणी जोड़ें",
+    "editComment": "टिप्पणी संपादित करें",
+    "commentPlaceholder": "अपनी टिप्पणी दर्ज करें",
+    "addCaption": "टिप्पणी जोड़ें",
+    "addingCaption": "जोड़ रहा है",
+    "saveCaption": "टिप्पणी सहेजें",
+    "savingCaption": "सहेज रहा है",
+    "cancel": "रद्द करें"
+  },
   "ExpenseDocumentsInput": {
     "TooBigToast": {
       "title": "फाइल बहुत बड़ी है",
