@@ -1,0 +1,452 @@
+{
+  "Homepage": {
+    "title": "共有 <strong>経費</strong> と <strong>友達と家族</strong>",
+    "description": "シンプル、広告なし、 <strong>いつでも無料</strong> —たった 2 回クリックするだけです。",
+    "button": {
+      "groups": "グループに移動",
+      "logout": "ログアウト",
+      "google": "グーグル",
+      "apple": "りんご"
+    },
+    "stateCounter": {
+      "already": "すでに",
+      "groups": "グループと",
+      "expenses": "経費が発生しました。"
+    }
+  },
+  "Header": {
+    "groups": "グループ"
+  },
+  "Footer": {
+    "madeIn": "インドの❤️で作られました🇮🇳",
+    "builtBy": "によって建てられました <author>アシュトシュ・グプタ</author> そして <source>ラクシット・マカディア</source>",
+    "supportUs": "サポートしてください"
+  },
+  "Expenses": {
+    "title": "経費",
+    "description": "グループ用に作成した経費は次のとおりです。",
+    "create": "経費の作成",
+    "createFirst": "最初のものを作成する",
+    "noExpenses": "あなたのグループにはまだ経費が含まれていません。",
+    "exportJson": "JSON にエクスポート",
+    "searchPlaceholder": "経費を検索…",
+    "ActiveUserModal": {
+      "title": "あなたは誰ですか？",
+      "description": "情報の表示方法をカスタマイズできるよう、どの参加者であるかをお知らせください。",
+      "nobody": "誰も選びたくない",
+      "save": "変更を保存する",
+      "footer": "この設定は、後でグループ設定で変更できます。"
+    },
+    "Groups": {
+      "upcoming": "今後の予定",
+      "thisWeek": "今週",
+      "earlierThisMonth": "今月初め",
+      "lastMonth": "先月",
+      "earlierThisYear": "今年初めに",
+      "lastYera": "去年",
+      "older": "古い"
+    }
+  },
+  "ExpenseCard": {
+    "paidBy": "支払者 <strong>{支払者}</strong> のために <paidFor></paidFor>",
+    "receivedBy": "受信者 <strong>{支払者}</strong> のために <paidFor></paidFor>",
+    "yourBalance": "残高:"
+  },
+  "Groups": {
+    "myGroups": "私のグループ",
+    "create": "作成する",
+    "loadingRecent": "最近のグループを読み込んでいます…",
+    "NoRecent": {
+      "description": "最近どのグループも訪問していません。",
+      "create": "作成する",
+      "orAsk": "または、友人に既存のリンクへのリンクを送ってもらうように依頼してください。"
+    },
+    "recent": "最近のグループ",
+    "starred": "スター付きグループ",
+    "archived": "アーカイブされたグループ",
+    "archive": "アーカイブグループ",
+    "unarchive": "グループのアーカイブを解除する",
+    "removeRecent": "最近のグループから削除",
+    "RecentRemovedToast": {
+      "title": "グループが削除されました",
+      "description": "グループは最近のグループのリストから削除されました。",
+      "undoAlt": "グループの削除を元に戻す",
+      "undo": "元に戻す"
+    },
+    "AddByURL": {
+      "button": "URLで追加",
+      "title": "URLでグループを追加",
+      "description": "グループがあなたと共有されている場合は、その URL をここに貼り付けてリストに追加できます。",
+      "error": "指定された URL からグループを見つけることができません…"
+    },
+    "NotFound": {
+      "text": "このグループは存在しません。",
+      "link": "最近訪問したグループに移動する"
+    }
+  },
+  "GroupForm": {
+    "title": "グループ情報",
+    "NameField": {
+      "label": "グループ名",
+      "placeholder": "夏休み",
+      "description": "グループの名前を入力します。"
+    },
+    "InformationField": {
+      "label": "グループ情報",
+      "placeholder": "グループ参加者に関連する情報は何ですか?"
+    },
+    "CurrencyField": {
+      "label": "通貨記号",
+      "placeholder": "₹、$、£…",
+      "description": "金額を表示するために使用します。"
+    },
+    "Participants": {
+      "title": "参加者",
+      "description": "各参加者の名前を入力します。",
+      "protectedParticipant": "この参加者は経費の一部であるため、削除できません。",
+      "new": "新しい",
+      "add": "参加者を追加",
+      "John": "少し",
+      "Jane": "シブ",
+      "Jack": "ニンネ"
+    },
+    "Settings": {
+      "title": "ローカル設定",
+      "description": "これらの設定はデバイスごとに設定され、エクスペリエンスをカスタマイズするために使用されます。",
+      "ActiveUserField": {
+        "label": "アクティブユーザー",
+        "placeholder": "参加者を選択してください",
+        "none": "なし",
+        "description": "ユーザーは経費の支払いにデフォルトとして使用されます。"
+      },
+      "save": "保存",
+      "saving": "保存中…",
+      "create": "作成する",
+      "creating": "作成…",
+      "cancel": "キャンセル"
+    }
+  },
+  "ExpenseForm": {
+    "Income": {
+      "create": "収入を生み出す",
+      "edit": "収入を編集する",
+      "TitleField": {
+        "label": "収入タイトル",
+        "placeholder": "月曜日の夜のレストラン",
+        "description": "収入の説明を入力します。"
+      },
+      "DateField": {
+        "label": "収入日",
+        "description": "収入を受け取った日付を入力します。"
+      },
+      "categoryFieldDescription": "収入カテゴリーを選択します。",
+      "paidByField": {
+        "label": "受信者",
+        "description": "収入を受け取った参加者を選択します。"
+      },
+      "paidFor": {
+        "title": "受信した",
+        "description": "収入を受け取った人を選択します。"
+      },
+      "splitModeDescription": "収入の分割方法を選択します。",
+      "attachDescription": "領収書を確認して収入に添付します。"
+    },
+    "Expense": {
+      "create": "経費の作成",
+      "edit": "経費を編集する",
+      "TitleField": {
+        "label": "経費タイトル",
+        "placeholder": "月曜日の夜のレストラン",
+        "description": "経費の説明を入力します。"
+      },
+      "DateField": {
+        "label": "支出日",
+        "description": "経費が支払われた日付を入力します。"
+      },
+      "categoryFieldDescription": "経費カテゴリを選択します。",
+      "paidByField": {
+        "label": "支払者",
+        "description": "経費を支払った参加者を選択します。"
+      },
+      "paidFor": {
+        "title": "有料",
+        "description": "経費が誰に支払われたかを選択します。"
+      },
+      "splitModeDescription": "経費の分割方法を選択します。",
+      "attachDescription": "領収書を確認して経費に添付します。"
+    },
+    "amountField": {
+      "label": "額"
+    },
+    "isReimbursementField": {
+      "label": "これは償還です"
+    },
+    "categoryField": {
+      "label": "カテゴリ"
+    },
+    "notesField": {
+      "label": "注意事項"
+    },
+    "recurringDaysField": {
+      "label": "繰り返しの日",
+      "description": "この費用を繰り返す頻度を選択します。",
+      "fields": {
+        "Never": "一度もない",
+        "Weekly": "毎週",
+        "Every14days": "14日ごと",
+        "Every30days": "30日ごと",
+        "Every60days": "60日ごと"
+      }
+    },
+    "selectNone": "何も選択しない",
+    "selectAll": "すべて選択",
+    "shares": "シェア",
+    "advancedOptions": "高度な分割オプション…",
+    "SplitModeField": {
+      "label": "分割モード",
+      "evenly": "均等に",
+      "byShares": "不均等 – 株式ごと",
+      "byPercentage": "不均一 - 割合による",
+      "byAmount": "不均一 - 金額別",
+      "saveAsDefault": "デフォルトの分割オプションとして保存"
+    },
+    "locationField": {
+      "label": "位置",
+      "description": "費用はどこで発生しましたか?",
+      "buttonLabel": "私を見つけてください",
+      "removeButtonLabel": "場所を削除する",
+      "toast": {
+        "title": "場所の特定中にエラーが発生しました",
+        "description": "現在地を特定するときに問題が発生しました。"
+      }
+    },
+    "DeletePopup": {
+      "label": "消去",
+      "title": "この経費を削除しますか?",
+      "description": "本当にこの経費を削除してもよろしいですか?",
+      "yes": "はい",
+      "cancel": "キャンセル"
+    },
+    "expenseHistoryField": {
+      "label": "経費履歴",
+      "description": "この経費の以前の活動。",
+      "expenseNoActivity": "この費用に対する活動はまだ行われていません。"
+    },
+    "attachDocuments": "書類を添付する",
+    "create": "作成する",
+    "creating": "作成…",
+    "save": "保存",
+    "saving": "保存中…",
+    "cancel": "キャンセル"
+  },
+  "ExpenseComments": {
+    "title": "コメント",
+    "noComments": "この経費にはまだコメントがありません。",
+    "by": "による",
+    "noActiveParticipant": "コメントを追加および編集するアクティブな参加者を選択します",
+    "addComment": "コメントの追加",
+    "editComment": "コメントの編集",
+    "commentPlaceholder": "コメントを入力してください",
+    "addCaption": "コメントの追加",
+    "addingCaption": "追加",
+    "saveCaption": "コメントの保存",
+    "savingCaption": "保存",
+    "cancel": "キャンセル"
+  },
+  "ExpenseDocumentsInput": {
+    "TooBigToast": {
+      "title": "ファイルが大きすぎます",
+      "description": "アップロードできる最大ファイル サイズは {maxSize} です。"
+    },
+    "ErrorToast": {
+      "title": "ドキュメントのアップロード中にエラーが発生しました",
+      "description": "ドキュメントのアップロード中に問題が発生しました。",
+      "retry": "リトライ"
+    }
+  },
+  "CreateFromReceipt": {
+    "Dialog": {
+      "triggerTitle": "領収書から経費を作成する",
+      "title": "レシートから作成",
+      "description": "領収書の写真から経費情報を抽出します。",
+      "body": "領収書の写真をアップロードしてください。可能であればスキャンして経費情報を抽出します。",
+      "selectImage": "画像を選択してください…",
+      "titleLabel": "タイトル：",
+      "categoryLabel": "カテゴリ：",
+      "amountLabel": "額：",
+      "dateLabel": "日付：",
+      "editNext": "次に経費情報を編集できるようになります。",
+      "continue": "続く"
+    },
+    "unknown": "未知",
+    "TooBigToast": {
+      "title": "ファイルが大きすぎます",
+      "description": "アップロードできる最大ファイル サイズは {maxSize} です。"
+    },
+    "ErrorToast": {
+      "title": "ドキュメントのアップロード中にエラーが発生しました",
+      "description": "ドキュメントのアップロード中に問題が発生しました。",
+      "retry": "リトライ"
+    }
+  },
+  "Balances": {
+    "title": "残高",
+    "description": "これは、各参加者が支払った、または支払われた金額です。",
+    "Reimbursements": {
+      "title": "推奨される償還額",
+      "description": "ここでは、参加者間で最適化された償還に関する提案を示します。",
+      "noImbursements": "あなたのグループには払い戻しは必要ないようです 😁",
+      "owes": "<strong>{から}</strong> 借りがある <strong>{に}</strong>",
+      "markAsPaid": "支払い済みとしてマークする"
+    }
+  },
+  "Stats": {
+    "title": "統計",
+    "Totals": {
+      "title": "合計",
+      "description": "グループ全体の支出の概要。",
+      "groupSpendings": "グループ支出総額",
+      "groupEarnings": "グループ収益合計",
+      "yourSpendings": "総支出額",
+      "yourEarnings": "あなたの総収入",
+      "yourShare": "あなたの合計シェア"
+    }
+  },
+  "Activity": {
+    "title": "活動",
+    "description": "このグループのすべてのアクティビティの概要。",
+    "noActivity": "あなたのグループにはまだアクティビティがありません。",
+    "someone": "誰か",
+    "settingsModified": "グループ設定が変更されました <strong>{参加者}</strong>。",
+    "expenseCreated": "費用 <em>{費用}</em> によって作成されました <strong>{参加者}</strong>。",
+    "expenseUpdated": "費用 <em>{費用}</em> 更新者 <strong>{参加者}</strong>。",
+    "expenseDeleted": "費用 <em>{費用}</em> によって削除されました <strong>{参加者}</strong>。",
+    "Groups": {
+      "today": "今日",
+      "yesterday": "昨日",
+      "earlierThisWeek": "今週初めに",
+      "lastWeek": "先週",
+      "earlierThisMonth": "今月初め",
+      "lastMonth": "先月",
+      "earlierThisYear": "今年初めに",
+      "lastYear": "去年",
+      "older": "古い"
+    }
+  },
+  "Information": {
+    "title": "情報",
+    "description": "この場所を使用して、グループの参加者に関連する可能性のある情報を追加します。",
+    "empty": "グループ情報はまだありません。"
+  },
+  "Settings": {
+    "title": "設定"
+  },
+  "Locale": {
+    "en-US": "English",
+    "hi-IN": "हिन्दी",
+    "bn-BD": "বাংলা",
+    "mr-IN": "मराठी",
+    "te-IN": "తెలుగు",
+    "ta-IN": "தமிழ்",
+    "gu-IN": "ગુજરાતી",
+    "kn-IN": "ಕನ್ನಡ",
+    "pa-IN": "ਪੰਜਾਬੀ",
+    "zh-CN": "简体中文",
+    "ko-KR": "한국어",
+    "th-TH": "ไทย",
+    "ja-JP": "日本語",
+    "ru-RU": "Русский",
+    "id-ID": "Bahasa"
+  },
+  "Share": {
+    "title": "共有",
+    "description": "他の参加者がグループを参照して経費を追加できるようにするには、その URL を参加者と共有します。",
+    "warning": "警告！",
+    "warningHelp": "グループ URL を知っているすべての人が経費を表示および編集できます。"
+  },
+  "SchemaErrors": {
+    "min1": "少なくとも 1 文字を入力してください。",
+    "min2": "少なくとも 2 文字を入力してください。",
+    "max5": "最大 5 文字を入力します。",
+    "max50": "最大 50 文字まで入力します。",
+    "duplicateParticipantName": "別の参加者がすでにこの名前を持っています。",
+    "titleRequired": "タイトルを入力してください。",
+    "invalidNumber": "無効な番号です。",
+    "amountRequired": "金額を入力する必要があります。",
+    "amountNotZero": "金額はゼロであってはなりません。",
+    "amountTenMillion": "金額は 10,000,000 未満である必要があります。",
+    "paidByRequired": "参加者を選択する必要があります。",
+    "paidForMin1": "費用は少なくとも 1 人の参加者に対して支払わなければなりません。",
+    "noZeroShares": "すべてのシェアは 0 より大きくなければなりません。",
+    "amountSum": "金額の合計は経費の金額と等しくなければなりません。",
+    "percentageSum": "パーセンテージの合計は 100 に等しくなければなりません。"
+  },
+  "Categories": {
+    "search": "カテゴリを検索...",
+    "noCategory": "カテゴリが見つかりませんでした。",
+    "Uncategorized": {
+      "heading": "未分類",
+      "General": "一般的な",
+      "Payment": "支払い"
+    },
+    "Entertainment": {
+      "heading": "エンターテインメント",
+      "Entertainment": "エンターテインメント",
+      "Games": "ゲーム",
+      "Movies": "映画",
+      "Music": "音楽",
+      "Sports": "スポーツ"
+    },
+    "Food and Drink": {
+      "heading": "飲食",
+      "Food and Drink": "飲食",
+      "Dining Out": "外食",
+      "Groceries": "食料品",
+      "Liquor": "お酒"
+    },
+    "Home": {
+      "heading": "家",
+      "Home": "家",
+      "Electronics": "エレクトロニクス",
+      "Furniture": "家具",
+      "Household Supplies": "家庭用品",
+      "Maintenance": "メンテナンス",
+      "Mortgage": "モーゲージ",
+      "Pets": "ペット",
+      "Rent": "家賃",
+      "Services": "サービス"
+    },
+    "Life": {
+      "heading": "人生",
+      "Childcare": "保育",
+      "Clothing": "衣類",
+      "Education": "教育",
+      "Gifts": "ギフト",
+      "Insurance": "保険",
+      "Medical Expenses": "医療費",
+      "Taxes": "税金"
+    },
+    "Transportation": {
+      "heading": "交通機関",
+      "Transportation": "交通機関",
+      "Bicycle": "自転車",
+      "Bus/Train": "バス・電車",
+      "Car": "車",
+      "Gas/Fuel": "ガス/燃料",
+      "Hotel": "ホテル",
+      "Parking": "駐車場",
+      "Plane": "飛行機",
+      "Taxi": "タクシー"
+    },
+    "Utilities": {
+      "heading": "公共事業",
+      "Utilities": "公共事業",
+      "Cleaning": "クリーニング",
+      "Electricity": "電気",
+      "Heat/Gas": "熱・ガス",
+      "Trash": "ごみ",
+      "TV/Phone/Internet": "テレビ/電話/インターネット",
+      "Water": "水"
+    }
+  }
+}

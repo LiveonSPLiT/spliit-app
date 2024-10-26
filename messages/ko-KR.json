@@ -1,0 +1,452 @@
+{
+  "Homepage": {
+    "title": "공유하다 <strong>경비</strong> ~와 함께 <strong>친구 및 가족</strong>",
+    "description": "간단하고 광고가 없으며 <strong>항상 무료</strong> —단 두 번의 클릭만 하면 됩니다!",
+    "button": {
+      "groups": "그룹으로 이동",
+      "logout": "로그아웃",
+      "google": "Google",
+      "apple": "사과"
+    },
+    "stateCounter": {
+      "already": "이미",
+      "groups": "그룹 및",
+      "expenses": "비용이 발생했습니다."
+    }
+  },
+  "Header": {
+    "groups": "여러 떼"
+  },
+  "Footer": {
+    "madeIn": "인도에서 ❤️으로 제작됨 🇮🇳",
+    "builtBy": "작성자: <author>아슈토시 굽타</author> 그리고 <source>락시트 마카디아</source>",
+    "supportUs": "우리를 지원하세요"
+  },
+  "Expenses": {
+    "title": "경비",
+    "description": "귀하의 그룹을 위해 생성한 비용은 다음과 같습니다.",
+    "create": "비용 생성",
+    "createFirst": "첫 번째 항목 만들기",
+    "noExpenses": "귀하의 그룹에는 아직 비용이 포함되어 있지 않습니다.",
+    "exportJson": "JSON으로 내보내기",
+    "searchPlaceholder": "비용 검색…",
+    "ActiveUserModal": {
+      "title": "누구세요?",
+      "description": "정보 표시 방법을 사용자 정의할 수 있도록 귀하가 어떤 참가자인지 알려주십시오.",
+      "nobody": "누구도 선택하고 싶지 않아요",
+      "save": "변경사항 저장",
+      "footer": "이 설정은 나중에 그룹 설정에서 변경할 수 있습니다."
+    },
+    "Groups": {
+      "upcoming": "예정",
+      "thisWeek": "이번 주",
+      "earlierThisMonth": "이번 달 초",
+      "lastMonth": "전달",
+      "earlierThisYear": "올해 초",
+      "lastYera": "작년",
+      "older": "이전"
+    }
+  },
+  "ExpenseCard": {
+    "paidBy": "지불자 <strong>{지불자}</strong> ~을 위한 <paidFor></paidFor>",
+    "receivedBy": "수신자 <strong>{지불자}</strong> ~을 위한 <paidFor></paidFor>",
+    "yourBalance": "잔액:"
+  },
+  "Groups": {
+    "myGroups": "내 그룹",
+    "create": "만들다",
+    "loadingRecent": "최근 그룹 로드 중…",
+    "NoRecent": {
+      "description": "최근에 어떤 그룹도 방문한 적이 없습니다.",
+      "create": "하나 만들기",
+      "orAsk": "또는 친구에게 기존 링크를 보내달라고 요청하세요."
+    },
+    "recent": "최근 그룹",
+    "starred": "별표표시된 그룹",
+    "archived": "보관된 그룹",
+    "archive": "아카이브 그룹",
+    "unarchive": "그룹 보관 취소",
+    "removeRecent": "최근 그룹에서 제거",
+    "RecentRemovedToast": {
+      "title": "그룹이 삭제되었습니다.",
+      "description": "그룹이 최근 그룹 목록에서 제거되었습니다.",
+      "undoAlt": "그룹 제거 취소",
+      "undo": "끄르다"
+    },
+    "AddByURL": {
+      "button": "URL로 추가",
+      "title": "URL로 그룹 추가",
+      "description": "그룹이 나와 공유된 경우 여기에 해당 URL을 붙여넣어 목록에 추가할 수 있습니다.",
+      "error": "죄송합니다. 제공하신 URL에서는 그룹을 찾을 수 없습니다…"
+    },
+    "NotFound": {
+      "text": "이 그룹은 존재하지 않습니다.",
+      "link": "최근 방문한 그룹으로 이동"
+    }
+  },
+  "GroupForm": {
+    "title": "그룹 정보",
+    "NameField": {
+      "label": "그룹 이름",
+      "placeholder": "여름방학",
+      "description": "그룹 이름을 입력하세요."
+    },
+    "InformationField": {
+      "label": "그룹 정보",
+      "placeholder": "그룹 참가자와 관련된 정보는 무엇입니까?"
+    },
+    "CurrencyField": {
+      "label": "통화 기호",
+      "placeholder": "₩, ₩, ₩…",
+      "description": "금액을 표시하는 데 사용하겠습니다."
+    },
+    "Participants": {
+      "title": "참가자들",
+      "description": "각 참가자의 이름을 입력합니다.",
+      "protectedParticipant": "이 참가자는 비용의 일부이므로 제거할 수 없습니다.",
+      "new": "새로운",
+      "add": "참가자 추가",
+      "John": "작은",
+      "Jane": "시부",
+      "Jack": "닌느"
+    },
+    "Settings": {
+      "title": "로컬 설정",
+      "description": "이러한 설정은 장치별로 설정되며 사용자 경험을 맞춤화하는 데 사용됩니다.",
+      "ActiveUserField": {
+        "label": "활성 사용자",
+        "placeholder": "참가자 선택",
+        "none": "없음",
+        "description": "비용 지불을 위해 기본으로 사용되는 사용자입니다."
+      },
+      "save": "구하다",
+      "saving": "절약…",
+      "create": "만들다",
+      "creating": "만드는 중…",
+      "cancel": "취소"
+    }
+  },
+  "ExpenseForm": {
+    "Income": {
+      "create": "소득 창출",
+      "edit": "소득 수정",
+      "TitleField": {
+        "label": "소득명",
+        "placeholder": "월요일 저녁 레스토랑",
+        "description": "소득에 대한 설명을 입력합니다."
+      },
+      "DateField": {
+        "label": "소득일",
+        "description": "소득이 발생한 날짜를 입력하세요."
+      },
+      "categoryFieldDescription": "소득 항목을 선택하세요.",
+      "paidByField": {
+        "label": "수신자",
+        "description": "수입을 받은 참가자를 선택합니다."
+      },
+      "paidFor": {
+        "title": "다음에 대해 수신됨",
+        "description": "소득을 누구에게 받았는지 선택하세요."
+      },
+      "splitModeDescription": "소득 분할 방법을 선택하세요.",
+      "attachDescription": "영수증을 확인하고 소득에 첨부하세요."
+    },
+    "Expense": {
+      "create": "비용 생성",
+      "edit": "비용 수정",
+      "TitleField": {
+        "label": "비용 제목",
+        "placeholder": "월요일 저녁 레스토랑",
+        "description": "비용에 대한 설명을 입력합니다."
+      },
+      "DateField": {
+        "label": "지출 날짜",
+        "description": "비용이 지급된 날짜를 입력하세요."
+      },
+      "categoryFieldDescription": "비용 항목을 선택하세요.",
+      "paidByField": {
+        "label": "지불자",
+        "description": "비용을 지불한 참가자를 선택합니다."
+      },
+      "paidFor": {
+        "title": "지불됨",
+        "description": "비용을 누구에게 지불했는지 선택하세요."
+      },
+      "splitModeDescription": "비용 분할 방법을 선택하세요.",
+      "attachDescription": "영수증을 확인하고 비용에 첨부하세요."
+    },
+    "amountField": {
+      "label": "양"
+    },
+    "isReimbursementField": {
+      "label": "이건 환급이에요"
+    },
+    "categoryField": {
+      "label": "범주"
+    },
+    "notesField": {
+      "label": "메모"
+    },
+    "recurringDaysField": {
+      "label": "반복되는 날짜",
+      "description": "이 비용을 얼마나 자주 반복해야 하는지 선택하세요.",
+      "fields": {
+        "Never": "절대",
+        "Weekly": "주간",
+        "Every14days": "14일마다",
+        "Every30days": "30일마다",
+        "Every60days": "60일마다"
+      }
+    },
+    "selectNone": "없음을 선택하세요",
+    "selectAll": "모두 선택",
+    "shares": "주식)",
+    "advancedOptions": "고급 분할 옵션…",
+    "SplitModeField": {
+      "label": "분할 모드",
+      "evenly": "고르게",
+      "byShares": "불균등 - 주식 기준",
+      "byPercentage": "고르지 않음 - 백분율 기준",
+      "byAmount": "불균일 – 금액별",
+      "saveAsDefault": "기본 분할 옵션으로 저장"
+    },
+    "locationField": {
+      "label": "위치",
+      "description": "비용은 어디서 발생했나요?",
+      "buttonLabel": "나를 찾아",
+      "removeButtonLabel": "위치 삭제",
+      "toast": {
+        "title": "위치를 확인하는 중 오류가 발생했습니다.",
+        "description": "현재 위치를 확인하는 중에 문제가 발생했습니다. "
+      }
+    },
+    "DeletePopup": {
+      "label": "삭제",
+      "title": "이 비용을 삭제하시겠습니까?",
+      "description": "정말로 이 비용을 삭제하시겠습니까? ",
+      "yes": "예",
+      "cancel": "취소"
+    },
+    "expenseHistoryField": {
+      "label": "지출 내역",
+      "description": "이 비용에 대한 이전 활동입니다.",
+      "expenseNoActivity": "이 비용에 대한 활동이 아직 없습니다."
+    },
+    "attachDocuments": "문서 첨부",
+    "create": "만들다",
+    "creating": "만드는 중…",
+    "save": "구하다",
+    "saving": "절약…",
+    "cancel": "취소"
+  },
+  "ExpenseComments": {
+    "title": "댓글",
+    "noComments": "이 비용에는 아직 코멘트가 없습니다.",
+    "by": "~에 의해",
+    "noActiveParticipant": "댓글을 추가하고 편집하려면 활성 참가자를 선택하세요.",
+    "addComment": "댓글 추가",
+    "editComment": "댓글 편집",
+    "commentPlaceholder": "귀하의 의견을 입력하세요",
+    "addCaption": "댓글 추가",
+    "addingCaption": "첨가",
+    "saveCaption": "댓글 저장",
+    "savingCaption": "절약",
+    "cancel": "취소"
+  },
+  "ExpenseDocumentsInput": {
+    "TooBigToast": {
+      "title": "파일이 너무 큽니다.",
+      "description": "업로드할 수 있는 최대 파일 크기는 {maxSize}입니다. "
+    },
+    "ErrorToast": {
+      "title": "문서를 업로드하는 중 오류가 발생했습니다.",
+      "description": "문서를 업로드하는 중에 문제가 발생했습니다. ",
+      "retry": "다시 해 보다"
+    }
+  },
+  "CreateFromReceipt": {
+    "Dialog": {
+      "triggerTitle": "영수증에서 비용 생성",
+      "title": "영수증에서 생성",
+      "description": "영수증 사진에서 비용 정보를 추출합니다.",
+      "body": "영수증 사진을 업로드하시면 스캔하여 가능한 경우 비용 정보를 추출해 드리겠습니다.",
+      "selectImage": "이미지 선택…",
+      "titleLabel": "제목:",
+      "categoryLabel": "범주:",
+      "amountLabel": "양:",
+      "dateLabel": "날짜:",
+      "editNext": "다음으로 비용 정보를 편집할 수 있습니다.",
+      "continue": "계속하다"
+    },
+    "unknown": "알려지지 않은",
+    "TooBigToast": {
+      "title": "파일이 너무 큽니다.",
+      "description": "업로드할 수 있는 최대 파일 크기는 {maxSize}입니다. "
+    },
+    "ErrorToast": {
+      "title": "문서를 업로드하는 중 오류가 발생했습니다.",
+      "description": "문서를 업로드하는 중에 문제가 발생했습니다. ",
+      "retry": "다시 해 보다"
+    }
+  },
+  "Balances": {
+    "title": "잔액",
+    "description": "각 참가자가 지불했거나 지불받은 금액입니다.",
+    "Reimbursements": {
+      "title": "제안된 환급",
+      "description": "참가자 간의 최적화된 환급을 위한 제안은 다음과 같습니다.",
+      "noImbursements": "귀하의 그룹에는 환급이 필요하지 않은 것 같습니다 😁",
+      "owes": "<strong>{에서}</strong> 빚진 <strong>{에게}</strong>",
+      "markAsPaid": "결제 완료로 표시"
+    }
+  },
+  "Stats": {
+    "title": "통계",
+    "Totals": {
+      "title": "합계",
+      "description": "전체 그룹의 지출 요약입니다.",
+      "groupSpendings": "총 그룹 지출",
+      "groupEarnings": "총 그룹 수입",
+      "yourSpendings": "총 지출",
+      "yourEarnings": "총 수입",
+      "yourShare": "귀하의 총 몫"
+    }
+  },
+  "Activity": {
+    "title": "활동",
+    "description": "이 그룹의 모든 활동 개요입니다.",
+    "noActivity": "귀하의 그룹에는 아직 활동이 없습니다.",
+    "someone": "누구",
+    "settingsModified": "그룹 설정이 수정되었습니다. <strong>{참가자}</strong>.",
+    "expenseCreated": "비용 <em>{비용}</em> 에 의해 생성됨 <strong>{참가자}</strong>.",
+    "expenseUpdated": "비용 <em>{비용}</em> 업데이트한 사람 <strong>{참가자}</strong>.",
+    "expenseDeleted": "비용 <em>{비용}</em> 에 의해 삭제됨 <strong>{참가자}</strong>.",
+    "Groups": {
+      "today": "오늘",
+      "yesterday": "어제",
+      "earlierThisWeek": "이번 주 초",
+      "lastWeek": "지난주",
+      "earlierThisMonth": "이번 달 초",
+      "lastMonth": "전달",
+      "earlierThisYear": "올해 초",
+      "lastYear": "작년",
+      "older": "이전"
+    }
+  },
+  "Information": {
+    "title": "정보",
+    "description": "이 장소를 사용하여 그룹 참가자와 관련된 정보를 추가하세요.",
+    "empty": "아직 그룹 정보가 없습니다."
+  },
+  "Settings": {
+    "title": "설정"
+  },
+  "Locale": {
+    "en-US": "English",
+    "hi-IN": "हिन्दी",
+    "bn-BD": "বাংলা",
+    "mr-IN": "मराठी",
+    "te-IN": "తెలుగు",
+    "ta-IN": "தமிழ்",
+    "gu-IN": "ગુજરાતી",
+    "kn-IN": "ಕನ್ನಡ",
+    "pa-IN": "ਪੰਜਾਬੀ",
+    "zh-CN": "简体中文",
+    "ko-KR": "한국어",
+    "th-TH": "ไทย",
+    "ja-JP": "日本語",
+    "ru-RU": "Русский",
+    "id-ID": "Bahasa"
+  },
+  "Share": {
+    "title": "공유하다",
+    "description": "다른 참가자가 그룹을 보고 비용을 추가할 수 있도록 해당 URL을 공유하세요.",
+    "warning": "경고!",
+    "warningHelp": "그룹 URL이 있는 모든 사람은 비용을 보고 편집할 수 있습니다. "
+  },
+  "SchemaErrors": {
+    "min1": "문자를 하나 이상 입력하세요.",
+    "min2": "2자 이상 입력하세요.",
+    "max5": "최대 5자까지 입력하세요.",
+    "max50": "최대 50자까지 입력하세요.",
+    "duplicateParticipantName": "다른 참가자가 이미 이 이름을 사용하고 있습니다.",
+    "titleRequired": "제목을 입력하세요.",
+    "invalidNumber": "잘못된 번호입니다.",
+    "amountRequired": "금액을 입력해야 합니다.",
+    "amountNotZero": "금액은 0이 아니어야 합니다.",
+    "amountTenMillion": "금액은 10,000,000보다 작아야 합니다.",
+    "paidByRequired": "참가자를 선택해야 합니다.",
+    "paidForMin1": "최소한 한 명의 참가자에 대해 비용을 지불해야 합니다.",
+    "noZeroShares": "모든 지분은 0보다 커야 합니다.",
+    "amountSum": "금액 합계는 비용 금액과 동일해야 합니다.",
+    "percentageSum": "백분율의 합은 100이어야 합니다."
+  },
+  "Categories": {
+    "search": "카테고리 검색...",
+    "noCategory": "카테고리를 찾을 수 없습니다.",
+    "Uncategorized": {
+      "heading": "분류되지 않음",
+      "General": "일반적인",
+      "Payment": "지불"
+    },
+    "Entertainment": {
+      "heading": "오락",
+      "Entertainment": "오락",
+      "Games": "계략",
+      "Movies": "영화 산업",
+      "Music": "음악",
+      "Sports": "스포츠"
+    },
+    "Food and Drink": {
+      "heading": "주식",
+      "Food and Drink": "주식",
+      "Dining Out": "외식",
+      "Groceries": "식료 잡화류",
+      "Liquor": "분비액"
+    },
+    "Home": {
+      "heading": "집",
+      "Home": "집",
+      "Electronics": "전자제품",
+      "Furniture": "가구",
+      "Household Supplies": "가정용품",
+      "Maintenance": "유지",
+      "Mortgage": "저당",
+      "Pets": "애완동물",
+      "Rent": "임차료",
+      "Services": "서비스"
+    },
+    "Life": {
+      "heading": "삶",
+      "Childcare": "보육",
+      "Clothing": "의류",
+      "Education": "교육",
+      "Gifts": "선물",
+      "Insurance": "보험",
+      "Medical Expenses": "의료비",
+      "Taxes": "구실"
+    },
+    "Transportation": {
+      "heading": "운송",
+      "Transportation": "운송",
+      "Bicycle": "자전거",
+      "Bus/Train": "버스/기차",
+      "Car": "자동차",
+      "Gas/Fuel": "가스/연료",
+      "Hotel": "호텔",
+      "Parking": "주차",
+      "Plane": "비행기",
+      "Taxi": "택시"
+    },
+    "Utilities": {
+      "heading": "유용",
+      "Utilities": "유용",
+      "Cleaning": "청소",
+      "Electricity": "전기",
+      "Heat/Gas": "열/가스",
+      "Trash": "쓰레기",
+      "TV/Phone/Internet": "TV/전화/인터넷",
+      "Water": "물"
+    }
+  }
+}
