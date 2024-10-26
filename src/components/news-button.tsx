@@ -90,9 +90,10 @@ const news: News[] = [
     content: (
       <>
         <p>
-        SPLiT originally launched as an English-only app but has since expanded to 
-        support multiple Asian languages, making it easier for users across diverse 
-        regions to track expenses and split bills in their preferred language..
+          SPLiT originally launched as an English-only app but has since
+          expanded to support multiple Asian languages, making it easier for
+          users across diverse regions to track expenses and split bills in
+          their preferred language..
         </p>
       </>
     ),

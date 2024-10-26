@@ -35,19 +35,19 @@ export function CommentsList({
     <>
       <Card>
         <CardHeader className="flex flex-col space-y-1.5 p-6">
-        <div className="flex items-center justify-between">
-          <CardTitle>{t('title')}</CardTitle>
-          <Button
-            className="ml-auto"
-            type="button"
-            variant="ghost"
-            onClick={() => {
-              setSelectedComment(undefined)
-              setCommentModalOpen(true)
-            }}
-          >
-            <MessageSquarePlus></MessageSquarePlus>
-          </Button>
+          <div className="flex items-center justify-between">
+            <CardTitle>{t('title')}</CardTitle>
+            <Button
+              className="ml-auto"
+              type="button"
+              variant="ghost"
+              onClick={() => {
+                setSelectedComment(undefined)
+                setCommentModalOpen(true)
+              }}
+            >
+              <MessageSquarePlus></MessageSquarePlus>
+            </Button>
           </div>
         </CardHeader>
         <CardContent>
