@@ -84,14 +84,16 @@ const news: News[] = [
   },
   {
     id: 'languages',
-    title: <>SPLiT is now available in other Indian languages!</>,
-    summary: <>Hindi, Bengali, Gujarati, and more.!</>,
+    title: <>SPLiT is now available in other Asian languages!</>,
+    summary: <>Hindi, Thai, Chinese, Russian, and more.!</>,
     icon: Globe,
     content: (
       <>
         <p>
-          SPLiT began as an English-only app but now supports multiple
-          languages, thanks to the community.
+          SPLiT originally launched as an English-only app but has since
+          expanded to support multiple Asian languages, making it easier for
+          users across diverse regions to track expenses and split bills in
+          their preferred language.
         </p>
       </>
     ),

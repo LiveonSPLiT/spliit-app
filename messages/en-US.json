@@ -232,28 +232,26 @@
       "description": "Previous Activity for this expense.",
       "expenseNoActivity": "There is not yet any activity for this expense."
     },
-    "expenseCommentField": {
-      "label": "Comments",
-      "noCommentText": "This expense does not contain any comments yet.",
-      "by": "by",
-      "commentForm": {
-        "editComment": "Edit Comment",
-        "addComment": "Add Comment",
-        "formPlaceholder": "Enter your comment",
-        "loadingContent": {
-          "adding": "Adding",
-          "saving": "Saving…"
-        },
-        "addCommentButton": "Add Comment",
-        "saveCommentButton": "Save Comment"
-      }
-    },
     "attachDocuments": "Attach documents",
     "create": "Create",
     "creating": "Creating…",
     "save": "Save",
     "saving": "Saving…",
     "cancel": "Cancel"
+  },
+  "ExpenseComments": {
+      "title": "Comments",
+      "noComments": "This expense does not contain any comments yet.",
+      "by": "by",
+      "noActiveParticipant": "Select an active participant to add and edit comments",
+      "addComment": "Add Comment",
+      "editComment": "Edit Comment",
+      "commentPlaceholder": "Enter your comment",
+      "addCaption": "Add Comment",
+      "addingCaption": "Adding",
+      "saveCaption": "Save Comment",
+      "savingCaption": "Saving",
+      "cancel": "Cancel"
   },
   "ExpenseDocumentsInput": {
     "TooBigToast": {
@@ -352,7 +350,13 @@
     "ta-IN": "தமிழ்",
     "gu-IN": "ગુજરાતી",
     "kn-IN": "ಕನ್ನಡ",
-    "pa-IN": "ਪੰਜਾਬੀ"
+    "pa-IN": "ਪੰਜਾਬੀ",
+    "zh-CN": "简体中文",
+    "ko-KR": "한국어",
+    "th-TH": "ไทย",
+    "ja-JP": "日本語",
+    "ru-RU": "Русский",
+    "id-ID": "Bahasa"
   },
   "Share": {
     "title": "Share",

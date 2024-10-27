@@ -232,27 +232,25 @@
       "description": "ఈ ఖర్చుకు సంబంధించిన గత చరిత్ర.",
       "expenseNoActivity": "ఈ ఖర్చుకు ఇంకా ఎటువంటి చరిత్ర లేదు."
     },
-    "expenseCommentField": {
-      "label": "వ్యాఖ్యలు",
-      "noCommentText": "ఈ ఖర్చులో ఇంకా ఎటువంటి వ్యాఖ్యలు లేవు.",
-      "by": "ద్వారా",
-      "commentForm": {
-        "editComment": "వ్యాఖ్యను సవరించండి",
-        "addComment": "వ్యాఖ్యను జోడించండి",
-        "formPlaceholder": "మీ వ్యాఖ్యను నమోదు చేయండి",
-        "loadingContent": {
-          "adding": "జోడించబడుతోంది",
-          "saving": "సేవ్ చేస్తోంది…"
-        },
-        "addCommentButton": "వ్యాఖ్యను జోడించండి",
-        "saveCommentButton": "వ్యాఖ్యను సేవ్ చేయండి"
-      }
-    },
     "attachDocuments": "పత్రాలను జోడించండి",
     "create": "సృష్టించండి",
     "creating": "సృష్టిస్తోంది…",
     "save": "సేవ్",
     "saving": "సేవ్ చేస్తోంది…",
+    "cancel": "రద్దు చేయండి"
+  },
+  "ExpenseComments": {
+    "title": "వ్యాఖ్యలు",
+    "noComments": "ఈ ఖర్చులో ఇంకా ఎటువంటి వ్యాఖ్యలు లేవు.",
+    "by": "ద్వారా",
+    "noActiveParticipant": "వ్యాఖ్యలను జోడించడానికి మరియు సవరించడానికి ఒక క్రియాశీల భాగస్వామిని ఎంచుకోండి",
+    "addComment": "వ్యాఖ్య జోడించండి",
+    "editComment": "వ్యాఖ్యను సవరించండి",
+    "commentPlaceholder": "మీ వ్యాఖ్యను నమోదు చేయండి",
+    "addCaption": "వ్యాఖ్య జోడించండి",
+    "addingCaption": "జోడిస్తున్నాం",
+    "saveCaption": "వ్యాఖ్యను సేవ్ చేయండి",
+    "savingCaption": "సేవ్ చేస్తున్నాం",
     "cancel": "రద్దు చేయండి"
   },
   "ExpenseDocumentsInput": {
@@ -352,7 +350,13 @@
     "ta-IN": "தமிழ்",
     "gu-IN": "ગુજરાતી",
     "kn-IN": "ಕನ್ನಡ",
-    "pa-IN": "ਪੰਜਾਬੀ"
+    "pa-IN": "ਪੰਜਾਬੀ",
+    "zh-CN": "简体中文",
+    "ko-KR": "한국어",
+    "th-TH": "ไทย",
+    "ja-JP": "日本語",
+    "ru-RU": "Русский",
+    "id-ID": "Bahasa"
   },
   "Share": {
     "title": "షేర్ చేయండి",

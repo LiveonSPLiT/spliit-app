@@ -1,0 +1,452 @@
+{
+  "Homepage": {
+    "title": "分享 <strong>开支</strong> 和 <strong>朋友和家人</strong>",
+    "description": "简单、无广告、 <strong>永远免费</strong> ——只需点击两下！",
+    "button": {
+      "groups": "前往群组",
+      "logout": "退出",
+      "google": "谷歌",
+      "apple": "苹果"
+    },
+    "stateCounter": {
+      "already": "已经",
+      "groups": "团体和",
+      "expenses": "产生的费用。"
+    }
+  },
+  "Header": {
+    "groups": "团体"
+  },
+  "Footer": {
+    "madeIn": "用❤️在印度制造🇮🇳",
+    "builtBy": "建造者 <author>阿舒托什·古普塔</author> 和 <source>拉克希特·马卡迪亚</source>",
+    "supportUs": "支持我们"
+  },
+  "Expenses": {
+    "title": "开支",
+    "description": "以下是您为您的团队创建的费用。",
+    "create": "创建费用",
+    "createFirst": "创建第一个",
+    "noExpenses": "您的小组尚不包含任何费用。",
+    "exportJson": "导出为 JSON",
+    "searchPlaceholder": "搜索费用...",
+    "ActiveUserModal": {
+      "title": "你是谁？",
+      "description": "告诉我们您是哪个参与者，以便我们自定义信息的显示方式。",
+      "nobody": "我不想选择任何人",
+      "save": "保存更改",
+      "footer": "稍后可以在组设置中更改此设置。"
+    },
+    "Groups": {
+      "upcoming": "即将推出",
+      "thisWeek": "本星期",
+      "earlierThisMonth": "本月早些时候",
+      "lastMonth": "上个月",
+      "earlierThisYear": "今年早些时候",
+      "lastYera": "去年",
+      "older": "年长的"
+    }
+  },
+  "ExpenseCard": {
+    "paidBy": "支付者 <strong>{付费者}</strong> 为了 <paidFor></paidFor>",
+    "receivedBy": "收到者 <strong>{付费者}</strong> 为了 <paidFor></paidFor>",
+    "yourBalance": "您的余额："
+  },
+  "Groups": {
+    "myGroups": "我的群组",
+    "create": "创造",
+    "loadingRecent": "正在加载最近的组...",
+    "NoRecent": {
+      "description": "您最近没有访问过任何群组。",
+      "create": "创建一个",
+      "orAsk": "或者请朋友向您发送现有链接的链接。"
+    },
+    "recent": "最近的群组",
+    "starred": "加星标的团体",
+    "archived": "存档组",
+    "archive": "档案组",
+    "unarchive": "取消存档组",
+    "removeRecent": "从最近的组中删除",
+    "RecentRemovedToast": {
+      "title": "群组已被删除",
+      "description": "该群组已从您最近的群组列表中删除。",
+      "undoAlt": "撤消组删除",
+      "undo": "撤消"
+    },
+    "AddByURL": {
+      "button": "通过网址添加",
+      "title": "通过 URL 添加组",
+      "description": "如果与您共享某个群组，您可以将其 URL 粘贴到此处，将其添加到您的列表中。",
+      "error": "糟糕，我们无法从您提供的 URL 中找到该群组..."
+    },
+    "NotFound": {
+      "text": "该组不存在。",
+      "link": "转到最近访问的组"
+    }
+  },
+  "GroupForm": {
+    "title": "集团信息",
+    "NameField": {
+      "label": "团体名称",
+      "placeholder": "暑假",
+      "description": "输入您的组的名称。"
+    },
+    "InformationField": {
+      "label": "集团信息",
+      "placeholder": "哪些信息与小组参与者相关？"
+    },
+    "CurrencyField": {
+      "label": "货币符号",
+      "placeholder": "$、$、£...",
+      "description": "我们将用它来显示金额。"
+    },
+    "Participants": {
+      "title": "参加者",
+      "description": "输入每个参与者的姓名。",
+      "protectedParticipant": "该参与者是费用的一部分，无法删除。",
+      "new": "新的",
+      "add": "添加参与者",
+      "John": "小的",
+      "Jane": "诗巫",
+      "Jack": "尼内"
+    },
+    "Settings": {
+      "title": "本地设置",
+      "description": "这些设置是按设备设置的，用于定制您的体验。",
+      "ActiveUserField": {
+        "label": "活跃用户",
+        "placeholder": "选择参与者",
+        "none": "没有任何",
+        "description": "用户用作默认支付费用。"
+      },
+      "save": "节省",
+      "saving": "保存…",
+      "create": "创造",
+      "creating": "创造……",
+      "cancel": "取消"
+    }
+  },
+  "ExpenseForm": {
+    "Income": {
+      "create": "创造收入",
+      "edit": "编辑收入",
+      "TitleField": {
+        "label": "收入标题",
+        "placeholder": "周一晚上餐厅",
+        "description": "输入收入的描述。"
+      },
+      "DateField": {
+        "label": "收入日期",
+        "description": "输入收到收入的日期。"
+      },
+      "categoryFieldDescription": "选择收入类别。",
+      "paidByField": {
+        "label": "收到者",
+        "description": "选择获得收入的参与者。"
+      },
+      "paidFor": {
+        "title": "已收到",
+        "description": "选择收入的接收者。"
+      },
+      "splitModeDescription": "选择如何分配收入。",
+      "attachDescription": "查看收据并将其附加到收入中。"
+    },
+    "Expense": {
+      "create": "创建费用",
+      "edit": "编辑费用",
+      "TitleField": {
+        "label": "费用标题",
+        "placeholder": "周一晚上餐厅",
+        "description": "输入费用的说明。"
+      },
+      "DateField": {
+        "label": "费用日期",
+        "description": "输入支付费用的日期。"
+      },
+      "categoryFieldDescription": "选择费用类别。",
+      "paidByField": {
+        "label": "支付者",
+        "description": "选择支付费用的参与者。"
+      },
+      "paidFor": {
+        "title": "已付费",
+        "description": "选择费用支付对象。"
+      },
+      "splitModeDescription": "选择如何分配费用。",
+      "attachDescription": "查看收据并将其附加到费用中。"
+    },
+    "amountField": {
+      "label": "数量"
+    },
+    "isReimbursementField": {
+      "label": "这是报销"
+    },
+    "categoryField": {
+      "label": "类别"
+    },
+    "notesField": {
+      "label": "笔记"
+    },
+    "recurringDaysField": {
+      "label": "重复天数",
+      "description": "选择重复此费用的频率。",
+      "fields": {
+        "Never": "绝不",
+        "Weekly": "每周",
+        "Every14days": "每 14 天一次",
+        "Every30days": "每 30 天一次",
+        "Every60days": "每 60 天"
+      }
+    },
+    "selectNone": "不选择",
+    "selectAll": "选择全部",
+    "shares": "份额",
+    "advancedOptions": "高级分割选项...",
+    "SplitModeField": {
+      "label": "分体模式",
+      "evenly": "均匀地",
+      "byShares": "不均匀 – 按份额",
+      "byPercentage": "不均匀 – 按百分比",
+      "byAmount": "不均匀——按金额",
+      "saveAsDefault": "保存为默认分割选项"
+    },
+    "locationField": {
+      "label": "地点",
+      "description": "费用是在哪里产生的？",
+      "buttonLabel": "找到我",
+      "removeButtonLabel": "删除位置",
+      "toast": {
+        "title": "确定位置时出错",
+        "description": "确定您的当前位置时出现错误。"
+      }
+    },
+    "DeletePopup": {
+      "label": "删除",
+      "title": "删除这个费用？",
+      "description": "您真的要删除这笔费用吗？",
+      "yes": "是的",
+      "cancel": "取消"
+    },
+    "expenseHistoryField": {
+      "label": "费用历史记录",
+      "description": "此费用的先前活动。",
+      "expenseNoActivity": "目前还没有任何活动来支付这笔费用。"
+    },
+    "attachDocuments": "附上文件",
+    "create": "创造",
+    "creating": "创造……",
+    "save": "节省",
+    "saving": "保存…",
+    "cancel": "取消"
+  },
+  "ExpenseComments": {
+    "title": "评论",
+    "noComments": "该费用尚不包含任何评论。",
+    "by": "经过",
+    "noActiveParticipant": "选择活跃参与者以添加和编辑评论",
+    "addComment": "添加评论",
+    "editComment": "编辑评论",
+    "commentPlaceholder": "输入您的评论",
+    "addCaption": "添加评论",
+    "addingCaption": "添加",
+    "saveCaption": "保存评论",
+    "savingCaption": "保存",
+    "cancel": "取消"
+  },
+  "ExpenseDocumentsInput": {
+    "TooBigToast": {
+      "title": "文件太大",
+      "description": "您可以上传的最大文件大小为 {maxSize}。"
+    },
+    "ErrorToast": {
+      "title": "上传文档时出错",
+      "description": "上传文档时发生错误。",
+      "retry": "重试"
+    }
+  },
+  "CreateFromReceipt": {
+    "Dialog": {
+      "triggerTitle": "从收据创建费用",
+      "title": "从收据创建",
+      "description": "从收据照片中提取费用信息。",
+      "body": "上传收据照片，如果可以的话，我们会扫描它以提取费用信息。",
+      "selectImage": "选择图像...",
+      "titleLabel": "标题：",
+      "categoryLabel": "类别：",
+      "amountLabel": "数量：",
+      "dateLabel": "日期：",
+      "editNext": "接下来您将能够编辑费用信息。",
+      "continue": "继续"
+    },
+    "unknown": "未知",
+    "TooBigToast": {
+      "title": "文件太大",
+      "description": "您可以上传的最大文件大小为 {maxSize}。"
+    },
+    "ErrorToast": {
+      "title": "上传文档时出错",
+      "description": "上传文档时发生错误。",
+      "retry": "重试"
+    }
+  },
+  "Balances": {
+    "title": "余额",
+    "description": "这是每个参与者支付或被支付的金额。",
+    "Reimbursements": {
+      "title": "建议报销",
+      "description": "以下是优化参与者之间报销的建议。",
+      "noImbursements": "看起来你们的团队不需要任何报销😁",
+      "owes": "<strong>{从}</strong> 欠 <strong>{到}</strong>",
+      "markAsPaid": "标记为已付款"
+    }
+  },
+  "Stats": {
+    "title": "统计数据",
+    "Totals": {
+      "title": "总计",
+      "description": "整个团体的支出汇总。",
+      "groupSpendings": "团体总支出",
+      "groupEarnings": "集团总收入",
+      "yourSpendings": "您的总支出",
+      "yourEarnings": "您的总收入",
+      "yourShare": "您的总份额"
+    }
+  },
+  "Activity": {
+    "title": "活动",
+    "description": "该组中所有活动的概述。",
+    "noActivity": "您的群组中还没有任何活动。",
+    "someone": "有人",
+    "settingsModified": "组设置已修改 <strong>{参与者}</strong>。",
+    "expenseCreated": "费用 <em>{费用}</em> 创建者： <strong>{参与者}</strong>。",
+    "expenseUpdated": "费用 <em>{费用}</em> 更新者 <strong>{参与者}</strong>。",
+    "expenseDeleted": "费用 <em>{费用}</em> 删除者 <strong>{参与者}</strong>。",
+    "Groups": {
+      "today": "今天",
+      "yesterday": "昨天",
+      "earlierThisWeek": "本周早些时候",
+      "lastWeek": "上星期",
+      "earlierThisMonth": "本月早些时候",
+      "lastMonth": "上个月",
+      "earlierThisYear": "今年早些时候",
+      "lastYear": "去年",
+      "older": "年长的"
+    }
+  },
+  "Information": {
+    "title": "信息",
+    "description": "使用此位置添加与小组参与者相关的任何信息。",
+    "empty": "还没有群组信息。"
+  },
+  "Settings": {
+    "title": "设置"
+  },
+  "Locale": {
+    "en-US": "English",
+    "hi-IN": "हिन्दी",
+    "bn-BD": "বাংলা",
+    "mr-IN": "मराठी",
+    "te-IN": "తెలుగు",
+    "ta-IN": "தமிழ்",
+    "gu-IN": "ગુજરાતી",
+    "kn-IN": "ಕನ್ನಡ",
+    "pa-IN": "ਪੰਜਾਬੀ",
+    "zh-CN": "简体中文",
+    "ko-KR": "한국어",
+    "th-TH": "ไทย",
+    "ja-JP": "日本語",
+    "ru-RU": "Русский",
+    "id-ID": "Bahasa"
+  },
+  "Share": {
+    "title": "分享",
+    "description": "为了让其他参与者查看该组并添加费用，请与他们共享其 URL。",
+    "warning": "警告！",
+    "warningHelp": "每个知道该群组 URL 的人都可以查看和编辑费用。"
+  },
+  "SchemaErrors": {
+    "min1": "至少输入一个字符。",
+    "min2": "输入至少两个字符。",
+    "max5": "最多输入五个字符。",
+    "max50": "最多输入 50 个字符。",
+    "duplicateParticipantName": "另一位参与者已使用此名称。",
+    "titleRequired": "请输入标题。",
+    "invalidNumber": "号码无效。",
+    "amountRequired": "您必须输入金额。",
+    "amountNotZero": "金额不得为零。",
+    "amountTenMillion": "金额必须低于 10,000,000。",
+    "paidByRequired": "您必须选择一名参与者。",
+    "paidForMin1": "费用必须为至少一名参与者支付。",
+    "noZeroShares": "所有股份必须高于 0。",
+    "amountSum": "金额总和必须等于费用金额。",
+    "percentageSum": "百分比总和必须等于 100。"
+  },
+  "Categories": {
+    "search": "搜索类别...",
+    "noCategory": "未找到类别。",
+    "Uncategorized": {
+      "heading": "未分类",
+      "General": "一般的",
+      "Payment": "支付"
+    },
+    "Entertainment": {
+      "heading": "娱乐",
+      "Entertainment": "娱乐",
+      "Games": "游戏",
+      "Movies": "电影",
+      "Music": "音乐",
+      "Sports": "运动的"
+    },
+    "Food and Drink": {
+      "heading": "饮食",
+      "Food and Drink": "饮食",
+      "Dining Out": "外出就餐",
+      "Groceries": "杂货",
+      "Liquor": "酒"
+    },
+    "Home": {
+      "heading": "家",
+      "Home": "家",
+      "Electronics": "电子产品",
+      "Furniture": "家具",
+      "Household Supplies": "家居用品",
+      "Maintenance": "维护",
+      "Mortgage": "抵押",
+      "Pets": "宠物",
+      "Rent": "租",
+      "Services": "服务"
+    },
+    "Life": {
+      "heading": "生活",
+      "Childcare": "儿童保育",
+      "Clothing": "衣服",
+      "Education": "教育",
+      "Gifts": "礼物",
+      "Insurance": "保险",
+      "Medical Expenses": "医疗费用",
+      "Taxes": "税收"
+    },
+    "Transportation": {
+      "heading": "运输",
+      "Transportation": "运输",
+      "Bicycle": "自行车",
+      "Bus/Train": "巴士/火车",
+      "Car": "车",
+      "Gas/Fuel": "气体/燃料",
+      "Hotel": "酒店",
+      "Parking": "停車處",
+      "Plane": "飞机",
+      "Taxi": "出租车"
+    },
+    "Utilities": {
+      "heading": "公用事业",
+      "Utilities": "公用事业",
+      "Cleaning": "打扫",
+      "Electricity": "电",
+      "Heat/Gas": "热/气",
+      "Trash": "垃圾",
+      "TV/Phone/Internet": "电视/电话/网络",
+      "Water": "水"
+    }
+  }
+}

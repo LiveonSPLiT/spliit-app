@@ -18,14 +18,14 @@ export type Props = {
 export function CommentItem({ comment, group, onDelete, onClick }: Props) {
   const activeUserId = useActiveUser(group.id)
   const locale = useLocale()
-  const t = useTranslations('ExpenseForm')
+  const t = useTranslations('ExpenseComments')
 
   return (
     <div className="flex justify-between sm:mx-6 px-4 sm:rounded-lg sm:pr-2 sm:pl-4 py-4 text-sm cursor-pointer hover:bg-accent gap-1 items-stretch">
       <div className="flex-1">
         <div className="mb-1">{comment.comment}</div>
         <div className="text-xs text-muted-foreground">
-          {t('expenseCommentField.by')} {comment.participant.name},{' '}
+          {t('by')} {comment.participant.name},{' '}
           {formatDate(comment.time, locale, {
             dateStyle: 'medium',
             timeStyle: 'short',
@@ -34,7 +34,9 @@ export function CommentItem({ comment, group, onDelete, onClick }: Props) {
       </div>
       {comment.participantId == activeUserId ? (
         <Button
-          variant="ghost"
+          variant="default"
+          size="icon"
+          style={{ marginLeft: '5px' }}
           onClick={() => {
             onClick(comment)
           }}
@@ -44,7 +46,12 @@ export function CommentItem({ comment, group, onDelete, onClick }: Props) {
       ) : (
         <></>
       )}
-      <Button variant="ghost" onClick={() => onDelete(comment.id)}>
+      <Button
+        variant="destructive"
+        style={{ marginLeft: '5px' }}
+        size="icon"
+        onClick={() => onDelete(comment.id)}
+      >
         <Trash2 className="w-4 h-4" />
       </Button>
     </div>
