@@ -1,5 +1,5 @@
 import { CategorySelector } from '@/components/category-selector'
-import { ExpenseActivityList } from '@/components/expense-activity-list'
+// import { ExpenseActivityList } from '@/components/expense-activity-list'
 import { ExpenseDocumentsInput } from '@/components/expense-documents-input'
 import { SubmitButton } from '@/components/submit-button'
 import { Button } from '@/components/ui/button'
