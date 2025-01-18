@@ -1,5 +1,5 @@
 import { CategorySelector } from '@/components/category-selector'
-// import { ExpenseActivityList } from '@/components/expense-activity-list'
+import { ExpenseActivityList } from '@/components/expense-activity-list'
 import { ExpenseDocumentsInput } from '@/components/expense-documents-input'
 import { SubmitButton } from '@/components/submit-button'
 import { Button } from '@/components/ui/button'
@@ -152,7 +152,7 @@ export function ExpenseForm({
   group,
   expense,
   categories,
-  // activities,
+  activities,
   onSubmit,
   onDelete,
   runtimeFeatureFlags,
@@ -160,6 +160,7 @@ export function ExpenseForm({
   group: NonNullable<AppRouterOutput['groups']['get']['group']>
   categories: AppRouterOutput['categories']['list']['categories']
   expense?: AppRouterOutput['groups']['expenses']['get']['expense']
+  activities?: AppRouterOutput['groups']['activities']['list']['activities']
   onSubmit: (value: ExpenseFormValues, participantId?: string) => Promise<void>
   onDelete?: (participantId?: string) => Promise<void>
   runtimeFeatureFlags: RuntimeFeatureFlags
@@ -964,7 +965,7 @@ export function ExpenseForm({
         </div>
       </form>
 
-      {/* {!isCreate && activities && (
+      {!isCreate && activities && (
         <Card className="mb-4">
           <CardHeader>
             <CardTitle className="flex justify-between">
@@ -984,7 +985,7 @@ export function ExpenseForm({
             />
           </CardContent>
         </Card>
-      )} */}
+      )}
     </Form>
   )
 }

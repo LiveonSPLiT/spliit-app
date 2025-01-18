@@ -26,6 +26,11 @@ export function EditExpenseForm({
   })
   const comments = commentsData?.comments ?? []
 
+  const { data: activitiesData } = trpc.groups.expenses.activity.list.useQuery({
+    expenseId,
+  })
+  const activities = activitiesData?.activities ?? []
+
   const { data: expenseData } = trpc.groups.expenses.get.useQuery({
     groupId,
     expenseId,
@@ -54,6 +59,7 @@ export function EditExpenseForm({
         group={group}
         expense={expense}
         categories={categories}
+        activities={activities}
         onSubmit={async (expenseFormValues, participantId) => {
           await updateExpenseMutateAsync({
             expenseId,
