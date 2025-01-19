@@ -1,8 +1,8 @@
 import {
   DATE_GROUPS,
-  getGroupedActivitiesByDate,
+  getExpenseActivitiesByDate,
 } from '@/app/groups/[groupId]/activity/activity-list'
-import { getActivities, getExpense, getGroup } from '@/lib/api'
+import { getExpenseActivity, getExpense, getGroup } from '@/lib/api'
 import { Activity } from '@prisma/client'
 import { useTranslations } from 'next-intl'
 import { ExpenseActivityItem } from './expense-activity-item'
@@ -10,11 +10,11 @@ import { ExpenseActivityItem } from './expense-activity-item'
 type Props = {
   group: NonNullable<Awaited<ReturnType<typeof getGroup>>>
   expense: Awaited<ReturnType<typeof getExpense>>
-  activities: NonNullable<Awaited<ReturnType<typeof getActivities>>>
+  activities: NonNullable<Awaited<ReturnType<typeof getExpenseActivity>>>
 }
 
 export function ExpenseActivityList({ group, expense, activities }: Props) {
-  const groupedActivitiesByDate = getGroupedActivitiesByDate(activities)
+  const groupedActivitiesByDate = getExpenseActivitiesByDate(activities)
   const t = useTranslations('ExpenseForm')
 
   return activities.length > 0 ? (

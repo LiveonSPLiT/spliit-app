@@ -160,7 +160,7 @@ export function ExpenseForm({
   group: NonNullable<AppRouterOutput['groups']['get']['group']>
   categories: AppRouterOutput['categories']['list']['categories']
   expense?: AppRouterOutput['groups']['expenses']['get']['expense']
-  activities?: AppRouterOutput['groups']['activities']['list']['activities']
+  activities?: AppRouterOutput['groups']['expenses']['activity']['list']['activities']
   onSubmit: (value: ExpenseFormValues, participantId?: string) => Promise<void>
   onDelete?: (participantId?: string) => Promise<void>
   runtimeFeatureFlags: RuntimeFeatureFlags

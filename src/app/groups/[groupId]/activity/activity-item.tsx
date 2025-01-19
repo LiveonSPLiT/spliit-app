@@ -3,23 +3,26 @@ import { Button } from '@/components/ui/button'
 
 import { DateTimeStyle, cn, formatDate } from '@/lib/utils'
 import { AppRouterOutput } from '@/trpc/routers/_app'
-import { Activity, ActivityType, Participant } from '@prisma/client'
+import { ActivityType, Participant } from '@prisma/client'
 import { ChevronRight } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-export type ExpenseActivity =
+export type GroupActivities =
   AppRouterOutput['groups']['activities']['list']['activities'][number]
+
+export type ExpenseActivity =
+  AppRouterOutput['groups']['expenses']['activity']['list']['activities'][number]
 
 type Props = {
   groupId: string
-  activity: ExpenseActivity
+  activity: GroupActivities
   participant?: Participant
   dateStyle: DateTimeStyle
 }
 
-export function useSummary(activity: Activity, participantName?: string) {
+export function useSummary(activity: ExpenseActivity, participantName?: string) {
   const t = useTranslations('Activity')
   const participant = participantName ?? t('someone')
 

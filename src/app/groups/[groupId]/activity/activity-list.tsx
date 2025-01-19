@@ -1,6 +1,7 @@
 'use client'
 import {
   ExpenseActivity,
+  GroupActivities,
   ActivityItem,
 } from '@/app/groups/[groupId]/activity/activity-item'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -47,7 +48,22 @@ function getDateGroup(date: Dayjs, today: Dayjs) {
   }
 }
 
-export function getGroupedActivitiesByDate(activities: ExpenseActivity[]) {
+function getGroupedActivitiesByDate(activities: GroupActivities[]) {
+  const today = dayjs()
+  return activities.reduce(
+    (result, activity) => {
+      const activityGroup = getDateGroup(dayjs(activity.time), today)
+      result[activityGroup] = result[activityGroup] ?? []
+      result[activityGroup].push(activity)
+      return result
+    },
+    {} as {
+      [key: string]: GroupActivities[]
+    },
+  )
+}
+
+export function getExpenseActivitiesByDate(activities: ExpenseActivity[]) {
   const today = dayjs()
   return activities.reduce(
     (result, activity) => {
