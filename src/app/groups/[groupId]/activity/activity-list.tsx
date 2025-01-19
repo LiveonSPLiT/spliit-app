@@ -1,8 +1,8 @@
 'use client'
 import {
+  ActivityItem,
   ExpenseActivity,
   GroupActivities,
-  ActivityItem,
 } from '@/app/groups/[groupId]/activity/activity-item'
 import { Skeleton } from '@/components/ui/skeleton'
 import { trpc } from '@/trpc/client'
@@ -121,7 +121,7 @@ export function ActivityList() {
   }, [fetchNextPage, hasMore, inView, isLoading])
 
   if (isLoading || !activities || !group) return <ActivitiesLoading />
-  
+
   const groupedActivitiesByDate = getGroupedActivitiesByDate(activities)
 
   return activities.length > 0 ? (
@@ -146,9 +146,9 @@ export function ActivityList() {
             {groupActivities.map((activity) => {
               const participant =
                 activity.participantId !== null
-                ? group.participants.find(
-                  (p) => p.id === activity.participantId,
-                )
+                  ? group.participants.find(
+                      (p) => p.id === activity.participantId,
+                    )
                   : undefined
               return (
                 <ActivityItem

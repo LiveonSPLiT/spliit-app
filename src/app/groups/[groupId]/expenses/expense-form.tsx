@@ -51,9 +51,9 @@ import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { match } from 'ts-pattern'
-import { ExpenseLocationInput } from '../../../../components/expense-location-input'
 import { DeletePopup } from '../../../../components/delete-popup'
 import { extractCategoryFromTitle } from '../../../../components/expense-form-actions'
+import { ExpenseLocationInput } from '../../../../components/expense-location-input'
 import { Textarea } from '../../../../components/ui/textarea'
 
 const enforceCurrencyPattern = (value: string) =>
@@ -65,7 +65,9 @@ const enforceCurrencyPattern = (value: string) =>
     .replace(/#/, '.') // change back # to dot
     .replace(/[^-\d.]/g, '') // remove all non-numeric characters
 
-const getDefaultSplittingOptions = (group: NonNullable<AppRouterOutput['groups']['get']['group']>,) => {
+const getDefaultSplittingOptions = (
+  group: NonNullable<AppRouterOutput['groups']['get']['group']>,
+) => {
   const defaultValue = {
     splitMode: 'EVENLY' as const,
     paidFor: group.participants.map(({ id }) => ({

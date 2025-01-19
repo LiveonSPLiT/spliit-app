@@ -2,7 +2,7 @@ import {
   DATE_GROUPS,
   getExpenseActivitiesByDate,
 } from '@/app/groups/[groupId]/activity/activity-list'
-import { getExpenseActivity, getExpense, getGroup } from '@/lib/api'
+import { getExpense, getExpenseActivity, getGroup } from '@/lib/api'
 import { Activity } from '@prisma/client'
 import { useTranslations } from 'next-intl'
 import { ExpenseActivityItem } from './expense-activity-item'

@@ -22,7 +22,10 @@ type Props = {
   dateStyle: DateTimeStyle
 }
 
-export function useSummary(activity: ExpenseActivity, participantName?: string) {
+export function useSummary(
+  activity: ExpenseActivity,
+  participantName?: string,
+) {
   const t = useTranslations('Activity')
   const participant = participantName ?? t('someone')
 

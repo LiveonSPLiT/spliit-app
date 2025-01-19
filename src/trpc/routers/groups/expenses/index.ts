@@ -1,6 +1,6 @@
 import { createTRPCRouter } from '@/trpc/init'
-import { expenseCommentRouter } from '@/trpc/routers/groups/expenses/comments'
 import { expenseActivityRouter } from '@/trpc/routers/groups/expenses/activity'
+import { expenseCommentRouter } from '@/trpc/routers/groups/expenses/comments'
 import { createGroupExpenseProcedure } from '@/trpc/routers/groups/expenses/create.procedure'
 import { deleteGroupExpenseProcedure } from '@/trpc/routers/groups/expenses/delete.procedure'
 import { getGroupExpenseProcedure } from '@/trpc/routers/groups/expenses/get.procedure'
