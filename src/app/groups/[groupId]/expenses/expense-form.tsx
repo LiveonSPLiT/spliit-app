@@ -1,4 +1,3 @@
-'use client'
 import { CategorySelector } from '@/components/category-selector'
 import { ExpenseActivityList } from '@/components/expense-activity-list'
 import { ExpenseDocumentsInput } from '@/components/expense-documents-input'
@@ -34,13 +33,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import {
-  getActivities,
-  getCategories,
-  getExpense,
-  getGroup,
-  randomId,
-} from '@/lib/api'
+import { randomId } from '@/lib/api'
 import { RuntimeFeatureFlags } from '@/lib/featureFlags'
 import { useActiveUser } from '@/lib/hooks'
 import {
@@ -49,6 +42,7 @@ import {
   expenseFormSchema,
 } from '@/lib/schemas'
 import { cn } from '@/lib/utils'
+import { AppRouterOutput } from '@/trpc/routers/_app'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Save } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -57,20 +51,10 @@ import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { match } from 'ts-pattern'
-import { DeletePopup } from './delete-popup'
-import { extractCategoryFromTitle } from './expense-form-actions'
-import { ExpenseLocationInput } from './expense-location-input'
-import { Textarea } from './ui/textarea'
-
-export type Props = {
-  group: NonNullable<Awaited<ReturnType<typeof getGroup>>>
-  expense?: NonNullable<Awaited<ReturnType<typeof getExpense>>>
-  categories: NonNullable<Awaited<ReturnType<typeof getCategories>>>
-  activities?: NonNullable<Awaited<ReturnType<typeof getActivities>>>
-  onSubmit: (values: ExpenseFormValues, participantId?: string) => Promise<void>
-  onDelete?: (participantId?: string) => Promise<void>
-  runtimeFeatureFlags: RuntimeFeatureFlags
-}
+import { DeletePopup } from '../../../../components/delete-popup'
+import { extractCategoryFromTitle } from '../../../../components/expense-form-actions'
+import { ExpenseLocationInput } from '../../../../components/expense-location-input'
+import { Textarea } from '../../../../components/ui/textarea'
 
 const enforceCurrencyPattern = (value: string) =>
   value
@@ -81,7 +65,9 @@ const enforceCurrencyPattern = (value: string) =>
     .replace(/#/, '.') // change back # to dot
     .replace(/[^-\d.]/g, '') // remove all non-numeric characters
 
-const getDefaultSplittingOptions = (group: Props['group']) => {
+const getDefaultSplittingOptions = (
+  group: NonNullable<AppRouterOutput['groups']['get']['group']>,
+) => {
   const defaultValue = {
     splitMode: 'EVENLY' as const,
     paidFor: group.participants.map(({ id }) => ({
@@ -172,7 +158,15 @@ export function ExpenseForm({
   onSubmit,
   onDelete,
   runtimeFeatureFlags,
-}: Props) {
+}: {
+  group: NonNullable<AppRouterOutput['groups']['get']['group']>
+  categories: AppRouterOutput['categories']['list']['categories']
+  expense?: AppRouterOutput['groups']['expenses']['get']['expense']
+  activities?: AppRouterOutput['groups']['expenses']['activity']['list']['activities']
+  onSubmit: (value: ExpenseFormValues, participantId?: string) => Promise<void>
+  onDelete?: (participantId?: string) => Promise<void>
+  runtimeFeatureFlags: RuntimeFeatureFlags
+}) {
   const t = useTranslations('ExpenseForm')
   const isCreate = expense === undefined
   const searchParams = useSearchParams()
@@ -279,7 +273,6 @@ export function ExpenseForm({
     Set<string>
   >(new Set())
   const sExpense = isIncome ? 'Income' : 'Expense'
-  const sPaid = isIncome ? 'received' : 'paid'
   const recurringDays = [
     { key: t('recurringDaysField.fields.Never'), value: '0' },
     { key: t('recurringDaysField.fields.Weekly'), value: '7' },
