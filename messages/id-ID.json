@@ -28,7 +28,9 @@
     "create": "Buat biaya",
     "createFirst": "Buat yang pertama",
     "noExpenses": "Grup Anda belum memuat biaya apa pun.",
+    "export": "Ekspor peng",
     "exportJson": "Ekspor ke JSON",
+    "exportCsv": "Ekspor ke CSV",
     "searchPlaceholder": "Cari pengeluaran…",
     "ActiveUserModal": {
       "title": "Siapa kamu?",

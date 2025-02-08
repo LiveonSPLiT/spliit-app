@@ -18,6 +18,7 @@
     "@ducanh2912/next-pwa": "^10.2.8",
     "@formatjs/intl-localematcher": "^0.5.4",
     "@hookform/resolvers": "^3.3.2",
+    "@json2csv/plainjs": "^7.0.6",
     "@prisma/client": "^5.6.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-checkbox": "^1.0.4",

@@ -28,7 +28,9 @@
     "create": "खर्च तयार करा",
     "createFirst": "पहिला खर्च तयार करा",
     "noExpenses": "तुमच्या गटात अद्याप कोणताही खर्च नाही.",
+    "export": "निर्यात करा",
     "exportJson": "JSON मध्ये निर्यात करा",
+    "exportCsv": "CSV मध्ये निर्यात करा",
     "searchPlaceholder": "खर्च शोधा…",
     "ActiveUserModal": {
       "title": "तुम्ही कोण आहात?",

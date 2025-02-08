@@ -28,7 +28,9 @@
     "create": "비용 생성",
     "createFirst": "첫 번째 항목 만들기",
     "noExpenses": "귀하의 그룹에는 아직 비용이 포함되어 있지 않습니다.",
+    "export": "내보내기",
     "exportJson": "JSON으로 내보내기",
+    "exportCsv": "CSV로 내보내기",
     "searchPlaceholder": "비용 검색…",
     "ActiveUserModal": {
       "title": "누구세요?",

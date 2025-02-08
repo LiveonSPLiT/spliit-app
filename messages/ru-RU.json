@@ -28,7 +28,9 @@
     "create": "Создать расход",
     "createFirst": "Создайте первый",
     "noExpenses": "В вашей группе пока нет расходов.",
+    "export": "Экспорт",
     "exportJson": "Экспорт в JSON",
+    "exportCsv": "Экспорт в CSV",
     "searchPlaceholder": "Поиск расходов…",
     "ActiveUserModal": {
       "title": "Кто ты?",

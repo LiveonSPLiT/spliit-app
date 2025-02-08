@@ -28,7 +28,9 @@
     "create": "สร้างรายจ่าย",
     "createFirst": "สร้างอันแรก",
     "noExpenses": "กลุ่มของคุณยังไม่มีค่าใช้จ่ายใดๆ",
+    "export": "ส่งออก",
     "exportJson": "ส่งออกเป็น JSON",
+    "exportCsv": "ส่งออกเป็น CSV",
     "searchPlaceholder": "ค้นหาค่าใช้จ่าย...",
     "ActiveUserModal": {
       "title": "คุณเป็นใคร?",

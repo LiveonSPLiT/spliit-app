@@ -28,7 +28,9 @@
     "create": "खर्चा बनाएं",
     "createFirst": "पहला बनाएं",
     "noExpenses": "आपके समूह में अभी तक कोई खर्चा नहीं है।",
+    "export": "निर्यात करें",
     "exportJson": "JSON में निर्यात करें",
+    "exportCsv": "CSV में निर्यात करें",
     "searchPlaceholder": "खर्चे के लिए खोजें…",
     "ActiveUserModal": {
       "title": "आप कौन हैं?",
