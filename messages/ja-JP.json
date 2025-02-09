@@ -29,8 +29,8 @@
     "createFirst": "最初のものを作成する",
     "noExpenses": "あなたのグループにはまだ経費が含まれていません。",
     "export": "エクスポート",
-    "exportJson": "JSON にエクスポート",
-    "exportCsv": "CSV にエクスポート",
+    "exportJson": "JSON ファイル",
+    "exportCsv": "CSV ファイル",
     "searchPlaceholder": "経費を検索…",
     "ActiveUserModal": {
       "title": "あなたは誰ですか？",

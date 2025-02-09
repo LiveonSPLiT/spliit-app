@@ -29,8 +29,8 @@
     "createFirst": "ಮೊದಲನೆಯದನ್ನು ರಚಿಸಿ",
     "noExpenses": "ನಿಮ್ಮ ಗುಂಪು ಇನ್ನೂ ಯಾವುದೇ ವೆಚ್ಚವನ್ನು ಹೊಂದಿಲ್ಲ.",
     "export": "ರಫ್ತು ಮಾಡಿ",
-    "exportJson": "JSON ಗೆ ರಫ್ತು ಮಾಡಿ",
-    "exportCsv": "CSV ಗೆ ರಫ್ತು ಮಾಡಿ",
+    "exportJson": "JSON ಮಾಡಿ",
+    "exportCsv": "CSV ಮಾಡಿ",
     "searchPlaceholder": "ವೆಚ್ಚಕ್ಕಾಗಿ ಹುಡುಕಿ...",
     "ActiveUserModal": {
       "title": "ನೀವು ಯಾರು?",

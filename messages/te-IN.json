@@ -29,8 +29,8 @@
     "createFirst": "మొదటిది సృష్టించండి",
     "noExpenses": "మీ సమూహంలో ఇంకా ఖర్చు లేదు.",
     "export": "ఎగుమతి చేయండి",
-    "exportJson": "JSON కి ఎగుమతి చేయండి",
-    "exportCsv": "CSV కి ఎగుమతి చేయండి",
+    "exportJson": "JSON చేయండి",
+    "exportCsv": "CSV చేయండి",
     "searchPlaceholder": "ఒక ఖర్చు కోసం వెతకండి…",
     "ActiveUserModal": {
       "title": "మీరు ఎవరు?",

@@ -29,8 +29,8 @@
     "createFirst": "ਪਹਿਲਾ ਬਣਾਓ",
     "noExpenses": "ਤੁਹਾਡੇ ਸਮੂਹ ਵਿੱਚ ਅਜੇ ਕੋਈ ਖਰਚਾ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ।",
     "export": "ਨਿਰਯਾਤ ਕਰੋ",
-    "exportJson": "JSON ਨੂੰ ਨਿਰਯਾਤ ਕਰੋ",
-    "exportCsv": "CSV ਨੂੰ ਨਿਰਯਾਤ ਕਰੋ",
+    "exportJson": "JSON ਨਿਰਯਾਤ",
+    "exportCsv": "CSV ਨਿਰਯਾਤ",
     "searchPlaceholder": "ਕਿਸੇ ਖਰਚੇ ਦੀ ਖੋਜ ਕਰੋ...",
     "ActiveUserModal": {
       "title": "ਤੂੰ ਕੌਣ ਹੈ?",
