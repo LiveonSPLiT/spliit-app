@@ -6,8 +6,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { Download, FileDown, FileJson } from 'lucide-react'
 import { useMediaQuery } from '@/lib/hooks'
+import { Download, FileDown, FileJson } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
@@ -21,8 +21,10 @@ export default function ExportButton({ groupId }: { groupId: string }) {
           <Download className="w-4 h-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent align={isDesktop ? 'end' : 'start'}
-        className="w-40 flex flex-col gap-3">
+      <PopoverContent
+        align={isDesktop ? 'end' : 'start'}
+        className="w-40 flex flex-col gap-3"
+      >
         <Button variant="ghost" asChild>
           <Link
             prefetch={false}
