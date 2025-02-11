@@ -28,7 +28,9 @@
     "create": "ખર્ચ બનાવો",
     "createFirst": "પ્રથમ બનાવો",
     "noExpenses": "તમારા જૂથમાં હજુ સુધી કોઈ ખર્ચ નથી.",
-    "exportJson": "JSON પર નિકાસ કરો",
+    "export": "એક્સપોર્ટ",
+    "exportJson": "JSON માં",
+    "exportCsv": "CSV માં",
     "searchPlaceholder": "ખર્ચ માટે શોધો...",
     "ActiveUserModal": {
       "title": "તમે કોણ છો?",

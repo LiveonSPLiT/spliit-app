@@ -28,7 +28,9 @@
     "create": "创建费用",
     "createFirst": "创建第一个",
     "noExpenses": "您的小组尚不包含任何费用。",
+    "export": "导出费用",
     "exportJson": "导出为 JSON",
+    "exportCsv": "导出为 CSV",
     "searchPlaceholder": "搜索费用...",
     "ActiveUserModal": {
       "title": "你是谁？",

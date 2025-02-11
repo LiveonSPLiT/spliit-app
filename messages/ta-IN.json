@@ -28,7 +28,9 @@
     "create": "செலவு உருவாக்கு",
     "createFirst": "முதல் ஒன்றை உருவாக்குங்கள்",
     "noExpenses": "உங்கள் குழுவில் இன்னும் செலவு இல்லை.",
-    "exportJson": "JSONக்கு ஏற்றுமதி செய்யவும்",
+    "export": "ஏற்றுமதி செய்யவும்",
+    "exportJson": "JSON வடிவம்",
+    "exportCsv": "CSV வடிவம்",
     "searchPlaceholder": "ஒரு செலவைத் தேடுங்கள்…",
     "ActiveUserModal": {
       "title": "நீங்கள் யார்?",

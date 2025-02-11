@@ -28,7 +28,9 @@
     "create": "ব্যয় তৈরি করুন",
     "createFirst": "প্রথমটি তৈরি করুন",
     "noExpenses": "আপনার গ্রুপে এখনও কোন ব্যয় নেই।",
-    "exportJson": "JSON এ রপ্তানি করুন",
+    "export": "প্রকল্প ডাউনলোড করুন",
+    "exportJson": "JSON করুন",
+    "exportCsv": "CSV করুন",
     "searchPlaceholder": "একটি ব্যয় অনুসন্ধান করুন…",
     "ActiveUserModal": {
       "title": "আপনি কে?",
