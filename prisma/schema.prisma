@@ -18,6 +18,7 @@ model User {
   recentGroups   RecentGroup[]
   starredGroups  StarredGroup[]
   archivedGroups ArchivedGroup[]
+  participants   Participant[]   // New relation: A user can have multiple participants
 }
 
 model RecentGroup {
@@ -53,6 +54,7 @@ model Group {
   name         String
   information  String?       @db.Text
   currency     String        @default("₹")
+  type         GroupType     @default(MULTI_MEMBER)  // Added type field with default value
   participants Participant[]
   expenses     Expense[]
   activities   Activity[]
@@ -64,6 +66,8 @@ model Participant {
   name            String
   group           Group            @relation(fields: [groupId], references: [id], onDelete: Cascade)
   groupId         String
+  userId          String?          // New optional relation to User
+  user            User?            @relation(fields: [userId], references: [id])
   expensesPaidBy  Expense[]
   expensesPaidFor ExpensePaidFor[]
   expenseComments ExpenseComment[]
@@ -167,4 +171,10 @@ model RecurringTransactions {
 
   @@id([groupId, expenseId])
   @@index([groupId, expenseId, createNextAt(sort: Desc)])
+}
+
+// New Enum for Group Type
+enum GroupType {
+  MULTI_MEMBER  // Default value
+  DUAL_MEMBER
 }

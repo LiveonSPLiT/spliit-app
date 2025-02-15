@@ -128,6 +128,70 @@
       "cancel": "Cancel"
     }
   },
+  "Friends": {
+    "myFriends": "My friends",
+    "add": "Add",
+    "loadingRecent": "Loading recent friends…",
+    "NoRecent": {
+      "description": "You have not interacted with any friend recently.",
+      "add": "Add one",
+      "orAsk": "or ask a friend to send you their profile link."
+    },
+    "recent": "Recent friends",
+    "starred": "Starred friends",
+    "blocked": "Blocked friends",
+    "block": "Block friend",
+    "unblock": "Unblock friend",
+    "removeRecent": "Remove from recent friends",
+    "RecentRemovedToast": {
+      "title": "Friend has been removed",
+      "description": "The friend was removed from your recent friends list.",
+      "undoAlt": "Undo friend removal",
+      "undo": "Undo"
+    },
+    "AddByURL": {
+      "button": "Add by URL",
+      "title": "Add a friend by URL",
+      "description": "If a friend shared their profile with you, you can paste their URL here to add them to your list.",
+      "error": "Oops, we are not able to find the friend from the URL you provided…"
+    },
+    "NotFound": {
+      "text": "This friend does not exist.",
+      "link": "Go to recently interacted friends"
+    }
+  },
+  "FriendForm": {
+    "title": "Friend information",
+    "NameField": {
+      "label": "Friend name",
+      "placeholder": "John Doe",
+      "description": "Enter a name for your friend."
+    },
+    "InformationField": {
+      "label": "Friend information",
+      "placeholder": "Any details about your friend?"
+    },
+    "NicknameField": {
+      "label": "Nickname",
+      "placeholder": "Johnny, Lizzy, Sam…",
+      "description": "A nickname to display for your friend."
+    },
+    "Settings": {
+      "title": "Local settings",
+      "description": "These settings are set per-device, and are used to customize your experience.",
+      "ActiveUserField": {
+        "label": "Active friend",
+        "placeholder": "Select a friend",
+        "none": "None",
+        "description": "Friend used as default for interactions."
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "add": "Add",
+      "adding": "Adding…",
+      "cancel": "Cancel"
+    }
+  },
   "ExpenseForm": {
     "Income": {
       "create": "Create income",

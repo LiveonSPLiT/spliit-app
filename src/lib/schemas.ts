@@ -170,3 +170,35 @@ export type SplittingOptions = {
   splitMode: SplitMode
   paidFor: ExpenseFormValues['paidFor'] | null
 }
+
+export const friendFormSchema = z
+  .object({
+    friendName: z.string().min(2, 'min2').max(50, 'max50'),
+    friendEmail: z.string().email('invalidEmail'),
+    loggedInUserId: z.string().uuid('invalidUUID'),
+    loggedInUserName: z.string().min(2, 'min2').max(50, 'max50'),
+    information: z.string().optional(),
+    currency: z.string().min(1, 'min1').max(5, 'max5').default('₹'),
+    type: z.literal('DUAL_MEMBER'),
+    participants: z
+      .array(
+        z.object({
+          id: z.string().optional(),
+          name: z.string().min(2, 'min2').max(50, 'max50'),
+          userId: z.string().uuid('invalidUUID'),
+        }),
+      )
+      .length(2, 'exactlyTwoParticipants'),
+  })
+  .superRefine(({ participants }, ctx) => {
+    const participantNames = participants.map((p) => p.name);
+    if (new Set(participantNames).size !== participants.length) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'duplicateParticipantName',
+        path: ['participants'],
+      });
+    }
+  });
+
+export type FriendFormValues = z.infer<typeof friendFormSchema>;

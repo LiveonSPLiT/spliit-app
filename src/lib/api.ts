@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { ExpenseFormValues, GroupFormValues } from '@/lib/schemas'
+import { ExpenseFormValues, GroupFormValues, FriendFormValues } from '@/lib/schemas'
 import {
   ActivityType,
   Expense,
@@ -712,4 +712,61 @@ export async function logActivity(
       ...extra,
     },
   })
+}
+
+export async function createFriend(friendFormSchema: FriendFormValues) {
+  // Step 1: Create a new User (Friend)
+  const newFriend = await prisma.user.create({
+    data: {
+      id: randomId(),
+      name: friendFormSchema.friendName,
+      email: friendFormSchema.friendEmail,
+    },
+  });
+
+  // Step 2: Create a new Group with type 'dualMember'
+  const newGroup = await prisma.group.create({
+    data: {
+      id: randomId(),
+      type: "DUAL_MEMBER", // Setting the group type as dualMember
+      name: "Friend_Group", // Setting the group name as friendGroup
+      information: friendFormSchema.information,
+      currency: friendFormSchema.currency,
+      participants: {
+        createMany: {
+          data: [
+            { id: randomId(), name: friendFormSchema.loggedInUserName, userId: friendFormSchema.loggedInUserId }, // Logged-in user
+            { id: randomId(), name: friendFormSchema.friendName, userId: newFriend.id }, // Newly created friend user
+          ],
+        },
+      },
+    },
+    include: { participants: true },
+  });
+
+  return { friend: newFriend, group: newGroup };
+}
+
+export async function getFriend(loggedInUserId: string) {
+  // Fetch all DUAL_MEMBER groups where the logged-in user is a participant
+  const groups = await prisma.group.findMany({
+    where: {
+      type: "DUAL_MEMBER",
+      participants: {
+        some: {
+          userId: loggedInUserId,
+        },
+      },
+    },
+    include: { participants: true },
+  });
+
+  // Map the groups to dynamically set the name based on logged-in user
+  return groups.map((group) => {
+    const alternateParticipant = group.participants.find((p) => p.userId !== loggedInUserId);
+    return {
+      ...group,
+      name: alternateParticipant ? alternateParticipant.name : "Unknown",
+    };
+  });
 }
