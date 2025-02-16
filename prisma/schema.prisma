@@ -12,13 +12,16 @@ datasource db {
 }
 
 model User {
-  id             String          @id @default(uuid())
-  name           String
-  email          String          @unique
-  recentGroups   RecentGroup[]
-  starredGroups  StarredGroup[]
-  archivedGroups ArchivedGroup[]
-  participants   Participant[]   // New relation: A user can have multiple participants
+  id              String          @id @default(uuid())
+  name            String
+  email           String          @unique
+  recentGroups    RecentGroup[]
+  starredGroups   StarredGroup[]
+  archivedGroups  ArchivedGroup[]
+  participants    Participant[]
+  recentFriends   RecentFriend[]   // New relation for recent friends
+  starredFriends  StarredFriend[]  // New relation for starred friends
+  blockedFriends  BlockedFriend[]  // New relation for blocked friends
 }
 
 model RecentGroup {
@@ -45,6 +48,34 @@ model ArchivedGroup {
   userId  String
   user    User                  @relation(fields: [userId], references: [id])
   groupId String
+
+  @@unique([userId, groupId])
+}
+
+model RecentFriend {
+  id      String   @id @default(uuid())
+  userId  String
+  name    String
+  user    User     @relation(fields: [userId], references: [id])
+  groupId String   // This links to the DUAL_MEMBER group
+
+  @@unique([userId, groupId])
+}
+
+model StarredFriend {
+  id      String   @id @default(uuid())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  groupId String   // This links to the DUAL_MEMBER group
+
+  @@unique([userId, groupId])
+}
+
+model BlockedFriend {
+  id      String   @id @default(uuid())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  groupId String   // This links to the DUAL_MEMBER group
 
   @@unique([userId, groupId])
 }

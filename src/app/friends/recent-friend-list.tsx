@@ -1,13 +1,13 @@
 'use client'
 import { AddFriendByUrlButton } from '@/app/friends/add-friend-by-url-button'
 import {
-  RecentGroups,
-  getArchivedGroups,
-  getRecentGroups,
-  getStarredGroups,
+  RecentFriends,
+  getBlockedFriends,
+  getRecentFriends,
+  getStarredFriends,
 } from '@/app/friends/recent-friends-helpers'
 import { Button } from '@/components/ui/button'
-import { getGroups } from '@/lib/api'
+import { getFriend } from '@/lib/api'
 import { trpc } from '@/trpc/client'
 import { AppRouterOutput } from '@/trpc/routers/_app'
 import { Loader2 } from 'lucide-react'
@@ -20,14 +20,14 @@ export type RecentGroupsState =
   | { status: 'pending' }
   | {
       status: 'partial'
-      groups: RecentGroups
+      groups: RecentFriends
       starredGroups: string[]
       archivedGroups: string[]
     }
   | {
       status: 'complete'
-      groups: RecentGroups
-      groupsDetails: Awaited<ReturnType<typeof getGroups>>
+      groups: RecentFriends
+      groupsDetails: Awaited<ReturnType<typeof getFriend>>
       starredGroups: string[]
       archivedGroups: string[]
     }
@@ -37,7 +37,7 @@ function sortGroups({
   starredGroups,
   archivedGroups,
 }: {
-  groups: RecentGroups
+  groups: RecentFriends
   starredGroups: string[]
   archivedGroups: string[]
 }) {
@@ -64,9 +64,9 @@ export function RecentFriendList() {
   const [state, setState] = useState<RecentGroupsState>({ status: 'pending' })
 
   async function loadGroups() {
-    const groupsInStorage = await getRecentGroups()
-    const starredGroups = await getStarredGroups()
-    const archivedGroups = await getArchivedGroups()
+    const groupsInStorage = await getRecentFriends()
+    const starredGroups = await getStarredFriends()
+    const archivedGroups = await getBlockedFriends()
     setState({
       status: 'partial',
       groups: groupsInStorage,
@@ -97,7 +97,7 @@ function RecentGroupList_({
   archivedGroups,
   refreshGroupsFromStorage,
 }: {
-  groups: RecentGroups
+  groups: RecentFriends
   starredGroups: string[]
   archivedGroups: string[]
   refreshGroupsFromStorage: () => void
@@ -193,7 +193,7 @@ function GroupList({
   archivedGroups,
   refreshGroupsFromStorage,
 }: {
-  groups: RecentGroups
+  groups: RecentFriends
   groupDetails?: AppRouterOutput['groups']['list']['groups']
   starredGroups: string[]
   archivedGroups: string[]

@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { ExpenseFormValues, GroupFormValues, FriendFormValues } from '@/lib/schemas'
+import { ExpenseFormValues, GroupFormValues } from '@/lib/schemas'
 import {
   ActivityType,
   Expense,
@@ -714,13 +714,18 @@ export async function logActivity(
   })
 }
 
-export async function createFriend(friendFormSchema: FriendFormValues) {
-  // Step 1: Create a new User (Friend)
+export async function createFriend(friendFormSchema: GroupFormValues) {
+  
+  const loggedInUser = await prisma.user.findUnique({
+    where: { email: friendFormSchema.loggedInEmail },
+    select: { id: true, name: true },
+  })
+
   const newFriend = await prisma.user.create({
     data: {
       id: randomId(),
-      name: friendFormSchema.friendName,
-      email: friendFormSchema.friendEmail,
+      name: friendFormSchema.name,
+      email: friendFormSchema.friendEmail || "",
     },
   });
 
@@ -735,8 +740,8 @@ export async function createFriend(friendFormSchema: FriendFormValues) {
       participants: {
         createMany: {
           data: [
-            { id: randomId(), name: friendFormSchema.loggedInUserName, userId: friendFormSchema.loggedInUserId }, // Logged-in user
-            { id: randomId(), name: friendFormSchema.friendName, userId: newFriend.id }, // Newly created friend user
+            { id: randomId(), name: loggedInUser?.name || "", userId: loggedInUser?.id }, // Logged-in user
+            { id: randomId(), name: friendFormSchema.name, userId: newFriend.id }, // Newly created friend user
           ],
         },
       },
@@ -744,10 +749,16 @@ export async function createFriend(friendFormSchema: FriendFormValues) {
     include: { participants: true },
   });
 
-  return { friend: newFriend, group: newGroup };
+  // Set the name based on the alternate participant
+  const alternateParticipant = newGroup.participants.find((p) => p.userId !== loggedInUser?.id);
+  return {
+    ...newGroup,
+    name: alternateParticipant ? alternateParticipant.name : "Unknown",
+    friendEmail: friendFormSchema.friendEmail || "unknown@liveonsplit.com",
+  };
 }
 
-export async function getFriend(loggedInUserId: string) {
+export async function listFriends(loggedInUserId: string) {
   // Fetch all DUAL_MEMBER groups where the logged-in user is a participant
   const groups = await prisma.group.findMany({
     where: {
@@ -769,4 +780,36 @@ export async function getFriend(loggedInUserId: string) {
       name: alternateParticipant ? alternateParticipant.name : "Unknown",
     };
   });
+}
+
+export async function getFriend(loggedInUserId: string, groupId: string) {
+  // Fetch the specific DUAL_MEMBER group where the logged-in user is a participant
+  const group = await prisma.group.findUnique({
+    where: {
+      id: groupId,
+      type: "DUAL_MEMBER",
+      participants: {
+        some: {
+          userId: loggedInUserId,
+        },
+      },
+    },
+    include: { participants: true },
+  });
+
+  if (!group) {
+    return null;
+  }
+
+  // Set the name based on the alternate participant
+  const alternateParticipant = group.participants.find((p) => p.userId !== loggedInUserId);
+  const user = await prisma.user.findUnique({
+    where: { id: alternateParticipant?.userId || "Unknown" },
+    select: { email: true },
+  })
+  return {
+    ...group,
+    name: alternateParticipant ? alternateParticipant.name : "Unknown",
+    friendEmail: user?.email || "unknown@liveonsplit.com",
+  };
 }

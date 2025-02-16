@@ -1,10 +1,10 @@
 import {
-  RecentGroup,
-  archiveGroup,
-  deleteRecentGroup,
-  starGroup,
-  unarchiveGroup,
-  unstarGroup,
+  RecentFriend,
+  blockFriend,
+  deleteRecentFriend,
+  starFriend,
+  unBlockFriend,
+  unstarFriend,
 } from '@/app/friends/recent-friends-helpers'
 import { Button } from '@/components/ui/button'
 import {
@@ -29,7 +29,7 @@ export function RecentFriendListCard({
   isArchived,
   refreshGroupsFromStorage,
 }: {
-  group: RecentGroup
+  group: RecentFriend
   groupDetail?: AppRouterOutput['groups']['list']['groups'][number]
   isStarred: boolean
   isArchived: boolean
@@ -67,10 +67,10 @@ export function RecentFriendListCard({
                   onClick={(event) => {
                     event.stopPropagation()
                     if (isStarred) {
-                      unstarGroup(group.id)
+                      unstarFriend(group.id)
                     } else {
-                      starGroup(group.id)
-                      unarchiveGroup(group.id)
+                      starFriend(group.id)
+                      unBlockFriend(group.id)
                     }
                     refreshGroupsFromStorage()
                   }}
@@ -96,7 +96,7 @@ export function RecentFriendListCard({
                       className="text-destructive"
                       onClick={(event) => {
                         event.stopPropagation()
-                        deleteRecentGroup(group)
+                        deleteRecentFriend(group)
                         refreshGroupsFromStorage()
 
                         toast.toast({
@@ -111,10 +111,10 @@ export function RecentFriendListCard({
                       onClick={(event) => {
                         event.stopPropagation()
                         if (isArchived) {
-                          unarchiveGroup(group.id)
+                          unBlockFriend(group.id)
                         } else {
-                          archiveGroup(group.id)
-                          unstarGroup(group.id)
+                          blockFriend(group.id)
+                          unstarFriend(group.id)
                         }
                         refreshGroupsFromStorage()
                       }}

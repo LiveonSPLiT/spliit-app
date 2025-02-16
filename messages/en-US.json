@@ -171,10 +171,15 @@
       "label": "Friend information",
       "placeholder": "Any details about your friend?"
     },
-    "NicknameField": {
-      "label": "Nickname",
-      "placeholder": "Johnny, Lizzy, Sam…",
-      "description": "A nickname to display for your friend."
+    "CurrencyField": {
+      "label": "Currency symbol",
+      "placeholder": "₹, $, £…",
+      "description": "We’ll use it to display amounts."
+    },
+    "EmailField": {
+      "label": "Email",
+      "placeholder": "someone@liveonsplit.com",
+      "description": "Enter a email for your friend."
     },
     "Settings": {
       "title": "Local settings",

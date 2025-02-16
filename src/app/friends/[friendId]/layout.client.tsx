@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import { PropsWithChildren, useEffect } from 'react'
 import { CurrentGroupProvider } from './current-friend-context'
 import { FriendHeader } from './friend-header'
-import { SaveGroupLocally } from './save-recent-friend'
+import { SaveFriendLocally } from './save-recent-friend'
 
 export function GroupLayoutClient({
   groupId,
@@ -43,7 +43,7 @@ export function GroupLayoutClient({
     <CurrentGroupProvider {...props}>
       <FriendHeader />
       {children}
-      <SaveGroupLocally />
+      <SaveFriendLocally />
     </CurrentGroupProvider>
   )
 }
