@@ -24,12 +24,15 @@ import { trpc } from '@/trpc/client'
 import { AppRouterOutput } from '@/trpc/routers/_app'
 import { useTranslations } from 'next-intl'
 import { ComponentProps, useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 
 export function ActiveUserModal({ groupId }: { groupId: string }) {
   const t = useTranslations('Expenses.ActiveUserModal')
+  const { data: session, status } = useSession()
   const [open, setOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const { data: groupData } = trpc.groups.get.useQuery({ groupId })
+  const { data: participantId } = trpc.groups.getParticipantId.useQuery({ loggedInUserEmail: session?.user?.email || "", groupId })
 
   const group = groupData?.group
 
@@ -39,7 +42,11 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
     const tempUser = localStorage.getItem(`newGroup-activeUser`)
     const activeUser = localStorage.getItem(`${group.id}-activeUser`)
     if (!tempUser && !activeUser) {
-      setOpen(true)
+      if (!participantId || participantId.trim() === "") {
+        setOpen(true)
+      }else {
+        localStorage.setItem(`${group.id}-activeUser`, participantId || 'None')
+      }
     }
   }, [group])
 

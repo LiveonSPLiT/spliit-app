@@ -819,3 +819,26 @@ export async function getFriend(loggedInUserEmail: string, groupId: string) {
     friendEmail: user?.email || "unknown@liveonsplit.com",
   };
 }
+
+
+export async function getLoggedUserParticipantId(groupId: string, 
+  loggedUserEmail: string): Promise<string | null> {
+  try {
+    const participant = await prisma.participant.findFirst({
+      where: {
+        groupId: groupId,
+        user: {
+          email: loggedUserEmail,
+        },
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    return participant ? participant.id : null;
+  } catch (error) {
+    console.error("Error fetching participantId:", error);
+    return null;
+  }
+}
