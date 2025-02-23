@@ -11,6 +11,7 @@ import { listGroupsProcedure } from './list.procedure'
 import { createFriendProcedure } from './createFriend.procedure'
 import { getFriendProcedure } from './getFriend.procedure'
 import { getParticipantIdProcedure } from './getParticipantId.procedure'
+import { getFriendDetailsProcedure } from './getDetailsFriend.procedure'
 
 export const groupsRouter = createTRPCRouter({
   expenses: groupExpensesRouter,
@@ -26,4 +27,5 @@ export const groupsRouter = createTRPCRouter({
   createFriend: createFriendProcedure,
   getFriend: getFriendProcedure,
   getParticipantId: getParticipantIdProcedure,
+  getFriendDetails: getFriendDetailsProcedure,
 })
