@@ -721,13 +721,19 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
     select: { id: true, name: true },
   })
 
-  const newFriend = await prisma.user.create({
-    data: {
-      id: randomId(),
-      name: friendFormSchema.name,
-      email: friendFormSchema.friendEmail || "",
-    },
+  let newFriend = await prisma.user.findUnique({
+    where: { email: friendFormSchema.friendEmail || "" },
   });
+
+  if(!newFriend){
+    newFriend = await prisma.user.create({
+      data: {
+        id: randomId(),
+        name: friendFormSchema.name,
+        email: friendFormSchema.friendEmail || "",
+      },
+    });
+  }
 
   // Step 2: Create a new Group with type 'dualMember'
   const newGroup = await prisma.group.create({
@@ -741,7 +747,7 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
         createMany: {
           data: [
             { id: randomId(), name: loggedInUser?.name || "", userId: loggedInUser?.id }, // Logged-in user
-            { id: randomId(), name: friendFormSchema.name, userId: newFriend.id }, // Newly created friend user
+            { id: randomId(), name: newFriend.name, userId: newFriend.id }, // Newly created friend user
           ],
         },
       },
@@ -751,6 +757,14 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
 
   // Set the name based on the alternate participant
   const alternateParticipant = newGroup.participants.find((p) => p.userId !== loggedInUser?.id);
+
+  // update newfriend's recent friend table to add extising logged user
+  await prisma.recentFriend.upsert({
+    where: { userId_groupId: { groupId: newGroup.id, userId: newFriend.id } },
+    update: { name: loggedInUser?.name },
+    create: { groupId: newGroup.id, name: loggedInUser?.name || "", userId: newFriend.id },
+  }) 
+
   return {
     ...newGroup,
     name: alternateParticipant ? alternateParticipant.name : "Unknown",

@@ -20,13 +20,13 @@ const MIGRATE_STORAGE_KEY = 'migrateRecentFriends'
 const MIGRATE_STARRED_FRIENDS_STORAGE_KEY = 'migrateStarredFriends'
 const MIGRATE_BLOCKED_FRIENDS_STORAGE_KEY = 'migrateBlockedFriends'
 
-export function clearLocalStorageData() {
+export function clearLocalStorageDataFriend() {
   localStorage.removeItem(STORAGE_KEY)
   localStorage.removeItem(STARRED_FRIENDS_STORAGE_KEY)
   localStorage.removeItem(BLOCKED_FRIENDS_STORAGE_KEY)
 }
 
-export function migrateLocalStorageData() {
+export function migrateLocalStorageDataFriend() {
   if (localStorage.getItem(STORAGE_KEY))
     localStorage.setItem(
       MIGRATE_STORAGE_KEY,
@@ -44,7 +44,7 @@ export function migrateLocalStorageData() {
       MIGRATE_BLOCKED_FRIENDS_STORAGE_KEY,
       JSON.stringify(getBlockedFriendsLocalStorage()),
     )
-  clearLocalStorageData()
+  clearLocalStorageDataFriend()
 }
 
 export async function getRecentFriends() {

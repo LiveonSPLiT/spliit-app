@@ -3,6 +3,8 @@ import {
   clearLocalStorageData,
   migrateLocalStorageData,
 } from '@/app/groups/recent-groups-helpers'
+import { clearLocalStorageDataFriend, migrateLocalStorageDataFriend } 
+from '@/app/friends/recent-friends-helpers'
 import { Button, ButtonProps } from '@/components/ui/button'
 import { Loader2, LogOut } from 'lucide-react'
 import { signIn, signOut, useSession } from 'next-auth/react'
@@ -28,6 +30,7 @@ export function SignInButton({
   const handleClick = () => {
     if (!disabled) {
       migrateLocalStorageData()
+      migrateLocalStorageDataFriend()
       signIn(loginType, { callbackUrl })
     }
   }
@@ -49,6 +52,7 @@ export function LogOutButton() {
   const { status } = useSession()
   const handleClick = () => {
     clearLocalStorageData()
+    clearLocalStorageDataFriend()
     signOut({ callbackUrl: '/' }) // Redirects to the homepage after logging out
   }
 
