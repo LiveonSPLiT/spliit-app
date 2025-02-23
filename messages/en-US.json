@@ -176,6 +176,16 @@
       "placeholder": "₹, $, £…",
       "description": "We’ll use it to display amounts."
     },
+    "Participants": {
+      "title": "Participants",
+      "description": "Enter the name for each participant.",
+      "protectedParticipant": "This participant is part of expenses, and can not be removed.",
+      "new": "New",
+      "add": "Add participant",
+      "John": "Little",
+      "Jane": "Sibu",
+      "Jack": "Ninne"
+    },
     "EmailField": {
       "label": "Email",
       "placeholder": "someone@liveonsplit.com",

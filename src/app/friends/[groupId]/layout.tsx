@@ -12,12 +12,12 @@ type Props = {
 export async function generateMetadata({
   params: { groupId },
 }: Props): Promise<Metadata> {
-  const group = await cached.getGroup(groupId)
+  const group = await cached.getFriend(groupId)
 
   return {
     title: {
       default: group?.name ?? '',
-      template: `%s · ${group?.name} · Split`,
+      template: `%s · ${group?.name} · SPLiT`,
     },
   }
 }

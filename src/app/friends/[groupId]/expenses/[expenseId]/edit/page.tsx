@@ -1,4 +1,4 @@
-import { EditExpenseForm } from '@/app/friends/[friendId]/expenses/edit-expense-form'
+import { EditExpenseForm } from '@/app/friends/[groupId]/expenses/edit-expense-form'
 import { getRuntimeFeatureFlags } from '@/lib/featureFlags'
 import { Metadata } from 'next'
 

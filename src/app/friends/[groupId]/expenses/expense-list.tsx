@@ -1,6 +1,6 @@
 'use client'
-import { ExpenseCard } from '@/app/friends/[friendId]/expenses/expense-card'
-import { getGroupExpensesAction } from '@/app/friends/[friendId]/expenses/expense-list-fetch-action'
+import { ExpenseCard } from '@/app/friends/[groupId]/expenses/expense-card'
+import { getGroupExpensesAction } from '@/app/friends/[groupId]/expenses/expense-list-fetch-action'
 import { Button } from '@/components/ui/button'
 import { SearchBar } from '@/components/ui/search-bar'
 import { Skeleton } from '@/components/ui/skeleton'

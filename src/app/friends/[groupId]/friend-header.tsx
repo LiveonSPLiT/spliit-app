@@ -1,7 +1,7 @@
 'use client'
 
-import { FriendTabs } from '@/app/friends/[friendId]/friend-tabs'
-import { ShareButton } from '@/app/friends/[friendId]/share-button'
+import { FriendTabs } from '@/app/friends/[groupId]/friend-tabs'
+import { ShareButton } from '@/app/friends/[groupId]/share-button'
 import { Skeleton } from '@/components/ui/skeleton'
 import Link from 'next/link'
 import { useCurrentGroup } from './current-friend-context'

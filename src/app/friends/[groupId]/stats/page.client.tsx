@@ -1,4 +1,4 @@
-import { Totals } from '@/app/friends/[friendId]/stats/totals'
+import { Totals } from '@/app/friends/[groupId]/stats/totals'
 import {
   Card,
   CardContent,

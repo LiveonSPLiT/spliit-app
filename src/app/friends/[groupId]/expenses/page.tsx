@@ -1,4 +1,4 @@
-import GroupExpensesPageClient from '@/app/friends/[friendId]/expenses/page.client'
+import GroupExpensesPageClient from '@/app/friends/[groupId]/expenses/page.client'
 import { env } from '@/lib/env'
 import { Metadata } from 'next'
 

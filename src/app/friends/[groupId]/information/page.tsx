@@ -1,4 +1,4 @@
-import FriendInformation from '@/app/friends/[friendId]/information/friend-information'
+import FriendInformation from '@/app/friends/[groupId]/information/friend-information'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

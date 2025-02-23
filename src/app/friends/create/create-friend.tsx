@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
 export const CreateFriend = () => {
-  const { mutateAsync } = trpc.groups.create.useMutation()
+  const { mutateAsync } = trpc.groups.createFriend.useMutation()
   const utils = trpc.useUtils()
   const router = useRouter()
   const { data: session, status } = useSession()

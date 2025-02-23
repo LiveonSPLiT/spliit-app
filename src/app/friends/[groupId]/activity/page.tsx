@@ -1,4 +1,4 @@
-import { ActivityPageClient } from '@/app/friends/[friendId]/activity/page.client'
+import { ActivityPageClient } from '@/app/friends/[groupId]/activity/page.client'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

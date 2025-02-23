@@ -135,9 +135,6 @@ export function FriendForm({
                       className="text-base"
                       placeholder={t('NameField.placeholder')}
                       {...field}
-                      onChange={(e) => {
-                        append({ name: e.target.value })
-                      }}
                     />
                   </FormControl>
                   <FormDescription>
@@ -342,11 +339,11 @@ export function FriendForm({
 
         <div className="flex mt-4 gap-2">
           <SubmitButton
-            loadingContent={t(group ? 'Settings.saving' : 'Settings.creating')}
+            loadingContent={t(group ? 'Settings.saving' : 'Settings.adding')}
             onClick={updateActiveUser}
           >
             <Save className="w-4 h-4 mr-2" />{' '}
-            {t(group ? 'Settings.save' : 'Settings.create')}
+            {t(group ? 'Settings.save' : 'Settings.add')}
           </SubmitButton>
           {!group && (
             <Button variant="ghost" asChild>

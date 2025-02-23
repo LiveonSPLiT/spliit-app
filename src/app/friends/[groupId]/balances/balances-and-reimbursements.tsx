@@ -1,7 +1,7 @@
 'use client'
 
-import { BalancesList } from '@/app/friends/[friendId]/balances-list'
-import { ReimbursementList } from '@/app/friends/[friendId]/reimbursement-list'
+import { BalancesList } from '@/app/friends/[groupId]/balances-list'
+import { ReimbursementList } from '@/app/friends/[groupId]/reimbursement-list'
 import {
   Card,
   CardContent,

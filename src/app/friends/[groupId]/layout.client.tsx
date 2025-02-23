@@ -7,12 +7,14 @@ import { PropsWithChildren, useEffect } from 'react'
 import { CurrentGroupProvider } from './current-friend-context'
 import { FriendHeader } from './friend-header'
 import { SaveFriendLocally } from './save-recent-friend'
+import { useSession } from 'next-auth/react'
 
 export function GroupLayoutClient({
   groupId,
   children,
 }: PropsWithChildren<{ groupId: string }>) {
-  const { data, isLoading } = trpc.groups.get.useQuery({ groupId })
+  const { data: session, status } = useSession()
+  const { data, isLoading } = trpc.groups.getFriend.useQuery({ loggedInUserEmail: session?.user?.email || '', groupId })
   const t = useTranslations('Friends.NotFound')
   const { toast } = useToast()
 

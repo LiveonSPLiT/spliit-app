@@ -3,7 +3,7 @@ import {
   ActivityItem,
   ExpenseActivity,
   GroupActivities,
-} from '@/app/friends/[friendId]/activity/activity-item'
+} from '@/app/friends/[groupId]/activity/activity-item'
 import { Skeleton } from '@/components/ui/skeleton'
 import { trpc } from '@/trpc/client'
 import dayjs, { type Dayjs } from 'dayjs'

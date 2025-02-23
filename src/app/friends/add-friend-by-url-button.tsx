@@ -1,4 +1,4 @@
-import { saveRecentGroup } from '@/app/friends/recent-friends-helpers'
+import { saveRecentFriend } from '@/app/friends/recent-friends-helpers'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -49,7 +49,7 @@ export function AddFriendByUrlButton({ reload }: Props) {
               groupId: groupId,
             })
             if (group) {
-              saveRecentGroup({ id: group.id, name: group.name })
+              saveRecentFriend({ id: group.id, name: group.name })
               reload()
               setUrl('')
               setOpen(false)

@@ -1,9 +1,9 @@
 'use client'
 
-import { ActiveUserModal } from '@/app/friends/[friendId]/expenses/active-user-modal'
-import { CreateFromReceiptButton } from '@/app/friends/[friendId]/expenses/create-from-receipt-button'
-import { ExpenseList } from '@/app/friends/[friendId]/expenses/expense-list'
-import ExportButton from '@/app/friends/[friendId]/export-button'
+import { ActiveUserModal } from '@/app/friends/[groupId]/expenses/active-user-modal'
+import { CreateFromReceiptButton } from '@/app/friends/[groupId]/expenses/create-from-receipt-button'
+import { ExpenseList } from '@/app/friends/[groupId]/expenses/expense-list'
+import ExportButton from '@/app/friends/[groupId]/export-button'
 import { Button } from '@/components/ui/button'
 import {
   Card,

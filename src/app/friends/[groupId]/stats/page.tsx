@@ -1,4 +1,4 @@
-import { TotalsPageClient } from '@/app/friends/[friendId]/stats/page.client'
+import { TotalsPageClient } from '@/app/friends/[groupId]/stats/page.client'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

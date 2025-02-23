@@ -1,4 +1,4 @@
-import { EditFriend } from '@/app/friends/[friendId]/edit/edit-friend'
+import { EditFriend } from '@/app/friends/[groupId]/edit/edit-friend'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

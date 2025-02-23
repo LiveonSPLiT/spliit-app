@@ -17,7 +17,7 @@ export async function generateMetadata({
   return {
     title: {
       default: group?.name ?? '',
-      template: `%s · ${group?.name} · Split`,
+      template: `%s · ${group?.name} · SPLiT`,
     },
   }
 }

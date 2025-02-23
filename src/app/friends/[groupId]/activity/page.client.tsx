@@ -1,4 +1,4 @@
-import { ActivityList } from '@/app/friends/[friendId]/activity/activity-list'
+import { ActivityList } from '@/app/friends/[groupId]/activity/activity-list'
 import {
   Card,
   CardContent,

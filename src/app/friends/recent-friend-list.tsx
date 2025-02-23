@@ -125,7 +125,7 @@ function RecentGroupList_({
           <p>{t('NoRecent.description')}</p>
           <p>
             <Button variant="link" asChild className="-m-4">
-              <Link href={`/friends/create`}>{t('NoRecent.create')}</Link>
+              <Link href={`/friends/create`}>{t('NoRecent.add')}</Link>
             </Button>{' '}
             {t('NoRecent.orAsk')}
           </p>
@@ -231,9 +231,9 @@ function GroupsPage({
         <div className="flex gap-2">
           <AddFriendByUrlButton reload={reload} />
           <Button asChild>
-            <Link href="/src/app/friends/create">
+            <Link href="/friends/create">
               {/* <Plus className="w-4 h-4 mr-2" /> */}
-              {t('create')}
+              {t('add')}
             </Link>
           </Button>
         </div>

@@ -782,7 +782,13 @@ export async function listFriends(loggedInUserId: string) {
   });
 }
 
-export async function getFriend(loggedInUserId: string, groupId: string) {
+export async function getFriend(loggedInUserEmail: string, groupId: string) {
+
+  const loggedInUser = await prisma.user.findUnique({
+    where: { email: loggedInUserEmail },
+    select: { id: true, name: true },
+  })
+
   // Fetch the specific DUAL_MEMBER group where the logged-in user is a participant
   const group = await prisma.group.findUnique({
     where: {
@@ -790,7 +796,7 @@ export async function getFriend(loggedInUserId: string, groupId: string) {
       type: "DUAL_MEMBER",
       participants: {
         some: {
-          userId: loggedInUserId,
+          userId: loggedInUser?.id,
         },
       },
     },
@@ -802,7 +808,7 @@ export async function getFriend(loggedInUserId: string, groupId: string) {
   }
 
   // Set the name based on the alternate participant
-  const alternateParticipant = group.participants.find((p) => p.userId !== loggedInUserId);
+  const alternateParticipant = group.participants.find((p) => p.userId !== loggedInUser?.id);
   const user = await prisma.user.findUnique({
     where: { id: alternateParticipant?.userId || "Unknown" },
     select: { email: true },
