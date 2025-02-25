@@ -7,7 +7,7 @@ import {
     CardTitle,
   } from '@/components/ui/card'
 import { trpc } from '@/trpc/client'
-import { useCurrentGroup } from '../current-group-context'
+import { useCurrentGroup } from '../current-friend-context'
 import { CategorySummary } from '@/components/graphs/totals-categories'
 import { ParticipantSummary } from '@/components/graphs/totals-participant'
 
