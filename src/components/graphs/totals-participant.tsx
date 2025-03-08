@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/card'
 import { getGroupExpensesByParticipant } from '@/lib/api'
 import { LineSegment, VictoryPie, VictoryTheme } from 'victory'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   expensesByParticipant: NonNullable<
@@ -16,10 +17,11 @@ type Props = {
 }
 
 export function ParticipantSummary({ expensesByParticipant }: Props) {
+  const t = useTranslations('Stats')
   return (
     <Card style={{ border: 'none' }}>
       <CardHeader>
-        <CardDescription className='text-center'>Total spending by each participant.</CardDescription>
+        <CardDescription className='text-center'>{t('Graphs.participants')}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col space-y-4 pb-0">
         <VictoryPie

@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/card'
 import { getGroupExpensesByCategory } from '@/lib/api'
 import { LineSegment, VictoryPie, VictoryTheme } from 'victory'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   expenseByCategory: NonNullable<
@@ -16,6 +17,7 @@ type Props = {
 }
 
 export function CategorySummary({ expenseByCategory }: Props) {
+  const t = useTranslations('Stats')
   const maxCategories = 12
   const data = expenseByCategory.slice(
     0,
@@ -34,7 +36,7 @@ export function CategorySummary({ expenseByCategory }: Props) {
   return (
     <Card style={{ border: 'none' }}>
       <CardHeader>
-        <CardDescription className='text-center'>Total spending in each category.</CardDescription>
+        <CardDescription className='text-center'>{t('Graphs.categories')}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col space-y-4 pb-0">
         <VictoryPie

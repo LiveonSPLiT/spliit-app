@@ -313,6 +313,13 @@
       "yourSpendings": "Total pengeluaran Anda",
       "yourEarnings": "Total penghasilan Anda",
       "yourShare": "Total bagian Anda"
+    },
+    "Graphs": {
+      "title": "Pengeluaran berdasarkan Kategori & Peserta",
+      "description": "Representasi pengeluaran berdasarkan kategori & peserta.",
+      "participants": "Total pengeluaran oleh setiap peserta.",
+      "categories": "Total pengeluaran di setiap kategori.",
+      "balance": "Saldo"
     }
   },
   "Activity": {

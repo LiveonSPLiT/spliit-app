@@ -313,6 +313,13 @@
       "yourSpendings": "您的总支出",
       "yourEarnings": "您的总收入",
       "yourShare": "您的总份额"
+    },
+    "Graphs": {
+      "title": "按类别和参与者的支出",
+      "description": "按类别和参与者的支出表示。",
+      "participants": "每个参与者的总支出。",
+      "categories": "每个类别的总支出。",
+      "balance": "余额"
     }
   },
   "Activity": {

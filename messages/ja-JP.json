@@ -313,6 +313,13 @@
       "yourSpendings": "総支出額",
       "yourEarnings": "あなたの総収入",
       "yourShare": "あなたの合計シェア"
+    },
+    "Graphs": {
+      "title": "カテゴリと参加者別の支出",
+      "description": "カテゴリと参加者別の支出の表現。",
+      "participants": "各参加者の総支出。",
+      "categories": "各カテゴリの総支出。",
+      "balance": "残高"
     }
   },
   "Activity": {

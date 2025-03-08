@@ -313,6 +313,13 @@
       "yourSpendings": "총 지출",
       "yourEarnings": "총 수입",
       "yourShare": "귀하의 총 몫"
+    },
+    "Graphs": {
+      "title": "카테고리 및 참가자별 지출",
+      "description": "카테고리 및 참가자별 지출의 표현.",
+      "participants": "각 참가자별 총 지출.",
+      "categories": "각 카테고리별 총 지출.",
+      "balance": "잔액"
     }
   },
   "Activity": {

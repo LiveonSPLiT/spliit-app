@@ -392,6 +392,13 @@
       "yourSpendings": "Your total spendings",
       "yourEarnings": "Your total earnings",
       "yourShare": "Your total share"
+    },
+    "Graphs": {
+      "title": "Spending by Category & Participant",
+      "description": "Representation of expenses by category & participant.",
+      "participants": "Total spending by each participant.",
+      "categories": "Total spending in each category.",
+      "balance": "Balance"
     }
   },
   "Activity": {
