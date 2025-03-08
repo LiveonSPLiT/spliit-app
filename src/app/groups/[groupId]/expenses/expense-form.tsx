@@ -55,6 +55,7 @@ import { DeletePopup } from '../../../../components/delete-popup'
 import { extractCategoryFromTitle } from '../../../../components/expense-form-actions'
 import { ExpenseLocationInput } from '../../../../components/expense-location-input'
 import { Textarea } from '../../../../components/ui/textarea'
+import { RecurrenceRule } from '@prisma/client'
 
 const enforceCurrencyPattern = (value: string) =>
   value
@@ -179,11 +180,10 @@ export function ExpenseForm({
     }
     return field?.value
   }
-  const defaultSplittingOptions = getDefaultSplittingOptions(group)
-
-  const getRecurringField = (field?: { value: string }) => {
-    return field?.value
+  const getSelectedRecurrenceRule = (field?: { value: string }) => {
+    return field?.value as RecurrenceRule
   }
+  const defaultSplittingOptions = getDefaultSplittingOptions(group)
   const form = useForm<ExpenseFormValues>({
     resolver: zodResolver(expenseFormSchema),
     defaultValues: expense
@@ -202,6 +202,7 @@ export function ExpenseForm({
           isReimbursement: expense.isReimbursement,
           documents: expense.documents,
           notes: expense.notes ?? '',
+          recurrenceRule: expense.recurrenceRule ?? 'NONE',
           location: expense.location,
         }
       : searchParams.get('reimbursement')
@@ -226,6 +227,7 @@ export function ExpenseForm({
           saveDefaultSplittingOptions: false,
           documents: [],
           notes: '',
+          recurrenceRule: RecurrenceRule.NONE ?? 'NONE',
           location: getLocationFromSearchParams(searchParams),
         }
       : {
@@ -254,6 +256,7 @@ export function ExpenseForm({
               ]
             : [],
           notes: '',
+          recurrenceRule: RecurrenceRule.NONE ?? 'NONE',
           location: getLocationFromSearchParams(searchParams),
         },
   })
@@ -515,6 +518,43 @@ export function ExpenseForm({
                   <FormControl>
                     <Textarea className="text-base" {...field} />
                   </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="recurrenceRule"
+              render={({ field }) => (
+                <FormItem className="sm:order-5">
+                  <FormLabel>{t(`recurringDaysField.label`)}</FormLabel>
+                  <Select
+                    onValueChange={(value) => {
+                      form.setValue('recurrenceRule', value as RecurrenceRule)
+                    }}
+                    defaultValue={getSelectedRecurrenceRule(field)}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="NONE"/>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="NONE">
+                        {t(`recurringDaysField.fields.none`)}
+                      </SelectItem>
+                      <SelectItem value="DAILY">
+                        {t(`recurringDaysField.fields.daily`)}
+                      </SelectItem>
+                      <SelectItem value="WEEKLY">
+                        {t(`recurringDaysField.fields.weekly`)}
+                      </SelectItem>
+                      <SelectItem value="MONTHLY">
+                        {t(`recurringDaysField.fields.monthly`)}
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormDescription>
+                    {t(`recurringDaysField.description`)}
+                  </FormDescription>
+                  <FormMessage />
                 </FormItem>
               )}
             />

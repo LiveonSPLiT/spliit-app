@@ -130,6 +130,9 @@ model Expense {
   comments        ExpenseComment[]
   notes           String?
   location        Point?
+  recurrenceRule  RecurrenceRule?    @default(NONE)
+  recurringExpenseLink RecurringExpenseLink?
+  recurringExpenseLinkId String?
 }
 
 model Point {
@@ -197,4 +200,25 @@ enum ActivityType {
 enum GroupType {
   MULTI_MEMBER  // Default value
   DUAL_MEMBER
+}
+
+model RecurringExpenseLink {
+  id String @id
+  groupId   String
+  currentFrameExpense Expense @relation(fields: [currentFrameExpenseId], references: [id], onDelete: Cascade)
+  currentFrameExpenseId String @unique
+  // Note: We do not want to link to the next expense because once it is created, it should be 
+  // treated as it's own independent entity. This means that if a user wants to delete an Expense
+  // and any prior related recurring expenses, they'll need to delete them one by one.
+  nextExpenseCreatedAt DateTime?
+  nextExpenseDate DateTime
+  @@index([groupId])
+  @@index([groupId, nextExpenseCreatedAt, nextExpenseDate(sort: Desc)])
+}
+
+enum RecurrenceRule {
+  NONE
+  DAILY
+  WEEKLY
+  MONTHLY
 }

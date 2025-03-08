@@ -272,10 +272,11 @@
       "label": "Recurring Days",
       "description": "Choose how often this expense should be repeated.",
       "fields": {
-        "Never": "Never",
-        "Weekly": "Weekly",
+        "none": "Never",
+        "daily": "Daily",
+        "weekly": "Weekly",
         "Every14days": "Every 14 days",
-        "Every30days": "Every 30 days",
+        "monthly": "Every 30 days",
         "Every60days": "Every 60 days"
       }
     },

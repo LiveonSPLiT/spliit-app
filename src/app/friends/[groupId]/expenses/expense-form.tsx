@@ -55,6 +55,7 @@ import { DeletePopup } from '../../../../components/delete-popup'
 import { extractCategoryFromTitle } from '../../../../components/expense-form-actions'
 import { ExpenseLocationInput } from '../../../../components/expense-location-input'
 import { Textarea } from '../../../../components/ui/textarea'
+import { RecurrenceRule } from '@prisma/client'
 
 const enforceCurrencyPattern = (value: string) =>
   value
@@ -179,11 +180,10 @@ export function ExpenseForm({
     }
     return field?.value
   }
-  const defaultSplittingOptions = getDefaultSplittingOptions(group)
-
-  const getRecurringField = (field?: { value: string }) => {
-    return field?.value
+  const getSelectedRecurrenceRule = (field?: { value: string }) => {
+    return field?.value as RecurrenceRule
   }
+  const defaultSplittingOptions = getDefaultSplittingOptions(group)
   const form = useForm<ExpenseFormValues>({
     resolver: zodResolver(expenseFormSchema),
     defaultValues: expense
@@ -202,7 +202,7 @@ export function ExpenseForm({
           isReimbursement: expense.isReimbursement,
           documents: expense.documents,
           notes: expense.notes ?? '',
-          recurringDays: String(expense.recurringDays),
+          recurrenceRule: expense.recurrenceRule ?? 'NONE',
           location: expense.location,
         }
       : searchParams.get('reimbursement')
@@ -227,7 +227,7 @@ export function ExpenseForm({
           saveDefaultSplittingOptions: false,
           documents: [],
           notes: '',
-          recurringDays: '0',
+          recurrenceRule: RecurrenceRule.NONE ?? 'NONE',
           location: getLocationFromSearchParams(searchParams),
         }
       : {
@@ -256,7 +256,7 @@ export function ExpenseForm({
               ]
             : [],
           notes: '',
-          recurringDays: '0',
+          recurrenceRule: RecurrenceRule.NONE ?? 'NONE',
           location: getLocationFromSearchParams(searchParams),
         },
   })
@@ -273,13 +273,7 @@ export function ExpenseForm({
     Set<string>
   >(new Set())
   const sExpense = isIncome ? 'Income' : 'Expense'
-  const recurringDays = [
-    { key: t('recurringDaysField.fields.Never'), value: '0' },
-    { key: t('recurringDaysField.fields.Weekly'), value: '7' },
-    { key: t('recurringDaysField.fields.Every14days'), value: '14' },
-    { key: t('recurringDaysField.fields.Every30days'), value: '30' },
-    { key: t('recurringDaysField.fields.Every60days'), value: '60' },
-  ]
+  
 
   useEffect(() => {
     setManuallyEditedParticipants(new Set())
@@ -529,27 +523,36 @@ export function ExpenseForm({
             />
             <FormField
               control={form.control}
-              name="recurringDays"
+              name="recurrenceRule"
               render={({ field }) => (
                 <FormItem className="sm:order-5">
-                  <FormLabel>{t('recurringDaysField.label')}</FormLabel>
+                  <FormLabel>{t(`recurringDaysField.label`)}</FormLabel>
                   <Select
-                    onValueChange={field.onChange}
-                    defaultValue={getRecurringField(field)}
+                    onValueChange={(value) => {
+                      form.setValue('recurrenceRule', value as RecurrenceRule)
+                    }}
+                    defaultValue={getSelectedRecurrenceRule(field)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Never" />
+                      <SelectValue placeholder="NONE"/>
                     </SelectTrigger>
                     <SelectContent>
-                      {recurringDays.map(({ key, value }) => (
-                        <SelectItem key={key} value={value}>
-                          {key}
-                        </SelectItem>
-                      ))}
+                      <SelectItem value="NONE">
+                        {t(`recurringDaysField.fields.none`)}
+                      </SelectItem>
+                      <SelectItem value="DAILY">
+                        {t(`recurringDaysField.fields.daily`)}
+                      </SelectItem>
+                      <SelectItem value="WEEKLY">
+                        {t(`recurringDaysField.fields.weekly`)}
+                      </SelectItem>
+                      <SelectItem value="MONTHLY">
+                        {t(`recurringDaysField.fields.monthly`)}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    {t('recurringDaysField.description')}
+                    {t(`${sExpense}.recurringDaysField.description`)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
