@@ -85,7 +85,7 @@ const news: News[] = [
   {
     id: 'languages',
     title: <>SPLiT is now available in other Asian languages!</>,
-    summary: <>Hindi, Thai, Chinese, Russian, and more.!</>,
+    summary: <>Hindi, Korean, Chinese, Russian, and more.!</>,
     icon: Globe,
     content: (
       <>

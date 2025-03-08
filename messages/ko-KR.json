@@ -193,10 +193,11 @@
       "label": "반복되는 날짜",
       "description": "이 비용을 얼마나 자주 반복해야 하는지 선택하세요.",
       "fields": {
-        "Never": "절대",
-        "Weekly": "주간",
+        "none": "절대",
+        "daily": "매일",
+        "weekly": "주간",
         "Every14days": "14일마다",
-        "Every30days": "30일마다",
+        "monthly": "30일마다",
         "Every60days": "60일마다"
       }
     },
@@ -346,16 +347,11 @@
   "Locale": {
     "en-US": "English",
     "hi-IN": "हिन्दी",
-    "bn-BD": "বাংলা",
     "mr-IN": "मराठी",
-    "te-IN": "తెలుగు",
-    "ta-IN": "தமிழ்",
     "gu-IN": "ગુજરાતી",
-    "kn-IN": "ಕನ್ನಡ",
     "pa-IN": "ਪੰਜਾਬੀ",
     "zh-CN": "简体中文",
     "ko-KR": "한국어",
-    "th-TH": "ไทย",
     "ja-JP": "日本語",
     "ru-RU": "Русский",
     "id-ID": "Bahasa"
