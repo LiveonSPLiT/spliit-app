@@ -202,7 +202,6 @@ export function ExpenseForm({
           isReimbursement: expense.isReimbursement,
           documents: expense.documents,
           notes: expense.notes ?? '',
-          recurringDays: String(expense.recurringDays),
           location: expense.location,
         }
       : searchParams.get('reimbursement')
@@ -227,7 +226,6 @@ export function ExpenseForm({
           saveDefaultSplittingOptions: false,
           documents: [],
           notes: '',
-          recurringDays: '0',
           location: getLocationFromSearchParams(searchParams),
         }
       : {
@@ -256,7 +254,6 @@ export function ExpenseForm({
               ]
             : [],
           notes: '',
-          recurringDays: '0',
           location: getLocationFromSearchParams(searchParams),
         },
   })
@@ -273,13 +270,7 @@ export function ExpenseForm({
     Set<string>
   >(new Set())
   const sExpense = isIncome ? 'Income' : 'Expense'
-  const recurringDays = [
-    { key: t('recurringDaysField.fields.Never'), value: '0' },
-    { key: t('recurringDaysField.fields.Weekly'), value: '7' },
-    { key: t('recurringDaysField.fields.Every14days'), value: '14' },
-    { key: t('recurringDaysField.fields.Every30days'), value: '30' },
-    { key: t('recurringDaysField.fields.Every60days'), value: '60' },
-  ]
+  
 
   useEffect(() => {
     setManuallyEditedParticipants(new Set())
@@ -524,34 +515,6 @@ export function ExpenseForm({
                   <FormControl>
                     <Textarea className="text-base" {...field} />
                   </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="recurringDays"
-              render={({ field }) => (
-                <FormItem className="sm:order-5">
-                  <FormLabel>{t('recurringDaysField.label')}</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={getRecurringField(field)}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Never" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {recurringDays.map(({ key, value }) => (
-                        <SelectItem key={key} value={value}>
-                          {key}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>
-                    {t('recurringDaysField.description')}
-                  </FormDescription>
-                  <FormMessage />
                 </FormItem>
               )}
             />
