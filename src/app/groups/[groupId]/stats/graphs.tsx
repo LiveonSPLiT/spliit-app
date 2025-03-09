@@ -56,7 +56,7 @@ const GraphsLoading =({}) => {
         .map((_, index) => (
           <Card key={index} style={{ border: 'none' }}>
             <CardHeader>
-              <div className="text-sm text-muted-foreground text-center"><Skeleton className="h-3 w-24" /></div>
+              <div className="text-sm text-muted-foreground text-center"><Skeleton className="h-4 w-64" /></div>
             </CardHeader>
             <CardContent className="flex flex-col space-y-4 pb-0 animate-pulse rounded-md">
             
