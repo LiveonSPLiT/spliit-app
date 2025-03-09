@@ -25,7 +25,7 @@ import {
   Linkedin,
   LogIn,
   LucideIcon,
-  Mail,
+  Mails,
   Newspaper,
   Receipt,
   Sparkles,
@@ -67,7 +67,7 @@ const news: News[] = [
     id: 'email-alerts',
     title: <>SPLiT now supports email alerts!</>,
     summary: <>Stay informed with real-time updates.</>,
-    icon: Mail,
+    icon: Mails,
     content: (
       <>
         <p>
