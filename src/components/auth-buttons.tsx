@@ -1,10 +1,12 @@
 'use client'
 import {
+  clearLocalStorageDataFriend,
+  migrateLocalStorageDataFriend,
+} from '@/app/friends/recent-friends-helpers'
+import {
   clearLocalStorageData,
   migrateLocalStorageData,
 } from '@/app/groups/recent-groups-helpers'
-import { clearLocalStorageDataFriend, migrateLocalStorageDataFriend } 
-from '@/app/friends/recent-friends-helpers'
 import { Button, ButtonProps } from '@/components/ui/button'
 import { Loader2, LogOut } from 'lucide-react'
 import { signIn, signOut, useSession } from 'next-auth/react'

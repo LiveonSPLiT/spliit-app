@@ -4,9 +4,12 @@ import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 
 export const getFriendDetailsProcedure = baseProcedure
-.input(z.object({ 
-    loggedInUserEmail: z.string(),
-    groupId: z.string().min(1), }))
+  .input(
+    z.object({
+      loggedInUserEmail: z.string(),
+      groupId: z.string().min(1),
+    }),
+  )
   .query(async ({ input: { loggedInUserEmail, groupId } }) => {
     const group = await getFriend(loggedInUserEmail, groupId)
     if (!group) {

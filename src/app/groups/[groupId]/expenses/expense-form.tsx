@@ -44,6 +44,7 @@ import {
 import { cn } from '@/lib/utils'
 import { AppRouterOutput } from '@/trpc/routers/_app'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { RecurrenceRule } from '@prisma/client'
 import { Save } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
@@ -55,7 +56,6 @@ import { DeletePopup } from '../../../../components/delete-popup'
 import { extractCategoryFromTitle } from '../../../../components/expense-form-actions'
 import { ExpenseLocationInput } from '../../../../components/expense-location-input'
 import { Textarea } from '../../../../components/ui/textarea'
-import { RecurrenceRule } from '@prisma/client'
 
 const enforceCurrencyPattern = (value: string) =>
   value
@@ -273,7 +273,6 @@ export function ExpenseForm({
     Set<string>
   >(new Set())
   const sExpense = isIncome ? 'Income' : 'Expense'
-  
 
   useEffect(() => {
     setManuallyEditedParticipants(new Set())
@@ -534,7 +533,7 @@ export function ExpenseForm({
                     defaultValue={getSelectedRecurrenceRule(field)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="NONE"/>
+                      <SelectValue placeholder="NONE" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="NONE">

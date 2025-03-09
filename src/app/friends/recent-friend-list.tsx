@@ -1,5 +1,4 @@
 'use client'
-import { AddFriendByUrlButton } from '@/app/friends/add-friend-by-url-button'
 import {
   RecentFriends,
   getBlockedFriends,

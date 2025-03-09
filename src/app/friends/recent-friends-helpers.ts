@@ -87,7 +87,10 @@ export function saveRecentFriend(group: RecentFriend) {
   const recentFriends = getRecentFriendsLocalStorage()
   localStorage.setItem(
     STORAGE_KEY,
-    JSON.stringify([group, ...recentFriends.filter((rg) => rg.id !== group.id)]),
+    JSON.stringify([
+      group,
+      ...recentFriends.filter((rg) => rg.id !== group.id),
+    ]),
   )
 
   // Saving a recent group

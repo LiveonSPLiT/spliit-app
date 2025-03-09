@@ -1,6 +1,6 @@
 import { categoriesRouter } from '@/trpc/routers/categories'
-import { groupsRouter } from '@/trpc/routers/groups'
 import { graphsRouter } from '@/trpc/routers/graphs'
+import { groupsRouter } from '@/trpc/routers/groups'
 import { inferRouterOutputs } from '@trpc/server'
 import { createTRPCRouter } from '../init'
 

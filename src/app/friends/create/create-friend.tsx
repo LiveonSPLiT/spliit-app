@@ -2,8 +2,8 @@
 
 import { FriendForm } from '@/components/friend-form'
 import { trpc } from '@/trpc/client'
-import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export const CreateFriend = () => {
   const { mutateAsync } = trpc.groups.createFriend.useMutation()

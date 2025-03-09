@@ -3,6 +3,6 @@ import { getGroupExpensesByCategoryProcedure } from './getGroupExpensesByCategor
 import { getGroupExpensesByParticipantProcedure } from './getGroupExpensesByParticipant.procedre'
 
 export const graphsRouter = createTRPCRouter({
-    expenseByCategory : getGroupExpensesByCategoryProcedure,
-    expensesByParticipant : getGroupExpensesByParticipantProcedure,
+  expenseByCategory: getGroupExpensesByCategoryProcedure,
+  expensesByParticipant: getGroupExpensesByParticipantProcedure,
 })

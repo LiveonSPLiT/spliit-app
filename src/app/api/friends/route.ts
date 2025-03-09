@@ -1,12 +1,12 @@
 import { auth } from '@/lib/auth'
 import {
+  blockFriendDB,
+  deleteRecentFriendDB,
   getRecentFriendsDB,
   getStarredFriendsDB,
   getblockedFriendsDB,
   saveRecentFriendDB,
   starFriendDB,
-  blockFriendDB,
-  deleteRecentFriendDB,
   unblockFriendDB,
   unstarFriendDB,
 } from '@/lib/userFriendsHelper'

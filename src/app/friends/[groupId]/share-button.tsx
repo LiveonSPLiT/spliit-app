@@ -35,10 +35,7 @@ export function ShareButton({ group }: Props) {
           <div className="flex gap-2">
             <Input className="flex-1" defaultValue={url} readOnly />
             <CopyButton text={url} />
-            <ShareUrlButton
-              text={`Add me ${group.name} on Split`}
-              url={url}
-            />
+            <ShareUrlButton text={`Add me ${group.name} on Split`} url={url} />
           </div>
         )}
         <p>

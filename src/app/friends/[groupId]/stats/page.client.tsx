@@ -1,5 +1,5 @@
-import { Totals } from '@/app/friends/[groupId]/stats/totals'
 import { Graphs } from '@/app/friends/[groupId]/stats/graphs'
+import { Totals } from '@/app/friends/[groupId]/stats/totals'
 import {
   Card,
   CardContent,

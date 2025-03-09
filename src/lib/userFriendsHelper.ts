@@ -139,27 +139,28 @@ export async function getEmailsByFriendId(
 }
 
 export async function getFriend(groupId: string) {
-
   const userId = (await getUserIdByEmail()) as string
-  
+
   const group = await prisma.group.findUnique({
     where: { id: groupId },
     include: { participants: true },
   })
 
   if (!group) {
-    return null;
+    return null
   }
 
   // Set the name based on the alternate participant
-  const alternateParticipant = group.participants.find((p) => p.userId !== userId);
+  const alternateParticipant = group.participants.find(
+    (p) => p.userId !== userId,
+  )
   const user = await prisma.user.findUnique({
-    where: { id: alternateParticipant?.userId || "Unknown" },
+    where: { id: alternateParticipant?.userId || 'Unknown' },
     select: { email: true },
   })
   return {
     ...group,
-    name: alternateParticipant ? alternateParticipant.name : "Unknown",
-    friendEmail: user?.email || "unknown@liveonsplit.com",
-  };
+    name: alternateParticipant ? alternateParticipant.name : 'Unknown',
+    friendEmail: user?.email || 'unknown@liveonsplit.com',
+  }
 }

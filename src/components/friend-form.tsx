@@ -1,14 +1,7 @@
 'use client'
 import { SubmitButton } from '@/components/submit-button'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Form,
   FormControl,
@@ -18,23 +11,11 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@/components/ui/hover-card'
 import { Input } from '@/components/ui/input'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { getFriend } from '@/lib/api'
 import { GroupFormValues, groupFormSchema } from '@/lib/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Save, Trash2 } from 'lucide-react'
+import { Save } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'

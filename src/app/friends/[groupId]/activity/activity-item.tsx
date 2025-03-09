@@ -94,7 +94,9 @@ export function ActivityItem({
           className="self-center hidden sm:flex w-5 h-5"
           asChild
         >
-          <Link href={`/friends/${groupId}/expenses/${activity.expenseId}/edit`}>
+          <Link
+            href={`/friends/${groupId}/expenses/${activity.expenseId}/edit`}
+          >
             <ChevronRight className="w-4 h-4" />
           </Link>
         </Button>

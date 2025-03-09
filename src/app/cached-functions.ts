@@ -15,5 +15,5 @@ function logAndCache<P extends any[], R>(fn: (...args: P) => R) {
 
 export const cached = {
   getGroup: logAndCache(getGroup),
-  getFriend : logAndCache(getFriend),
+  getFriend: logAndCache(getFriend),
 }
