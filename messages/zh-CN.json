@@ -128,6 +128,104 @@
       "cancel": "取消"
     }
   },
+  "Friends": {
+    "myFriends": "我的朋友",
+    "add": "添加",
+    "loadingRecent": "正在加载最近的朋友…",
+    "NoRecent": {
+      "description": "您最近没有与任何朋友互动。",
+      "add": "添加一个",
+      "orAsk": "或请朋友发送他们的个人资料链接。"
+    },
+    "recent": "最近的朋友",
+    "starred": "星标朋友",
+    "blocked": "已屏蔽的朋友",
+    "block": "屏蔽朋友",
+    "unblock": "取消屏蔽朋友",
+    "removeRecent": "从最近的朋友中移除",
+    "RecentRemovedToast": {
+      "title": "朋友已被移除",
+      "description": "该朋友已从您的最近朋友列表中移除。",
+      "undoAlt": "撤销朋友移除",
+      "undo": "撤销"
+    },
+    "AddByURL": {
+      "button": "通过URL添加",
+      "title": "通过URL添加朋友",
+      "description": "如果朋友与您分享了他们的个人资料，您可以在此处粘贴他们的URL以将其添加到您的列表中。",
+      "error": "哎呀，我们无法找到您提供的URL中的朋友…"
+    },
+    "NotFound": {
+      "text": "该朋友不存在。",
+      "link": "转到最近互动的朋友"
+    },
+    "Expense": {
+      "description": "这是您和朋友之间的费用。",
+      "noExpenses": "您还没有任何费用。"
+    },
+    "Information": {
+      "title": "信息",
+      "description": "使用此处添加任何与您的朋友相关的信息。",
+      "empty": "尚无关于您朋友的信息。"
+    },
+    "Stats": {
+      "description": "您和朋友之间的支出摘要。",
+      "groupSpendings": "您和朋友之间的总支出",
+      "groupEarnings": "您和朋友之间的总收入"
+    },
+    "Activity": {
+      "title": "活动",
+      "description": "您和朋友之间所有活动的概述。",
+      "noActivity": "您和朋友之间尚无任何活动。"
+    }
+  },
+  "FriendForm": {
+    "title": "朋友信息",
+    "NameField": {
+      "label": "朋友姓名",
+      "placeholder": "约翰·多",
+      "description": "输入您朋友的姓名。"
+    },
+    "InformationField": {
+      "label": "朋友信息",
+      "placeholder": "关于您朋友的任何详细信息？"
+    },
+    "CurrencyField": {
+      "label": "货币符号",
+      "placeholder": "₹, $, £…",
+      "description": "我们将使用它来显示金额。"
+    },
+    "Participants": {
+      "title": "参与者",
+      "description": "输入每个参与者的姓名。",
+      "protectedParticipant": "此参与者是费用的一部分，无法移除。",
+      "new": "新",
+      "add": "添加参与者",
+      "John": "小",
+      "Jane": "西布",
+      "Jack": "宁宁"
+    },
+    "EmailField": {
+      "label": "电子邮件",
+      "placeholder": "someone@liveonsplit.com",
+      "description": "输入您朋友的电子邮件。"
+    },
+    "Settings": {
+      "title": "本地设置",
+      "description": "这些设置是每个设备设置的，用于自定义您的体验。",
+      "ActiveUserField": {
+        "label": "活跃朋友",
+        "placeholder": "选择一个朋友",
+        "none": "无",
+        "description": "用于互动的默认朋友。"
+      },
+      "save": "保存",
+      "saving": "正在保存…",
+      "add": "添加",
+      "adding": "正在添加…",
+      "cancel": "取消"
+    }
+  },
   "ExpenseForm": {
     "Income": {
       "create": "创造收入",

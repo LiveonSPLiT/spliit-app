@@ -8,7 +8,7 @@ type Props = {
 
 export function TotalsFriendSpending({ totalGroupSpendings, currency }: Props) {
   const locale = useLocale()
-  const t = useTranslations('Stats.Totals')
+  const t = useTranslations('Stats.Friend')
   const balance = totalGroupSpendings < 0 ? 'groupEarnings' : 'groupSpendings'
   return (
     <div>

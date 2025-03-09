@@ -128,6 +128,104 @@
       "cancel": "취소"
     }
   },
+  "Friends": {
+    "myFriends": "내 친구들",
+    "add": "추가",
+    "loadingRecent": "최근 친구를 불러오는 중…",
+    "NoRecent": {
+      "description": "최근에 친구와 상호작용하지 않았습니다.",
+      "add": "하나 추가",
+      "orAsk": "또는 친구에게 프로필 링크를 보내달라고 요청하세요."
+    },
+    "recent": "최근 친구",
+    "starred": "즐겨찾기 친구",
+    "blocked": "차단된 친구",
+    "block": "친구 차단",
+    "unblock": "친구 차단 해제",
+    "removeRecent": "최근 친구에서 제거",
+    "RecentRemovedToast": {
+      "title": "친구가 제거되었습니다",
+      "description": "친구가 최근 친구 목록에서 제거되었습니다.",
+      "undoAlt": "친구 제거 취소",
+      "undo": "취소"
+    },
+    "AddByURL": {
+      "button": "URL로 추가",
+      "title": "URL로 친구 추가",
+      "description": "친구가 프로필을 공유한 경우, 여기에 URL을 붙여넣어 목록에 추가할 수 있습니다.",
+      "error": "이런, 제공한 URL에서 친구를 찾을 수 없습니다…"
+    },
+    "NotFound": {
+      "text": "이 친구는 존재하지 않습니다.",
+      "link": "최근 상호작용한 친구로 이동"
+    },
+    "Expense": {
+      "description": "여기 당신과 친구 사이의 지출이 있습니다.",
+      "noExpenses": "아직 지출이 없습니다."
+    },
+    "Information": {
+      "title": "정보",
+      "description": "친구와 관련된 정보를 추가하는 곳입니다.",
+      "empty": "아직 친구에 대한 정보가 없습니다."
+    },
+    "Stats": {
+      "description": "당신과 친구 사이의 지출 요약입니다.",
+      "groupSpendings": "당신과 친구 사이의 총 지출",
+      "groupEarnings": "당신과 친구 사이의 총 수입"
+    },
+    "Activity": {
+      "title": "활동",
+      "description": "당신과 친구 사이의 모든 활동 개요입니다.",
+      "noActivity": "아직 친구와의 활동이 없습니다."
+    }
+  },
+  "FriendForm": {
+    "title": "친구 정보",
+    "NameField": {
+      "label": "친구 이름",
+      "placeholder": "존 도",
+      "description": "친구의 이름을 입력하세요."
+    },
+    "InformationField": {
+      "label": "친구 정보",
+      "placeholder": "친구에 대한 세부 사항이 있습니까?"
+    },
+    "CurrencyField": {
+      "label": "통화 기호",
+      "placeholder": "₹, $, £…",
+      "description": "금액을 표시하는 데 사용됩니다."
+    },
+    "Participants": {
+      "title": "참여자",
+      "description": "각 참여자의 이름을 입력하세요.",
+      "protectedParticipant": "이 참여자는 지출의 일부이며 제거할 수 없습니다.",
+      "new": "새로운",
+      "add": "참여자 추가",
+      "John": "리틀",
+      "Jane": "시부",
+      "Jack": "닌네"
+    },
+    "EmailField": {
+      "label": "이메일",
+      "placeholder": "someone@liveonsplit.com",
+      "description": "친구의 이메일을 입력하세요."
+    },
+    "Settings": {
+      "title": "로컬 설정",
+      "description": "이 설정은 장치별로 설정되며, 경험을 사용자 정의하는 데 사용됩니다.",
+      "ActiveUserField": {
+        "label": "활성 친구",
+        "placeholder": "친구 선택",
+        "none": "없음",
+        "description": "상호작용을 위한 기본 친구로 사용됩니다."
+      },
+      "save": "저장",
+      "saving": "저장 중…",
+      "add": "추가",
+      "adding": "추가 중…",
+      "cancel": "취소"
+    }
+  },
   "ExpenseForm": {
     "Income": {
       "create": "소득 창출",

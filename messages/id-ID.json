@@ -128,6 +128,104 @@
       "cancel": "Membatalkan"
     }
   },
+  "Friends": {
+    "myFriends": "Teman-teman saya",
+    "add": "Tambah",
+    "loadingRecent": "Memuat teman-teman terbaru…",
+    "NoRecent": {
+      "description": "Anda belum berinteraksi dengan teman-teman baru-baru ini.",
+      "add": "Tambah satu",
+      "orAsk": "atau minta teman untuk mengirimkan tautan profil mereka."
+    },
+    "recent": "Teman-teman terbaru",
+    "starred": "Teman-teman favorit",
+    "blocked": "Teman-teman yang diblokir",
+    "block": "Blokir teman",
+    "unblock": "Buka blokir teman",
+    "removeRecent": "Hapus dari teman-teman terbaru",
+    "RecentRemovedToast": {
+      "title": "Teman telah dihapus",
+      "description": "Teman telah dihapus dari daftar teman-teman terbaru Anda.",
+      "undoAlt": "Batalkan penghapusan teman",
+      "undo": "Batalkan"
+    },
+    "AddByURL": {
+      "button": "Tambah dengan URL",
+      "title": "Tambah teman dengan URL",
+      "description": "Jika teman membagikan profil mereka dengan Anda, Anda dapat menempelkan URL mereka di sini untuk menambahkannya ke daftar Anda.",
+      "error": "Ups, kami tidak dapat menemukan teman dari URL yang Anda berikan…"
+    },
+    "NotFound": {
+      "text": "Teman ini tidak ada.",
+      "link": "Pergi ke teman-teman yang baru berinteraksi"
+    },
+    "Expense": {
+      "description": "Berikut adalah pengeluaran antara Anda dan teman Anda.",
+      "noExpenses": "Anda belum memiliki pengeluaran."
+    },
+    "Information": {
+      "title": "Informasi",
+      "description": "Gunakan tempat ini untuk menambahkan informasi yang relevan dengan teman Anda.",
+      "empty": "Belum ada informasi tentang teman Anda."
+    },
+    "Stats": {
+      "description": "Ringkasan pengeluaran antara Anda dan teman Anda.",
+      "groupSpendings": "Total pengeluaran antara Anda dan teman Anda",
+      "groupEarnings": "Total pendapatan antara Anda dan teman Anda"
+    },
+    "Activity": {
+      "title": "Aktivitas",
+      "description": "Ikhtisar semua aktivitas antara Anda dan teman Anda.",
+      "noActivity": "Belum ada aktivitas antara Anda dan teman Anda."
+    }
+  },
+  "FriendForm": {
+    "title": "Informasi teman",
+    "NameField": {
+      "label": "Nama teman",
+      "placeholder": "John Doe",
+      "description": "Masukkan nama teman Anda."
+    },
+    "InformationField": {
+      "label": "Informasi teman",
+      "placeholder": "Detail apa pun tentang teman Anda?"
+    },
+    "CurrencyField": {
+      "label": "Simbol mata uang",
+      "placeholder": "₹, $, £…",
+      "description": "Kami akan menggunakannya untuk menampilkan jumlah."
+    },
+    "Participants": {
+      "title": "Peserta",
+      "description": "Masukkan nama untuk setiap peserta.",
+      "protectedParticipant": "Peserta ini adalah bagian dari pengeluaran dan tidak dapat dihapus.",
+      "new": "Baru",
+      "add": "Tambah peserta",
+      "John": "Kecil",
+      "Jane": "Sibu",
+      "Jack": "Ninne"
+    },
+    "EmailField": {
+      "label": "Email",
+      "placeholder": "someone@liveonsplit.com",
+      "description": "Masukkan email teman Anda."
+    },
+    "Settings": {
+      "title": "Pengaturan lokal",
+      "description": "Pengaturan ini diatur per perangkat, dan digunakan untuk menyesuaikan pengalaman Anda.",
+      "ActiveUserField": {
+        "label": "Teman aktif",
+        "placeholder": "Pilih teman",
+        "none": "Tidak ada",
+        "description": "Teman yang digunakan sebagai default untuk interaksi."
+      },
+      "save": "Simpan",
+      "saving": "Menyimpan…",
+      "add": "Tambah",
+      "adding": "Menambah…",
+      "cancel": "Batal"
+    }
+  },
   "ExpenseForm": {
     "Income": {
       "create": "Ciptakan penghasilan",

@@ -38,7 +38,7 @@ export default function GroupExpensesPageClient({
         <div className="flex flex-1">
           <CardHeader className="flex-1 p-4 sm:p-6">
             <CardTitle>{t('title')}</CardTitle>
-            <CardDescription>{t('description')}</CardDescription>
+            <CardDescription>{t('Friend.description')}</CardDescription>
           </CardHeader>
           <CardHeader className="p-4 sm:p-6 flex flex-row space-y-0 gap-2">
             <ExportButton groupId={groupId} />

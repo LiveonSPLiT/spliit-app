@@ -142,7 +142,7 @@ const ExpenseListForSearch = ({
   if (expenses.length === 0)
     return (
       <p className="px-6 text-sm py-6">
-        {t('noExpenses')}{' '}
+        {t('Friend.noExpenses')}{' '}
         <Button variant="link" asChild className="-m-4">
           <Link href={`/friends/${groupId}/expenses/create`}>
             {t('createFirst')}

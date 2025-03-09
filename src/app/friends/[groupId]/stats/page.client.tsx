@@ -17,7 +17,7 @@ export function TotalsPageClient() {
       <Card className="mb-4">
         <CardHeader>
           <CardTitle>{t('Totals.title')}</CardTitle>
-          <CardDescription>{t('Totals.description')}</CardDescription>
+          <CardDescription>{t('Friend.description')}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col space-y-4">
           <Totals />

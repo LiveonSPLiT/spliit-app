@@ -21,7 +21,7 @@ export function ActivityPageClient() {
       <Card className="mb-4">
         <CardHeader>
           <CardTitle>{t('title')}</CardTitle>
-          <CardDescription>{t('description')}</CardDescription>
+          <CardDescription>{t('Friend.description')}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col space-y-4">
           <ActivityList />

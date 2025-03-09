@@ -170,7 +170,7 @@ function RecentGroupList_({
 
       {archivedGroupInfo.length > 0 && (
         <>
-          <h2 className="mt-6 mb-2 opacity-50">{t('archived')}</h2>
+          <h2 className="mt-6 mb-2 opacity-50">{t('blocked')}</h2>
           <div className="opacity-50">
             <GroupList
               groups={archivedGroupInfo}
@@ -229,7 +229,7 @@ function GroupsPage({
           <Link href="/friends">{t('myFriends')}</Link>
         </h1>
         <div className="flex gap-2">
-          <AddFriendByUrlButton reload={reload} />
+          {/* <AddFriendByUrlButton reload={reload} /> */}
           <Button asChild>
             <Link href="/friends/create">
               {/* <Plus className="w-4 h-4 mr-2" /> */}

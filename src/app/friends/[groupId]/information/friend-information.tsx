@@ -31,7 +31,7 @@ export default function FriendInformation({ groupId }: { groupId: string }) {
             </Button>
           </CardTitle>
           <CardDescription className="mr-12">
-            {t('description')}
+            {t('Friend.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm sm:prose-base max-w-full whitespace-break-spaces">
@@ -43,7 +43,7 @@ export default function FriendInformation({ groupId }: { groupId: string }) {
           ) : group.information ? (
             <p className="text-foreground">{group.information}</p>
           ) : (
-            <p className="text-muted-foreground text-sm">{t('empty')}</p>
+            <p className="text-muted-foreground text-sm">{t('Friend.empty')}</p>
           )}
         </CardContent>
       </Card>

@@ -119,7 +119,7 @@ export function RecentFriendListCard({
                         refreshGroupsFromStorage()
                       }}
                     >
-                      {t(isArchived ? 'unarchive' : 'archive')}
+                      {t(isArchived ? 'unblock' : 'block')}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

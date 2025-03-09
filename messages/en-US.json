@@ -47,6 +47,10 @@
       "earlierThisYear": "Earlier this year",
       "lastYear": "Last year",
       "older": "Older"
+    },
+    "Friend": {
+      "description": "Here are the expenses between you & your friend.",
+      "noExpenses": "You don't have any expense yet."
     }
   },
   "ExpenseCard": {
@@ -399,6 +403,11 @@
       "participants": "Total spending by each participant.",
       "categories": "Total spending in each category.",
       "balance": "Balance"
+    },
+    "Friend": {
+      "description": "Spending summary between you and your friend.",
+      "groupSpendings": "Total spendings between you and your friend",
+      "groupEarnings": "Total earnings between you and your friend"
     }
   },
   "Activity": {
@@ -420,12 +429,20 @@
       "earlierThisYear": "Earlier this year",
       "lastYear": "Last year",
       "older": "Older"
+    },
+    "Friend": {
+      "description": "Overview of all activity between you and your friend.",
+      "noActivity": "There is not yet any activity between you and your friend."
     }
   },
   "Information": {
     "title": "Information",
     "description": "Use this place to add any information that can be relevant to the group participants.",
-    "empty": "No group information yet."
+    "empty": "No group information yet.",
+    "Friend": {
+      "description": "Use this place to add any information that can be relevant to your friend.",
+      "empty": "No information about your friend yet."
+    }
   },
   "Settings": {
     "title": "Settings"

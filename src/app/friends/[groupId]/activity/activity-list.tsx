@@ -166,6 +166,6 @@ export function ActivityList() {
       {hasMore && <ActivitiesLoading ref={loadingRef} />}
     </>
   ) : (
-    <p className="text-sm py-6">{t('noActivity')}</p>
+    <p className="text-sm py-6">{t('Friend.noActivity')}</p>
   )
 }
