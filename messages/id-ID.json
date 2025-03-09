@@ -47,6 +47,10 @@
       "earlierThisYear": "Awal tahun ini",
       "lastYear": "Tahun lalu",
       "older": "Lebih tua"
+    },
+    "Friend": {
+      "description": "Berikut adalah pengeluaran antara Anda dan teman Anda.",
+      "noExpenses": "Anda belum memiliki pengeluaran."
     }
   },
   "ExpenseCard": {
@@ -158,25 +162,6 @@
     "NotFound": {
       "text": "Teman ini tidak ada.",
       "link": "Pergi ke teman-teman yang baru berinteraksi"
-    },
-    "Expense": {
-      "description": "Berikut adalah pengeluaran antara Anda dan teman Anda.",
-      "noExpenses": "Anda belum memiliki pengeluaran."
-    },
-    "Information": {
-      "title": "Informasi",
-      "description": "Gunakan tempat ini untuk menambahkan informasi yang relevan dengan teman Anda.",
-      "empty": "Belum ada informasi tentang teman Anda."
-    },
-    "Stats": {
-      "description": "Ringkasan pengeluaran antara Anda dan teman Anda.",
-      "groupSpendings": "Total pengeluaran antara Anda dan teman Anda",
-      "groupEarnings": "Total pendapatan antara Anda dan teman Anda"
-    },
-    "Activity": {
-      "title": "Aktivitas",
-      "description": "Ikhtisar semua aktivitas antara Anda dan teman Anda.",
-      "noActivity": "Belum ada aktivitas antara Anda dan teman Anda."
     }
   },
   "FriendForm": {
@@ -418,6 +403,11 @@
       "participants": "Total pengeluaran oleh setiap peserta.",
       "categories": "Total pengeluaran di setiap kategori.",
       "balance": "Saldo"
+    },
+    "Friend": {
+      "description": "Ringkasan pengeluaran antara Anda dan teman Anda.",
+      "groupSpendings": "Total pengeluaran antara Anda dan teman Anda",
+      "groupEarnings": "Total pendapatan antara Anda dan teman Anda"
     }
   },
   "Activity": {
@@ -439,12 +429,21 @@
       "earlierThisYear": "Awal tahun ini",
       "lastYear": "Tahun lalu",
       "older": "Lebih tua"
+    },
+    "Friend": {
+      "title": "Aktivitas",
+      "description": "Ikhtisar semua aktivitas antara Anda dan teman Anda.",
+      "noActivity": "Belum ada aktivitas antara Anda dan teman Anda."
     }
   },
   "Information": {
     "title": "Informasi",
     "description": "Gunakan tempat ini untuk menambahkan informasi apa pun yang relevan dengan peserta grup.",
-    "empty": "Belum ada informasi grup."
+    "empty": "Belum ada informasi grup.",
+    "Friend": {
+      "description": "Gunakan tempat ini untuk menambahkan informasi yang relevan dengan teman Anda.",
+      "empty": "Belum ada informasi tentang teman Anda."
+    }
   },
   "Settings": {
     "title": "Pengaturan"

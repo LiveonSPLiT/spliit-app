@@ -47,6 +47,10 @@
       "earlierThisYear": "今年早些时候",
       "lastYear": "去年",
       "older": "年长的"
+    },
+    "Friend": {
+      "description": "这是您和朋友之间的费用。",
+      "noExpenses": "您还没有任何费用。"
     }
   },
   "ExpenseCard": {
@@ -158,25 +162,6 @@
     "NotFound": {
       "text": "该朋友不存在。",
       "link": "转到最近互动的朋友"
-    },
-    "Expense": {
-      "description": "这是您和朋友之间的费用。",
-      "noExpenses": "您还没有任何费用。"
-    },
-    "Information": {
-      "title": "信息",
-      "description": "使用此处添加任何与您的朋友相关的信息。",
-      "empty": "尚无关于您朋友的信息。"
-    },
-    "Stats": {
-      "description": "您和朋友之间的支出摘要。",
-      "groupSpendings": "您和朋友之间的总支出",
-      "groupEarnings": "您和朋友之间的总收入"
-    },
-    "Activity": {
-      "title": "活动",
-      "description": "您和朋友之间所有活动的概述。",
-      "noActivity": "您和朋友之间尚无任何活动。"
     }
   },
   "FriendForm": {
@@ -418,6 +403,11 @@
       "participants": "每个参与者的总支出。",
       "categories": "每个类别的总支出。",
       "balance": "余额"
+    },
+    "Friend": {
+      "description": "您和朋友之间的支出摘要。",
+      "groupSpendings": "您和朋友之间的总支出",
+      "groupEarnings": "您和朋友之间的总收入"
     }
   },
   "Activity": {
@@ -439,12 +429,20 @@
       "earlierThisYear": "今年早些时候",
       "lastYear": "去年",
       "older": "年长的"
+    },
+    "Friend": {
+      "description": "您和朋友之间所有活动的概述。",
+      "noActivity": "您和朋友之间尚无任何活动。"
     }
   },
   "Information": {
     "title": "信息",
     "description": "使用此位置添加与小组参与者相关的任何信息。",
-    "empty": "还没有群组信息。"
+    "empty": "还没有群组信息。",
+    "Friend": {
+      "description": "使用此处添加任何与您的朋友相关的信息。",
+      "empty": "尚无关于您朋友的信息。"
+    }
   },
   "Settings": {
     "title": "设置"

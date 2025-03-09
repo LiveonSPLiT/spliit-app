@@ -47,6 +47,10 @@
       "earlierThisYear": "올해 초",
       "lastYear": "작년",
       "older": "이전"
+    },
+    "Friend": {
+      "description": "여기 당신과 친구 사이의 지출이 있습니다.",
+      "noExpenses": "아직 지출이 없습니다."
     }
   },
   "ExpenseCard": {
@@ -158,25 +162,6 @@
     "NotFound": {
       "text": "이 친구는 존재하지 않습니다.",
       "link": "최근 상호작용한 친구로 이동"
-    },
-    "Expense": {
-      "description": "여기 당신과 친구 사이의 지출이 있습니다.",
-      "noExpenses": "아직 지출이 없습니다."
-    },
-    "Information": {
-      "title": "정보",
-      "description": "친구와 관련된 정보를 추가하는 곳입니다.",
-      "empty": "아직 친구에 대한 정보가 없습니다."
-    },
-    "Stats": {
-      "description": "당신과 친구 사이의 지출 요약입니다.",
-      "groupSpendings": "당신과 친구 사이의 총 지출",
-      "groupEarnings": "당신과 친구 사이의 총 수입"
-    },
-    "Activity": {
-      "title": "활동",
-      "description": "당신과 친구 사이의 모든 활동 개요입니다.",
-      "noActivity": "아직 친구와의 활동이 없습니다."
     }
   },
   "FriendForm": {
@@ -418,6 +403,11 @@
       "participants": "각 참가자별 총 지출.",
       "categories": "각 카테고리별 총 지출.",
       "balance": "잔액"
+    },
+    "Friend": {
+      "description": "당신과 친구 사이의 지출 요약입니다.",
+      "groupSpendings": "당신과 친구 사이의 총 지출",
+      "groupEarnings": "당신과 친구 사이의 총 수입"
     }
   },
   "Activity": {
@@ -439,12 +429,20 @@
       "earlierThisYear": "올해 초",
       "lastYear": "작년",
       "older": "이전"
+    },
+    "Friend": {
+      "description": "당신과 친구 사이의 모든 활동 개요입니다.",
+      "noActivity": "아직 친구와의 활동이 없습니다."
     }
   },
   "Information": {
     "title": "정보",
     "description": "이 장소를 사용하여 그룹 참가자와 관련된 정보를 추가하세요.",
-    "empty": "아직 그룹 정보가 없습니다."
+    "empty": "아직 그룹 정보가 없습니다.",
+    "Friend": {
+      "description": "친구와 관련된 정보를 추가하는 곳입니다.",
+      "empty": "아직 친구에 대한 정보가 없습니다."
+    }
   },
   "Settings": {
     "title": "설정"

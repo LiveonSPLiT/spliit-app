@@ -47,6 +47,10 @@
       "earlierThisYear": "今年初めに",
       "lastYear": "去年",
       "older": "古い"
+    },
+    "Friend": {
+      "description": "あなたと友達の間の費用はこちらです。",
+      "noExpenses": "まだ費用はありません。"
     }
   },
   "ExpenseCard": {
@@ -158,25 +162,6 @@
     "NotFound": {
       "text": "この友達は存在しません。",
       "link": "最近やり取りした友達に移動"
-    },
-    "Expense": {
-      "description": "あなたと友達の間の費用はこちらです。",
-      "noExpenses": "まだ費用はありません。"
-    },
-    "Information": {
-      "title": "情報",
-      "description": "友達に関連する情報を追加するための場所です。",
-      "empty": "まだ友達に関する情報はありません。"
-    },
-    "Stats": {
-      "description": "あなたと友達の間の支出の概要です。",
-      "groupSpendings": "あなたと友達の間の総支出",
-      "groupEarnings": "あなたと友達の間の総収入"
-    },
-    "Activity": {
-      "title": "アクティビティ",
-      "description": "あなたと友達の間のすべてのアクティビティの概要です。",
-      "noActivity": "まだ友達との間にアクティビティはありません。"
     }
   },
   "FriendForm": {
@@ -418,6 +403,11 @@
       "participants": "各参加者の総支出。",
       "categories": "各カテゴリの総支出。",
       "balance": "残高"
+    },
+    "Friend": {
+      "description": "あなたと友達の間の支出の概要です。",
+      "groupSpendings": "あなたと友達の間の総支出",
+      "groupEarnings": "あなたと友達の間の総収入"
     }
   },
   "Activity": {
@@ -439,12 +429,21 @@
       "earlierThisYear": "今年初めに",
       "lastYear": "去年",
       "older": "古い"
+    },
+    "Friend": {
+      "title": "アクティビティ",
+      "description": "あなたと友達の間のすべてのアクティビティの概要です。",
+      "noActivity": "まだ友達との間にアクティビティはありません。"
     }
   },
   "Information": {
     "title": "情報",
     "description": "この場所を使用して、グループの参加者に関連する可能性のある情報を追加します。",
-    "empty": "グループ情報はまだありません。"
+    "empty": "グループ情報はまだありません。",
+    "Friend": {
+      "description": "友達に関連する情報を追加するための場所です。",
+      "empty": "まだ友達に関する情報はありません。"
+    }
   },
   "Settings": {
     "title": "設定"
