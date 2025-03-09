@@ -58,8 +58,8 @@ const GraphsLoading =({}) => {
             <CardHeader>
               <div className="text-sm text-muted-foreground text-center"><Skeleton className="h-3 w-24" /></div>
             </CardHeader>
-            <CardContent className="flex flex-col space-y-4 pb-0">
-            <Skeleton>
+            <CardContent className="flex flex-col space-y-4 pb-0 animate-pulse rounded-md">
+            
             <VictoryPie
               theme={VictoryTheme.material}
               data={[{ y: 25}, { y: 20}, { y: 35}]}
@@ -74,7 +74,7 @@ const GraphsLoading =({}) => {
                 },
               }}
             />
-            </Skeleton>
+            
             </CardContent>
           </Card>
         ))}
