@@ -570,9 +570,11 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
     },
   })
 
-  await logActivity(newGroup.id, ActivityType.ADD_FRIEND, { participantId: newGroup.participants.find(
-    (p) => p.userId === loggedInUser?.id,
-  )?.id})
+  await logActivity(newGroup.id, ActivityType.ADD_FRIEND, {
+    participantId: newGroup.participants.find(
+      (p) => p.userId === loggedInUser?.id,
+    )?.id,
+  })
 
   return {
     ...newGroup,
