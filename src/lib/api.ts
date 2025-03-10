@@ -570,10 +570,14 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
     },
   })
 
+  await logActivity(newGroup.id, ActivityType.ADD_FRIEND, { participantId: newGroup.participants.find(
+    (p) => p.userId === loggedInUser?.id,
+  )?.id})
+
   return {
     ...newGroup,
-    name: alternateParticipant ? alternateParticipant.name : 'Unknown',
-    friendEmail: friendFormSchema.friendEmail || 'unknown@liveonsplit.com',
+    name: alternateParticipant ? alternateParticipant.name : 'Someone',
+    friendEmail: friendFormSchema.friendEmail || 'someone@liveonsplit.com',
   }
 }
 
@@ -598,7 +602,7 @@ export async function listFriends(loggedInUserId: string) {
     )
     return {
       ...group,
-      name: alternateParticipant ? alternateParticipant.name : 'Unknown',
+      name: alternateParticipant ? alternateParticipant.name : 'Someone',
     }
   })
 }
@@ -632,13 +636,13 @@ export async function getFriend(loggedInUserEmail: string, groupId: string) {
     (p) => p.userId !== loggedInUser?.id,
   )
   const user = await prisma.user.findUnique({
-    where: { id: alternateParticipant?.userId || 'Unknown' },
+    where: { id: alternateParticipant?.userId || 'Someone' },
     select: { email: true },
   })
   return {
     ...group,
-    name: alternateParticipant ? alternateParticipant.name : 'Unknown',
-    friendEmail: user?.email || 'unknown@liveonsplit.com',
+    name: alternateParticipant ? alternateParticipant.name : 'Someone',
+    friendEmail: user?.email || 'someone@liveonsplit.com',
   }
 }
 

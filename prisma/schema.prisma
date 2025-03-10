@@ -190,6 +190,9 @@ model Activity {
 }
 
 enum ActivityType {
+  ADD_FRIEND
+  UPDATE_FRIEND
+  CREATE_GROUP
   UPDATE_GROUP
   CREATE_EXPENSE
   UPDATE_EXPENSE

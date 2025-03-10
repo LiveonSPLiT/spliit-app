@@ -55,6 +55,7 @@ export function LogOutButton() {
   const handleClick = () => {
     clearLocalStorageData()
     clearLocalStorageDataFriend()
+    localStorage.clear()
     signOut({ callbackUrl: '/' }) // Redirects to the homepage after logging out
   }
 

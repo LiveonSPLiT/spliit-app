@@ -52,8 +52,9 @@ export async function sendActivityEmails(
   let emailTitle = ''
   let emailButtonFooterText = ''
 
-  // Set subject and message based on the activity type
-  if (activityType === ActivityType.UPDATE_GROUP) {
+  // Set subject and message based on the activity type & group type
+if (activityType === ActivityType.UPDATE_GROUP) {
+  if (group?.type === 'MULTI_MEMBER') {
     subject = `${participantName} updated the group: ${groupName}`
     message = `${participantName} has made changes to the group "${groupName}". Visit the group for more details.`
     emailTitle = 'Group Update Notification'
@@ -61,7 +62,17 @@ export async function sendActivityEmails(
     emailButtonLabel = 'Go to Group'
     emailButtonLink = `${publicUrl}/groups/${groupId}`
     emailButtonFooterText = 'Thank you for being part of the group.'
-  } else if (activityType === 'CREATE_GROUP') {
+  } else if (group?.type === 'DUAL_MEMBER') {
+    subject = `${participantName} updated your shared expenses: ${groupName}`
+    message = `${participantName} has made changes to your shared expenses "${groupName}". Visit the SPLiT for more details.`
+    emailTitle = 'Shared Expenses Update Notification'
+    emailButtonHeaderText = 'View Shared Expenses on SPLiT'
+    emailButtonLabel = 'Go to Shared Expenses'
+    emailButtonLink = `${publicUrl}/friends/${groupId}`
+    emailButtonFooterText = 'Thank you for sharing expenses.'
+  }
+} else if (activityType === ActivityType.CREATE_GROUP || activityType === ActivityType.ADD_FRIEND) {
+  if (group?.type === 'MULTI_MEMBER') {
     subject = `${participantName} created a new group: ${groupName}`
     message = `${participantName} has created a new group "${groupName}". Click the button below to join or view the group.`
     emailTitle = 'New Group Created'
@@ -69,7 +80,17 @@ export async function sendActivityEmails(
     emailButtonLabel = 'Go to Group'
     emailButtonLink = `${publicUrl}/groups/${groupId}`
     emailButtonFooterText = 'Be part of the new group.'
-  } else if (activityType === ActivityType.CREATE_EXPENSE) {
+  } else if (group?.type === 'DUAL_MEMBER') {
+    subject = `${participantName} added you on SPLiT`
+    message = `${participantName} added you on SPLiT to share expenses". Click the button below to view the shared expenses.`
+    emailTitle = 'Welcome to SPLiT'
+    emailButtonHeaderText = 'Join to Share Expenses on SPLiT'
+    emailButtonLabel = 'Go to Shared Expenses'
+    emailButtonLink = `${publicUrl}/friends/${groupId}`
+    emailButtonFooterText = 'Thank you for joining SPLiT.'
+  }
+} else if (activityType === ActivityType.CREATE_EXPENSE) {
+  if (group?.type === 'MULTI_MEMBER') {
     subject = `${participantName} created a new expense: ${expenseName}`
     message = `${participantName} has added a new expense "${expenseName}" in the group "${groupName}". Click the button below to view the expense details.`
     emailTitle = 'New Expense Created'
@@ -77,7 +98,17 @@ export async function sendActivityEmails(
     emailButtonLabel = 'See Expense Details'
     emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`
     emailButtonFooterText = 'Keep track of your group expenses.'
-  } else if (activityType === ActivityType.UPDATE_EXPENSE) {
+  } else if (group?.type === 'DUAL_MEMBER') {
+    subject = `${participantName} created a new expense: ${expenseName}`
+    message = `${participantName} has added a new expense "${expenseName}" in your shared expenses. Click the button below to view the expense details.`
+    emailTitle = 'New Expense Created'
+    emailButtonHeaderText = 'View Expense on SPLiT'
+    emailButtonLabel = 'See Expense Details'
+    emailButtonLink = `${publicUrl}/friends/${groupId}/expenses/${expenseId}/edit`
+    emailButtonFooterText = 'Keep track of your shared expenses.'
+  }
+} else if (activityType === ActivityType.UPDATE_EXPENSE) {
+  if (group?.type === 'MULTI_MEMBER') {
     subject = `${participantName} updated the expense: ${expenseName}`
     message = `${participantName} has made changes to the expense "${expenseName}" in the group "${groupName}". Click the button below to see the updates.`
     emailTitle = 'Expense Updated'
@@ -85,7 +116,17 @@ export async function sendActivityEmails(
     emailButtonLabel = 'Check Changes'
     emailButtonLink = `${publicUrl}/groups/${groupId}/expenses/${expenseId}/edit`
     emailButtonFooterText = 'Keep your group finances organized.'
-  } else if (activityType === ActivityType.DELETE_EXPENSE) {
+  } else if (group?.type === 'DUAL_MEMBER') {
+    subject = `${participantName} updated the expense: ${expenseName}`
+    message = `${participantName} has made changes to the expense "${expenseName}" in your shared expenses. Click the button below to see the updates.`
+    emailTitle = 'Expense Updated'
+    emailButtonHeaderText = 'View Updated Expense on SPLiT'
+    emailButtonLabel = 'Check Changes'
+    emailButtonLink = `${publicUrl}/friends/${groupId}/expenses/${expenseId}/edit`
+    emailButtonFooterText = 'Keep your shared finances organized.'
+  }
+} else if (activityType === ActivityType.DELETE_EXPENSE) {
+  if (group?.type === 'MULTI_MEMBER') {
     subject = `${participantName} deleted the expense: ${expenseName}`
     message = `${participantName} has deleted the expense "${expenseName}" from the group "${groupName}".`
     emailTitle = 'Expense Deleted'
@@ -93,7 +134,16 @@ export async function sendActivityEmails(
     emailButtonLabel = 'Go to Group'
     emailButtonLink = `${publicUrl}/groups/${groupId}`
     emailButtonFooterText = 'Stay updated with group activities.'
+  } else if (group?.type === 'DUAL_MEMBER') {
+    subject = `${participantName} deleted the expense: ${expenseName}`
+    message = `${participantName} has deleted the expense "${expenseName}" from your shared expenses.`
+    emailTitle = 'Expense Deleted'
+    emailButtonHeaderText = 'View Shared Expenses on SPLiT'
+    emailButtonLabel = 'Go to Shared Expenses'
+    emailButtonLink = `${publicUrl}/friends/${groupId}`
+    emailButtonFooterText = 'Stay updated with shared activities.'
   }
+}
 
   for (const { email, name } of users) {
     let response = await fetch(`${env.NODEMAILER_URL}`, {
