@@ -70,3 +70,7 @@
 .text-balance {
   text-wrap: balance;
 }
+
+.victory-container>svg {
+  overflow: visible !important;
+}
