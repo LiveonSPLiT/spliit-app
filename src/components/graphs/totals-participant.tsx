@@ -36,8 +36,9 @@ export function ParticipantSummary({ expensesByParticipant }: Props) {
           colorScale="qualitative"
           style={{
             labels: {
-              fontSize: 12,
+              fontSize: 14,
             },
+            parent: { overflow: 'visible' },
           }}
         />
       </CardContent>
