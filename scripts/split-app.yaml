@@ -40,6 +40,10 @@ spec:
             value: "https://liveonsplit.com"
           - name: VERCEL_URL
             value: "https://liveonsplit.com"
+          - name: NEXT_PUBLIC_ENABLE_RECEIPT_EXTRACT
+            value: "true"
+          - name: NEXT_PUBLIC_ENABLE_CATEGORY_EXTRACT
+            value: "true"
           - name: NEXT_PUBLIC_ENABLE_EXPENSE_DOCUMENTS
             value: "true"
           - name: S3_UPLOAD_KEY
@@ -88,6 +92,26 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: split-nodemailer-url
+                key: password
+          - name: OPENAI_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: openai-api-key
+                key: password
+          - name: OPENAI_API_URL
+            valueFrom:
+              secretKeyRef:
+                name: openai-api-url
+                key: password
+          - name: OPENAI_CATEGORY_EXPENSE_MODEL
+            valueFrom:
+              secretKeyRef:
+                name: openai-api-model
+                key: password
+          - name: OPENAI_CATEGORY_RECEIPT_EXTRACT_MODEL
+            valueFrom:
+              secretKeyRef:
+                name: openai-api-model
                 key: password
 ---
 apiVersion: v1
