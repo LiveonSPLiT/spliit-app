@@ -118,27 +118,27 @@ const news: News[] = [
       </>
     ),
   },
-    {
-      id: 'scan-receipts',
-      title: <>Scan receipts to create expenses</>,
-      summary: <>Create expenses faster by taking a photo of a receipt!</>,
-      icon: Wand,
-      content: (
-        <>
-          <p>
-            Now, instead of entering all your expense information manually, you
-            can save time by taking a photo of a receipt. SPLiT will use AI to
-            extract information from it and fill the expense.
-          </p>
-          <p>
-            <Image
-              src={require('../../public/receipt-scanning-screenshot.png')}
-              alt="Receipt scanning feature screenshot"
-            />
-          </p>
-        </>
-      ),
-    },
+  {
+    id: 'scan-receipts',
+    title: <>Scan receipts to create expenses</>,
+    summary: <>Create expenses faster by taking a photo of a receipt!</>,
+    icon: Wand,
+    content: (
+      <>
+        <p>
+          Now, instead of entering all your expense information manually, you
+          can save time by taking a photo of a receipt. SPLiT will use AI to
+          extract information from it and fill the expense.
+        </p>
+        <p>
+          <Image
+            src={require('../../public/receipt-scanning-screenshot.png')}
+            alt="Receipt scanning feature screenshot"
+          />
+        </p>
+      </>
+    ),
+  },
   {
     id: 'receipts',
     title: <>Attach receipts to expenses</>,
