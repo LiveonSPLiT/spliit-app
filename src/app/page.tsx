@@ -22,8 +22,8 @@ import {
   LucideIcon,
   Mails,
   Repeat2,
-  ShieldX,
   Users,
+  Wand2,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { ReactNode } from 'react'
@@ -110,9 +110,10 @@ export default function HomePage() {
               description="Optimize money transfers between participants."
             />
             <Feature
-              Icon={ShieldX}
-              name="No ads"
-              description="No hassle. No limitation. No problem."
+              Icon={Wand2}
+              name="AI Scan"
+              description="Scan receipts to create expenses faster."
+              beta
             />
             <Feature
               Icon={ChartPie}
