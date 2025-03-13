@@ -3,7 +3,7 @@
 import { SignInButton } from '@/components/auth-buttons'
 import { NewsButton } from '@/components/news-button'
 import { Button } from '@/components/ui/button'
-import { Loader2 } from 'lucide-react'
+import { Contact, Loader2, Users } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -42,7 +42,16 @@ export function HomeButton() {
     return (
       <div className="flex gap-2">
         <Button asChild>
-          <Link href="/groups">Go to groups</Link>
+          <Link href="/groups">
+            <Users className="w-4 h-4 mr-2" />
+            Go to groups
+          </Link>
+        </Button>
+        <Button asChild variant="secondary">
+          <Link href="/friends">
+            <Contact className="w-4 h-4 mr-2" />
+            Go to Friends
+          </Link>
         </Button>
       </div>
     )
@@ -80,8 +89,28 @@ export function NavGroupButton() {
   }
 
   return (
-    <Button variant="ghost" size="sm" asChild className="-my-3 text-primary">
-      <Link href="/groups">{t('Header.groups')}</Link>
+    <Button variant="ghost" size="icon" className="text-primary">
+      <Link href="/groups">
+        <Users className="h-4 w-4" />
+        <span className="sr-only">{t('Header.groups')}</span>
+      </Link>
+    </Button>
+  )
+}
+
+export function NavFriendButton() {
+  const t = useTranslations()
+  const { status } = useSession()
+
+  if (status !== 'authenticated') {
+    return null // Return nothing if the user is not authenticated
+  }
+
+  return (
+    <Button variant="ghost" size="icon" className="text-primary">
+      <Link href="/friends">
+        <Contact className="h-4 w-4" />
+      </Link>
     </Button>
   )
 }

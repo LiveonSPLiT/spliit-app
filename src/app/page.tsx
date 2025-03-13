@@ -12,12 +12,15 @@ import { Button } from '@/components/ui/button'
 import { env } from '@/lib/env'
 import {
   BarChartHorizontalBig,
+  ChartPie,
   CircleDollarSign,
+  Contact,
   Divide,
   FileImage,
   FolderTree,
   List,
   LucideIcon,
+  Mails,
   Repeat2,
   ShieldX,
   Users,
@@ -66,6 +69,11 @@ export default function HomePage() {
               description="Create a group for a travel, an event, a gift…"
             />
             <Feature
+              Icon={Contact}
+              name="Friends"
+              description="Manage your friends and interactions easily."
+            />
+            <Feature
               Icon={List}
               name="Expenses"
               description="Create and list expenses in your group."
@@ -105,6 +113,16 @@ export default function HomePage() {
               Icon={ShieldX}
               name="No ads"
               description="No hassle. No limitation. No problem."
+            />
+            <Feature
+              Icon={ChartPie}
+              name="Graphs"
+              description="Visualize your spending with detailed graphs."
+            />
+            <Feature
+              Icon={Mails}
+              name="Emails"
+              description="Receive email alerts for important updates."
             />
           </div>
         </div>

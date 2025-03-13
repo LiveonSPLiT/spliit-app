@@ -47,6 +47,10 @@
       "earlierThisYear": "今年初めに",
       "lastYear": "去年",
       "older": "古い"
+    },
+    "Friend": {
+      "description": "あなたと友達の間の費用はこちらです。",
+      "noExpenses": "まだ費用はありません。"
     }
   },
   "ExpenseCard": {
@@ -128,6 +132,85 @@
       "cancel": "キャンセル"
     }
   },
+  "Friends": {
+    "myFriends": "私の友達",
+    "add": "追加",
+    "loadingRecent": "最近の友達を読み込んでいます…",
+    "NoRecent": {
+      "description": "最近、友達とやり取りしていません。",
+      "add": "1人追加",
+      "orAsk": "または友達にプロフィールリンクを送ってもらうように頼んでください。"
+    },
+    "recent": "最近の友達",
+    "starred": "お気に入りの友達",
+    "blocked": "ブロックされた友達",
+    "block": "友達をブロック",
+    "unblock": "友達のブロックを解除",
+    "removeRecent": "最近の友達から削除",
+    "RecentRemovedToast": {
+      "title": "友達が削除されました",
+      "description": "友達が最近の友達リストから削除されました。",
+      "undoAlt": "友達の削除を元に戻す",
+      "undo": "元に戻す"
+    },
+    "AddByURL": {
+      "button": "URLで追加",
+      "title": "URLで友達を追加",
+      "description": "友達がプロフィールを共有した場合、そのURLをここに貼り付けてリストに追加できます。",
+      "error": "おっと、提供されたURLから友達を見つけることができません…"
+    },
+    "NotFound": {
+      "text": "この友達は存在しません。",
+      "link": "最近やり取りした友達に移動"
+    }
+  },
+  "FriendForm": {
+    "title": "友達情報",
+    "NameField": {
+      "label": "友達の名前",
+      "placeholder": "ジョン・ドウ",
+      "description": "友達の名前を入力してください。"
+    },
+    "InformationField": {
+      "label": "友達情報",
+      "placeholder": "友達に関する詳細は？"
+    },
+    "CurrencyField": {
+      "label": "通貨記号",
+      "placeholder": "₹, $, £…",
+      "description": "金額を表示するために使用します。"
+    },
+    "Participants": {
+      "title": "参加者",
+      "description": "各参加者の名前を入力してください。",
+      "protectedParticipant": "この参加者は費用の一部であり、削除できません。",
+      "new": "新しい",
+      "add": "参加者を追加",
+      "John": "リトル",
+      "Jane": "シブ",
+      "Jack": "ニンネ"
+    },
+    "EmailField": {
+      "label": "メール",
+      "placeholder": "someone@liveonsplit.com",
+      "description": "友達のメールを入力してください。"
+    },
+    "Settings": {
+      "title": "ローカル設定",
+      "description": "これらの設定はデバイスごとに設定され、体験をカスタマイズするために使用されます。",
+      "ActiveUserField": {
+        "label": "アクティブな友達",
+        "placeholder": "友達を選択",
+        "none": "なし",
+        "description": "やり取りのデフォルトとして使用される友達。"
+      },
+      "save": "保存",
+      "saving": "保存中…",
+      "add": "追加",
+      "adding": "追加中…",
+      "cancel": "キャンセル"
+    }
+  },
   "ExpenseForm": {
     "Income": {
       "create": "収入を生み出す",
@@ -193,10 +276,11 @@
       "label": "繰り返しの日",
       "description": "この費用を繰り返す頻度を選択します。",
       "fields": {
-        "Never": "一度もない",
-        "Weekly": "毎週",
+        "none": "一度もない",
+        "daily": "毎日",
+        "weekly": "毎週",
         "Every14days": "14日ごと",
-        "Every30days": "30日ごと",
+        "monthly": "30日ごと",
         "Every60days": "60日ごと"
       }
     },
@@ -312,6 +396,18 @@
       "yourSpendings": "総支出額",
       "yourEarnings": "あなたの総収入",
       "yourShare": "あなたの合計シェア"
+    },
+    "Graphs": {
+      "title": "カテゴリと参加者別の支出",
+      "description": "カテゴリと参加者別の支出の表現。",
+      "participants": "各参加者の総支出。",
+      "categories": "各カテゴリの総支出。",
+      "balance": "残高"
+    },
+    "Friend": {
+      "description": "あなたと友達の間の支出の概要です。",
+      "groupSpendings": "あなたと友達の間の総支出",
+      "groupEarnings": "あなたと友達の間の総収入"
     }
   },
   "Activity": {
@@ -333,12 +429,21 @@
       "earlierThisYear": "今年初めに",
       "lastYear": "去年",
       "older": "古い"
+    },
+    "Friend": {
+      "title": "アクティビティ",
+      "description": "あなたと友達の間のすべてのアクティビティの概要です。",
+      "noActivity": "まだ友達との間にアクティビティはありません。"
     }
   },
   "Information": {
     "title": "情報",
     "description": "この場所を使用して、グループの参加者に関連する可能性のある情報を追加します。",
-    "empty": "グループ情報はまだありません。"
+    "empty": "グループ情報はまだありません。",
+    "Friend": {
+      "description": "友達に関連する情報を追加するための場所です。",
+      "empty": "まだ友達に関する情報はありません。"
+    }
   },
   "Settings": {
     "title": "設定"
@@ -346,16 +451,11 @@
   "Locale": {
     "en-US": "English",
     "hi-IN": "हिन्दी",
-    "bn-BD": "বাংলা",
     "mr-IN": "मराठी",
-    "te-IN": "తెలుగు",
-    "ta-IN": "தமிழ்",
     "gu-IN": "ગુજરાતી",
-    "kn-IN": "ಕನ್ನಡ",
     "pa-IN": "ਪੰਜਾਬੀ",
     "zh-CN": "简体中文",
     "ko-KR": "한국어",
-    "th-TH": "ไทย",
     "ja-JP": "日本語",
     "ru-RU": "Русский",
     "id-ID": "Bahasa"

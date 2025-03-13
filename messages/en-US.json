@@ -47,6 +47,10 @@
       "earlierThisYear": "Earlier this year",
       "lastYear": "Last year",
       "older": "Older"
+    },
+    "Friend": {
+      "description": "Here are the expenses between you & your friend.",
+      "noExpenses": "You don't have any expense yet."
     }
   },
   "ExpenseCard": {
@@ -128,6 +132,85 @@
       "cancel": "Cancel"
     }
   },
+  "Friends": {
+    "myFriends": "My friends",
+    "add": "Add",
+    "loadingRecent": "Loading recent friends…",
+    "NoRecent": {
+      "description": "You have not interacted with any friend recently.",
+      "add": "Add one",
+      "orAsk": "or ask a friend to send you their profile link."
+    },
+    "recent": "Recent friends",
+    "starred": "Starred friends",
+    "blocked": "Blocked friends",
+    "block": "Block friend",
+    "unblock": "Unblock friend",
+    "removeRecent": "Remove from recent friends",
+    "RecentRemovedToast": {
+      "title": "Friend has been removed",
+      "description": "The friend was removed from your recent friends list.",
+      "undoAlt": "Undo friend removal",
+      "undo": "Undo"
+    },
+    "AddByURL": {
+      "button": "Add by URL",
+      "title": "Add a friend by URL",
+      "description": "If a friend shared their profile with you, you can paste their URL here to add them to your list.",
+      "error": "Oops, we are not able to find the friend from the URL you provided…"
+    },
+    "NotFound": {
+      "text": "This friend does not exist.",
+      "link": "Go to recently interacted friends"
+    }
+  },
+  "FriendForm": {
+    "title": "Friend information",
+    "NameField": {
+      "label": "Friend name",
+      "placeholder": "John Doe",
+      "description": "Enter a name for your friend."
+    },
+    "InformationField": {
+      "label": "Friend information",
+      "placeholder": "Any details about your friend?"
+    },
+    "CurrencyField": {
+      "label": "Currency symbol",
+      "placeholder": "₹, $, £…",
+      "description": "We’ll use it to display amounts."
+    },
+    "Participants": {
+      "title": "Participants",
+      "description": "Enter the name for each participant.",
+      "protectedParticipant": "This participant is part of expenses, and can not be removed.",
+      "new": "New",
+      "add": "Add participant",
+      "John": "Little",
+      "Jane": "Sibu",
+      "Jack": "Ninne"
+    },
+    "EmailField": {
+      "label": "Email",
+      "placeholder": "someone@liveonsplit.com",
+      "description": "Enter a email for your friend."
+    },
+    "Settings": {
+      "title": "Local settings",
+      "description": "These settings are set per-device, and are used to customize your experience.",
+      "ActiveUserField": {
+        "label": "Active friend",
+        "placeholder": "Select a friend",
+        "none": "None",
+        "description": "Friend used as default for interactions."
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "add": "Add",
+      "adding": "Adding…",
+      "cancel": "Cancel"
+    }
+  },
   "ExpenseForm": {
     "Income": {
       "create": "Create income",
@@ -193,10 +276,11 @@
       "label": "Recurring Days",
       "description": "Choose how often this expense should be repeated.",
       "fields": {
-        "Never": "Never",
-        "Weekly": "Weekly",
+        "none": "Never",
+        "daily": "Daily",
+        "weekly": "Weekly",
         "Every14days": "Every 14 days",
-        "Every30days": "Every 30 days",
+        "monthly": "Every 30 days",
         "Every60days": "Every 60 days"
       }
     },
@@ -312,6 +396,18 @@
       "yourSpendings": "Your total spendings",
       "yourEarnings": "Your total earnings",
       "yourShare": "Your total share"
+    },
+    "Graphs": {
+      "title": "Spending by Category & Participant",
+      "description": "Representation of expenses by category & participant.",
+      "participants": "Total spending by each participant.",
+      "categories": "Total spending in each category.",
+      "balance": "Balance"
+    },
+    "Friend": {
+      "description": "Spending summary between you and your friend.",
+      "groupSpendings": "Total spendings between you and your friend",
+      "groupEarnings": "Total earnings between you and your friend"
     }
   },
   "Activity": {
@@ -333,12 +429,20 @@
       "earlierThisYear": "Earlier this year",
       "lastYear": "Last year",
       "older": "Older"
+    },
+    "Friend": {
+      "description": "Overview of all activity between you and your friend.",
+      "noActivity": "There is not yet any activity between you and your friend."
     }
   },
   "Information": {
     "title": "Information",
     "description": "Use this place to add any information that can be relevant to the group participants.",
-    "empty": "No group information yet."
+    "empty": "No group information yet.",
+    "Friend": {
+      "description": "Use this place to add any information that can be relevant to your friend.",
+      "empty": "No information about your friend yet."
+    }
   },
   "Settings": {
     "title": "Settings"
@@ -346,16 +450,11 @@
   "Locale": {
     "en-US": "English",
     "hi-IN": "हिन्दी",
-    "bn-BD": "বাংলা",
     "mr-IN": "मराठी",
-    "te-IN": "తెలుగు",
-    "ta-IN": "தமிழ்",
     "gu-IN": "ગુજરાતી",
-    "kn-IN": "ಕನ್ನಡ",
     "pa-IN": "ਪੰਜਾਬੀ",
     "zh-CN": "简体中文",
     "ko-KR": "한국어",
-    "th-TH": "ไทย",
     "ja-JP": "日本語",
     "ru-RU": "Русский",
     "id-ID": "Bahasa"

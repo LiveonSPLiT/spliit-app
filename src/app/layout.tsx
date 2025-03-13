@@ -1,7 +1,11 @@
 import { ApplePwaSplash } from '@/app/apple-pwa-splash'
 import { LogOutButton } from '@/components/auth-buttons'
 import { FeedbackModal } from '@/components/feedback-button/feedback-button'
-import { NavGroupButton, NavNewsButton } from '@/components/home-button'
+import {
+  NavFriendButton,
+  NavGroupButton,
+  NavNewsButton,
+} from '@/components/home-button'
 import { LocaleSwitcher } from '@/components/locale-switcher'
 import { ProgressBar } from '@/components/progress-bar'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -94,6 +98,9 @@ function Content({ children }: { children: React.ReactNode }) {
           <ul className="flex items-center text-sm">
             <li>
               <NavGroupButton />
+            </li>
+            <li>
+              <NavFriendButton />
             </li>
             <li>
               <NavNewsButton />

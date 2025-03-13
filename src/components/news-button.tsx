@@ -25,7 +25,7 @@ import {
   Linkedin,
   LogIn,
   LucideIcon,
-  Mail,
+  Mails,
   Newspaper,
   Receipt,
   Sparkles,
@@ -67,7 +67,7 @@ const news: News[] = [
     id: 'email-alerts',
     title: <>SPLiT now supports email alerts!</>,
     summary: <>Stay informed with real-time updates.</>,
-    icon: Mail,
+    icon: Mails,
     content: (
       <>
         <p>
@@ -85,7 +85,7 @@ const news: News[] = [
   {
     id: 'languages',
     title: <>SPLiT is now available in other Asian languages!</>,
-    summary: <>Hindi, Thai, Chinese, Russian, and more.!</>,
+    summary: <>Hindi, Korean, Chinese, Russian, and more.!</>,
     icon: Globe,
     content: (
       <>

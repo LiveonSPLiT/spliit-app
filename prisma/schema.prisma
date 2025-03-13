@@ -12,12 +12,16 @@ datasource db {
 }
 
 model User {
-  id             String          @id @default(uuid())
-  name           String
-  email          String          @unique
-  recentGroups   RecentGroup[]
-  starredGroups  StarredGroup[]
-  archivedGroups ArchivedGroup[]
+  id              String          @id @default(uuid())
+  name            String
+  email           String          @unique
+  recentGroups    RecentGroup[]
+  starredGroups   StarredGroup[]
+  archivedGroups  ArchivedGroup[]
+  participants    Participant[]
+  recentFriends   RecentFriend[]   // New relation for recent friends
+  starredFriends  StarredFriend[]  // New relation for starred friends
+  blockedFriends  BlockedFriend[]  // New relation for blocked friends
 }
 
 model RecentGroup {
@@ -48,11 +52,40 @@ model ArchivedGroup {
   @@unique([userId, groupId])
 }
 
+model RecentFriend {
+  id      String   @id @default(uuid())
+  userId  String
+  name    String
+  user    User     @relation(fields: [userId], references: [id])
+  groupId String   // This links to the DUAL_MEMBER group
+
+  @@unique([userId, groupId])
+}
+
+model StarredFriend {
+  id      String   @id @default(uuid())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  groupId String   // This links to the DUAL_MEMBER group
+
+  @@unique([userId, groupId])
+}
+
+model BlockedFriend {
+  id      String   @id @default(uuid())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  groupId String   // This links to the DUAL_MEMBER group
+
+  @@unique([userId, groupId])
+}
+
 model Group {
   id           String        @id
   name         String
   information  String?       @db.Text
   currency     String        @default("₹")
+  type         GroupType     @default(MULTI_MEMBER)  // Added type field with default value
   participants Participant[]
   expenses     Expense[]
   activities   Activity[]
@@ -64,6 +97,8 @@ model Participant {
   name            String
   group           Group            @relation(fields: [groupId], references: [id], onDelete: Cascade)
   groupId         String
+  userId          String?          // New optional relation to User
+  user            User?            @relation(fields: [userId], references: [id])
   expensesPaidBy  Expense[]
   expensesPaidFor ExpensePaidFor[]
   expenseComments ExpenseComment[]
@@ -94,8 +129,10 @@ model Expense {
   documents       ExpenseDocument[]
   comments        ExpenseComment[]
   notes           String?
-  recurringDays   Int               @default(0)
   location        Point?
+  recurrenceRule  RecurrenceRule?    @default(NONE)
+  recurringExpenseLink RecurringExpenseLink?
+  recurringExpenseLinkId String?
 }
 
 model Point {
@@ -153,18 +190,38 @@ model Activity {
 }
 
 enum ActivityType {
+  ADD_FRIEND
+  UPDATE_FRIEND
+  CREATE_GROUP
   UPDATE_GROUP
   CREATE_EXPENSE
   UPDATE_EXPENSE
   DELETE_EXPENSE
 }
 
-model RecurringTransactions {
-  groupId      String
-  expenseId    String
-  createNextAt Int
-  lockId       String? @unique
+// New Enum for Group Type
+enum GroupType {
+  MULTI_MEMBER  // Default value
+  DUAL_MEMBER
+}
 
-  @@id([groupId, expenseId])
-  @@index([groupId, expenseId, createNextAt(sort: Desc)])
+model RecurringExpenseLink {
+  id String @id
+  groupId   String
+  currentFrameExpense Expense @relation(fields: [currentFrameExpenseId], references: [id], onDelete: Cascade)
+  currentFrameExpenseId String @unique
+  // Note: We do not want to link to the next expense because once it is created, it should be 
+  // treated as it's own independent entity. This means that if a user wants to delete an Expense
+  // and any prior related recurring expenses, they'll need to delete them one by one.
+  nextExpenseCreatedAt DateTime?
+  nextExpenseDate DateTime
+  @@index([groupId])
+  @@index([groupId, nextExpenseCreatedAt, nextExpenseDate(sort: Desc)])
+}
+
+enum RecurrenceRule {
+  NONE
+  DAILY
+  WEEKLY
+  MONTHLY
 }

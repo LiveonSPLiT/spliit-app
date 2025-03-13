@@ -1,5 +1,9 @@
 'use client'
 import {
+  clearLocalStorageDataFriend,
+  migrateLocalStorageDataFriend,
+} from '@/app/friends/recent-friends-helpers'
+import {
   clearLocalStorageData,
   migrateLocalStorageData,
 } from '@/app/groups/recent-groups-helpers'
@@ -28,6 +32,7 @@ export function SignInButton({
   const handleClick = () => {
     if (!disabled) {
       migrateLocalStorageData()
+      migrateLocalStorageDataFriend()
       signIn(loginType, { callbackUrl })
     }
   }
@@ -49,6 +54,8 @@ export function LogOutButton() {
   const { status } = useSession()
   const handleClick = () => {
     clearLocalStorageData()
+    clearLocalStorageDataFriend()
+    localStorage.clear()
     signOut({ callbackUrl: '/' }) // Redirects to the homepage after logging out
   }
 

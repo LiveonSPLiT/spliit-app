@@ -1,9 +1,11 @@
-import { SplitMode } from '@prisma/client'
+import { RecurrenceRule, SplitMode } from '@prisma/client'
 import * as z from 'zod'
 
 export const groupFormSchema = z
   .object({
     name: z.string().min(2, 'min2').max(50, 'max50'),
+    friendEmail: z.string().email('invalidEmail').optional(),
+    loggedInEmail: z.string().email('invalidEmail').optional(),
     information: z.string().optional(),
     currency: z.string().min(1, 'min1').max(5, 'max5'),
     participants: z
@@ -94,9 +96,6 @@ export const expenseFormSchema = z
       .default('EVENLY'),
     saveDefaultSplittingOptions: z.boolean(),
     isReimbursement: z.boolean(),
-    recurringDays: z.string({
-      required_error: 'You must select recurring days.',
-    }),
     documents: z
       .array(
         z.object({
@@ -108,6 +107,11 @@ export const expenseFormSchema = z
       )
       .default([]),
     notes: z.string().optional(),
+    recurrenceRule: z
+      .enum<RecurrenceRule, [RecurrenceRule, ...RecurrenceRule[]]>(
+        Object.values(RecurrenceRule) as any,
+      )
+      .default('NONE'),
     location: z
       .object({
         latitude: z.number().refine((val) => val > -90 && val < 90),

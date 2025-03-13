@@ -1,0 +1,29 @@
+'use client'
+
+import { FriendTabs } from '@/app/friends/[groupId]/friend-tabs'
+import { Skeleton } from '@/components/ui/skeleton'
+import Link from 'next/link'
+import { useCurrentGroup } from './current-friend-context'
+
+export const FriendHeader = () => {
+  const { isLoading, groupId, group } = useCurrentGroup()
+
+  return (
+    <div className="flex flex-col justify-between gap-3">
+      <h1 className="font-bold text-2xl">
+        <Link href={`/friends/${groupId}`}>
+          {isLoading ? (
+            <Skeleton className="mt-1.5 mb-1.5 h-5 w-32" />
+          ) : (
+            <div className="flex">{group.name}</div>
+          )}
+        </Link>
+      </h1>
+
+      <div className="flex gap-2 justify-between">
+        <FriendTabs groupId={groupId} />
+        {/* {group && <ShareButton group={group} />} */}
+      </div>
+    </div>
+  )
+}
