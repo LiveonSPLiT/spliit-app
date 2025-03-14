@@ -410,6 +410,36 @@
       "groupEarnings": "Total earnings between you and your friend"
     }
   },
+  "Dashboard": {
+    "greeting": "Hello, ",
+    "title": "Dashboard",
+    "groupsButton": "Go to groups",
+    "friendsButton": "Go to friends",
+    "Totals": {
+      "title": "Totals",
+      "description": "Your entire spending summary of the groups & friends.",
+      "yourSpendings": "Your total spendings for everything",
+      "currentMonthSpendings": "Your total spendings this month",
+      "groupSpendings": "Your total group spendings",
+      "friendSpendings": "Your total friend spendings",
+      "groupEarnings": "Total group earnings",
+      "friendEarnings": "Total friend earnings",
+      "yourShare": "Your total share"
+    },
+    "Graphs": {
+      "barGraphCard": {
+        "title": "Monthly Spending Overview",
+        "description": "Track your total spending month by month.",
+        "monthlyBarGraph": "Total spendings (Monthly View)"
+      },
+      "pieGraphCard": {
+        "title": "Spending by Category",
+        "description": "See how your expenses are distributed across groups and friends.",
+        "groupPieGraph": "Total spendings (Group-wise)",
+        "friendPieGraph": "Total spendings (Friend-wise)"
+      }
+    }
+  },
   "Activity": {
     "title": "Activity",
     "description": "Overview of all activity in this group.",
