@@ -13,12 +13,13 @@ type Props = {
     expensesByFriend: NonNullable<
     Awaited<ReturnType<typeof getFriendWiseSpendingData>>
   >
+  display: string
 }
 
-export function FriendSummary({ expensesByFriend }: Props) {
+export function FriendSummary({ expensesByFriend, display }: Props) {
   const t = useTranslations('Dashboard')
   return (
-    <Card style={{ border: 'none' }}>
+    <Card style={{ border: 'none', display: display }}>
       <CardHeader>
         <CardDescription className="text-center">
           {t('Graphs.pieGraphCard.friendPieGraph')}

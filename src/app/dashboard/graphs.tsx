@@ -29,6 +29,9 @@ export function Graphs({userEmail, currency}: GraphsProps) {
   
   const isLoading = monthlyIsLoading || groupIsLoading || friendIsLoading || !userEmail
 
+  const displayPieCard = groupData?.groupWiseSpendingExpenseData?.length 
+  || friendData?.friendWiseSpendingExpenseData?.length ? '' : 'none'
+
   return (
     <>
       <Card>
@@ -44,7 +47,7 @@ export function Graphs({userEmail, currency}: GraphsProps) {
           )}
         </CardContent>
       </Card>
-      <Card>
+      <Card style={{ display: displayPieCard }}>
         <CardHeader>
           <CardTitle>{t('Graphs.pieGraphCard.title')}</CardTitle>
           <CardDescription>{t('Graphs.pieGraphCard.description')}</CardDescription>
@@ -54,8 +57,10 @@ export function Graphs({userEmail, currency}: GraphsProps) {
             <GraphsLoading />
           ) : (
             <div className="grid sm:grid-cols-2 gap-6">
-              <GroupSummary expensesByGroup={groupData?.groupWiseSpendingExpenseData ?? []} />
-              <FriendSummary expensesByFriend={friendData?.friendWiseSpendingExpenseData ?? []} />
+              <GroupSummary expensesByGroup={groupData?.groupWiseSpendingExpenseData ?? []} 
+              display={groupData?.groupWiseSpendingExpenseData?.length ? '' : 'none'} />
+              <FriendSummary expensesByFriend={friendData?.friendWiseSpendingExpenseData ?? []} 
+              display={friendData?.friendWiseSpendingExpenseData?.length ? '' : 'none'} />
             </div>
           )}
         </CardContent>

@@ -13,12 +13,13 @@ type Props = {
     expensesByGroup: NonNullable<
     Awaited<ReturnType<typeof getGroupWiseSpendingData>>
   >
+  display: string
 }
 
-export function GroupSummary({ expensesByGroup }: Props) {
+export function GroupSummary({ expensesByGroup, display }: Props) {
   const t = useTranslations('Dashboard')
   return (
-    <Card style={{ border: 'none' }}>
+    <Card style={{ border: 'none', display: display }}>
       <CardHeader>
         <CardDescription className="text-center">
           {t('Graphs.pieGraphCard.groupPieGraph')}

@@ -119,21 +119,26 @@ export async function getFriendWiseSpendingData(email: string) {
   const user = await getUserByEmail(email);
   if (!user) throw new Error("User not found");
 
-  const expenses = await prisma.expense.groupBy({
+  const friendExpenses = await prisma.expense.groupBy({
     by: ["groupId"],
     _sum: { amount: true },
     where: { paidBy: { userId: user.id }, group: { type: "DUAL_MEMBER" } },
   });
 
-  const friendDetails = await prisma.group.findMany({
-    where: { id: { in: expenses.map(exp => exp.groupId) } },
-    select: { id: true, name: true },
+  const friendGroups = await prisma.group.findMany({
+    where: { id: { in: friendExpenses.map(exp => exp.groupId) } },
+    select: { id: true, participants: { select: { userId: true, name: true } } },
   });
 
-  return expenses.map((exp) => ({
-    friendName: friendDetails.find(f => f.id === exp.groupId)?.name || "Unknown Friend",
-    total: exp._sum.amount || 0,
-  }));
+  return friendExpenses.map((exp) => {
+    const group = friendGroups.find(g => g.id === exp.groupId);
+    const alternateParticipant = group?.participants.find(p => p.userId !== user.id);
+
+    return {
+      friendName: alternateParticipant ? alternateParticipant.name : "Someone",
+      total: exp._sum.amount || 0,
+    };
+  });
 }
 
 export async function getCategoryWiseSpendingData(email: string) {
