@@ -13,18 +13,19 @@ type Props = {
     totalMonthlyExpense: NonNullable<
     Awaited<ReturnType<typeof getMonthlySpendingData>>
   >
+  currency: string
 }
 
-export function MonthySummary({ totalMonthlyExpense }: Props) {
+export function MonthySummary({ totalMonthlyExpense, currency }: Props) {
   const t = useTranslations('Dashboard')
   return (
     <Card style={{ border: 'none' }}>
       <CardHeader>
-        <CardDescription className="text-center">
+        <CardDescription>
           {t('Graphs.barGraphCard.monthlyBarGraph')}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col space-y-4 pb-0">
+      <CardContent className="flex flex-col pb-0">
         <VictoryChart
                       domainPadding={{ x: 20 }}
                       theme={VictoryTheme.clean}
@@ -37,7 +38,11 @@ export function MonthySummary({ totalMonthlyExpense }: Props) {
                       <VictoryAxis style={{
                         tickLabels: {fill: '#455A64'}
                       }}/> 
-                      <VictoryAxis dependentAxis style={{
+                      <VictoryAxis dependentAxis 
+                      tickFormat={(tick) =>
+                        `${currency}${tick}`
+                      }
+                      style={{
                         tickLabels: {fill: '#455A64'}
                       }}/>
                     </VictoryChart>

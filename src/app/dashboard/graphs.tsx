@@ -15,43 +15,19 @@ import { FriendSummary } from '@/components/graphs/totals-friend'
 import { GroupSummary } from '@/components/graphs/totals-group'
 import { MonthySummary } from '@/components/graphs/totals-monthly'
 
+type GraphsProps = {
+  userEmail: string
+  currency: string
+}
 
-export function Graphs() {
+export function Graphs({userEmail, currency}: GraphsProps) {
   
   const t = useTranslations('Dashboard')
-
-  const monthlyData = [
-    { month: "Jan", total: 2000 },
-    { month: "Feb", total: 3000 },
-    { month: "Mar", total: 4000 },
-    { month: "Apr", total: 2500 },
-    { month: "May", total: 6000 },
-  ]
-
-  const groupData = [
-    { groupName: "AAAAA", total: 2000 },
-    { groupName: "BBBBB", total: 3000 },
-    { groupName: "MMMMM", total: 4000 },
-    { groupName: "CCCCC", total: 2500 },
-    { groupName: "RRRRR", total: 6000 },
-  ]
-
-  const friendData = [
-    { friendName: "Janney", total: 2000 },
-    { friendName: "Febebbi", total: 3000 },
-    { friendName: "Marcy", total: 4000 },
-    { friendName: "Aprllia", total: 2500 },
-    { friendName: "Maycilla", total: 6000 },
-    { friendName: "Janney2", total: 2000 },
-    { friendName: "Febebbi2", total: 3000 },
-    { friendName: "Marcy2", total: 4000 },
-    { friendName: "Aprllia2", total: 2500 },
-    { friendName: "Maycilla2", total: 6000 },
-    { friendName: "Aprllia3", total: 2500 },
-    { friendName: "Maycilla4", total: 6000 },
-  ]
+  const { data: monthlyData, isLoading: monthlyIsLoading } = trpc.graphs.getMonthlySpendingData.useQuery({ email: userEmail })
+  const { data: groupData, isLoading: groupIsLoading } = trpc.graphs.getGroupWiseSpendingData.useQuery({ email: userEmail })
+  const { data: friendData, isLoading: friendIsLoading } = trpc.graphs.getFriendWiseSpendingData.useQuery({ email: userEmail })
   
-  const isLoading = false
+  const isLoading = monthlyIsLoading || groupIsLoading || friendIsLoading || !userEmail
 
   return (
     <>
@@ -64,7 +40,7 @@ export function Graphs() {
           {isLoading ? (
             <BarGraphLoading />
           ) : (
-            <MonthySummary totalMonthlyExpense={monthlyData} />
+            <MonthySummary totalMonthlyExpense={monthlyData?.monthlySpendingExpenseData ?? []} currency={currency} />
           )}
         </CardContent>
       </Card>
@@ -78,8 +54,8 @@ export function Graphs() {
             <GraphsLoading />
           ) : (
             <div className="grid sm:grid-cols-2 gap-6">
-              <GroupSummary expensesByGroup={groupData} />
-              <FriendSummary expensesByFriend={friendData} />
+              <GroupSummary expensesByGroup={groupData?.groupWiseSpendingExpenseData ?? []} />
+              <FriendSummary expensesByFriend={friendData?.friendWiseSpendingExpenseData ?? []} />
             </div>
           )}
         </CardContent>
@@ -96,7 +72,7 @@ const BarGraphLoading = ({}) => {
                 <Skeleton className="h-4 w-64" />
               </div>
             </CardHeader>
-            <CardContent className="flex flex-col w-4/5 pb-0 animate-pulse rounded-md">
+            <CardContent className="flex flex-col pb-0 animate-pulse rounded-md">
             <VictoryChart
               domainPadding={{ x: 20 }}
               theme={VictoryTheme.grayscale}
@@ -108,6 +84,13 @@ const BarGraphLoading = ({}) => {
                 { x: "Mar", y: 4000 },
                 { x: "Apr", y: 2500 },
                 { x: "May", y: 6000 },
+                { x: "Jun", y: 2000 },
+                { x: "Jul", y: 3000 },
+                { x: "Aug", y: 4000 },
+                { x: "Sep", y: 2500 },
+                { x: "Oct", y: 6000 },
+                { x: "Nov", y: 4000 },
+                { x: "Dec", y: 2500 },
               ]} />
               <VictoryAxis tickFormat={() => ""} /> 
               <VictoryAxis dependentAxis tickFormat={() => ""} />

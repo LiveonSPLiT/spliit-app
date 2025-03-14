@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { startOfMonth, endOfMonth } from "date-fns";
+import { startOfMonth, endOfMonth, startOfYear, endOfYear, format } from "date-fns";
 
 export async function getUserByEmail(email: string) {
   return await prisma.user.findUnique({
@@ -69,16 +69,28 @@ export async function getMonthlySpendingData(email: string) {
   const user = await getUserByEmail(email);
   if (!user) throw new Error("User not found");
 
+  const currentYear = new Date().getFullYear();
+  const months = Array.from({ length: 12 }, (_, i) => format(new Date(currentYear, i, 1), "MMM"));
+
   const expenses = await prisma.expense.groupBy({
     by: ["expenseDate"],
     _sum: { amount: true },
-    where: { paidBy: { userId: user.id } },
+    where: {
+      paidBy: { userId: user.id },
+      expenseDate: { gte: startOfYear(new Date()), lte: endOfYear(new Date()) },
+    },
     orderBy: { expenseDate: "asc" },
   });
 
-  return expenses.map((exp) => ({
-    month: exp.expenseDate.toISOString().slice(0, 7),
-    total: exp._sum.amount || 0,
+  const spendingData = expenses.reduce((acc, exp) => {
+    const month = format(exp.expenseDate, "MMM");
+    acc[month] = (exp._sum.amount || 0) / 100;
+    return acc;
+  }, {} as Record<string, number>);
+
+  return months.map((month) => ({
+    month,
+    total: spendingData[month] || 0,
   }));
 }
 

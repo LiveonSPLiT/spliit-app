@@ -5,6 +5,11 @@ import { cn, formatCurrency } from '@/lib/utils'
 import { useLocale, useTranslations } from 'next-intl'
 import { trpc } from '@/trpc/client'
 
+type TotalsProps = {
+  userEmail: string
+  currency: string
+}
+
 type TotalsSpendingEverythingProps = {
   totalSpendingsEverything: number
   currency: string
@@ -100,10 +105,15 @@ function TotalsYourFriendSpending({
   )
 }
 
-export function Totals() {
-  const data = 'INR'
+export function Totals(
+  {userEmail, currency}: TotalsProps
+) {
 
-  if (!data){
+  const { data: statsData, isLoading: statsDataIsLoading } = trpc.dashboard.getUserStatsSpendingData.useQuery({ email: userEmail })
+
+  const isLoading = statsDataIsLoading || !currency || !userEmail
+
+  if (isLoading){
     return (
       <div className="grid sm:grid-cols-2 gap-7">
         {[0, 1, 2, 3].map((index) => (
@@ -119,16 +129,16 @@ export function Totals() {
     <>
     <div className="grid sm:grid-cols-2 gap-7">
     <TotalsSpendingEverything
-    totalSpendingsEverything={10000}
-    currency='INR'
+    totalSpendingsEverything={statsData?.totalSpendingsData ?? 0}
+    currency={currency}
     />
     <TotalsCurrentMonthSpendings
-    totalMonthSpendings={3000} currency='INR'
+    totalMonthSpendings={statsData?.totalSpendingsCurrentMonthData ?? 0} currency={currency}
     />
     <TotalsYourGroupSpending
-    totalGroupSpending={7000} currency='INR'
+    totalGroupSpending={statsData?.getTotalGroupSpendingsData ?? 0} currency={currency}
     />
-    <TotalsYourFriendSpending totalFriendSpending={3000} currency='INR' />
+    <TotalsYourFriendSpending totalFriendSpending={statsData?.getTotalFriendSpendingsData ?? 0} currency={currency} />
     </div>
     </>
   )

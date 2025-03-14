@@ -13,6 +13,8 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
   const t = useTranslations('Dashboard')
   const { data: session, status } = useSession()
   const userName = t('greeting') + session?.user?.name
+  const userEmail = session?.user?.email ?? ''
+  const currency = '₹'
 
 
   return (
@@ -36,7 +38,7 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
           </Button>
         </div>
       </div>
-      <Stats />
+      <Stats userEmail={userEmail} currency={currency}/>
     </>
   )
 }
