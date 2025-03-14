@@ -5,13 +5,13 @@ import {
   CardDescription,
   CardHeader,
 } from '@/components/ui/card'
-import { getGroupExpensesByParticipant } from '@/lib/api'
+import { getGroupWiseSpendingData } from '@/lib/dashboardApi'
 import { useTranslations } from 'next-intl'
 import { VictoryPie, VictoryTheme } from 'victory'
 
 type Props = {
     expensesByGroup: NonNullable<
-    Awaited<ReturnType<typeof getGroupExpensesByParticipant>>
+    Awaited<ReturnType<typeof getGroupWiseSpendingData>>
   >
 }
 
@@ -29,9 +29,9 @@ export function GroupSummary({ expensesByGroup }: Props) {
           theme={VictoryTheme.material}
           name="expensesByGroup"
           data={expensesByGroup}
-          x="group"
-          y="amount"
-          sortKey="amount"
+          x="groupName"
+          y="total"
+          sortKey="total"
           sortOrder="descending"
           colorScale="qualitative"
           style={{

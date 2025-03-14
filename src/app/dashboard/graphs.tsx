@@ -19,10 +19,39 @@ import { MonthySummary } from '@/components/graphs/totals-monthly'
 export function Graphs() {
   
   const t = useTranslations('Dashboard')
-  
-  
 
-  const isLoading = true
+  const monthlyData = [
+    { month: "Jan", total: 2000 },
+    { month: "Feb", total: 3000 },
+    { month: "Mar", total: 4000 },
+    { month: "Apr", total: 2500 },
+    { month: "May", total: 6000 },
+  ]
+
+  const groupData = [
+    { groupName: "AAAAA", total: 2000 },
+    { groupName: "BBBBB", total: 3000 },
+    { groupName: "MMMMM", total: 4000 },
+    { groupName: "CCCCC", total: 2500 },
+    { groupName: "RRRRR", total: 6000 },
+  ]
+
+  const friendData = [
+    { friendName: "Janney", total: 2000 },
+    { friendName: "Febebbi", total: 3000 },
+    { friendName: "Marcy", total: 4000 },
+    { friendName: "Aprllia", total: 2500 },
+    { friendName: "Maycilla", total: 6000 },
+    { friendName: "Janney2", total: 2000 },
+    { friendName: "Febebbi2", total: 3000 },
+    { friendName: "Marcy2", total: 4000 },
+    { friendName: "Aprllia2", total: 2500 },
+    { friendName: "Maycilla2", total: 6000 },
+    { friendName: "Aprllia3", total: 2500 },
+    { friendName: "Maycilla4", total: 6000 },
+  ]
+  
+  const isLoading = false
 
   return (
     <>
@@ -35,7 +64,7 @@ export function Graphs() {
           {isLoading ? (
             <BarGraphLoading />
           ) : (
-            <MonthySummary totalMonthlyExpense={[]} />
+            <MonthySummary totalMonthlyExpense={monthlyData} />
           )}
         </CardContent>
       </Card>
@@ -49,8 +78,8 @@ export function Graphs() {
             <GraphsLoading />
           ) : (
             <div className="grid sm:grid-cols-2 gap-6">
-              <GroupSummary expensesByGroup={[]} />
-              <FriendSummary expensesByFriend={[]} />
+              <GroupSummary expensesByGroup={groupData} />
+              <FriendSummary expensesByFriend={friendData} />
             </div>
           )}
         </CardContent>

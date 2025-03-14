@@ -5,13 +5,13 @@ import {
   CardDescription,
   CardHeader,
 } from '@/components/ui/card'
-import { getGroupExpensesByParticipant } from '@/lib/api'
+import { getFriendWiseSpendingData } from '@/lib/dashboardApi'
 import { useTranslations } from 'next-intl'
 import { VictoryPie, VictoryTheme } from 'victory'
 
 type Props = {
     expensesByFriend: NonNullable<
-    Awaited<ReturnType<typeof getGroupExpensesByParticipant>>
+    Awaited<ReturnType<typeof getFriendWiseSpendingData>>
   >
 }
 
@@ -29,8 +29,8 @@ export function FriendSummary({ expensesByFriend }: Props) {
           theme={VictoryTheme.material}
           name="expensesByFriend"
           data={expensesByFriend}
-          x="friend"
-          y="amount"
+          x="friendName"
+          y="total"
           colorScale="qualitative"
           innerRadius={50}
           padAngle={5}

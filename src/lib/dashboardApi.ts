@@ -92,7 +92,15 @@ export async function getGroupWiseSpendingData(email: string) {
     where: { paidBy: { userId: user.id }, group: { type: "MULTI_MEMBER" } },
   });
 
-  return expenses.map((exp) => ({ groupId: exp.groupId, total: exp._sum.amount || 0 }));
+  const groupDetails = await prisma.group.findMany({
+    where: { id: { in: expenses.map(exp => exp.groupId) } },
+    select: { id: true, name: true },
+  });
+
+  return expenses.map((exp) => ({
+    groupName: groupDetails.find(g => g.id === exp.groupId)?.name || "Unknown Group",
+    total: exp._sum.amount || 0,
+  }));
 }
 
 export async function getFriendWiseSpendingData(email: string) {
@@ -105,7 +113,15 @@ export async function getFriendWiseSpendingData(email: string) {
     where: { paidBy: { userId: user.id }, group: { type: "DUAL_MEMBER" } },
   });
 
-  return expenses.map((exp) => ({ friendId: exp.groupId, total: exp._sum.amount || 0 }));
+  const friendDetails = await prisma.group.findMany({
+    where: { id: { in: expenses.map(exp => exp.groupId) } },
+    select: { id: true, name: true },
+  });
+
+  return expenses.map((exp) => ({
+    friendName: friendDetails.find(f => f.id === exp.groupId)?.name || "Unknown Friend",
+    total: exp._sum.amount || 0,
+  }));
 }
 
 export async function getCategoryWiseSpendingData(email: string) {
