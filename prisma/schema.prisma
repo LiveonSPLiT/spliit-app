@@ -15,6 +15,7 @@ model User {
   id              String          @id @default(uuid())
   name            String
   email           String          @unique
+  currency        String          @default("₹")
   recentGroups    RecentGroup[]
   starredGroups   StarredGroup[]
   archivedGroups  ArchivedGroup[]

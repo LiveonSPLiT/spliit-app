@@ -438,6 +438,17 @@
         "groupPieGraph": "Total spendings (Group-wise)",
         "friendPieGraph": "Total spendings (Friend-wise)"
       }
+    },
+    "Currency": {
+      "title": "Currency",
+      "description": "Change the currency symbol used in the app.",
+      "CurrencyField": {
+        "label": "Currency symbol",
+        "placeholder": "₹, $, £…",
+        "description": "We’ll use it to display amounts.",
+        "save": "Save",
+        "saving": "Saving…"
+      }
     }
   },
   "Activity": {

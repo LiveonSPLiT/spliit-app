@@ -29,8 +29,8 @@ export function Graphs({userEmail, currency}: GraphsProps) {
   
   const isLoading = monthlyIsLoading || groupIsLoading || friendIsLoading || !userEmail
 
-  const displayPieCard = groupData?.groupWiseSpendingExpenseData?.length 
-  || friendData?.friendWiseSpendingExpenseData?.length ? '' : 'none'
+  const displayPieCard = (groupData?.groupWiseSpendingExpenseData?.length 
+  || friendData?.friendWiseSpendingExpenseData?.length) || (groupIsLoading || friendIsLoading) ? '' : 'none'
 
   return (
     <>
