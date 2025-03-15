@@ -18,6 +18,10 @@ type Props = {
 
 export function FriendSummary({ expensesByFriend, display }: Props) {
   const t = useTranslations('Dashboard')
+  const trimmedExpenses = expensesByFriend.map((item) => ({
+    ...item,
+    friendName: item.friendName.length > 4 ? `${item.friendName.slice(0, 6)}...` : item.friendName,
+  }))
   return (
     <Card style={{ border: 'none', display: display }}>
       <CardHeader>
@@ -29,7 +33,7 @@ export function FriendSummary({ expensesByFriend, display }: Props) {
         <VictoryPie
           theme={VictoryTheme.material}
           name="expensesByFriend"
-          data={expensesByFriend}
+          data={trimmedExpenses}
           x="friendName"
           y="total"
           colorScale="qualitative"

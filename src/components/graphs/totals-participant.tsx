@@ -17,6 +17,12 @@ type Props = {
 
 export function ParticipantSummary({ expensesByParticipant }: Props) {
   const t = useTranslations('Stats')
+  const trimmedExpenses = expensesByParticipant.map((item) => ({
+    ...item,
+    participant: item.participant && item.participant.length > 4 
+      ? `${item.participant.slice(0, 6)}...` 
+      : item.participant,
+  }))
   return (
     <Card style={{ border: 'none' }}>
       <CardHeader>
@@ -28,7 +34,7 @@ export function ParticipantSummary({ expensesByParticipant }: Props) {
         <VictoryPie
           theme={VictoryTheme.material}
           name="expenseByCategory"
-          data={expensesByParticipant}
+          data={trimmedExpenses}
           x="participant"
           y="amount"
           sortKey="amount"

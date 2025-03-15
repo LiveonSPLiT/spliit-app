@@ -18,6 +18,10 @@ type Props = {
 
 export function GroupSummary({ expensesByGroup, display }: Props) {
   const t = useTranslations('Dashboard')
+  const trimmedExpenses = expensesByGroup.map((item) => ({
+    ...item,
+    groupName: item.groupName.length > 4 ? `${item.groupName.slice(0, 6)}...` : item.groupName,
+  }))
   return (
     <Card style={{ border: 'none', display: display }}>
       <CardHeader>
@@ -29,7 +33,7 @@ export function GroupSummary({ expensesByGroup, display }: Props) {
         <VictoryPie
           theme={VictoryTheme.material}
           name="expensesByGroup"
-          data={expensesByGroup}
+          data={trimmedExpenses}
           x="groupName"
           y="total"
           sortKey="total"

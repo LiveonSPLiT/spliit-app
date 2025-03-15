@@ -57,9 +57,8 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
         </div>
       </div>
       <Stats userEmail={userEmail} currency={currency ?? ''}/>
-      {currencyIsLoading ? <Skeleton className="h-40 w-full" /> 
-      : <Currency userEmail={userEmail} currency={currency ?? ''} onCurrencyUpdate={handleCurrencyUpdate} />}
-      
+      <Currency userEmail={userEmail} currency={currency ?? ''} 
+      loading={currencyIsLoading} onCurrencyUpdate={handleCurrencyUpdate} />
     </>
   )
 }
