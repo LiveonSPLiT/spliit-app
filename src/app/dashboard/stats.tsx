@@ -1,3 +1,5 @@
+import { Graphs } from '@/app/dashboard/graphs'
+import { Totals } from '@/app/dashboard/totals'
 import {
   Card,
   CardContent,
@@ -6,15 +8,13 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { useTranslations } from 'next-intl'
-import { Graphs } from '@/app/dashboard/graphs'
-import { Totals } from '@/app/dashboard/totals'
 
 type StatsProps = {
   userEmail: string
   currency: string
 }
 
-export function Stats({userEmail, currency}: StatsProps) {
+export function Stats({ userEmail, currency }: StatsProps) {
   const t = useTranslations('Dashboard')
 
   return (
@@ -25,10 +25,10 @@ export function Stats({userEmail, currency}: StatsProps) {
           <CardDescription>{t('Totals.description')}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col space-y-4">
-          <Totals userEmail={userEmail} currency={currency}/>
+          <Totals userEmail={userEmail} currency={currency} />
         </CardContent>
       </Card>
-      <Graphs userEmail={userEmail} currency={currency}/>
+      <Graphs userEmail={userEmail} currency={currency} />
     </>
   )
 }

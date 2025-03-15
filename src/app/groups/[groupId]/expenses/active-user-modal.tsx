@@ -22,9 +22,9 @@ import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { trpc } from '@/trpc/client'
 import { AppRouterOutput } from '@/trpc/routers/_app'
+import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { ComponentProps, useEffect, useState } from 'react'
-import { useSession } from 'next-auth/react'
 
 export function ActiveUserModal({ groupId }: { groupId: string }) {
   const t = useTranslations('Expenses.ActiveUserModal')
@@ -33,9 +33,9 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const { data: groupData } = trpc.groups.get.useQuery({ groupId })
   const { data: participantId } = trpc.groups.getParticipantId.useQuery({
-      loggedInUserEmail: session?.user?.email || '',
-      groupId,
-    })
+    loggedInUserEmail: session?.user?.email || '',
+    groupId,
+  })
 
   const group = groupData?.group
 
@@ -70,7 +70,11 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
             <DialogTitle>{t('title')}</DialogTitle>
             <DialogDescription>{t('description')}</DialogDescription>
           </DialogHeader>
-          <ActiveUserForm group={group} close={() => setOpen(false)} email={session?.user?.email || ''} />
+          <ActiveUserForm
+            group={group}
+            close={() => setOpen(false)}
+            email={session?.user?.email || ''}
+          />
           <DialogFooter className="sm:justify-center">
             <p className="text-sm text-center text-muted-foreground">
               {t('footer')}
@@ -108,7 +112,7 @@ function ActiveUserForm({
   group,
   close,
   className,
-  email
+  email,
 }: ComponentProps<'form'> & {
   group?: AppRouterOutput['groups']['get']['group']
   close: () => void
@@ -126,7 +130,11 @@ function ActiveUserForm({
 
         event.preventDefault()
         localStorage.setItem(`${group.id}-activeUser`, selected)
-        await mutateAsync({ groupId: group.id, participantId: selected, userEmail: email })
+        await mutateAsync({
+          groupId: group.id,
+          participantId: selected,
+          userEmail: email,
+        })
         close()
       }}
     >

@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl'
 import { VictoryPie, VictoryTheme } from 'victory'
 
 type Props = {
-    expensesByGroup: NonNullable<
+  expensesByGroup: NonNullable<
     Awaited<ReturnType<typeof getGroupWiseSpendingData>>
   >
   display: string
@@ -20,7 +20,10 @@ export function GroupSummary({ expensesByGroup, display }: Props) {
   const t = useTranslations('Dashboard')
   const trimmedExpenses = expensesByGroup.map((item) => ({
     ...item,
-    groupName: item.groupName.length > 4 ? `${item.groupName.slice(0, 6)}...` : item.groupName,
+    groupName:
+      item.groupName.length > 4
+        ? `${item.groupName.slice(0, 6)}...`
+        : item.groupName,
   }))
   return (
     <Card style={{ border: 'none', display: display }}>

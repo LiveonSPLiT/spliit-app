@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl'
 import { VictoryPie, VictoryTheme } from 'victory'
 
 type Props = {
-    expensesByFriend: NonNullable<
+  expensesByFriend: NonNullable<
     Awaited<ReturnType<typeof getFriendWiseSpendingData>>
   >
   display: string
@@ -20,7 +20,10 @@ export function FriendSummary({ expensesByFriend, display }: Props) {
   const t = useTranslations('Dashboard')
   const trimmedExpenses = expensesByFriend.map((item) => ({
     ...item,
-    friendName: item.friendName.length > 4 ? `${item.friendName.slice(0, 6)}...` : item.friendName,
+    friendName:
+      item.friendName.length > 4
+        ? `${item.friendName.slice(0, 6)}...`
+        : item.friendName,
   }))
   return (
     <Card style={{ border: 'none', display: display }}>

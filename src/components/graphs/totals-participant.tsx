@@ -19,9 +19,10 @@ export function ParticipantSummary({ expensesByParticipant }: Props) {
   const t = useTranslations('Stats')
   const trimmedExpenses = expensesByParticipant.map((item) => ({
     ...item,
-    participant: item.participant && item.participant.length > 4 
-      ? `${item.participant.slice(0, 6)}...` 
-      : item.participant,
+    participant:
+      item.participant && item.participant.length > 4
+        ? `${item.participant.slice(0, 6)}...`
+        : item.participant,
   }))
   return (
     <Card style={{ border: 'none' }}>

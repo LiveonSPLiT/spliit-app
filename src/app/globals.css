@@ -71,6 +71,6 @@
   text-wrap: balance;
 }
 
-.VictoryContainer>svg {
+.VictoryContainer > svg {
   overflow: visible !important;
 }

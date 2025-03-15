@@ -2,8 +2,8 @@
 
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn, formatCurrency } from '@/lib/utils'
-import { useLocale, useTranslations } from 'next-intl'
 import { trpc } from '@/trpc/client'
+import { useLocale, useTranslations } from 'next-intl'
 
 type TotalsProps = {
   userEmail: string
@@ -15,7 +15,10 @@ type TotalsSpendingEverythingProps = {
   currency: string
 }
 
-function TotalsSpendingEverything({ totalSpendingsEverything, currency }: TotalsSpendingEverythingProps) {
+function TotalsSpendingEverything({
+  totalSpendingsEverything,
+  currency,
+}: TotalsSpendingEverythingProps) {
   const locale = useLocale()
   const t = useTranslations('Dashboard.Totals')
   return (
@@ -105,15 +108,13 @@ function TotalsYourFriendSpending({
   )
 }
 
-export function Totals(
-  {userEmail, currency}: TotalsProps
-) {
-
-  const { data: statsData, isLoading: statsDataIsLoading } = trpc.dashboard.getUserStatsSpendingData.useQuery({ email: userEmail })
+export function Totals({ userEmail, currency }: TotalsProps) {
+  const { data: statsData, isLoading: statsDataIsLoading } =
+    trpc.dashboard.getUserStatsSpendingData.useQuery({ email: userEmail })
 
   const isLoading = statsDataIsLoading || !currency || !userEmail
 
-  if (isLoading){
+  if (isLoading) {
     return (
       <div className="grid sm:grid-cols-2 gap-7">
         {[0, 1, 2, 3].map((index) => (
@@ -122,24 +123,29 @@ export function Totals(
             <Skeleton className="mt-3 h-4 w-20" />
           </div>
         ))}
-    </div>
+      </div>
     )
   }
   return (
     <>
-    <div className="grid sm:grid-cols-2 gap-7">
-    <TotalsSpendingEverything
-    totalSpendingsEverything={statsData?.totalSpendingsData ?? 0}
-    currency={currency}
-    />
-    <TotalsCurrentMonthSpendings
-    totalMonthSpendings={statsData?.totalSpendingsCurrentMonthData ?? 0} currency={currency}
-    />
-    <TotalsYourGroupSpending
-    totalGroupSpending={statsData?.getTotalGroupSpendingsData ?? 0} currency={currency}
-    />
-    <TotalsYourFriendSpending totalFriendSpending={statsData?.getTotalFriendSpendingsData ?? 0} currency={currency} />
-    </div>
+      <div className="grid sm:grid-cols-2 gap-7">
+        <TotalsSpendingEverything
+          totalSpendingsEverything={statsData?.totalSpendingsData ?? 0}
+          currency={currency}
+        />
+        <TotalsCurrentMonthSpendings
+          totalMonthSpendings={statsData?.totalSpendingsCurrentMonthData ?? 0}
+          currency={currency}
+        />
+        <TotalsYourGroupSpending
+          totalGroupSpending={statsData?.getTotalGroupSpendingsData ?? 0}
+          currency={currency}
+        />
+        <TotalsYourFriendSpending
+          totalFriendSpending={statsData?.getTotalFriendSpendingsData ?? 0}
+          currency={currency}
+        />
+      </div>
     </>
   )
 }

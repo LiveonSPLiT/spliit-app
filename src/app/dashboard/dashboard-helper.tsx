@@ -1,26 +1,25 @@
 'use client'
 
-
+import { Stats } from '@/app/dashboard/stats'
+import { Currency } from '@/app/dashboard/user-currency'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
+import { trpc } from '@/trpc/client'
 import { Contact, Users } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { Stats } from '@/app/dashboard/stats'
-import { Skeleton } from '@/components/ui/skeleton'
-import { Currency } from '@/app/dashboard/user-currency'
-import { trpc } from '@/trpc/client'
 
 export function Dashboard({ children }: PropsWithChildren<{}>) {
   const t = useTranslations('Dashboard')
   const { data: session, status } = useSession()
   const userName = t('greeting') + session?.user?.name
   const userEmail = session?.user?.email ?? ''
-  
-  
+
   const [currency, setCurrency] = useState<string | null>()
-  const { data, isLoading: currencyIsLoading } = trpc.dashboard.getUserCurrency.useQuery({ email: userEmail })
+  const { data, isLoading: currencyIsLoading } =
+    trpc.dashboard.getUserCurrency.useQuery({ email: userEmail })
 
   useEffect(() => {
     if (data?.currency) {
@@ -33,7 +32,6 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
     localStorage.setItem('user-currency', newCurrency)
     setCurrency(newCurrency)
   }
-
 
   return (
     <>
@@ -56,9 +54,13 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
           </Button>
         </div>
       </div>
-      <Stats userEmail={userEmail} currency={currency ?? ''}/>
-      <Currency userEmail={userEmail} currency={currency ?? ''} 
-      loading={currencyIsLoading} onCurrencyUpdate={handleCurrencyUpdate} />
+      <Stats userEmail={userEmail} currency={currency ?? ''} />
+      <Currency
+        userEmail={userEmail}
+        currency={currency ?? ''}
+        loading={currencyIsLoading}
+        onCurrencyUpdate={handleCurrencyUpdate}
+      />
     </>
   )
 }

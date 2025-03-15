@@ -23,8 +23,12 @@ export function Graphs() {
     trpc.graphs.expensesByParticipant.useQuery({ groupId })
 
   const isLoading = categoryAreLoading || participantAreLoading || !group
-  const displayPieCard = (expensesByParticipant?.expensesByParticipant.length 
-    || expenseByCategory?.expenseByCategory.length || isLoading ) ? '' : 'none'
+  const displayPieCard =
+    expensesByParticipant?.expensesByParticipant.length ||
+    expenseByCategory?.expenseByCategory.length ||
+    isLoading
+      ? ''
+      : 'none'
 
   return (
     <>

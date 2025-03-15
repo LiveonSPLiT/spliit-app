@@ -7,10 +7,10 @@ import {
 } from '@/components/ui/card'
 import { getMonthlySpendingData } from '@/lib/dashboardApi'
 import { useTranslations } from 'next-intl'
-import { VictoryAxis, VictoryChart, VictoryBar, VictoryTheme } from 'victory'
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from 'victory'
 
 type Props = {
-    totalMonthlyExpense: NonNullable<
+  totalMonthlyExpense: NonNullable<
     Awaited<ReturnType<typeof getMonthlySpendingData>>
   >
   currency: string
@@ -26,27 +26,26 @@ export function MonthySummary({ totalMonthlyExpense, currency }: Props) {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col pb-0">
-        <VictoryChart
-                      domainPadding={{ x: 20 }}
-                      theme={VictoryTheme.clean}
-                    >
-                      <VictoryBar
-                      colorScale={"qualitative"}
-                      x="month"
-                      y="total"
-                      data={totalMonthlyExpense} />
-                      <VictoryAxis style={{
-                        tickLabels: {fill: '#455A64'}
-                      }}/> 
-                      <VictoryAxis dependentAxis 
-                      tickFormat={(tick) =>
-                        `${currency}${tick}`
-                      }
-                      style={{
-                        tickLabels: {fill: '#455A64'}
-                      }}/>
-                    </VictoryChart>
-        
+        <VictoryChart domainPadding={{ x: 20 }} theme={VictoryTheme.clean}>
+          <VictoryBar
+            colorScale={'qualitative'}
+            x="month"
+            y="total"
+            data={totalMonthlyExpense}
+          />
+          <VictoryAxis
+            style={{
+              tickLabels: { fill: '#455A64' },
+            }}
+          />
+          <VictoryAxis
+            dependentAxis
+            tickFormat={(tick) => `${currency}${tick}`}
+            style={{
+              tickLabels: { fill: '#455A64' },
+            }}
+          />
+        </VictoryChart>
       </CardContent>
     </Card>
   )

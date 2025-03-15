@@ -923,47 +923,51 @@ function isDateInNextMonth(
 
 export async function updateUserCurrency(email: string, currency: string) {
   const user = await prisma.user.findUnique({
-      where: { email },
-      select: { id: true },
-    });
-  if (!user) throw new Error("User not found");
+    where: { email },
+    select: { id: true },
+  })
+  if (!user) throw new Error('User not found')
 
   const updatedUser = await prisma.user.update({
-      where: { email },
-      data: { currency },
-      select: { currency: true },
-  });
-  
-  return updatedUser.currency;
+    where: { email },
+    data: { currency },
+    select: { currency: true },
+  })
+
+  return updatedUser.currency
 }
 
 export async function getUserCurrency(email: string) {
   const user = await prisma.user.findUnique({
     where: { email },
     select: { currency: true },
-  });
+  })
 
-  return user?.currency ?? "₹";
+  return user?.currency ?? '₹'
 }
 
-export async function updateParticipantUser(groupId: string, participantId: string, userEmail: string) {
+export async function updateParticipantUser(
+  groupId: string,
+  participantId: string,
+  userEmail: string,
+) {
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
     select: { id: true },
-  });
-if (!user) throw new Error("User not found");;
-  if (!user) throw new Error("User not found");
+  })
+  if (!user) throw new Error('User not found')
+  if (!user) throw new Error('User not found')
 
   const participant = await prisma.participant.findUnique({
     where: { id: participantId, groupId },
-  });
+  })
 
-  if (!participant) throw new Error("Participant not found");
+  if (!participant) throw new Error('Participant not found')
 
   const updatedParticipant = await prisma.participant.update({
     where: { id: participantId },
     data: { userId: user.id },
-  });
+  })
 
-  return updatedParticipant;
+  return updatedParticipant
 }
