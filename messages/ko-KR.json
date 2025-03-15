@@ -410,6 +410,47 @@
       "groupEarnings": "당신과 친구 사이의 총 수입"
     }
   },
+  "Dashboard": {
+    "greeting": "안녕하세요, ",
+    "title": "대시보드",
+    "groupsButton": "그룹으로 이동",
+    "friendsButton": "친구로 이동",
+    "Totals": {
+      "title": "총계",
+      "description": "그룹 및 친구의 전체 지출 요약.",
+      "yourSpendings": "모든 것에 대한 총 지출",
+      "currentMonthSpendings": "이번 달 총 지출",
+      "groupSpendings": "그룹 총 지출",
+      "friendSpendings": "친구 총 지출",
+      "groupEarnings": "그룹 총 수익",
+      "friendEarnings": "친구 총 수익",
+      "yourShare": "총 지분"
+    },
+    "Graphs": {
+      "barGraphCard": {
+        "title": "월별 지출 개요",
+        "description": "월별 총 지출을 추적하세요.",
+        "monthlyBarGraph": "총 지출 (월별 보기)"
+      },
+      "pieGraphCard": {
+        "title": "카테고리별 지출",
+        "description": "그룹과 친구 간의 지출 분포를 확인하세요.",
+        "groupPieGraph": "총 지출 (그룹별)",
+        "friendPieGraph": "총 지출 (친구별)"
+      }
+    },
+    "Currency": {
+      "title": "통화",
+      "description": "앱에서 사용하는 통화 기호를 변경하세요.",
+      "CurrencyField": {
+        "label": "통화 기호",
+        "placeholder": "₹, $, £…",
+        "description": "금액을 표시하는 데 사용됩니다.",
+        "save": "저장",
+        "saving": "저장 중…"
+      }
+    }
+  },
   "Activity": {
     "title": "활동",
     "description": "이 그룹의 모든 활동 개요입니다.",

@@ -410,6 +410,47 @@
       "groupEarnings": "您和朋友之间的总收入"
     }
   },
+  "Dashboard": {
+    "greeting": "你好, ",
+    "title": "仪表板",
+    "groupsButton": "前往群组",
+    "friendsButton": "前往朋友",
+    "Totals": {
+      "title": "总计",
+      "description": "您所有群组和朋友的支出摘要。",
+      "yourSpendings": "您的总支出",
+      "currentMonthSpendings": "您本月的总支出",
+      "groupSpendings": "您的群组总支出",
+      "friendSpendings": "您的朋友总支出",
+      "groupEarnings": "群组总收入",
+      "friendEarnings": "朋友总收入",
+      "yourShare": "您的总份额"
+    },
+    "Graphs": {
+      "barGraphCard": {
+        "title": "每月支出概览",
+        "description": "逐月跟踪您的总支出。",
+        "monthlyBarGraph": "总支出（月视图）"
+      },
+      "pieGraphCard": {
+        "title": "按类别支出",
+        "description": "查看您的支出如何在群组和朋友之间分布。",
+        "groupPieGraph": "总支出（按群组）",
+        "friendPieGraph": "总支出（按朋友）"
+      }
+    },
+    "Currency": {
+      "title": "货币",
+      "description": "更改应用中使用的货币符号。",
+      "CurrencyField": {
+        "label": "货币符号",
+        "placeholder": "₹, $, £…",
+        "description": "我们将使用它来显示金额。",
+        "save": "保存",
+        "saving": "保存中…"
+      }
+    }
+  },
   "Activity": {
     "title": "活动",
     "description": "该组中所有活动的概述。",

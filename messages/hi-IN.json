@@ -410,6 +410,47 @@
       "groupEarnings": "आप और आपके दोस्त के बीच कुल आय"
     }
   },
+  "Dashboard": {
+    "greeting": "नमस्ते, ",
+    "title": "डैशबोर्ड",
+    "groupsButton": "समूहों पर जाएं",
+    "friendsButton": "मित्रों पर जाएं",
+    "Totals": {
+      "title": "कुल",
+      "description": "समूहों और मित्रों का आपका पूरा खर्च सारांश।",
+      "yourSpendings": "आपका कुल खर्च सब कुछ के लिए",
+      "currentMonthSpendings": "इस महीने का आपका कुल खर्च",
+      "groupSpendings": "आपका कुल समूह खर्च",
+      "friendSpendings": "आपका कुल मित्र खर्च",
+      "groupEarnings": "कुल समूह आय",
+      "friendEarnings": "कुल मित्र आय",
+      "yourShare": "आपका कुल हिस्सा"
+    },
+    "Graphs": {
+      "barGraphCard": {
+        "title": "मासिक खर्च अवलोकन",
+        "description": "महीने दर महीने अपने कुल खर्च को ट्रैक करें।",
+        "monthlyBarGraph": "कुल खर्च (मासिक दृश्य)"
+      },
+      "pieGraphCard": {
+        "title": "श्रेणी के अनुसार खर्च",
+        "description": "देखें कि आपके खर्च समूहों और मित्रों में कैसे वितरित हैं।",
+        "groupPieGraph": "कुल खर्च (समूह-वार)",
+        "friendPieGraph": "कुल खर्च (मित्र-वार)"
+      }
+    },
+    "Currency": {
+      "title": "मुद्रा",
+      "description": "ऐप में उपयोग किए जाने वाले मुद्रा प्रतीक को बदलें।",
+      "CurrencyField": {
+        "label": "मुद्रा प्रतीक",
+        "placeholder": "₹, $, £…",
+        "description": "हम इसे राशियों को प्रदर्शित करने के लिए उपयोग करेंगे।",
+        "save": "सहेजें",
+        "saving": "सहेजा जा रहा है…"
+      }
+    }
+  },
   "Activity": {
     "title": "गतिविधि",
     "description": "इस समूह में सभी गतिविधियों का अवलोकन।",

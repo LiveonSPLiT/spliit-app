@@ -410,6 +410,47 @@
       "groupEarnings": "ਤੁਹਾਡੇ ਅਤੇ ਤੁਹਾਡੇ ਦੋਸਤ ਦੇ ਵਿਚਕਾਰ ਕੁੱਲ ਕਮਾਈ"
     }
   },
+  "Dashboard": {
+    "greeting": "ਹੈਲੋ, ",
+    "title": "ਡੈਸ਼ਬੋਰਡ",
+    "groupsButton": "ਗਰੁੱਪਾਂ ਤੇ ਜਾਓ",
+    "friendsButton": "ਦੋਸਤਾਂ ਤੇ ਜਾਓ",
+    "Totals": {
+      "title": "ਕੁੱਲ",
+      "description": "ਗਰੁੱਪਾਂ ਅਤੇ ਦੋਸਤਾਂ ਦਾ ਤੁਹਾਡਾ ਪੂਰਾ ਖਰਚਾ ਸਾਰਾਂਸ਼.",
+      "yourSpendings": "ਤੁਹਾਡਾ ਕੁੱਲ ਖਰਚਾ ਸਭ ਕੁਝ ਲਈ",
+      "currentMonthSpendings": "ਇਸ ਮਹੀਨੇ ਦਾ ਤੁਹਾਡਾ ਕੁੱਲ ਖਰਚਾ",
+      "groupSpendings": "ਤੁਹਾਡਾ ਕੁੱਲ ਗਰੁੱਪ ਖਰਚਾ",
+      "friendSpendings": "ਤੁਹਾਡਾ ਕੁੱਲ ਦੋਸਤ ਖਰਚਾ",
+      "groupEarnings": "ਕੁੱਲ ਗਰੁੱਪ ਕਮਾਈ",
+      "friendEarnings": "ਕੁੱਲ ਦੋਸਤ ਕਮਾਈ",
+      "yourShare": "ਤੁਹਾਡਾ ਕੁੱਲ ਹਿੱਸਾ"
+    },
+    "Graphs": {
+      "barGraphCard": {
+        "title": "ਮਾਸਿਕ ਖਰਚਾ ਝਲਕ",
+        "description": "ਮਹੀਨਾ ਦਰ ਮਹੀਨਾ ਤੁਹਾਡਾ ਕੁੱਲ ਖਰਚਾ ਟਰੈਕ ਕਰੋ.",
+        "monthlyBarGraph": "ਕੁੱਲ ਖਰਚਾ (ਮਾਸਿਕ ਦ੍ਰਿਸ਼)"
+      },
+      "pieGraphCard": {
+        "title": "ਸ਼੍ਰੇਣੀ ਅਨੁਸਾਰ ਖਰਚਾ",
+        "description": "ਵੇਖੋ ਕਿ ਤੁਹਾਡੇ ਖਰਚੇ ਗਰੁੱਪਾਂ ਅਤੇ ਦੋਸਤਾਂ ਵਿੱਚ ਕਿਵੇਂ ਵੰਡੇ ਗਏ ਹਨ.",
+        "groupPieGraph": "ਕੁੱਲ ਖਰਚਾ (ਗਰੁੱਪ-ਵਾਈਜ਼)",
+        "friendPieGraph": "ਕੁੱਲ ਖਰਚਾ (ਦੋਸਤ-ਵਾਈਜ਼)"
+      }
+    },
+    "Currency": {
+      "title": "ਮੁਦਰਾ",
+      "description": "ਐਪ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਮੁਦਰਾ ਚਿੰਨ੍ਹ ਨੂੰ ਬਦਲੋ.",
+      "CurrencyField": {
+        "label": "ਮੁਦਰਾ ਚਿੰਨ੍ਹ",
+        "placeholder": "₹, $, £…",
+        "description": "ਅਸੀਂ ਇਸਨੂੰ ਰਕਮਾਂ ਦਿਖਾਉਣ ਲਈ ਵਰਤਾਂਗੇ.",
+        "save": "ਸੰਭਾਲੋ",
+        "saving": "ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
+      }
+    }
+  },
   "Activity": {
     "title": "ਗਤੀਵਿਧੀ",
     "description": "ਇਸ ਸਮੂਹ ਵਿੱਚ ਸਾਰੀਆਂ ਗਤੀਵਿਧੀਆਂ ਦੀ ਸੰਖੇਪ ਜਾਣਕਾਰੀ।",
