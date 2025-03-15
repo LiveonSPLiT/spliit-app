@@ -24,12 +24,18 @@ import { trpc } from '@/trpc/client'
 import { AppRouterOutput } from '@/trpc/routers/_app'
 import { useTranslations } from 'next-intl'
 import { ComponentProps, useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 
 export function ActiveUserModal({ groupId }: { groupId: string }) {
   const t = useTranslations('Expenses.ActiveUserModal')
+  const { data: session, status } = useSession()
   const [open, setOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const { data: groupData } = trpc.groups.get.useQuery({ groupId })
+  const { data: participantId } = trpc.groups.getParticipantId.useQuery({
+      loggedInUserEmail: session?.user?.email || '',
+      groupId,
+    })
 
   const group = groupData?.group
 
@@ -39,7 +45,11 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
     const tempUser = localStorage.getItem(`newGroup-activeUser`)
     const activeUser = localStorage.getItem(`${group.id}-activeUser`)
     if (!tempUser && !activeUser) {
-      setOpen(true)
+      if (!participantId || participantId.trim() === '') {
+        setOpen(true)
+      } else {
+        localStorage.setItem(`${group.id}-activeUser`, participantId || 'None')
+      }
     }
   }, [group])
 
@@ -60,7 +70,7 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
             <DialogTitle>{t('title')}</DialogTitle>
             <DialogDescription>{t('description')}</DialogDescription>
           </DialogHeader>
-          <ActiveUserForm group={group} close={() => setOpen(false)} />
+          <ActiveUserForm group={group} close={() => setOpen(false)} email={session?.user?.email || ''} />
           <DialogFooter className="sm:justify-center">
             <p className="text-sm text-center text-muted-foreground">
               {t('footer')}
@@ -82,6 +92,7 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
           className="px-4"
           group={group}
           close={() => setOpen(false)}
+          email={session?.user?.email || ''}
         />
         <DrawerFooter className="pt-2">
           <p className="text-sm text-center text-muted-foreground">
@@ -97,21 +108,25 @@ function ActiveUserForm({
   group,
   close,
   className,
+  email
 }: ComponentProps<'form'> & {
   group?: AppRouterOutput['groups']['get']['group']
   close: () => void
+  email: string
 }) {
   const t = useTranslations('Expenses.ActiveUserModal')
+  const { mutateAsync } = trpc.groups.updateParticipantUser.useMutation()
   const [selected, setSelected] = useState('None')
 
   return (
     <form
       className={cn('grid items-start gap-4', className)}
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         if (!group) return
 
         event.preventDefault()
         localStorage.setItem(`${group.id}-activeUser`, selected)
+        await mutateAsync({ groupId: group.id, participantId: selected, userEmail: email })
         close()
       }}
     >

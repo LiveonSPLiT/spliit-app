@@ -2,7 +2,7 @@
 
 
 import { Button } from '@/components/ui/button'
-import { Contact, Users, Loader2 } from 'lucide-react'
+import { Contact, Users } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
@@ -57,7 +57,7 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
         </div>
       </div>
       <Stats userEmail={userEmail} currency={currency ?? ''}/>
-      {currencyIsLoading ? <Loader2 className="w-6 h-6 mr-2 animate-spin" /> 
+      {currencyIsLoading ? <Skeleton className="h-40 w-full" /> 
       : <Currency userEmail={userEmail} currency={currency ?? ''} onCurrencyUpdate={handleCurrencyUpdate} />}
       
     </>

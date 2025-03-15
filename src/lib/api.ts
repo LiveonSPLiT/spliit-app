@@ -945,3 +945,25 @@ export async function getUserCurrency(email: string) {
 
   return user?.currency ?? "₹";
 }
+
+export async function updateParticipantUser(groupId: string, participantId: string, userEmail: string) {
+  const user = await prisma.user.findUnique({
+    where: { email: userEmail },
+    select: { id: true },
+  });
+if (!user) throw new Error("User not found");;
+  if (!user) throw new Error("User not found");
+
+  const participant = await prisma.participant.findUnique({
+    where: { id: participantId, groupId },
+  });
+
+  if (!participant) throw new Error("Participant not found");
+
+  const updatedParticipant = await prisma.participant.update({
+    where: { id: participantId },
+    data: { userId: user.id },
+  });
+
+  return updatedParticipant;
+}
