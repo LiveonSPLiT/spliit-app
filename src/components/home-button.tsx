@@ -3,7 +3,7 @@
 import { SignInButton } from '@/components/auth-buttons'
 import { NewsButton } from '@/components/news-button'
 import { Button } from '@/components/ui/button'
-import { Contact, Loader2, Users } from 'lucide-react'
+import { Contact, LayoutDashboard, Loader2, Users } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export function HomeButton() {
+  const t = useTranslations('Dashboard')
   const { data: session, status } = useSession()
   const [isPageLoaded, setIsPageLoaded] = useState(false)
 
@@ -42,15 +43,9 @@ export function HomeButton() {
     return (
       <div className="flex gap-2">
         <Button asChild>
-          <Link href="/groups">
-            <Users className="w-4 h-4 mr-2" />
-            Go to groups
-          </Link>
-        </Button>
-        <Button asChild variant="secondary">
-          <Link href="/friends">
-            <Contact className="w-4 h-4 mr-2" />
-            Go to Friends
+          <Link href="/dashboard">
+            <LayoutDashboard className="w-4 h-4 mr-2" />
+            {t('title')}
           </Link>
         </Button>
       </div>
