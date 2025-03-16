@@ -14,6 +14,7 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { PropsWithChildren, useEffect, useState } from 'react'
 import { RecentFriendListCard } from './recent-friend-list-card'
+import { AddFriendByUrlButton } from '@/app/friends/add-friend-by-url-button'
 
 export type RecentGroupsState =
   | { status: 'pending' }
@@ -228,7 +229,7 @@ function GroupsPage({
           <Link href="/friends">{t('myFriends')}</Link>
         </h1>
         <div className="flex gap-2">
-          {/* <AddFriendByUrlButton reload={reload} /> */}
+          <AddFriendByUrlButton reload={reload} />
           <Button asChild>
             <Link href="/friends/create">
               {/* <Plus className="w-4 h-4 mr-2" /> */}

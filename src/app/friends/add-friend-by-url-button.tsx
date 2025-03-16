@@ -11,6 +11,8 @@ import { trpc } from '@/trpc/client'
 import { Loader2, Plus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { GroupFormValues } from '@/lib/schemas'
+import { useSession } from 'next-auth/react'
 
 type Props = {
   reload: () => void
@@ -23,7 +25,9 @@ export function AddFriendByUrlButton({ reload }: Props) {
   const [error, setError] = useState(false)
   const [open, setOpen] = useState(false)
   const [pending, setPending] = useState(false)
+  const { mutateAsync } = trpc.groups.createFriend.useMutation()
   const utils = trpc.useUtils()
+  const { data: session, status } = useSession()
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -40,19 +44,32 @@ export function AddFriendByUrlButton({ reload }: Props) {
           className="flex gap-2"
           onSubmit={async (event) => {
             event.preventDefault()
-            const [, groupId] =
-              url.match(
-                new RegExp(`${window.location.origin}/friends/([^/]+)`),
-              ) ?? []
-            setPending(true)
-            const { group } = await utils.groups.get.fetch({
-              groupId: groupId,
-            })
-            if (group) {
-              saveRecentFriend({ id: group.id, name: group.name })
-              reload()
-              setUrl('')
-              setOpen(false)
+            const searchParams = url.startsWith("https://liveonsplit.com/friends") 
+                                  ? new URLSearchParams(new URL(url).search) 
+                                  : null;
+            if(searchParams) {
+              const email = searchParams?.get("add") || 'someone@liveonsplit.com';
+              const name = searchParams?.get("name") || 'Friend';
+              setPending(true)
+              const groupFormValues: GroupFormValues = {
+                name,
+                friendEmail: email,
+                loggedInEmail: session?.user?.email || '',
+                information: '',
+                currency: localStorage.getItem('user-currency') ?? '₹',
+                participants: [{ name }],
+              };
+              const { group } = await mutateAsync({ groupFormValues })
+              await utils.groups.invalidate()
+              if (group) {
+                saveRecentFriend({ id: group.id, name: group.name })
+                reload()
+                setUrl('')
+                setOpen(false)
+              } else {
+                setError(true)
+                setPending(false)
+              }
             } else {
               setError(true)
               setPending(false)

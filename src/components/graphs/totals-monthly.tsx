@@ -18,6 +18,8 @@ type Props = {
 
 export function MonthySummary({ totalMonthlyExpense, currency }: Props) {
   const t = useTranslations('Dashboard')
+  const hasNonZeroData = totalMonthlyExpense.some((data) => data.total > 0)
+  const yDomain: [number, number] | undefined = hasNonZeroData ? undefined : [0, 10];
   return (
     <Card style={{ border: 'none' }}>
       <CardHeader>
@@ -26,7 +28,7 @@ export function MonthySummary({ totalMonthlyExpense, currency }: Props) {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col pb-0">
-        <VictoryChart domainPadding={{ x: 20 }} theme={VictoryTheme.clean}>
+        <VictoryChart domainPadding={{ x: 20 }} theme={VictoryTheme.clean} domain={{ y: yDomain }}>
           <VictoryBar
             colorScale={'qualitative'}
             x="month"

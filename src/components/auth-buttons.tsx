@@ -27,7 +27,7 @@ export function SignInButton({
   ...props
 }: SignInProps) {
   const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get('callbackUrl') || '/groups'
+  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
 
   const handleClick = () => {
     if (!disabled) {

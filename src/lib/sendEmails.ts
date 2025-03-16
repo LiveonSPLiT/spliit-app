@@ -1,6 +1,7 @@
 'use server'
 import { env } from '@/lib/env'
 import { getEmailsByGroupId, getGroup } from '@/lib/userGroupsHelper'
+import { getEmailsByFriendId } from '@/lib/userFriendsHelper'
 import { ActivityType } from '@prisma/client'
 import { headers } from 'next/headers'
 import parser from 'ua-parser-js'
@@ -28,8 +29,8 @@ export async function sendActivityEmails(
   expenseId?: string,
   expenseName?: string,
 ) {
-  const users = await getEmailsByGroupId(groupId)
   const group = await getGroup(groupId)
+  const users = group?.type === 'DUAL_MEMBER' ? await getEmailsByGroupId(groupId) : await getEmailsByFriendId(groupId)
   const groupName = group?.name
   const participant =
     participantId !== null && group !== null

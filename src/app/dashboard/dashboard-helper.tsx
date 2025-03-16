@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { PropsWithChildren, useEffect, useState } from 'react'
+import { ShareButton } from '@/app/dashboard/share-button'
 
 export function Dashboard({ children }: PropsWithChildren<{}>) {
   const t = useTranslations('Dashboard')
@@ -39,7 +40,7 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
         <h1 className="font-bold text-2xl flex-1">
           {status === 'loading' ? <Skeleton className="h-8 w-48" /> : userName}
         </h1>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <Button asChild>
             <Link href="/groups">
               <Users className="w-4 h-4 mr-2" />
@@ -52,6 +53,7 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
               {t('friendsButton')}
             </Link>
           </Button>
+          <ShareButton userName={session?.user?.name ?? ''} userEmail={userEmail} />
         </div>
       </div>
       <Stats userEmail={userEmail} currency={currency ?? ''} />

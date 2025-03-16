@@ -17,6 +17,15 @@ export const groupFormSchema = z
       )
       .min(1),
   })
+  .superRefine(({ friendEmail, loggedInEmail }, ctx) => {
+    if (friendEmail && loggedInEmail && friendEmail === loggedInEmail) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'friendEmailCannotBeSameAsLoggedUserEmail',
+        path: ['friendEmail'],
+      });
+    }
+  })
   .superRefine(({ participants }, ctx) => {
     participants.forEach((participant, i) => {
       participants.slice(0, i).forEach((otherParticipant) => {

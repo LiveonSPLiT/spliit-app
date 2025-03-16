@@ -449,6 +449,12 @@
         "save": "Save",
         "saving": "Saving…"
       }
+    },
+    "ProfileShare": {
+      "title": "Share Your Profile",
+      "description": "Share your profile link to allow others to add you as a friend on SPLiT instantly. This makes splitting expenses and managing groups easier.",
+      "warning": "Warning!",
+      "warningHelp": "Anyone with your profile link can add you as a friend. Share only with people you trust."
     }
   },
   "Activity": {
