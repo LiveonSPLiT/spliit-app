@@ -23,7 +23,7 @@ export const groupFormSchema = z
         code: 'custom',
         message: 'friendEmailCannotBeSameAsLoggedUserEmail',
         path: ['friendEmail'],
-      });
+      })
     }
   })
   .superRefine(({ participants }, ctx) => {

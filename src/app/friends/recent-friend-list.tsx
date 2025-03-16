@@ -1,4 +1,5 @@
 'use client'
+import { AddFriendByUrlButton } from '@/app/friends/add-friend-by-url-button'
 import {
   RecentFriends,
   getBlockedFriends,
@@ -14,7 +15,6 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { PropsWithChildren, useEffect, useState } from 'react'
 import { RecentFriendListCard } from './recent-friend-list-card'
-import { AddFriendByUrlButton } from '@/app/friends/add-friend-by-url-button'
 
 export type RecentGroupsState =
   | { status: 'pending' }

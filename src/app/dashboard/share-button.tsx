@@ -9,7 +9,6 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { useBaseUrl } from '@/lib/hooks'
-import { Group } from '@prisma/client'
 import { Share } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 

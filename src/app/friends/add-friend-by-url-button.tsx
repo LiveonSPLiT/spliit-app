@@ -7,12 +7,12 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { useMediaQuery } from '@/lib/hooks'
+import { GroupFormValues } from '@/lib/schemas'
 import { trpc } from '@/trpc/client'
 import { Loader2, Plus } from 'lucide-react'
+import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { GroupFormValues } from '@/lib/schemas'
-import { useSession } from 'next-auth/react'
 
 type Props = {
   reload: () => void
@@ -44,12 +44,15 @@ export function AddFriendByUrlButton({ reload }: Props) {
           className="flex gap-2"
           onSubmit={async (event) => {
             event.preventDefault()
-            const searchParams = url.startsWith("https://liveonsplit.com/friends") 
-                                  ? new URLSearchParams(new URL(url).search) 
-                                  : null;
-            if(searchParams) {
-              const email = searchParams?.get("add") || 'someone@liveonsplit.com';
-              const name = searchParams?.get("name") || 'Friend';
+            const searchParams = url.startsWith(
+              'https://liveonsplit.com/friends',
+            )
+              ? new URLSearchParams(new URL(url).search)
+              : null
+            if (searchParams) {
+              const email =
+                searchParams?.get('add') || 'someone@liveonsplit.com'
+              const name = searchParams?.get('name') || 'Friend'
               setPending(true)
               const groupFormValues: GroupFormValues = {
                 name,
@@ -58,7 +61,7 @@ export function AddFriendByUrlButton({ reload }: Props) {
                 information: '',
                 currency: localStorage.getItem('user-currency') ?? '₹',
                 participants: [{ name }],
-              };
+              }
               const { group } = await mutateAsync({ groupFormValues })
               await utils.groups.invalidate()
               if (group) {

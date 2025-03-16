@@ -1,5 +1,6 @@
 'use client'
 
+import { ShareButton } from '@/app/dashboard/share-button'
 import { Stats } from '@/app/dashboard/stats'
 import { Currency } from '@/app/dashboard/user-currency'
 import { Button } from '@/components/ui/button'
@@ -10,7 +11,6 @@ import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { ShareButton } from '@/app/dashboard/share-button'
 
 export function Dashboard({ children }: PropsWithChildren<{}>) {
   const t = useTranslations('Dashboard')
@@ -53,7 +53,10 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
               {t('friendsButton')}
             </Link>
           </Button>
-          <ShareButton userName={session?.user?.name ?? ''} userEmail={userEmail} />
+          <ShareButton
+            userName={session?.user?.name ?? ''}
+            userEmail={userEmail}
+          />
         </div>
       </div>
       <Stats userEmail={userEmail} currency={currency ?? ''} />

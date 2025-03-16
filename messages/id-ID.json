@@ -449,6 +449,12 @@
         "save": "Simpan",
         "saving": "Menyimpan…"
       }
+    },
+    "ProfileShare": {
+      "title": "Bagikan Profil Anda",
+      "description": "Bagikan tautan profil Anda agar orang lain dapat menambahkan Anda sebagai teman di SPLiT secara instan. Ini membuat pembagian biaya dan pengelolaan grup menjadi lebih mudah.",
+      "warning": "Peringatan!",
+      "warningHelp": "Siapa pun yang memiliki tautan profil Anda dapat menambahkan Anda sebagai teman. Bagikan hanya dengan orang yang Anda percayai."
     }
   },
   "Activity": {
