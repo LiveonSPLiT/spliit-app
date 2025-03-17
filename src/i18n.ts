@@ -18,7 +18,7 @@ export type Locales = ReadonlyArray<Locale>
 export const defaultLocale: Locale = 'en-US'
 
 export default getRequestConfig(async () => {
-  const locale = await getUserLocale() ?? defaultLocale
+  const locale = (await getUserLocale()) ?? defaultLocale
 
   return {
     locale,

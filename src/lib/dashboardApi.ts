@@ -95,11 +95,14 @@ export async function getMonthlySpendingData(email: string) {
   })
 
   // Aggregate amounts by month
-  const spendingData = expenses.reduce((acc, exp) => {
-    const month = format(exp.expenseDate, 'MMM') // Convert date to month (e.g., "Jan")
-    acc[month] = (acc[month] || 0) + (exp._sum.amount || 0) / 100
-    return acc
-  }, {} as Record<string, number>)
+  const spendingData = expenses.reduce(
+    (acc, exp) => {
+      const month = format(exp.expenseDate, 'MMM') // Convert date to month (e.g., "Jan")
+      acc[month] = (acc[month] || 0) + (exp._sum.amount || 0) / 100
+      return acc
+    },
+    {} as Record<string, number>,
+  )
 
   // Return monthly data
   return months.map((month) => ({

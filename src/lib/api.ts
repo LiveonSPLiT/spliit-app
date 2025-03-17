@@ -518,7 +518,30 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
 
   let newFriend = await prisma.user.findUnique({
     where: { email: friendFormSchema.friendEmail || '' },
+    select: { id: true, name: true },
   })
+
+  const existingGroup = await prisma.group.findFirst({
+    where: {
+      type: 'DUAL_MEMBER',
+      participants: {
+        every: {
+          OR: [{ userId: loggedInUser?.id }, { userId: newFriend?.id }],
+        },
+      },
+    },
+    include: { participants: true },
+  })
+
+  if (existingGroup) {
+    return {
+      ...existingGroup,
+      name:
+        existingGroup.participants.find((p) => p.userId !== loggedInUser?.id)
+          ?.name || 'Someone',
+      friendEmail: friendFormSchema.friendEmail || 'someone@liveonsplit.com',
+    }
+  }
 
   if (!newFriend) {
     newFriend = await prisma.user.create({
