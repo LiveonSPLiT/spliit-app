@@ -83,8 +83,9 @@ export async function getMonthlySpendingData(email: string) {
     format(new Date(currentYear, i, 1), 'MMM'),
   )
 
+  // Fetch expenses grouped by year-month
   const expenses = await prisma.expense.groupBy({
-    by: ['expenseDate'],
+    by: ['groupId', 'expenseDate'],
     _sum: { amount: true },
     where: {
       paidBy: { userId: user.id },
@@ -93,15 +94,14 @@ export async function getMonthlySpendingData(email: string) {
     orderBy: { expenseDate: 'asc' },
   })
 
-  const spendingData = expenses.reduce(
-    (acc, exp) => {
-      const month = format(exp.expenseDate, 'MMM')
-      acc[month] = (exp._sum.amount || 0) / 100
-      return acc
-    },
-    {} as Record<string, number>,
-  )
+  // Aggregate amounts by month
+  const spendingData = expenses.reduce((acc, exp) => {
+    const month = format(exp.expenseDate, 'MMM') // Convert date to month (e.g., "Jan")
+    acc[month] = (acc[month] || 0) + (exp._sum.amount || 0) / 100
+    return acc
+  }, {} as Record<string, number>)
 
+  // Return monthly data
   return months.map((month) => ({
     month,
     total: spendingData[month] || 0,
