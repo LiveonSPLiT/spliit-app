@@ -9,18 +9,18 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { useBaseUrl } from '@/lib/hooks'
-import { Group } from '@prisma/client'
 import { Share } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 type Props = {
-  group: Group
+  userName: string
+  userEmail: string
 }
 
-export function ShareButton({ group }: Props) {
-  const t = useTranslations('Share')
+export function ShareButton({ userName, userEmail }: Props) {
+  const t = useTranslations('Dashboard.ProfileShare')
   const baseUrl = useBaseUrl()
-  const url = baseUrl && `${baseUrl}/friends/${group.id}/expenses?ref=share`
+  const url = baseUrl && `${baseUrl}/friends?add=${userEmail}&name=${userName}`
 
   return (
     <Popover>
@@ -35,7 +35,7 @@ export function ShareButton({ group }: Props) {
           <div className="flex gap-2">
             <Input className="flex-1" defaultValue={url} readOnly />
             <CopyButton text={url} />
-            <ShareUrlButton text={`Add me ${group.name} on Split`} url={url} />
+            <ShareUrlButton text={`Add me ${userName} on Split`} url={url} />
           </div>
         )}
         <p>

@@ -1,4 +1,6 @@
 'use client'
+import { AddFriendByUrlButton } from '@/app/friends/add-friend-by-url-button'
+import { HandleUrlInvite } from '@/app/friends/handle-url-invite'
 import {
   RecentFriends,
   getBlockedFriends,
@@ -228,7 +230,8 @@ function GroupsPage({
           <Link href="/friends">{t('myFriends')}</Link>
         </h1>
         <div className="flex gap-2">
-          {/* <AddFriendByUrlButton reload={reload} /> */}
+          <HandleUrlInvite />
+          <AddFriendByUrlButton reload={reload} />
           <Button asChild>
             <Link href="/friends/create">
               {/* <Plus className="w-4 h-4 mr-2" /> */}

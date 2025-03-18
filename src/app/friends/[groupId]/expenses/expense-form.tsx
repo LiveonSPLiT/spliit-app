@@ -551,7 +551,7 @@ export function ExpenseForm({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    {t(`${sExpense}.recurringDaysField.description`)}
+                    {t(`recurringDaysField.description`)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

@@ -22,7 +22,6 @@ export const FriendHeader = () => {
 
       <div className="flex gap-2 justify-between">
         <FriendTabs groupId={groupId} />
-        {/* {group && <ShareButton group={group} />} */}
       </div>
     </div>
   )

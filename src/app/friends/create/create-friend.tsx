@@ -15,9 +15,9 @@ export const CreateFriend = () => {
     <FriendForm
       onSubmit={async (groupFormValues) => {
         groupFormValues.loggedInEmail = session?.user?.email || ''
-        const { groupId } = await mutateAsync({ groupFormValues })
+        const { group } = await mutateAsync({ groupFormValues })
         await utils.groups.invalidate()
-        router.push(`/friends/${groupId}`)
+        router.push(`/friends/${group.id}`)
       }}
     />
   )

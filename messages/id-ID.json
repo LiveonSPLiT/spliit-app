@@ -410,6 +410,53 @@
       "groupEarnings": "Total pendapatan antara Anda dan teman Anda"
     }
   },
+  "Dashboard": {
+    "greeting": "Halo, ",
+    "title": "Dasbor",
+    "groupsButton": "Pergi ke grup",
+    "friendsButton": "Pergi ke teman",
+    "Totals": {
+      "title": "Total",
+      "description": "Ringkasan pengeluaran Anda untuk grup dan teman.",
+      "yourSpendings": "Total pengeluaran Anda untuk semuanya",
+      "currentMonthSpendings": "Total pengeluaran Anda bulan ini",
+      "groupSpendings": "Total pengeluaran grup Anda",
+      "friendSpendings": "Total pengeluaran teman Anda",
+      "groupEarnings": "Total pendapatan grup",
+      "friendEarnings": "Total pendapatan teman",
+      "yourShare": "Total bagian Anda"
+    },
+    "Graphs": {
+      "barGraphCard": {
+        "title": "Ikhtisar Pengeluaran Bulanan",
+        "description": "Lacak total pengeluaran Anda dari bulan ke bulan.",
+        "monthlyBarGraph": "Total pengeluaran (Tampilan Bulanan)"
+      },
+      "pieGraphCard": {
+        "title": "Pengeluaran berdasarkan Kategori",
+        "description": "Lihat bagaimana pengeluaran Anda didistribusikan di antara grup dan teman.",
+        "groupPieGraph": "Total pengeluaran (Berdasarkan Grup)",
+        "friendPieGraph": "Total pengeluaran (Berdasarkan Teman)"
+      }
+    },
+    "Currency": {
+      "title": "Mata Uang",
+      "description": "Ubah simbol mata uang yang digunakan dalam aplikasi.",
+      "CurrencyField": {
+        "label": "Simbol mata uang",
+        "placeholder": "₹, $, £…",
+        "description": "Kami akan menggunakannya untuk menampilkan jumlah.",
+        "save": "Simpan",
+        "saving": "Menyimpan…"
+      }
+    },
+    "ProfileShare": {
+      "title": "Bagikan Profil Anda",
+      "description": "Bagikan tautan profil Anda agar orang lain dapat menambahkan Anda sebagai teman di SPLiT secara instan. Ini membuat pembagian biaya dan pengelolaan grup menjadi lebih mudah.",
+      "warning": "Peringatan!",
+      "warningHelp": "Siapa pun yang memiliki tautan profil Anda dapat menambahkan Anda sebagai teman. Bagikan hanya dengan orang yang Anda percayai."
+    }
+  },
   "Activity": {
     "title": "Aktivitas",
     "description": "Ikhtisar semua aktivitas di grup ini.",

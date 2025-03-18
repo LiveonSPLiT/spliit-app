@@ -32,6 +32,7 @@ export const {
               data: {
                 email,
                 name,
+                currency: '₹',
               },
             })
           }

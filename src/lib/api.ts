@@ -518,7 +518,30 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
 
   let newFriend = await prisma.user.findUnique({
     where: { email: friendFormSchema.friendEmail || '' },
+    select: { id: true, name: true },
   })
+
+  const existingGroup = await prisma.group.findFirst({
+    where: {
+      type: 'DUAL_MEMBER',
+      participants: {
+        every: {
+          OR: [{ userId: loggedInUser?.id }, { userId: newFriend?.id }],
+        },
+      },
+    },
+    include: { participants: true },
+  })
+
+  if (existingGroup) {
+    return {
+      ...existingGroup,
+      name:
+        existingGroup.participants.find((p) => p.userId !== loggedInUser?.id)
+          ?.name || 'Someone',
+      friendEmail: friendFormSchema.friendEmail || 'someone@liveonsplit.com',
+    }
+  }
 
   if (!newFriend) {
     newFriend = await prisma.user.create({
@@ -919,4 +942,55 @@ function isDateInNextMonth(
   }
 
   return true
+}
+
+export async function updateUserCurrency(email: string, currency: string) {
+  const user = await prisma.user.findUnique({
+    where: { email },
+    select: { id: true },
+  })
+  if (!user) throw new Error('User not found')
+
+  const updatedUser = await prisma.user.update({
+    where: { email },
+    data: { currency },
+    select: { currency: true },
+  })
+
+  return updatedUser.currency
+}
+
+export async function getUserCurrency(email: string) {
+  const user = await prisma.user.findUnique({
+    where: { email },
+    select: { currency: true },
+  })
+
+  return user?.currency ?? '₹'
+}
+
+export async function updateParticipantUser(
+  groupId: string,
+  participantId: string,
+  userEmail: string,
+) {
+  const user = await prisma.user.findUnique({
+    where: { email: userEmail },
+    select: { id: true },
+  })
+  if (!user) throw new Error('User not found')
+  if (!user) throw new Error('User not found')
+
+  const participant = await prisma.participant.findUnique({
+    where: { id: participantId, groupId },
+  })
+
+  if (!participant) throw new Error('Participant not found')
+
+  const updatedParticipant = await prisma.participant.update({
+    where: { id: participantId },
+    data: { userId: user.id },
+  })
+
+  return updatedParticipant
 }

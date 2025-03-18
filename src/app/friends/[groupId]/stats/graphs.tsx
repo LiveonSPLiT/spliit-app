@@ -23,10 +23,16 @@ export function Graphs() {
     trpc.graphs.expensesByParticipant.useQuery({ groupId })
 
   const isLoading = categoryAreLoading || participantAreLoading || !group
+  const displayPieCard =
+    expensesByParticipant?.expensesByParticipant.length ||
+    expenseByCategory?.expenseByCategory.length ||
+    isLoading
+      ? ''
+      : 'none'
 
   return (
     <>
-      <Card>
+      <Card style={{ display: displayPieCard }}>
         <CardHeader>
           <CardTitle>{t('Graphs.title')}</CardTitle>
           <CardDescription>{t('Graphs.description')}</CardDescription>

@@ -410,6 +410,53 @@
       "groupEarnings": "あなたと友達の間の総収入"
     }
   },
+  "Dashboard": {
+    "greeting": "こんにちは, ",
+    "title": "ダッシュボード",
+    "groupsButton": "グループへ移動",
+    "friendsButton": "友達へ移動",
+    "Totals": {
+      "title": "合計",
+      "description": "グループと友達の全支出の概要。",
+      "yourSpendings": "すべての総支出",
+      "currentMonthSpendings": "今月の総支出",
+      "groupSpendings": "グループの総支出",
+      "friendSpendings": "友達の総支出",
+      "groupEarnings": "グループの総収入",
+      "friendEarnings": "友達の総収入",
+      "yourShare": "あなたの総シェア"
+    },
+    "Graphs": {
+      "barGraphCard": {
+        "title": "月別支出概要",
+        "description": "月ごとの総支出を追跡します。",
+        "monthlyBarGraph": "総支出（月別ビュー）"
+      },
+      "pieGraphCard": {
+        "title": "カテゴリ別支出",
+        "description": "グループと友達間の支出の分布を確認します。",
+        "groupPieGraph": "総支出（グループ別）",
+        "friendPieGraph": "総支出（友達別）"
+      }
+    },
+    "Currency": {
+      "title": "通貨",
+      "description": "アプリで使用する通貨記号を変更します。",
+      "CurrencyField": {
+        "label": "通貨記号",
+        "placeholder": "₹, $, £…",
+        "description": "金額を表示するために使用されます。",
+        "save": "保存",
+        "saving": "保存中…"
+      }
+    },
+    "ProfileShare": {
+      "title": "プロフィールを共有する",
+      "description": "他の人がSPLiTであなたをすぐに友達として追加できるように、プロフィールリンクを共有してください。これにより、費用の分割やグループの管理が容易になります。",
+      "warning": "警告!",
+      "warningHelp": "プロフィールリンクを持っている人は誰でもあなたを友達として追加できます。信頼できる人とだけ共有してください。"
+    }
+  },
   "Activity": {
     "title": "活動",
     "description": "このグループのすべてのアクティビティの概要。",

@@ -18,7 +18,7 @@ import {
   Divide,
   FileImage,
   FolderTree,
-  List,
+  LayoutDashboard,
   LucideIcon,
   Mails,
   Repeat2,
@@ -74,9 +74,9 @@ export default function HomePage() {
               description="Manage your friends and interactions easily."
             />
             <Feature
-              Icon={List}
-              name="Expenses"
-              description="Create and list expenses in your group."
+              Icon={LayoutDashboard}
+              name="Dashboard"
+              description="View your overall spending summary and detailed graphs."
             />
             <Feature
               Icon={FolderTree}

@@ -56,6 +56,7 @@ export function GroupForm({
   protectedParticipantIds = [],
 }: Props) {
   const t = useTranslations('GroupForm')
+  const userCurrency = localStorage.getItem('user-currency') ?? '₹'
   const form = useForm<GroupFormValues>({
     resolver: zodResolver(groupFormSchema),
     defaultValues: group
@@ -68,7 +69,7 @@ export function GroupForm({
       : {
           name: '',
           information: '',
-          currency: '₹',
+          currency: userCurrency,
           participants: [
             { name: t('Participants.John') },
             { name: t('Participants.Jane') },

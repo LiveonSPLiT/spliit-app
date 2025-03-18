@@ -5,42 +5,43 @@ import {
   CardDescription,
   CardHeader,
 } from '@/components/ui/card'
-import { getGroupExpensesByParticipant } from '@/lib/api'
+import { getFriendWiseSpendingData } from '@/lib/dashboardApi'
 import { useTranslations } from 'next-intl'
 import { VictoryPie, VictoryTheme } from 'victory'
 
 type Props = {
-  expensesByParticipant: NonNullable<
-    Awaited<ReturnType<typeof getGroupExpensesByParticipant>>
+  expensesByFriend: NonNullable<
+    Awaited<ReturnType<typeof getFriendWiseSpendingData>>
   >
+  display: string
 }
 
-export function ParticipantSummary({ expensesByParticipant }: Props) {
-  const t = useTranslations('Stats')
-  const trimmedExpenses = expensesByParticipant.map((item) => ({
+export function FriendSummary({ expensesByFriend, display }: Props) {
+  const t = useTranslations('Dashboard')
+  const trimmedExpenses = expensesByFriend.map((item) => ({
     ...item,
-    participant:
-      item.participant && item.participant.length > 4
-        ? `${item.participant.slice(0, 6)}...`
-        : item.participant,
+    friendName:
+      item.friendName.length > 4
+        ? `${item.friendName.slice(0, 6)}...`
+        : item.friendName,
   }))
   return (
-    <Card style={{ border: 'none' }}>
+    <Card style={{ border: 'none', display: display }}>
       <CardHeader>
         <CardDescription className="text-center">
-          {t('Graphs.participants')}
+          {t('Graphs.pieGraphCard.friendPieGraph')}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col space-y-4 pb-0">
         <VictoryPie
           theme={VictoryTheme.material}
-          name="expenseByCategory"
+          name="expensesByFriend"
           data={trimmedExpenses}
-          x="participant"
-          y="amount"
-          sortKey="amount"
-          sortOrder="descending"
+          x="friendName"
+          y="total"
           colorScale="qualitative"
+          innerRadius={50}
+          padAngle={5}
           style={{
             labels: {
               fontSize: 14,

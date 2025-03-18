@@ -5,40 +5,41 @@ import {
   CardDescription,
   CardHeader,
 } from '@/components/ui/card'
-import { getGroupExpensesByParticipant } from '@/lib/api'
+import { getGroupWiseSpendingData } from '@/lib/dashboardApi'
 import { useTranslations } from 'next-intl'
 import { VictoryPie, VictoryTheme } from 'victory'
 
 type Props = {
-  expensesByParticipant: NonNullable<
-    Awaited<ReturnType<typeof getGroupExpensesByParticipant>>
+  expensesByGroup: NonNullable<
+    Awaited<ReturnType<typeof getGroupWiseSpendingData>>
   >
+  display: string
 }
 
-export function ParticipantSummary({ expensesByParticipant }: Props) {
-  const t = useTranslations('Stats')
-  const trimmedExpenses = expensesByParticipant.map((item) => ({
+export function GroupSummary({ expensesByGroup, display }: Props) {
+  const t = useTranslations('Dashboard')
+  const trimmedExpenses = expensesByGroup.map((item) => ({
     ...item,
-    participant:
-      item.participant && item.participant.length > 4
-        ? `${item.participant.slice(0, 6)}...`
-        : item.participant,
+    groupName:
+      item.groupName.length > 4
+        ? `${item.groupName.slice(0, 6)}...`
+        : item.groupName,
   }))
   return (
-    <Card style={{ border: 'none' }}>
+    <Card style={{ border: 'none', display: display }}>
       <CardHeader>
         <CardDescription className="text-center">
-          {t('Graphs.participants')}
+          {t('Graphs.pieGraphCard.groupPieGraph')}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col space-y-4 pb-0">
         <VictoryPie
           theme={VictoryTheme.material}
-          name="expenseByCategory"
+          name="expensesByGroup"
           data={trimmedExpenses}
-          x="participant"
-          y="amount"
-          sortKey="amount"
+          x="groupName"
+          y="total"
+          sortKey="total"
           sortOrder="descending"
           colorScale="qualitative"
           style={{
