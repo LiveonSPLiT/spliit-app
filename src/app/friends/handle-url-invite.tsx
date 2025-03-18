@@ -19,7 +19,7 @@ export function HandleUrlInvite() {
       const currentUrl = window.location.href
 
       // Verify if the URL starts with "https://liveonsplit.com/friends"
-      if (currentUrl.startsWith('http://localhost:3000/friends?add')) {
+      if (currentUrl.startsWith('https://liveonsplit.com/friends?add')) {
         const params = new URLSearchParams(new URL(currentUrl).search)
         const email = params?.get('add')
         const name = params?.get('name')
@@ -40,7 +40,7 @@ export function HandleUrlInvite() {
             if (group) {
               saveRecentFriend({ id: group.id, name: group.name })
               router.replace(
-                `http://localhost:3000/friends/${group.id}/expenses`,
+                `https://liveonsplit.com/friends/${group.id}/expenses`,
               ) // Redirect after processing
             }
           } catch (error) {
