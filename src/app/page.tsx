@@ -143,10 +143,10 @@ export default function HomePage() {
                   </>
                 }
               >
-                Yes, you can use SPLiT for free without any limitations! 
-                In the future, we may introduce new features, including 
-                those considered premium on other platforms, but every 
-                feature on SPLiT—whether essential or advanced—will always be free.
+                Yes, you can use SPLiT for free without any limitations! In the
+                future, we may introduce new features, including those
+                considered premium on other platforms, but every feature on
+                SPLiT—whether essential or advanced—will always be free.
               </Answer>
               <Answer
                 id="differences"

@@ -91,7 +91,9 @@ export function GroupForm({
       const currentActiveUser =
         fields.find(
           (f) => f.id === localStorage.getItem(`${group?.id}-activeUser`),
-        )?.name || (session?.user?.name || t('Settings.ActiveUserField.none'))
+        )?.name ||
+        session?.user?.name ||
+        t('Settings.ActiveUserField.none')
       setActiveUser(currentActiveUser)
     }
   }, [t, activeUser, fields, group?.id])

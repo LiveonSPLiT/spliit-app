@@ -30,8 +30,8 @@ export default function PrivacyPolicy() {
             </p>
             <p>
               <strong>Data Storage:</strong> Your personal information is stored
-              on OCI Database and AWS S3 servers. All data is encrypted at rest, but not
-              in transit.
+              on OCI Database and AWS S3 servers. All data is encrypted at rest,
+              but not in transit.
             </p>
 
             <h2>3. Use of Information</h2>

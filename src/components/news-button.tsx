@@ -26,7 +26,6 @@ import {
   LogIn,
   LucideIcon,
   Mails,
-  Newspaper,
   Receipt,
   Sparkles,
   Speaker,
