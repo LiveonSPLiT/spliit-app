@@ -1,6 +1,6 @@
 [<img alt="SPLiT" height="60" src="https://github.com/sir-argupta/spliit-app/blob/main/public/logo-with-text.png?raw=true" />](https://liveonsplit.com/)
 
-SPLiT is a free and open source alternative to Splitwise.
+SPLiT is a free alternative to Splitwise.
 
 [![Build](https://vercel.com/button)](https://vercel.com/ashutosh-guptas-projects-a814932f/spliit-app)
 
@@ -22,6 +22,9 @@ SPLiT is a free and open source alternative to Splitwise.
 - [x] Create expense by scanning a receipt 
 - [x] Ability to create recurring expenses 
 - [x] Able to create accounts & friends
+- [x] Visualize expenses using graphs
+- [x] Display all details on dashbaord
+- [x] Notify users using email
 
 ### Possible incoming features
 

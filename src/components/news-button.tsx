@@ -26,7 +26,6 @@ import {
   LogIn,
   LucideIcon,
   Mails,
-  Newspaper,
   Receipt,
   Sparkles,
   Speaker,
@@ -95,25 +94,6 @@ const news: News[] = [
           expanded to support multiple Asian languages, making it easier for
           users across diverse regions to track expenses and split bills in
           their preferred language.
-        </p>
-      </>
-    ),
-  },
-  {
-    id: 'blog-post-splitwise',
-    title: <>We need an open source alternative to Splitwise</>,
-    summary: <>Why its impotant..!</>,
-    icon: Newspaper,
-    content: (
-      <>
-        <p>
-          Since last fall, a free account on Splitwise lets you enter only three
-          transactions each day. 😲
-        </p>
-        <p>Could this happen with SPLiT? 🤔</p>
-        <p>
-          For some applications, free is just not enough. We need open source
-          alternatives.
         </p>
       </>
     ),

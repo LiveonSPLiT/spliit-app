@@ -64,7 +64,7 @@ export default function TermsAndConditions() {
             <h2>7. Governing Law</h2>
             <p>
               These Terms are governed by and construed in accordance with the
-              laws of Jharkahnd-India, without regard to its conflict of law
+              laws of Maharashtra-India, without regard to its conflict of law
               principles.
             </p>
 

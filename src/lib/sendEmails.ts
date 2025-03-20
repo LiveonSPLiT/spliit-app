@@ -32,8 +32,8 @@ export async function sendActivityEmails(
   const group = await getGroup(groupId)
   const users =
     group?.type === 'DUAL_MEMBER'
-      ? await getEmailsByGroupId(groupId)
-      : await getEmailsByFriendId(groupId)
+      ? await getEmailsByFriendId(groupId)
+      : await getEmailsByGroupId(groupId)
   const groupName = group?.name
   const participant =
     participantId !== null && group !== null
