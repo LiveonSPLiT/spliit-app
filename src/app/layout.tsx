@@ -137,6 +137,11 @@ function Content({ children }: { children: React.ReactNode }) {
             <span>{t('Footer.madeIn')}</span>
             <span>
               {t.rich('Footer.builtBy', {
+                platform: (txt) => (
+                  <a href="https://spliit.app/" target="_blank" rel="noopener">
+                    {txt}
+                  </a>
+                ),
                 author: (txt) => (
                   <a
                     href="https://www.linkedin.com/in/sir-argupta/"
