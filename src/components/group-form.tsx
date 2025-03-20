@@ -35,6 +35,7 @@ import { getGroup } from '@/lib/api'
 import { GroupFormValues, groupFormSchema } from '@/lib/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Save, Trash2 } from 'lucide-react'
+import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -56,6 +57,7 @@ export function GroupForm({
   protectedParticipantIds = [],
 }: Props) {
   const t = useTranslations('GroupForm')
+  const { data: session, status } = useSession()
   const userCurrency = localStorage.getItem('user-currency') ?? '₹'
   const form = useForm<GroupFormValues>({
     resolver: zodResolver(groupFormSchema),
@@ -71,7 +73,7 @@ export function GroupForm({
           information: '',
           currency: userCurrency,
           participants: [
-            { name: t('Participants.John') },
+            { name: session?.user?.name || t('Participants.John') },
             { name: t('Participants.Jane') },
             { name: t('Participants.Jack') },
           ],
@@ -89,7 +91,7 @@ export function GroupForm({
       const currentActiveUser =
         fields.find(
           (f) => f.id === localStorage.getItem(`${group?.id}-activeUser`),
-        )?.name || t('Settings.ActiveUserField.none')
+        )?.name || (session?.user?.name || t('Settings.ActiveUserField.none'))
       setActiveUser(currentActiveUser)
     }
   }, [t, activeUser, fields, group?.id])

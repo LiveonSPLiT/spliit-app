@@ -100,25 +100,6 @@ const news: News[] = [
     ),
   },
   {
-    id: 'blog-post-splitwise',
-    title: <>We need an open source alternative to Splitwise</>,
-    summary: <>Why its impotant..!</>,
-    icon: Newspaper,
-    content: (
-      <>
-        <p>
-          Since last fall, a free account on Splitwise lets you enter only three
-          transactions each day. 😲
-        </p>
-        <p>Could this happen with SPLiT? 🤔</p>
-        <p>
-          For some applications, free is just not enough. We need open source
-          alternatives.
-        </p>
-      </>
-    ),
-  },
-  {
     id: 'scan-receipts',
     title: <>Scan receipts to create expenses</>,
     summary: <>Create expenses faster by taking a photo of a receipt!</>,

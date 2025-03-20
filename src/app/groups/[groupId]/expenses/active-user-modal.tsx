@@ -44,7 +44,7 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
 
     const tempUser = localStorage.getItem(`newGroup-activeUser`)
     const activeUser = localStorage.getItem(`${group.id}-activeUser`)
-    if (!tempUser && !activeUser) {
+    if ((!tempUser && !activeUser) || activeUser === 'None') {
       if (!participantId || participantId.trim() === '') {
         setOpen(true)
       } else {

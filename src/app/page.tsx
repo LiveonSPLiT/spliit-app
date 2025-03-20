@@ -143,9 +143,10 @@ export default function HomePage() {
                   </>
                 }
               >
-                Yes, you can use SPLiT for free, without any limitation! Note
-                that in the future, we might add premium features, but we’ll
-                never put essential features behind a paywall.
+                Yes, you can use SPLiT for free without any limitations! 
+                In the future, we may introduce new features, including 
+                those considered premium on other platforms, but every 
+                feature on SPLiT—whether essential or advanced—will always be free.
               </Answer>
               <Answer
                 id="differences"
@@ -164,8 +165,8 @@ export default function HomePage() {
               <Answer id="data" question={<>How is my data stored?</>}>
                 All the data you enter on SPLiT (groups, expenses…) is stored in
                 a PostgreSQL database hosted by{' '}
-                <a target="_blank" href="https://aws.amazon.com/">
-                  AWS
+                <a target="_blank" href="https://www.oracle.com/in/cloud/">
+                  OCI
                 </a>{' '}
                 (same as the web application itself). For now, the data is only
                 encrypted in rest not in transit, but we’re trying to find the
