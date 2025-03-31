@@ -87,6 +87,8 @@ export default function manifest(): ExtendedManifest {
     launch_handler: {
       client_mode: ["navigate-existing", "auto"]
     },
-    edge_side_panel: 642,
+    edge_side_panel: {
+      preferred_width: 642
+    },
   }
 }
