@@ -1,6 +1,14 @@
 import { MetadataRoute } from 'next'
 
-export default function manifest(): MetadataRoute.Manifest {
+interface ExtendedManifest extends MetadataRoute.Manifest {
+  scope_extensions?: any;
+  handle_links?: any;
+  launch_handler?: any;
+  iarc_rating_id?: string;
+  edge_side_panel?: any;
+}
+
+export default function manifest(): ExtendedManifest {
   return {
     name: 'SPLiT · Share Expenses with Friends & Family',
     short_name: 'SPLiT',
@@ -56,6 +64,7 @@ export default function manifest(): MetadataRoute.Manifest {
     share_target: {},
     screenshots: [],
     protocol_handlers: [],
+    file_handlers: [],
     shortcuts: [
       {
         name: "Create Group",
@@ -70,6 +79,14 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     categories: [
       "finance"
-    ]
+    ],
+    scope_extensions: [
+      { origin: "*.liveonsplit.com"}
+    ],
+    handle_links: "preferred",
+    launch_handler: {
+      client_mode: ["navigate-existing", "auto"]
+    },
+    edge_side_panel: 642,
   }
 }
