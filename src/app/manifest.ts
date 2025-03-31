@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next'
 
 interface ExtendedManifest extends MetadataRoute.Manifest {
-  scope_extensions?: any;
-  handle_links?: any;
-  launch_handler?: any;
-  iarc_rating_id?: string;
-  edge_side_panel?: any;
+  scope_extensions?: any
+  handle_links?: any
+  launch_handler?: any
+  iarc_rating_id?: string
+  edge_side_panel?: any
 }
 
 export default function manifest(): ExtendedManifest {
@@ -48,17 +48,17 @@ export default function manifest(): ExtendedManifest {
         purpose: 'any',
       },
     ],
-    lang: "en-US",
-    id: "id",
+    lang: 'en-US',
+    id: 'id',
     display_override: [
-      "browser",
-      "fullscreen",
-      "minimal-ui",
-      "standalone",
-      "window-controls-overlay"
+      'browser',
+      'fullscreen',
+      'minimal-ui',
+      'standalone',
+      'window-controls-overlay',
     ],
-    scope: "/",
-    dir: "auto",
+    scope: '/',
+    dir: 'auto',
     prefer_related_applications: false,
     related_applications: [],
     share_target: {},
@@ -67,28 +67,24 @@ export default function manifest(): ExtendedManifest {
     file_handlers: [],
     shortcuts: [
       {
-        name: "Create Group",
-        url: "/groups/create",
-        description: "Create Group"
+        name: 'Create Group',
+        url: '/groups/create',
+        description: 'Create Group',
       },
       {
-        name: "Add Friend",
-        url: "/friends/create",
-        description: "Add a Friend"
-      }
+        name: 'Add Friend',
+        url: '/friends/create',
+        description: 'Add a Friend',
+      },
     ],
-    categories: [
-      "finance"
-    ],
-    scope_extensions: [
-      { origin: "*.liveonsplit.com"}
-    ],
-    handle_links: "preferred",
+    categories: ['finance'],
+    scope_extensions: [{ origin: '*.liveonsplit.com' }],
+    handle_links: 'preferred',
     launch_handler: {
-      client_mode: ["navigate-existing", "auto"]
+      client_mode: ['navigate-existing', 'auto'],
     },
     edge_side_panel: {
-      preferred_width: 642
+      preferred_width: 642,
     },
   }
 }
