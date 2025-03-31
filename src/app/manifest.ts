@@ -33,8 +33,14 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/png',
         purpose: 'maskable',
       },
+      {
+        src: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
     ],
-    lang: "en",
+    lang: "en-US",
     id: "id",
     display_override: [
       "browser",
@@ -45,6 +51,11 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     scope: "/",
     dir: "auto",
+    prefer_related_applications: false,
+    related_applications: [],
+    share_target: {},
+    screenshots: [],
+    protocol_handlers: [],
     shortcuts: [
       {
         name: "Create Group",
