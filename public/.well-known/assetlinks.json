@@ -1,0 +1,26 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.liveonsplit.app",
+            "sha256_cert_fingerprints": [
+                "11:94:83:EA:B0:CA:9F:3F:BD:18:36:33:A9:93:93:21:22:36:34:89:BF:A0:81:15:98:EB:B7:85:41:FB:50:30"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.liveonsplit.preview.app",
+            "sha256_cert_fingerprints": [
+                "41:AB:D5:53:53:BC:97:68:FC:F0:C7:A1:6C:9F:CF:BF:0D:98:38:81:96:34:BB:E1:64:BE:CF:94:49:EE:EF:18"
+            ]
+        }
+    }
+]
