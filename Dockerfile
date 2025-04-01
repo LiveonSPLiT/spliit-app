@@ -17,12 +17,12 @@ RUN apk add --no-cache openssl && \
 
 COPY ./src ./src
 COPY ./messages ./messages
+COPY ./public ./public
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
 COPY scripts/build.env .env
 RUN npm run build
-COPY ./public ./public
 
 RUN rm -r .next/cache
 
