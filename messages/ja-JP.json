@@ -440,14 +440,23 @@
       }
     },
     "Currency": {
-      "title": "通貨",
-      "description": "アプリで使用する通貨記号を変更します。",
+      "title": "設定",
+      "description": "アプリで使用される通貨記号と通知設定を変更します。",
       "CurrencyField": {
         "label": "通貨記号",
         "placeholder": "₹, $, £…",
-        "description": "金額を表示するために使用されます。",
+        "description": "金額を表示するために使用します。",
         "save": "保存",
         "saving": "保存中…"
+      },
+      "NotificationField": {
+        "label": "通知設定",
+        "description": "通知に使用されます。",
+        "selection": {
+          "both": "両方",
+          "email": "メール通知",
+          "push": "プッシュ通知"
+        }
       }
     },
     "ProfileShare": {

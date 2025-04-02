@@ -17,7 +17,6 @@ export async function subscribeUser(sub: any, email: string) {
 
     return { success: true, user };
   } catch (error) {
-    console.error('Error subscribing user:', error);
     return { success: false, error: 'Subscription failed' };
   }
 }
@@ -34,7 +33,6 @@ export async function unsubscribeUser(email: string) {
 
     return { success: true, user };
   } catch (error) {
-    console.error('Error unsubscribing user:', error);
     return { success: false, error: 'Unsubscription failed' };
   }
 }

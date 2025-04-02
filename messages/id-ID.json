@@ -440,14 +440,23 @@
       }
     },
     "Currency": {
-      "title": "Mata Uang",
-      "description": "Ubah simbol mata uang yang digunakan dalam aplikasi.",
+      "title": "Pengaturan",
+      "description": "Ubah simbol mata uang & pengaturan notifikasi yang digunakan di aplikasi.",
       "CurrencyField": {
         "label": "Simbol mata uang",
         "placeholder": "₹, $, £…",
         "description": "Kami akan menggunakannya untuk menampilkan jumlah.",
         "save": "Simpan",
         "saving": "Menyimpan…"
+      },
+      "NotificationField": {
+        "label": "Pengaturan notifikasi",
+        "description": "Kami akan menggunakannya untuk memberi tahu Anda.",
+        "selection": {
+          "both": "Keduanya",
+          "email": "Notifikasi Email",
+          "push": "Notifikasi Push"
+        }
       }
     },
     "ProfileShare": {

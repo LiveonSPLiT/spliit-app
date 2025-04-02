@@ -440,14 +440,23 @@
       }
     },
     "Currency": {
-      "title": "货币",
-      "description": "更改应用中使用的货币符号。",
+      "title": "设置",
+      "description": "更改应用中使用的货币符号和通知设置。",
       "CurrencyField": {
         "label": "货币符号",
         "placeholder": "₹, $, £…",
         "description": "我们将使用它来显示金额。",
         "save": "保存",
-        "saving": "保存中…"
+        "saving": "正在保存…"
+      },
+      "NotificationField": {
+        "label": "通知设置",
+        "description": "我们将用它来提醒您。",
+        "selection": {
+          "both": "两者",
+          "email": "电子邮件通知",
+          "push": "推送通知"
+        }
       }
     },
     "ProfileShare": {
