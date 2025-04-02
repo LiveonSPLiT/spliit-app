@@ -113,6 +113,16 @@ spec:
               secretKeyRef:
                 name: openai-api-model
                 key: password
+          - name: NEXT_PUBLIC_VAPID_PUBLIC_KEY
+            valueFrom:
+              secretKeyRef:
+                name: next-pwa-vapid-key
+                key: password
+          - name: VAPID_PRIVATE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: vapid-private-key
+                key: password
 ---
 apiVersion: v1
 kind: Service

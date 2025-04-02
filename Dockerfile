@@ -18,6 +18,7 @@ RUN apk add --no-cache openssl && \
 COPY ./src ./src
 COPY ./messages ./messages
 COPY ./public ./public
+COPY ./worker ./worker
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
@@ -32,6 +33,7 @@ WORKDIR /usr/app
 COPY --from=base /usr/app/package.json /usr/app/package-lock.json /usr/app/next.config.mjs ./
 COPY --from=base /usr/app/prisma ./prisma
 COPY --from=base /usr/app/public ./public
+COPY --from=base /usr/app/worker ./worker
 
 RUN npm ci --omit=dev --omit=optional --ignore-scripts && \
     npx prisma generate
@@ -44,6 +46,7 @@ WORKDIR /usr/app
 COPY --from=base /usr/app/package.json /usr/app/package-lock.json /usr/app/next.config.mjs ./
 COPY --from=runtime-deps /usr/app/node_modules ./node_modules
 COPY --from=base /usr/app/public ./public
+COPY --from=base /usr/app/worker ./worker
 COPY ./scripts ./scripts
 COPY --from=base /usr/app/prisma ./prisma
 COPY --from=base /usr/app/.next ./.next
