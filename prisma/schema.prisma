@@ -16,6 +16,8 @@ model User {
   name            String
   email           String          @unique
   currency        String          @default("₹")
+  pushSubscription Json?           // Store subscription as raw JSON
+  notificationPref NotificationPref @default(BOTH)
   recentGroups    RecentGroup[]
   starredGroups   StarredGroup[]
   archivedGroups  ArchivedGroup[]
@@ -225,4 +227,10 @@ enum RecurrenceRule {
   DAILY
   WEEKLY
   MONTHLY
+}
+
+enum NotificationPref {
+  EMAIL
+  PUSH
+  BOTH
 }

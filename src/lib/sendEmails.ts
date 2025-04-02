@@ -5,6 +5,7 @@ import { getEmailsByGroupId, getGroup } from '@/lib/userGroupsHelper'
 import { ActivityType } from '@prisma/client'
 import { headers } from 'next/headers'
 import parser from 'ua-parser-js'
+import { sendNotification } from '@/lib/pushNotification'
 
 function getClientDeviceInfo() {
   const headerList = headers()
@@ -152,27 +153,35 @@ export async function sendActivityEmails(
     }
   }
 
-  for (const { email, name } of users) {
-    let response = await fetch(`${env.NODEMAILER_URL}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: email,
-        subject,
-        emailPreview: message,
-        emailTitle: `Hey ${name}, ${emailTitle}`,
-        isButtonVisible: true,
-        emailButtonHeaderText,
-        emailButtonLable: emailButtonLabel,
-        emailMessage: message,
-        emailButtonLink,
-        emailButtonFooterText,
-      }),
-    })
-    let isMailSend = await response.json()
+  for (const { email, name, pushSubscription, notificationPref } of users) {
+
+    if (notificationPref === 'EMAIL' || notificationPref === 'BOTH') {
+      let response = await fetch(`${env.NODEMAILER_URL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: email,
+          subject,
+          emailPreview: message,
+          emailTitle: `Hey ${name}, ${emailTitle}`,
+          isButtonVisible: true,
+          emailButtonHeaderText,
+          emailButtonLable: emailButtonLabel,
+          emailMessage: message,
+          emailButtonLink,
+          emailButtonFooterText,
+        }),
+      })
+      let isMailSend = await response.json()
+    }
+    if (notificationPref === 'PUSH' || notificationPref === 'BOTH') {
+      if (pushSubscription) {
+      await sendNotification(pushSubscription, `SPLiT - ${emailTitle}`, message, emailButtonLink)
+    }
+    }
   }
 
-  console.log('Emails sent successfully to all recipients.')
+  console.log('Notifications are sent successfully to all recipients.')
 }
 
 export async function sendEmailLogin(userName: string, userEmail: string) {

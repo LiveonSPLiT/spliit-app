@@ -47,3 +47,5 @@ postgres-data
 # public
 /public/sw*
 /public/workbox*
+/public/worker*
+certificates
