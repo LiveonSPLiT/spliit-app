@@ -440,14 +440,23 @@
       }
     },
     "Currency": {
-      "title": "Currency",
-      "description": "Change the currency symbol used in the app.",
+      "title": "Settings",
+      "description": "Change the currency symbol & notification settings used in the app.",
       "CurrencyField": {
         "label": "Currency symbol",
         "placeholder": "₹, $, £…",
         "description": "We’ll use it to display amounts.",
         "save": "Save",
         "saving": "Saving…"
+      },
+      "NotificationField": {
+        "label": "Notification settings",
+        "description": "We’ll use this to alert you.",
+        "selection": {
+          "both": "Both",
+          "email": "Email Notifications",
+          "push": "Push Notifications"
+        }
       }
     },
     "ProfileShare": {

@@ -63,6 +63,7 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
       <Currency
         userEmail={userEmail}
         currency={currency ?? ''}
+        notificationPrefre={data?.notificationPrefrence ?? 'BOTH'}
         loading={currencyIsLoading}
         onCurrencyUpdate={handleCurrencyUpdate}
       />

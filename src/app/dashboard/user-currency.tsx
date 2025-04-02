@@ -15,10 +15,19 @@ import { Save } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { subscribeUser } from '@/lib/pushNotification'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { set } from 'date-fns'
 
 type CurrencyProps = {
   userEmail: string
   currency: string
+  notificationPrefre: string
   loading: boolean
   onCurrencyUpdate: (newCurrency: string) => void
 }
@@ -39,6 +48,7 @@ function urlBase64ToUint8Array(base64String: string) {
 export function Currency({
   userEmail,
   currency,
+  notificationPrefre,
   loading,
   onCurrencyUpdate,
 }: CurrencyProps) {
@@ -49,6 +59,7 @@ export function Currency({
   const t = useTranslations('Dashboard')
 
   const [isSupported, setIsSupported] = useState(false)
+  const [notificationPrefrence, setNotificationPrefrence] = useState(notificationPrefre)
   const [subscription, setSubscription] = useState<PushSubscription | null>(
     null
   )
@@ -68,12 +79,15 @@ export function Currency({
     })
     setSubscription(sub)
     const serializedSub = JSON.parse(JSON.stringify(sub))
-    await subscribeUser(serializedSub, userEmail)
+    if(notificationPrefrence !== 'EMAIL') {
+      await subscribeUser(serializedSub, userEmail)
+    }
   }
 
   useEffect(() => {
     setCurrencyValue(currency)
-  }, [currency])
+    setNotificationPrefrence(notificationPrefre)
+  }, [currency, notificationPrefre])
 
   useEffect(() => {
     setLoadingData(loading)
@@ -94,6 +108,8 @@ export function Currency({
       const response = await mutateAsync({
         email: userEmail,
         currency: currencyValue,
+        pushSubscription: JSON.parse(JSON.stringify(subscription)),
+        notificationPref: notificationPrefrence,
       })
       onCurrencyUpdate(response.currency)
     } catch (error) {
@@ -116,7 +132,7 @@ export function Currency({
         </CardContent>
       ) : (
         <CardContent className="grid sm:grid-cols-6 gap-4">
-          <div className="flex-1 col-start-1 col-end-4">
+          <div className="flex-1 col-start-1 col-end-3">
             <Input
               className="flex-1 col-span-2"
               value={currencyValue}
@@ -127,10 +143,36 @@ export function Currency({
               {t('Currency.CurrencyField.description')}
             </span>
           </div>
+          <div className="flex-1 col-start-3 col-end-5">
+          <Select
+                              onValueChange={(value) => {
+                                setNotificationPrefrence(value)
+                              }}
+                              defaultValue={notificationPrefrence}
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder={t(`Currency.NotificationField.selection.both`)} />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="BOTH">
+                                  {t(`Currency.NotificationField.selection.both`)}
+                                </SelectItem>
+                                <SelectItem value="PUSH">
+                                  {t(`Currency.NotificationField.selection.push`)}
+                                </SelectItem>
+                                <SelectItem value="EMAIL">
+                                  {t(`Currency.NotificationField.selection.email`)}
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <span className="text-sm text-gray-500">
+              {t('Currency.NotificationField.description')}
+            </span>
+                            </div>
           <Button
             onClick={updateUserCurrency}
             disabled={isSaving}
-            className="col-end-5"
+            className="col-end-7"
           >
             <Save className="w-4 h-4 mr-2" />{' '}
             {t(

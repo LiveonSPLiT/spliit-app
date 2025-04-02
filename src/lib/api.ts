@@ -963,10 +963,10 @@ export async function updateUserCurrency(email: string, currency: string) {
 export async function getUserCurrency(email: string) {
   const user = await prisma.user.findUnique({
     where: { email },
-    select: { currency: true },
+    select: { currency: true, notificationPref: true },
   })
 
-  return user?.currency ?? '₹'
+  return user
 }
 
 export async function updateParticipantUser(
