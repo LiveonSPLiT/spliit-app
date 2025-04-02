@@ -9,12 +9,6 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Skeleton } from '@/components/ui/skeleton'
-import { trpc } from '@/trpc/client'
-import { Save } from 'lucide-react'
-import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
-import { subscribeUser } from '@/lib/pushNotification'
 import {
   Select,
   SelectContent,
@@ -22,7 +16,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { set } from 'date-fns'
+import { Skeleton } from '@/components/ui/skeleton'
+import { subscribeUser } from '@/lib/pushNotification'
+import { trpc } from '@/trpc/client'
+import { Save } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
 
 type CurrencyProps = {
   userEmail: string
@@ -35,10 +34,10 @@ type CurrencyProps = {
 function urlBase64ToUint8Array(base64String: string) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
- 
+
   const rawData = window.atob(base64)
   const outputArray = new Uint8Array(rawData.length)
- 
+
   for (let i = 0; i < rawData.length; ++i) {
     outputArray[i] = rawData.charCodeAt(i)
   }
@@ -59,9 +58,10 @@ export function Currency({
   const t = useTranslations('Dashboard')
 
   const [isSupported, setIsSupported] = useState(false)
-  const [notificationPrefrence, setNotificationPrefrence] = useState(notificationPrefre)
+  const [notificationPrefrence, setNotificationPrefrence] =
+    useState(notificationPrefre)
   const [subscription, setSubscription] = useState<PushSubscription | null>(
-    null
+    null,
   )
 
   async function registerServiceWorker() {
@@ -74,12 +74,12 @@ export function Currency({
     sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(
-        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || ''
+        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '',
       ),
     })
     setSubscription(sub)
     const serializedSub = JSON.parse(JSON.stringify(sub))
-    if(notificationPrefrence !== 'EMAIL') {
+    if (notificationPrefrence !== 'EMAIL') {
       await subscribeUser(serializedSub, userEmail)
     }
   }
@@ -144,31 +144,33 @@ export function Currency({
             </span>
           </div>
           <div className="flex-1 col-start-3 col-end-5">
-          <Select
-                              onValueChange={(value) => {
-                                setNotificationPrefrence(value)
-                              }}
-                              defaultValue={notificationPrefrence}
-                            >
-                              <SelectTrigger>
-                                <SelectValue placeholder={t(`Currency.NotificationField.selection.both`)} />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="BOTH">
-                                  {t(`Currency.NotificationField.selection.both`)}
-                                </SelectItem>
-                                <SelectItem value="PUSH">
-                                  {t(`Currency.NotificationField.selection.push`)}
-                                </SelectItem>
-                                <SelectItem value="EMAIL">
-                                  {t(`Currency.NotificationField.selection.email`)}
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <span className="text-sm text-gray-500">
+            <Select
+              onValueChange={(value) => {
+                setNotificationPrefrence(value)
+              }}
+              defaultValue={notificationPrefrence}
+            >
+              <SelectTrigger>
+                <SelectValue
+                  placeholder={t(`Currency.NotificationField.selection.both`)}
+                />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="BOTH">
+                  {t(`Currency.NotificationField.selection.both`)}
+                </SelectItem>
+                <SelectItem value="PUSH">
+                  {t(`Currency.NotificationField.selection.push`)}
+                </SelectItem>
+                <SelectItem value="EMAIL">
+                  {t(`Currency.NotificationField.selection.email`)}
+                </SelectItem>
+              </SelectContent>
+            </Select>
+            <span className="text-sm text-gray-500">
               {t('Currency.NotificationField.description')}
             </span>
-                            </div>
+          </div>
           <Button
             onClick={updateUserCurrency}
             disabled={isSaving}

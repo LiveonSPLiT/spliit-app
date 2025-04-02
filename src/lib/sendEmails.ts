@@ -1,11 +1,11 @@
 'use server'
 import { env } from '@/lib/env'
+import { sendNotification } from '@/lib/pushNotification'
 import { getEmailsByFriendId } from '@/lib/userFriendsHelper'
 import { getEmailsByGroupId, getGroup } from '@/lib/userGroupsHelper'
 import { ActivityType } from '@prisma/client'
 import { headers } from 'next/headers'
 import parser from 'ua-parser-js'
-import { sendNotification } from '@/lib/pushNotification'
 
 function getClientDeviceInfo() {
   const headerList = headers()
@@ -154,7 +154,6 @@ export async function sendActivityEmails(
   }
 
   for (const { email, name, pushSubscription, notificationPref } of users) {
-
     if (notificationPref === 'EMAIL' || notificationPref === 'BOTH') {
       let response = await fetch(`${env.NODEMAILER_URL}`, {
         method: 'POST',
@@ -176,8 +175,13 @@ export async function sendActivityEmails(
     }
     if (notificationPref === 'PUSH' || notificationPref === 'BOTH') {
       if (pushSubscription) {
-      await sendNotification(pushSubscription, `SPLiT - ${emailTitle}`, message, emailButtonLink)
-    }
+        await sendNotification(
+          pushSubscription,
+          `SPLiT - ${emailTitle}`,
+          message,
+          emailButtonLink,
+        )
+      }
     }
   }
 

@@ -1,7 +1,7 @@
 import { updateUserCurrency } from '@/lib/api'
+import { subscribeUser, unsubscribeUser } from '@/lib/pushNotification'
 import { baseProcedure } from '@/trpc/init'
 import { z } from 'zod'
-import { subscribeUser, unsubscribeUser } from '@/lib/pushNotification'
 
 export const updateUserCurrencyProcedure = baseProcedure
   .input(
@@ -12,12 +12,16 @@ export const updateUserCurrencyProcedure = baseProcedure
       notificationPref: z.string(),
     }),
   )
-  .mutation(async ({ input: { email, currency, pushSubscription, notificationPref } }) => {
-    const updatedCurrency = await updateUserCurrency(email, currency)
-    if (notificationPref === 'BOTH') {
-      const subscription = await subscribeUser(pushSubscription, email)
-    } else if (notificationPref === 'EMAIL') {
-      const subscription = await unsubscribeUser(email)
-    }
-    return { currency: updatedCurrency }
-  })
+  .mutation(
+    async ({
+      input: { email, currency, pushSubscription, notificationPref },
+    }) => {
+      const updatedCurrency = await updateUserCurrency(email, currency)
+      if (notificationPref === 'BOTH') {
+        const subscription = await subscribeUser(pushSubscription, email)
+      } else if (notificationPref === 'EMAIL') {
+        const subscription = await unsubscribeUser(email)
+      }
+      return { currency: updatedCurrency }
+    },
+  )
