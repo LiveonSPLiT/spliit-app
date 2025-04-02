@@ -113,9 +113,7 @@ export async function unblockFriendDB(groupId: string) {
   })
 }
 
-export async function getEmailsByFriendId(
-  groupId: string,
-): Promise<
+export async function getEmailsByFriendId(groupId: string): Promise<
   {
     email: string
     name: string

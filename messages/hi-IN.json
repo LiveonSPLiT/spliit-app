@@ -439,7 +439,7 @@
         "friendPieGraph": "कुल खर्च (मित्र-वार)"
       }
     },
-    "Currency": {
+    "Settings": {
       "title": "सेटिंग्स",
       "description": "ऐप में उपयोग की जाने वाली मुद्रा प्रतीक और अधिसूचना सेटिंग्स बदलें।",
       "CurrencyField": {

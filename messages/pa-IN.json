@@ -439,7 +439,7 @@
         "friendPieGraph": "ਕੁੱਲ ਖਰਚਾ (ਦੋਸਤ-ਵਾਈਜ਼)"
       }
     },
-    "Currency": {
+    "Settings": {
       "title": "ਸੈਟਿੰਗਜ਼",
       "description": "ਐਪ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਮੁਦਰਾ ਚਿੰਨ੍ਹ ਅਤੇ ਨੋਟੀਫਿਕੇਸ਼ਨ ਸੈਟਿੰਗਜ਼ ਬਦਲੋ।",
       "CurrencyField": {

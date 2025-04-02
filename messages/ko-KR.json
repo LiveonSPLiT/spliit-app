@@ -439,7 +439,7 @@
         "friendPieGraph": "총 지출 (친구별)"
       }
     },
-    "Currency": {
+    "Settings": {
       "title": "설정",
       "description": "앱에서 사용되는 통화 기호 및 알림 설정을 변경하세요.",
       "CurrencyField": {

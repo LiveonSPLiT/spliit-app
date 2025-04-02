@@ -2,7 +2,7 @@
 
 import { ShareButton } from '@/app/dashboard/share-button'
 import { Stats } from '@/app/dashboard/stats'
-import { Currency } from '@/app/dashboard/user-currency'
+import { Settings } from '@/app/dashboard/user-settings'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { trpc } from '@/trpc/client'
@@ -60,7 +60,7 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
         </div>
       </div>
       <Stats userEmail={userEmail} currency={currency ?? ''} />
-      <Currency
+      <Settings
         userEmail={userEmail}
         currency={currency ?? ''}
         notificationPrefre={data?.notificationPrefrence ?? 'BOTH'}

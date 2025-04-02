@@ -439,7 +439,7 @@
         "friendPieGraph": "Total spendings (Friend-wise)"
       }
     },
-    "Currency": {
+    "Settings": {
       "title": "Settings",
       "description": "Change the currency symbol & notification settings used in the app.",
       "CurrencyField": {

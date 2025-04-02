@@ -439,7 +439,7 @@
         "friendPieGraph": "Total pengeluaran (Berdasarkan Teman)"
       }
     },
-    "Currency": {
+    "Settings": {
       "title": "Pengaturan",
       "description": "Ubah simbol mata uang & pengaturan notifikasi yang digunakan di aplikasi.",
       "CurrencyField": {

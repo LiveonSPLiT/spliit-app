@@ -113,9 +113,7 @@ export async function unarchiveGroupDB(groupId: string) {
   })
 }
 
-export async function getEmailsByGroupId(
-  groupId: string,
-): Promise<
+export async function getEmailsByGroupId(groupId: string): Promise<
   {
     email: string
     name: string

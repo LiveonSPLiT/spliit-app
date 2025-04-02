@@ -439,7 +439,7 @@
         "friendPieGraph": "总支出（按朋友）"
       }
     },
-    "Currency": {
+    "Settings": {
       "title": "设置",
       "description": "更改应用中使用的货币符号和通知设置。",
       "CurrencyField": {

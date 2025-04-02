@@ -23,7 +23,7 @@ import { Save } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
-type CurrencyProps = {
+type SettingProps = {
   userEmail: string
   currency: string
   notificationPrefre: string
@@ -44,13 +44,13 @@ function urlBase64ToUint8Array(base64String: string) {
   return outputArray
 }
 
-export function Currency({
+export function Settings({
   userEmail,
   currency,
   notificationPrefre,
   loading,
   onCurrencyUpdate,
-}: CurrencyProps) {
+}: SettingProps) {
   const { mutateAsync } = trpc.dashboard.updateUserCurrency.useMutation()
   const [loadingData, setLoadingData] = useState(loading)
   const [currencyValue, setCurrencyValue] = useState(currency)
@@ -122,8 +122,8 @@ export function Currency({
   return (
     <Card className="mb-4">
       <CardHeader>
-        <CardTitle>{t('Currency.title')}</CardTitle>
-        <CardDescription>{t('Currency.description')}</CardDescription>
+        <CardTitle>{t('Settings.title')}</CardTitle>
+        <CardDescription>{t('Settings.description')}</CardDescription>
       </CardHeader>
 
       {loadingData ? (
@@ -137,10 +137,10 @@ export function Currency({
               className="flex-1 col-span-2"
               value={currencyValue}
               onChange={(e) => setCurrencyValue(e.target.value)}
-              placeholder={t('Currency.CurrencyField.placeholder')}
+              placeholder={t('Settings.CurrencyField.placeholder')}
             />
             <span className="text-sm text-gray-500">
-              {t('Currency.CurrencyField.description')}
+              {t('Settings.CurrencyField.description')}
             </span>
           </div>
           <div className="flex-1 col-start-3 col-end-5">
@@ -152,23 +152,23 @@ export function Currency({
             >
               <SelectTrigger>
                 <SelectValue
-                  placeholder={t(`Currency.NotificationField.selection.both`)}
+                  placeholder={t(`Settings.NotificationField.selection.both`)}
                 />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="BOTH">
-                  {t(`Currency.NotificationField.selection.both`)}
+                  {t(`Settings.NotificationField.selection.both`)}
                 </SelectItem>
                 <SelectItem value="PUSH">
-                  {t(`Currency.NotificationField.selection.push`)}
+                  {t(`Settings.NotificationField.selection.push`)}
                 </SelectItem>
                 <SelectItem value="EMAIL">
-                  {t(`Currency.NotificationField.selection.email`)}
+                  {t(`Settings.NotificationField.selection.email`)}
                 </SelectItem>
               </SelectContent>
             </Select>
             <span className="text-sm text-gray-500">
-              {t('Currency.NotificationField.description')}
+              {t('Settings.NotificationField.description')}
             </span>
           </div>
           <Button
@@ -179,8 +179,8 @@ export function Currency({
             <Save className="w-4 h-4 mr-2" />{' '}
             {t(
               isSaving
-                ? 'Currency.CurrencyField.saving'
-                : 'Currency.CurrencyField.save',
+                ? 'Settings.CurrencyField.saving'
+                : 'Settings.CurrencyField.save',
             )}
           </Button>
         </CardContent>
