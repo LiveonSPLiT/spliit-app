@@ -1,5 +1,6 @@
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { Prisma } from '@prisma/client'
 import { z } from 'zod'
 
 export const recentFriendsSchema = z.array(
@@ -112,9 +113,14 @@ export async function unblockFriendDB(groupId: string) {
   })
 }
 
-export async function getEmailsByFriendId(
-  groupId: string,
-): Promise<{ email: string; name: string }[]> {
+export async function getEmailsByFriendId(groupId: string): Promise<
+  {
+    email: string
+    name: string
+    pushSubscription: Prisma.JsonValue
+    notificationPref: string
+  }[]
+> {
   if (!groupId) return []
   // Fetch all users associated with the given groupId from the RecentFriend model
   const users = await prisma.recentFriend.findMany({
@@ -126,6 +132,8 @@ export async function getEmailsByFriendId(
         select: {
           email: true,
           name: true,
+          pushSubscription: true,
+          notificationPref: true,
         },
       },
     },
@@ -135,6 +143,8 @@ export async function getEmailsByFriendId(
   return users.map((group) => ({
     email: group.user.email,
     name: group.user.name,
+    pushSubscription: group.user.pushSubscription,
+    notificationPref: group.user.notificationPref,
   }))
 }
 

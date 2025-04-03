@@ -12,12 +12,12 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            TAG=arm64-friend-DboD1-STAB2
+            TAG=arm64-friend-DboD1-PWA1
             docker build -t sirargupta/split-app:$TAG .
       - run:
           name: Push application Docker image
           command: |
-            TAG=arm64-friend-DboD1-STAB2
+            TAG=arm64-friend-DboD1-PWA1
             echo $DOCKERHUB_PASSWORD | docker login -u sirargupta --password-stdin
             docker push sirargupta/split-app:$TAG
 workflows:
