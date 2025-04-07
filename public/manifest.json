@@ -39,26 +39,52 @@
   "lang": "en-US",
   "id": "id",
   "scope": "/",
+  "screenshots": [
+    {
+      "src": "/split-desktop.png",
+      "sizes": "1892x787",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "splitDesktop"
+    },
+    {
+      "src": "/split-moblie.png",
+      "sizes": "360x795",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "splitMobile"
+    }
+  ],
   "dir": "auto",
   "prefer_related_applications": false,
   "share_target": {},
   "display_override": [
-    "browser",
     "fullscreen",
     "minimal-ui",
-    "standalone",
-    "window-controls-overlay"
+    "standalone"
   ],
   "shortcuts": [
     {
       "name": "Create Group",
       "url": "/groups/create",
-      "description": "Create Group"
+      "description": "Create Group",
+      "icons": [ {
+        "src": "/users.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      }
+      ]
     },
     {
       "name": "Add Friend",
       "url": "/friends/create",
-      "description": "Add a Friend"
+      "description": "Add a Friend",
+      "icons": [ {
+        "src": "/contact.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      }
+      ]
     }
   ],
   "categories": ["finance"],
@@ -67,7 +93,7 @@
       "origin": "*.liveonsplit.com"
     }
   ],
-  "handle_links": "preferred",
+  "handle_links": "auto",
   "launch_handler": {
     "client_mode": ["navigate-existing", "auto"]
   },
