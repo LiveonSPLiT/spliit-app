@@ -6,6 +6,7 @@ interface ExtendedManifest extends MetadataRoute.Manifest {
   launch_handler?: any
   iarc_rating_id?: string
   edge_side_panel?: any
+  screenshots?: any
 }
 
 export default function manifest(): ExtendedManifest {
@@ -51,18 +52,31 @@ export default function manifest(): ExtendedManifest {
     lang: 'en-US',
     id: 'id',
     display_override: [
-      'browser',
       'fullscreen',
       'minimal-ui',
       'standalone',
-      'window-controls-overlay',
     ],
     scope: '/',
     dir: 'auto',
     prefer_related_applications: false,
     related_applications: [],
     share_target: {},
-    screenshots: [],
+    screenshots: [
+      {
+        src: '/split-desktop.png',
+        sizes: '1892x787',
+        type: 'image/png',
+        form_factor: 'wide',
+        label: 'splitDesktop',
+      },
+      {
+        src: '/split-moblie.png',
+        sizes: '360x795',
+        type: 'image/png',
+        form_factor: 'narrow',
+        label: 'splitMobile',
+      },
+    ],
     protocol_handlers: [],
     file_handlers: [],
     shortcuts: [
@@ -70,11 +84,23 @@ export default function manifest(): ExtendedManifest {
         name: 'Create Group',
         url: '/groups/create',
         description: 'Create Group',
+        icons: [ {
+          src: '/users.png',
+          sizes: '96x96',
+          type: 'image/png',
+        }
+      ]
       },
       {
         name: 'Add Friend',
         url: '/friends/create',
         description: 'Add a Friend',
+        icons: [ {
+          src: '/contact.png',
+          sizes: '96x96',
+          type: 'image/png',
+        }
+        ]
       },
     ],
     categories: ['finance'],
