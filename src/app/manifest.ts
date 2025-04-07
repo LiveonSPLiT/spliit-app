@@ -1,3 +1,4 @@
+import { env } from '@/lib/env'
 import { MetadataRoute } from 'next'
 
 interface ExtendedManifest extends MetadataRoute.Manifest {
@@ -15,7 +16,7 @@ export default function manifest(): ExtendedManifest {
     short_name: 'SPLiT',
     description:
       'A minimalist web application to share expenses with friends and family. No ads, no problem.',
-    start_url: '/',
+    start_url: env.NEXT_PUBLIC_BASE_URL + '/',
     display: 'standalone',
     background_color: '#fff',
     theme_color: '#047857',
@@ -56,7 +57,7 @@ export default function manifest(): ExtendedManifest {
       'minimal-ui',
       'standalone',
     ],
-    scope: '/',
+    scope: env.NEXT_PUBLIC_BASE_URL + '/',
     dir: 'auto',
     prefer_related_applications: false,
     related_applications: [],
