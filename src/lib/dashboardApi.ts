@@ -10,7 +10,7 @@ import {
 export async function getUserByEmail(email: string) {
   return await prisma.user.findUnique({
     where: { email },
-    select: { id: true },
+    select: { id: true, name: true },
   })
 }
 
