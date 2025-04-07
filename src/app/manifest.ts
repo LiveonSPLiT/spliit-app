@@ -51,11 +51,7 @@ export default function manifest(): ExtendedManifest {
     ],
     lang: 'en-US',
     id: 'id',
-    display_override: [
-      'fullscreen',
-      'minimal-ui',
-      'standalone',
-    ],
+    display_override: ['fullscreen', 'minimal-ui', 'standalone'],
     scope: '/',
     dir: 'auto',
     prefer_related_applications: false,
@@ -84,23 +80,25 @@ export default function manifest(): ExtendedManifest {
         name: 'Create Group',
         url: '/groups/create',
         description: 'Create Group',
-        icons: [ {
-          src: '/users.png',
-          sizes: '96x96',
-          type: 'image/png',
-        }
-      ]
+        icons: [
+          {
+            src: '/users.png',
+            sizes: '96x96',
+            type: 'image/png',
+          },
+        ],
       },
       {
         name: 'Add Friend',
         url: '/friends/create',
         description: 'Add a Friend',
-        icons: [ {
-          src: '/contact.png',
-          sizes: '96x96',
-          type: 'image/png',
-        }
-        ]
+        icons: [
+          {
+            src: '/contact.png',
+            sizes: '96x96',
+            type: 'image/png',
+          },
+        ],
       },
     ],
     categories: ['finance'],
