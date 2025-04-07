@@ -105,6 +105,7 @@ export default function manifest(): ExtendedManifest {
     ],
     categories: ['finance'],
     scope_extensions: [{ origin: '*.liveonsplit.com' }],
+    handle_links: 'preferred',
     launch_handler: {
       client_mode: ['navigate-existing', 'auto'],
     },
