@@ -32,15 +32,16 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
   const [open, setOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const { data: groupData } = trpc.groups.get.useQuery({ groupId })
-  const { data: participantId } = trpc.groups.getParticipantId.useQuery({
-    loggedInUserEmail: session?.user?.email || '',
-    groupId,
-  })
+  const { data: participantId, isLoading: participantLoading } =
+    trpc.groups.getParticipantId.useQuery({
+      loggedInUserEmail: session?.user?.email || '',
+      groupId,
+    })
 
   const group = groupData?.group
 
   useEffect(() => {
-    if (!group) return
+    if (!group || participantLoading) return
 
     const tempUser = localStorage.getItem(`newGroup-activeUser`)
     const activeUser = localStorage.getItem(`${group.id}-activeUser`)
@@ -51,7 +52,7 @@ export function ActiveUserModal({ groupId }: { groupId: string }) {
         localStorage.setItem(`${group.id}-activeUser`, participantId || 'None')
       }
     }
-  }, [group])
+  }, [group, participantLoading])
 
   function updateOpen(open: boolean) {
     if (!group) return
