@@ -200,8 +200,8 @@
     },
     "INR": {
       "name": "Indian Rupee",
-      "symbol_native": "টকা",
-      "symbol": "Rs",
+      "symbol_native": "₹",
+      "symbol": "₹",
       "code": "INR",
       "name_plural": "Indian rupees",
       "rounding": 0,

@@ -103,11 +103,11 @@ function CurrencyCommand({
 }) {
   const currencyGroup = (currency: Currency) => {
     switch (currency.code) {
-      case 'USD':
+      case 'INR':
       case 'EUR':
       case 'JPY':
       case 'GBP':
-      case 'CNY':
+      case 'USD':
         return 'common'
       default:
         if (currency.code === '') return 'custom'

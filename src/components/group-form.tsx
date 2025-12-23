@@ -193,13 +193,12 @@ export function GroupForm({
               control={form.control}
               name="currency"
               render={({ field }) => (
-                <FormItem>
+                <FormItem hidden={!!form.watch('currencyCode')?.length}>
                   <FormLabel>{t('CurrencyField.label')}</FormLabel>
                   <FormControl>
                     <Input
                       className="text-base"
                       placeholder={t('CurrencyField.placeholder')}
-                      disabled={!!form.watch('currencyCode')?.length}
                       max={5}
                       {...field}
                     />
