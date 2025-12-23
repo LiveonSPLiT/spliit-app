@@ -88,6 +88,7 @@ model Group {
   name         String
   information  String?       @db.Text
   currency     String        @default("₹")
+  currencyCode String?
   type         GroupType     @default(MULTI_MEMBER)  // Added type field with default value
   participants Participant[]
   expenses     Expense[]
