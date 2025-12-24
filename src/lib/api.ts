@@ -947,7 +947,11 @@ function isDateInNextMonth(
   return true
 }
 
-export async function updateUserCurrency(email: string, currency: string, currencyCode: string) {
+export async function updateUserCurrency(
+  email: string,
+  currency: string,
+  currencyCode: string,
+) {
   const user = await prisma.user.findUnique({
     where: { email },
     select: { id: true },

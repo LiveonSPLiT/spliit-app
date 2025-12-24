@@ -46,24 +46,24 @@ export function FriendForm({
     resolver: zodResolver(groupFormSchema),
     defaultValues: group
       ? {
-        name: group.name,
-        friendEmail: group.friendEmail,
-        information: group.information ?? '',
-        currency: group.currency,
-        currencyCode: group.currencyCode,
-        participants: group.participants,
-      }
+          name: group.name,
+          friendEmail: group.friendEmail,
+          information: group.information ?? '',
+          currency: group.currency,
+          currencyCode: group.currencyCode,
+          participants: group.participants,
+        }
       : {
-        name: '',
-        friendEmail: '',
-        information: '',
-        currency: userCurrency,
-        currencyCode: process.env.NEXT_PUBLIC_DEFAULT_CURRENCY_CODE || 'INR',
-        participants: [
-          { name: t('Participants.John') },
-          { name: t('Participants.Jane') },
-        ],
-      },
+          name: '',
+          friendEmail: '',
+          information: '',
+          currency: userCurrency,
+          currencyCode: process.env.NEXT_PUBLIC_DEFAULT_CURRENCY_CODE || 'INR',
+          participants: [
+            { name: t('Participants.John') },
+            { name: t('Participants.Jane') },
+          ],
+        },
   })
   const { fields, append, remove } = useFieldArray({
     control: form.control,
@@ -103,7 +103,7 @@ export function FriendForm({
           await onSubmit(
             values,
             group?.participants.find((p) => p.name === activeUser)?.id ??
-            undefined,
+              undefined,
           )
         })}
       >

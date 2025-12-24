@@ -1,7 +1,7 @@
 'use client'
 
-import { Currency } from '@/lib/currency'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Currency } from '@/lib/currency'
 import { cn, formatCurrency } from '@/lib/utils'
 import { trpc } from '@/trpc/client'
 import { useLocale, useTranslations } from 'next-intl'

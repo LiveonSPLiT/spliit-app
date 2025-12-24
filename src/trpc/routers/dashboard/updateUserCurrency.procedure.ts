@@ -15,9 +15,19 @@ export const updateUserCurrencyProcedure = baseProcedure
   )
   .mutation(
     async ({
-      input: { email, currency, currencyCode, pushSubscription, notificationPref },
+      input: {
+        email,
+        currency,
+        currencyCode,
+        pushSubscription,
+        notificationPref,
+      },
     }) => {
-      const updatedCurrency = await updateUserCurrency(email, currency, currencyCode)
+      const updatedCurrency = await updateUserCurrency(
+        email,
+        currency,
+        currencyCode,
+      )
       if (notificationPref === 'BOTH') {
         const subscription = await subscribeUser(pushSubscription, email)
       } else if (notificationPref === 'EMAIL') {

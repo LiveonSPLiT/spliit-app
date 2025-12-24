@@ -1,4 +1,3 @@
-import { Currency } from '@/lib/currency'
 import { Graphs } from '@/app/dashboard/graphs'
 import { Totals } from '@/app/dashboard/totals'
 import {
@@ -8,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Currency } from '@/lib/currency'
 import { useTranslations } from 'next-intl'
 
 type StatsProps = {

@@ -1,6 +1,6 @@
 import { getUserCurrency } from '@/lib/api'
-import { baseProcedure } from '@/trpc/init'
 import { getCurrency } from '@/lib/currency'
+import { baseProcedure } from '@/trpc/init'
 import { z } from 'zod'
 
 export const getUserCurrencyProcedure = baseProcedure

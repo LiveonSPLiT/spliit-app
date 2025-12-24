@@ -1,5 +1,6 @@
 'use client'
 
+import { CurrencySelector } from '@/components/currency-selector'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -8,10 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { CurrencySelector } from '@/components/currency-selector'
-import { defaultCurrencyList, getCurrency } from '@/lib/currency'
 import { Input } from '@/components/ui/input'
-import { Locale } from '@/i18n'
 import {
   Select,
   SelectContent,
@@ -20,6 +18,8 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Locale } from '@/i18n'
+import { defaultCurrencyList, getCurrency } from '@/lib/currency'
 import { subscribeUser } from '@/lib/pushNotification'
 import { trpc } from '@/trpc/client'
 import { Save } from 'lucide-react'

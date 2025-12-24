@@ -4,8 +4,8 @@ import { ShareButton } from '@/app/dashboard/share-button'
 import { Stats } from '@/app/dashboard/stats'
 import { Settings } from '@/app/dashboard/user-settings'
 import { Button } from '@/components/ui/button'
-import { Currency } from '@/lib/currency'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Currency } from '@/lib/currency'
 import { trpc } from '@/trpc/client'
 import { Contact, Users } from 'lucide-react'
 import { useSession } from 'next-auth/react'
@@ -21,7 +21,7 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
     code: 'INR',
     name_plural: 'Indian rupees',
     rounding: 0,
-    decimal_digits: 2
+    decimal_digits: 2,
   }
   const t = useTranslations('Dashboard')
   const { data: session, status } = useSession()
@@ -71,7 +71,10 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
           />
         </div>
       </div>
-      <Stats userEmail={userEmail} currency={currencyObject ?? defaultCurrency} />
+      <Stats
+        userEmail={userEmail}
+        currency={currencyObject ?? defaultCurrency}
+      />
       <Settings
         userEmail={userEmail}
         currency={currency ?? ''}
