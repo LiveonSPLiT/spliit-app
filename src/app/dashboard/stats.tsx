@@ -7,11 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Currency } from '@/lib/currency'
 import { useTranslations } from 'next-intl'
 
 type StatsProps = {
   userEmail: string
-  currency: string
+  currency: Currency
 }
 
 export function Stats({ userEmail, currency }: StatsProps) {
@@ -28,7 +29,7 @@ export function Stats({ userEmail, currency }: StatsProps) {
           <Totals userEmail={userEmail} currency={currency} />
         </CardContent>
       </Card>
-      <Graphs userEmail={userEmail} currency={currency} />
+      <Graphs userEmail={userEmail} currency={currency.symbol} />
     </>
   )
 }

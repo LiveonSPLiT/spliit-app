@@ -106,6 +106,11 @@
       "placeholder": "₩, ₩, ₩…",
       "description": "금액을 표시하는 데 사용하겠습니다."
     },
+    "CurrencyCodeField": {
+      "label": "메인 통화",
+      "description": "모든 금액과 잔액은 이 통화로 표시됩니다. 이 값을 변경해도 이미 입력된 비용은 변환되지 않습니다.",
+      "customOption": "사용자 지정"
+    },
     "Participants": {
       "title": "참가자들",
       "description": "각 참가자의 이름을 입력합니다.",
@@ -447,7 +452,8 @@
         "placeholder": "₹, $, £…",
         "description": "금액을 표시하는 데 사용됩니다.",
         "save": "저장",
-        "saving": "저장 중…"
+        "saving": "저장 중…",
+        "customOption": "사용자 지정"
       },
       "NotificationField": {
         "label": "알림 설정",
@@ -604,6 +610,19 @@
       "Trash": "쓰레기",
       "TV/Phone/Internet": "TV/전화/인터넷",
       "Water": "물"
+    }
+  },
+  "Currencies": {
+    "search": "통화 검색...",
+    "noCurrency": "통화를 찾을 수 없습니다.",
+    "custom": {
+      "heading": "사용자 지정"
+    },
+    "common": {
+      "heading": "가장 일반적임"
+    },
+    "other": {
+      "heading": "기타 통화"
     }
   }
 }

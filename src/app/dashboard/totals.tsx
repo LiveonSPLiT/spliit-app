@@ -1,18 +1,19 @@
 'use client'
 
 import { Skeleton } from '@/components/ui/skeleton'
+import { Currency } from '@/lib/currency'
 import { cn, formatCurrency } from '@/lib/utils'
 import { trpc } from '@/trpc/client'
 import { useLocale, useTranslations } from 'next-intl'
 
 type TotalsProps = {
   userEmail: string
-  currency: string
+  currency: Currency
 }
 
 type TotalsSpendingEverythingProps = {
   totalSpendingsEverything: number
-  currency: string
+  currency: Currency
 }
 
 function TotalsSpendingEverything({
@@ -36,7 +37,7 @@ function TotalsCurrentMonthSpendings({
   currency,
 }: {
   totalMonthSpendings?: number
-  currency: string
+  currency: Currency
 }) {
   const locale = useLocale()
   const t = useTranslations('Dashboard.Totals')
@@ -61,7 +62,7 @@ function TotalsYourGroupSpending({
   currency,
 }: {
   totalGroupSpending?: number
-  currency: string
+  currency: Currency
 }) {
   const locale = useLocale()
   const t = useTranslations('Dashboard.Totals')
@@ -87,7 +88,7 @@ function TotalsYourFriendSpending({
   currency,
 }: {
   totalFriendSpending?: number
-  currency: string
+  currency: Currency
 }) {
   const locale = useLocale()
   const t = useTranslations('Dashboard.Totals')

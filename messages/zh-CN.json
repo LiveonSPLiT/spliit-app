@@ -106,6 +106,11 @@
       "placeholder": "$、$、£...",
       "description": "我们将用它来显示金额。"
     },
+    "CurrencyCodeField": {
+      "label": "主要货币",
+      "description": "所有金额和余额都将以此货币显示。更改此设置不会转换已输入的费用。",
+      "customOption": "自定义"
+    },
     "Participants": {
       "title": "参加者",
       "description": "输入每个参与者的姓名。",
@@ -447,7 +452,8 @@
         "placeholder": "₹, $, £…",
         "description": "我们将使用它来显示金额。",
         "save": "保存",
-        "saving": "正在保存…"
+        "saving": "正在保存…",
+        "customOption": "自定义"
       },
       "NotificationField": {
         "label": "通知设置",
@@ -604,6 +610,19 @@
       "Trash": "垃圾",
       "TV/Phone/Internet": "电视/电话/网络",
       "Water": "水"
+    }
+  },
+  "Currencies": {
+    "search": "搜索货币...",
+    "noCurrency": "未找到货币。",
+    "custom": {
+      "heading": "自定义"
+    },
+    "common": {
+      "heading": "最常见"
+    },
+    "other": {
+      "heading": "其他货币"
     }
   }
 }

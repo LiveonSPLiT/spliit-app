@@ -41,12 +41,19 @@ import {
   SplittingOptions,
   expenseFormSchema,
 } from '@/lib/schemas'
-import { cn } from '@/lib/utils'
+import { calculateShare } from '@/lib/totals'
+import {
+  amountAsDecimal,
+  amountAsMinorUnits,
+  cn,
+  formatCurrency,
+  getCurrencyFromGroup,
+} from '@/lib/utils'
 import { AppRouterOutput } from '@/trpc/routers/_app'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { RecurrenceRule } from '@prisma/client'
 import { Save } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -169,6 +176,7 @@ export function ExpenseForm({
   runtimeFeatureFlags: RuntimeFeatureFlags
 }) {
   const t = useTranslations('ExpenseForm')
+  const locale = useLocale()
   const isCreate = expense === undefined
   const searchParams = useSearchParams()
   const getSelectedPayer = (field?: { value: string }) => {
@@ -184,18 +192,25 @@ export function ExpenseForm({
     return field?.value as RecurrenceRule
   }
   const defaultSplittingOptions = getDefaultSplittingOptions(group)
+  const groupCurrency = getCurrencyFromGroup(group)
   const form = useForm<ExpenseFormValues>({
     resolver: zodResolver(expenseFormSchema),
     defaultValues: expense
       ? {
           title: expense.title,
           expenseDate: expense.expenseDate ?? new Date(),
-          amount: String(expense.amount / 100) as unknown as number, // hack
+          amount: String(
+            amountAsDecimal(expense.amount, groupCurrency),
+          ) as unknown as number, // hack
           category: expense.categoryId,
           paidBy: expense.paidById,
           paidFor: expense.paidFor.map(({ participantId, shares }) => ({
             participant: participantId,
-            shares: String(shares / 100) as unknown as number,
+            shares: String(
+              expense.splitMode === 'BY_AMOUNT'
+                ? amountAsDecimal(shares, groupCurrency)
+                : shares / 100,
+            ) as unknown as number,
           })),
           splitMode: expense.splitMode,
           saveDefaultSplittingOptions: false,
@@ -210,7 +225,10 @@ export function ExpenseForm({
           title: 'Reimbursement',
           expenseDate: new Date(),
           amount: String(
-            (Number(searchParams.get('amount')) || 0) / 100,
+            amountAsDecimal(
+              Number(searchParams.get('amount')) || 0,
+              groupCurrency,
+            ),
           ) as unknown as number, // hack
           category: 1, // category with Id 1 is Payment
           paidBy: searchParams.get('from') ?? undefined,
@@ -265,6 +283,16 @@ export function ExpenseForm({
 
   const submit = async (values: ExpenseFormValues) => {
     await persistDefaultSplittingOptions(group.id, values)
+
+    // Store monetary amounts in minor units (cents)
+    values.amount = amountAsMinorUnits(values.amount, groupCurrency)
+    values.paidFor = values.paidFor.map(({ participant, shares }) => ({
+      participant,
+      shares:
+        values.splitMode === 'BY_AMOUNT'
+          ? amountAsMinorUnits(shares, groupCurrency)
+          : shares,
+    }))
     return onSubmit(values, activeUserId ?? undefined)
   }
 
@@ -319,7 +347,9 @@ export function ExpenseForm({
             return {
               ...participant,
               shares: String(
-                Number(amountPerRemaining.toFixed(2)),
+                Number(
+                  amountPerRemaining.toFixed(groupCurrency.decimal_digits),
+                ),
               ) as unknown as number,
             }
           }
@@ -654,6 +684,50 @@ export function ExpenseForm({
                               </FormControl>
                               <FormLabel className="text-sm font-normal flex-1">
                                 {name}
+                                {field.value?.some(
+                                  ({ participant }) => participant === id,
+                                ) &&
+                                  !form.watch('isReimbursement') && (
+                                    <span className="text-muted-foreground ml-2">
+                                      (
+                                      {formatCurrency(
+                                        groupCurrency,
+                                        calculateShare(id, {
+                                          amount: amountAsMinorUnits(
+                                            Number(form.watch('amount')),
+                                            groupCurrency,
+                                          ), // Convert to cents
+                                          paidFor: field.value.map(
+                                            ({ participant, shares }) => ({
+                                              participant: {
+                                                id: participant,
+                                                name: '',
+                                                groupId: '',
+                                              },
+                                              shares:
+                                                form.watch('splitMode') ===
+                                                'BY_PERCENTAGE'
+                                                  ? Number(shares) * 100 // Convert percentage to basis points (e.g., 50% -> 5000)
+                                                  : form.watch('splitMode') ===
+                                                    'BY_AMOUNT'
+                                                  ? amountAsMinorUnits(
+                                                      shares,
+                                                      groupCurrency,
+                                                    )
+                                                  : shares,
+                                              expenseId: '',
+                                              participantId: '',
+                                            }),
+                                          ),
+                                          splitMode: form.watch('splitMode'),
+                                          isReimbursement:
+                                            form.watch('isReimbursement'),
+                                        }),
+                                        locale,
+                                      )}
+                                      )
+                                    </span>
+                                  )}
                               </FormLabel>
                             </FormItem>
                             {form.getValues().splitMode !== 'EVENLY' && (

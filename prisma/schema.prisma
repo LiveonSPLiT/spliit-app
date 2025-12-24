@@ -16,6 +16,7 @@ model User {
   name            String
   email           String          @unique
   currency        String          @default("₹")
+  currencyCode    String          @default("INR")
   pushSubscription Json?           // Store subscription as raw JSON
   notificationPref NotificationPref @default(BOTH)
   recentGroups    RecentGroup[]
@@ -88,6 +89,7 @@ model Group {
   name         String
   information  String?       @db.Text
   currency     String        @default("₹")
+  currencyCode String?
   type         GroupType     @default(MULTI_MEMBER)  // Added type field with default value
   participants Participant[]
   expenses     Expense[]

@@ -106,6 +106,11 @@
       "placeholder": "₹、$、£…",
       "description": "金額を表示するために使用します。"
     },
+    "CurrencyCodeField": {
+      "label": "メイン通貨",
+      "description": "すべての金額と残高はこの通貨で表示されます。これを変更しても既存の経費は変換されません。",
+      "customOption": "カスタム"
+    },
     "Participants": {
       "title": "参加者",
       "description": "各参加者の名前を入力します。",
@@ -447,7 +452,8 @@
         "placeholder": "₹, $, £…",
         "description": "金額を表示するために使用します。",
         "save": "保存",
-        "saving": "保存中…"
+        "saving": "保存中…",
+        "customOption": "カスタム"
       },
       "NotificationField": {
         "label": "通知設定",
@@ -605,6 +611,19 @@
       "Trash": "ごみ",
       "TV/Phone/Internet": "テレビ/電話/インターネット",
       "Water": "水"
+    }
+  },
+  "Currencies": {
+    "search": "通貨を検索...",
+    "noCurrency": "通貨が見つかりませんでした。",
+    "custom": {
+      "heading": "カスタム"
+    },
+    "common": {
+      "heading": "最も一般的"
+    },
+    "other": {
+      "heading": "その他の通貨"
     }
   }
 }
