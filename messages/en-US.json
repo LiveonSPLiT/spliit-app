@@ -452,7 +452,8 @@
         "placeholder": "₹, $, £…",
         "description": "We’ll use it to display amounts.",
         "save": "Save",
-        "saving": "Saving…"
+        "saving": "Saving…",
+        "customOption": "Custom"
       },
       "NotificationField": {
         "label": "Notification settings",

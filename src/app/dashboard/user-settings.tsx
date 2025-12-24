@@ -8,7 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { CurrencySelector } from '@/components/currency-selector'
+import { defaultCurrencyList, getCurrency } from '@/lib/currency'
 import { Input } from '@/components/ui/input'
+import { Locale } from '@/i18n'
 import {
   Select,
   SelectContent,
@@ -20,12 +23,13 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { subscribeUser } from '@/lib/pushNotification'
 import { trpc } from '@/trpc/client'
 import { Save } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 type SettingProps = {
   userEmail: string
   currency: string
+  currencyCode: string
   notificationPrefre: string
   loading: boolean
   onCurrencyUpdate: (newCurrency: string) => void
@@ -47,6 +51,7 @@ function urlBase64ToUint8Array(base64String: string) {
 export function Settings({
   userEmail,
   currency,
+  currencyCode,
   notificationPrefre,
   loading,
   onCurrencyUpdate,
@@ -54,7 +59,10 @@ export function Settings({
   const { mutateAsync } = trpc.dashboard.updateUserCurrency.useMutation()
   const [loadingData, setLoadingData] = useState(loading)
   const [currencyValue, setCurrencyValue] = useState(currency)
+  const [currencyCodeValue, setCurrencyCodeValue] = useState(currencyCode)
+  const [displayCustomCurrency, setDisplayCustomCurrency] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
+  const locale = useLocale()
   const t = useTranslations('Dashboard')
 
   const [isSupported, setIsSupported] = useState(false)
@@ -87,7 +95,10 @@ export function Settings({
   useEffect(() => {
     setCurrencyValue(currency)
     setNotificationPrefrence(notificationPrefre)
-  }, [currency, notificationPrefre])
+    if (currencyCode === 'Custom') {
+      setDisplayCustomCurrency(true)
+    }
+  }, [currency, notificationPrefre, currencyCode])
 
   useEffect(() => {
     setLoadingData(loading)
@@ -108,6 +119,7 @@ export function Settings({
       const response = await mutateAsync({
         email: userEmail,
         currency: currencyValue,
+        currencyCode: currencyCodeValue,
         pushSubscription: JSON.parse(JSON.stringify(subscription)),
         notificationPref: notificationPrefrence,
       })
@@ -133,12 +145,26 @@ export function Settings({
       ) : (
         <CardContent className="grid sm:grid-cols-6 gap-4">
           <div className="flex-1 col-start-1 col-end-3">
-            <Input
-              className="flex-1 col-span-2"
-              value={currencyValue}
-              onChange={(e) => setCurrencyValue(e.target.value)}
-              placeholder={t('Settings.CurrencyField.placeholder')}
-            />
+            <div className="flex-1 col-span-2">
+              <CurrencySelector
+                currencies={defaultCurrencyList(
+                  locale as Locale,
+                  t('Settings.CurrencyField.customOption'),
+                )}
+                defaultValue={currencyCode}
+                onValueChange={(newCurrency) => {
+                  const currency = getCurrency(newCurrency)
+                  if (currency.name === 'Custom') {
+                    setDisplayCustomCurrency(true)
+                    setCurrencyCodeValue(currency.name)
+                  } else {
+                    setDisplayCustomCurrency(false)
+                    setCurrencyCodeValue(newCurrency)
+                  }
+                }}
+                isLoading={false}
+              />
+            </div>
             <span className="text-sm text-gray-500">
               {t('Settings.CurrencyField.description')}
             </span>
@@ -183,6 +209,14 @@ export function Settings({
                 : 'Settings.CurrencyField.save',
             )}
           </Button>
+          {displayCustomCurrency && (
+            <Input
+              className="flex-1 col-start-1 col-end-5"
+              value={currencyValue}
+              onChange={(e) => setCurrencyValue(e.target.value)}
+              placeholder={t('Settings.CurrencyField.placeholder')}
+            />
+          )}
         </CardContent>
       )}
     </Card>

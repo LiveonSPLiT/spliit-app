@@ -4,6 +4,7 @@ import { ShareButton } from '@/app/dashboard/share-button'
 import { Stats } from '@/app/dashboard/stats'
 import { Settings } from '@/app/dashboard/user-settings'
 import { Button } from '@/components/ui/button'
+import { Currency } from '@/lib/currency'
 import { Skeleton } from '@/components/ui/skeleton'
 import { trpc } from '@/trpc/client'
 import { Contact, Users } from 'lucide-react'
@@ -13,18 +14,29 @@ import Link from 'next/link'
 import { PropsWithChildren, useEffect, useState } from 'react'
 
 export function Dashboard({ children }: PropsWithChildren<{}>) {
+  const defaultCurrency: Currency = {
+    name: 'Indian Rupee',
+    symbol_native: '₹',
+    symbol: '₹',
+    code: 'INR',
+    name_plural: 'Indian rupees',
+    rounding: 0,
+    decimal_digits: 2
+  }
   const t = useTranslations('Dashboard')
   const { data: session, status } = useSession()
   const userName = t('greeting') + session?.user?.name
   const userEmail = session?.user?.email ?? ''
 
   const [currency, setCurrency] = useState<string | null>()
+  const [currencyObject, setCurrencyObject] = useState<Currency | null>()
   const { data, isLoading: currencyIsLoading } =
     trpc.dashboard.getUserCurrency.useQuery({ email: userEmail })
 
   useEffect(() => {
     if (data?.currency) {
       setCurrency(data.currency)
+      setCurrencyObject(data.currencyObj)
       localStorage.setItem('user-currency', data.currency)
     }
   }, [data])
@@ -59,10 +71,11 @@ export function Dashboard({ children }: PropsWithChildren<{}>) {
           />
         </div>
       </div>
-      <Stats userEmail={userEmail} currency={currency ?? ''} />
+      <Stats userEmail={userEmail} currency={currencyObject ?? defaultCurrency} />
       <Settings
         userEmail={userEmail}
         currency={currency ?? ''}
+        currencyCode={currencyObject?.code ?? 'INR'}
         notificationPrefre={data?.notificationPrefrence ?? 'BOTH'}
         loading={currencyIsLoading}
         onCurrencyUpdate={handleCurrencyUpdate}

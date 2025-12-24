@@ -1,3 +1,4 @@
+import { Currency } from '@/lib/currency'
 import { Graphs } from '@/app/dashboard/graphs'
 import { Totals } from '@/app/dashboard/totals'
 import {
@@ -11,7 +12,7 @@ import { useTranslations } from 'next-intl'
 
 type StatsProps = {
   userEmail: string
-  currency: string
+  currency: Currency
 }
 
 export function Stats({ userEmail, currency }: StatsProps) {
@@ -28,7 +29,7 @@ export function Stats({ userEmail, currency }: StatsProps) {
           <Totals userEmail={userEmail} currency={currency} />
         </CardContent>
       </Card>
-      <Graphs userEmail={userEmail} currency={currency} />
+      <Graphs userEmail={userEmail} currency={currency.symbol} />
     </>
   )
 }

@@ -16,6 +16,7 @@ model User {
   name            String
   email           String          @unique
   currency        String          @default("₹")
+  currencyCode    String          @default("INR")
   pushSubscription Json?           // Store subscription as raw JSON
   notificationPref NotificationPref @default(BOTH)
   recentGroups    RecentGroup[]
