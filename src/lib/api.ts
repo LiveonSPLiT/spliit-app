@@ -563,6 +563,7 @@ export async function createFriend(friendFormSchema: GroupFormValues) {
       name: 'Friend_Group', // Setting the group name as friendGroup
       information: friendFormSchema.information,
       currency: friendFormSchema.currency,
+      currencyCode: friendFormSchema.currencyCode,
       participants: {
         createMany: {
           data: [

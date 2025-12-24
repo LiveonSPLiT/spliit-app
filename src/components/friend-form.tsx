@@ -12,14 +12,17 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { Locale } from '@/i18n'
 import { getFriend } from '@/lib/api'
+import { defaultCurrencyList, getCurrency } from '@/lib/currency'
 import { GroupFormValues, groupFormSchema } from '@/lib/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Save } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
+import { CurrencySelector } from './currency-selector'
 import { Textarea } from './ui/textarea'
 
 export type Props = {
@@ -36,28 +39,31 @@ export function FriendForm({
   onSubmit,
   protectedParticipantIds = [],
 }: Props) {
+  const locale = useLocale()
   const t = useTranslations('FriendForm')
   const userCurrency = localStorage.getItem('user-currency') ?? '₹'
   const form = useForm<GroupFormValues>({
     resolver: zodResolver(groupFormSchema),
     defaultValues: group
       ? {
-          name: group.name,
-          friendEmail: group.friendEmail,
-          information: group.information ?? '',
-          currency: group.currency,
-          participants: group.participants,
-        }
+        name: group.name,
+        friendEmail: group.friendEmail,
+        information: group.information ?? '',
+        currency: group.currency,
+        currencyCode: group.currencyCode,
+        participants: group.participants,
+      }
       : {
-          name: '',
-          friendEmail: '',
-          information: '',
-          currency: userCurrency,
-          participants: [
-            { name: t('Participants.John') },
-            { name: t('Participants.Jane') },
-          ],
-        },
+        name: '',
+        friendEmail: '',
+        information: '',
+        currency: userCurrency,
+        currencyCode: process.env.NEXT_PUBLIC_DEFAULT_CURRENCY_CODE || 'INR',
+        participants: [
+          { name: t('Participants.John') },
+          { name: t('Participants.Jane') },
+        ],
+      },
   })
   const { fields, append, remove } = useFieldArray({
     control: form.control,
@@ -97,7 +103,7 @@ export function FriendForm({
           await onSubmit(
             values,
             group?.participants.find((p) => p.name === activeUser)?.id ??
-              undefined,
+            undefined,
           )
         })}
       >
@@ -129,9 +135,44 @@ export function FriendForm({
 
             <FormField
               control={form.control}
-              name="currency"
+              name="currencyCode"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>{t('CurrencyCodeField.label')}</FormLabel>
+                  <CurrencySelector
+                    currencies={defaultCurrencyList(
+                      locale as Locale,
+                      t('CurrencyCodeField.customOption'),
+                    )}
+                    defaultValue={form.watch(field.name) ?? ''}
+                    onValueChange={(newCurrency) => {
+                      field.onChange(newCurrency)
+                      const currency = getCurrency(newCurrency)
+                      if (
+                        currency.code.length ||
+                        form.getFieldState('currency').isTouched
+                      )
+                        form.setValue('currency', currency.symbol, {
+                          shouldValidate: true,
+                          shouldTouch: true,
+                          shouldDirty: true,
+                        })
+                    }}
+                    isLoading={false}
+                  />
+                  <FormDescription>
+                    {t('CurrencyCodeField.description')}
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="currency"
+              render={({ field }) => (
+                <FormItem hidden={!!form.watch('currencyCode')?.length}>
                   <FormLabel>{t('CurrencyField.label')}</FormLabel>
                   <FormControl>
                     <Input
