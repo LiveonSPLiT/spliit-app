@@ -97,6 +97,11 @@
       "placeholder": "Liburan musim panas",
       "description": "Masukkan nama untuk grup Anda."
     },
+    "CurrencyCodeField": {
+      "label": "Mata uang utama",
+      "description": "Semua jumlah dan saldo akan dalam mata uang ini. Mengubah ini TIDAK akan mengonversi pengeluaran yang sudah dimasukkan.",
+      "customOption": "Kustom"
+    },
     "InformationField": {
       "label": "Informasi grup",
       "placeholder": "Informasi apa yang relevan bagi peserta kelompok?"
@@ -447,7 +452,8 @@
         "placeholder": "₹, $, £…",
         "description": "Kami akan menggunakannya untuk menampilkan jumlah.",
         "save": "Simpan",
-        "saving": "Menyimpan…"
+        "saving": "Menyimpan…",
+        "customOption": "Kustom"
       },
       "NotificationField": {
         "label": "Pengaturan notifikasi",
@@ -605,6 +611,19 @@
       "Trash": "Sampah",
       "TV/Phone/Internet": "TV/Telepon/Internet",
       "Water": "Air"
+    }
+  },
+  "Currencies": {
+    "search": "Cari mata uang...",
+    "noCurrency": "Tidak ada mata uang ditemukan.",
+    "custom": {
+      "heading": "Kustom"
+    },
+    "common": {
+      "heading": "Paling umum"
+    },
+    "other": {
+      "heading": "Mata uang lain"
     }
   }
 }

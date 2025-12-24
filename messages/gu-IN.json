@@ -106,6 +106,11 @@
       "placeholder": "₹, $, £…",
       "description": "અમે તેનો ઉપયોગ રકમ દર્શાવવા માટે કરીશું."
     },
+    "CurrencyCodeField": {
+      "label": "મુખ્ય ચલણ",
+      "description": "બધી રકમો અને બેલેન્સ આ ચલણમાં રહેશે. આ બદલવાથી પહેલાથી દાખલ કરેલી ખર્ચો રૂપાંતરિત નહીં થાય.",
+      "customOption": "કસ્ટમ"
+    },
     "Participants": {
       "title": "સહભાગીઓ",
       "description": "દરેક સહભાગી માટે નામ દાખલ કરો.",
@@ -447,7 +452,8 @@
         "placeholder": "₹, $, £…",
         "description": "અમે તેને રકમ દર્શાવવા માટે ઉપયોગ કરીશું.",
         "save": "સાચવો",
-        "saving": "સાચવી રહ્યા છીએ…"
+        "saving": "સાચવી રહ્યા છીએ…",
+        "customOption": "કસ્ટમ"
       },
       "NotificationField": {
         "label": "સૂચના સેટિંગ્સ",
@@ -604,6 +610,19 @@
       "Trash": "કચરો",
       "TV/Phone/Internet": "ટીવી/ફોન/ઇન્ટરનેટ",
       "Water": "પાણી"
+    }
+  },
+  "Currencies": {
+    "search": "ચલણ શોધો...",
+    "noCurrency": "કોઈ ચલણ મળ્યું નથી.",
+    "custom": {
+      "heading": "કસ્ટમ"
+    },
+    "common": {
+      "heading": "સૌથી સામાન્ય"
+    },
+    "other": {
+      "heading": "અન્ય ચલણો"
     }
   }
 }
