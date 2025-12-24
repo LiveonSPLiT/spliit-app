@@ -12,11 +12,11 @@ export function StatsDisplay() {
     <>
       {t('already')}{' '}
       <strong>
-        {stats ? <AnimatedCounter count={stats?.groupsCount + 1563} /> : '…'}
+        {stats ? <AnimatedCounter count={stats?.groupsCount} /> : '…'}
       </strong>{' '}
       {t('groups')} <br className="sm:hidden" />
       <strong>
-        {stats ? <AnimatedCounter count={stats?.expensesCount + 13485} /> : '…'}
+        {stats ? <AnimatedCounter count={stats?.expensesCount} /> : '…'}
       </strong>{' '}
       {t('expenses')}
     </>
