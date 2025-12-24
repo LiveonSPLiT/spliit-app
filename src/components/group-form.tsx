@@ -77,6 +77,7 @@ export function GroupForm({
           name: '',
           information: '',
           currency: userCurrency,
+          currencyCode: process.env.NEXT_PUBLIC_DEFAULT_CURRENCY_CODE || 'INR',
           participants: [
             { name: session?.user?.name || t('Participants.John') },
             { name: t('Participants.Jane') },
